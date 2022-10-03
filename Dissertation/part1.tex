@@ -1,643 +1,701 @@
-\chapter{Оформление различных элементов}\label{ch:ch1}
+\chapter{Модели сложного теплообмена}\label{ch:ch1}
 
-\section{Форматирование текста}\label{sec:ch1/sec1}
 
-Мы можем сделать \textbf{жирный текст} и \textit{курсив}.
+\section{Уравнение переноса теплового излучения}\label{sec:ch1/sec1}
 
-\section{Ссылки}\label{sec:ch1/sec2}
 
-Сошлёмся на библиографию.
-Одна ссылка: \cite[с.~54]{Sokolov}\cite[с.~36]{Gaidaenko}.
-Две ссылки: \cite{Sokolov,Gaidaenko}.
-Ссылка на собственные работы: \cite{vakbib1, confbib2}.
-Много ссылок: %\cite[с.~54]{Lermontov,Management,Borozda} % такой «фокус»
-%вызывает biblatex warning относительно опции sortcites, потому что неясно, к
-%какому источнику относится уточнение о страницах, а bibtex об этой проблеме
-%даже не предупреждает
-\cite{Lermontov, Management, Borozda, Marketing, Constitution, FamilyCode,
-    Gost.7.0.53, Razumovski, Lagkueva, Pokrovski, Methodology, Berestova,
-    Kriger}%
-\ifnumequal{\value{bibliosel}}{0}{% Примеры для bibtex8
-    \cite{Sirotko, Lukina, Encyclopedia, Nasirova}%
-}{% Примеры для biblatex через движок biber
-    \cite{Sirotko2, Lukina2, Encyclopedia2, Nasirova2}%
-}%
-.
-И~ещё немного ссылок:~\cite{Article,Book,Booklet,Conference,Inbook,Incollection,Manual,Mastersthesis,
-    Misc,Phdthesis,Proceedings,Techreport,Unpublished}
-% Следует обратить внимание, что пробел после запятой внутри \cite{}
-% обрабатывается ожидаемо, а пробел перед запятой, может вызывать проблемы при
-% обработке ссылок.
-\cite{medvedev2006jelektronnye, CEAT:CEAT581, doi:10.1080/01932691.2010.513279,
-    Gosele1999161,Li2007StressAnalysis, Shoji199895, test:eisner-sample,
-    test:eisner-sample-shorted, AB_patent_Pomerantz_1968, iofis_patent1960}%
-\ifnumequal{\value{bibliosel}}{0}{% Примеры для bibtex8
-}{% Примеры для biblatex через движок biber
-    \cite{patent2h, patent3h, patent2}%
-}%
-.
+Уравнение переноса излучения описывает поле интенсивности излучения
+при взаимодействии теплового излучения с поглощающей, излучающей и рассеивающей средой
+(radiatively participating medium).
+Будем предполагать, что среда имеет постоянный показатель преломления $n$, является неполяризующей,
+находится в состоянии покоя (по сравнению со скоростью света) и в локальном
+термодинамическом равновесии [67, с. 280].
 
-\ifnumequal{\value{bibliosel}}{0}{% Примеры для bibtex8
-Попытка реализовать несколько ссылок на конкретные страницы
-для \texttt{bibtex} реализации библиографии:
-[\citenum{Sokolov}, с.~54; \citenum{Gaidaenko}, с.~36].
-}{% Примеры для biblatex через движок biber
-Несколько источников (мультицитата):
-% Тут специально написано по-разному тире, для демонстрации, что
-% применение специальных тире в настоящий момент в biblatex приводит к непоказу
-% "с.".
-\cites[vii--x, 5, 7]{Sokolov}[v"--~x, 25, 526]{Gaidaenko}[vii--x, 5, 7]{Techreport},
-работает только в \texttt{biblatex} реализации библиографии.
-}%
 
-Ссылки на собственные работы:~\cite{vakbib1, confbib1}.
+Спектральной интенсивностью излучения $I_\nu (x \omega, t)$ $[\text{Вт}/(м^2 \cdot \text{стер} \cdot \text{Гц})]$
+называется количество энергии излучения, проходящего через единичную
+площадку, перпендикулярную направлению распространения $\omega$, внутри единичного телесного угла,
+осью которого является направление $\omega$, в единичном
+интервале частот, включающем частоту $\nu$, и в единицу времени.
+Считаем, что направления излучения $\omega$ связаны с точками единичной
+сферы $S = \{\omega \in R^3: \| \omega\| = 1\}$.
 
-Сошлёмся на приложения: Приложение~\cref{app:A}, Приложение~\cref{app:B2}.
 
-Сошлёмся на формулу: формула~\cref{eq:equation1}.
+Рассмотрим пучок излучения интенсивностью $I_\nu (x \omega, t)$, распространяющегося в поглощающей,
+излучающей и рассеивающей среде в заданном направлении.
+Энергия излучения будет уменьшаться вследствие поглощения
+излучения веществом и отклонения части его от первоначальной траектории в
+результате рассеяния во всех направлениях, но одновременно она будет возрастать
+вследствие испускания излучения веществом.
 
-Сошлёмся на изображение: рисунок~\cref{fig:knuth}.
 
-Стандартной практикой является добавление к ссылкам префикса, характеризующего тип элемента.
-Это не является строгим требованием, но~позволяет лучше ориентироваться в документах большого размера.
-Например, для ссылок на~рисунки используется префикс \textit{fig},
-для ссылки на~таблицу "--- \textit{tab}.
+Обозначим через $\kappa_{a\nu}$[$\text{м}^{-1}$] спектральный коэффициент поглощения,
+равный доле падающего излучения, поглощенной веществом на единице длины
+пути распространения излучения.
+Приращение интенсивности излучения за счет поглощения равно
+$(dI_\nu)_\text{погл} = -\kappa_{a\nu} I_\nu ds$, где $ds$ — элемент пути.
+Отметим, что $1/\kappa_{a_\nu}$ есть средняя длина свободного пробега фотона до его поглощения
+веществом [67, с. 281].
 
-В таблице \cref{tab:tab_pref} приложения~\cref{app:B4} приведён список рекомендуемых
-к использованию стандартных префиксов.
 
-В некоторых ситуациях возникает необходимость отойти от требований ГОСТ по оформлению ссылок на
-литературу.
-В таком случае можно воспользоваться дополнительными опциями пакета \verb+biblatex+.
+Для получения выражения для испускания излучения элементом объема
+часто используется предположение о локальном термодинамическом равновесии.
+Оно означает, что любой малый элемент объема среды находится в
+локальном термодинамическом равновесии, вследствие чего состояние любой
+точки может быть охарактеризовано локальной температурой $T(x)$.
+Это предположение законно, когда столкновения атомов в веществе происходят столь
+часто, что это приводит к локальному термодинамическому равновесию в каждой точке $x$ среды.
+В этом случае испускание излучения элементом объема
+можно описать с помощью функции Планка [68, с. 36].
+Приращение интенсивности излучения за счет испускания равно
+$(dI_\nu)_\text{исп}  = j_\nu ds$  $j_\nu$ -- коэффициент испускания.
+В локальном термодинамическом равновесии справедлива формула [68, с. 36],
+[67, с. 282] $j_\nu = \kappa_{a\nu} I_{b\nu}$, где
+$I_{b\nu}$ — интенсивность излучения абсолютно черного тела.
 
-Например, в ссылке на книгу~\cite{sobenin_kdv} использование опции \verb+maxnames=4+ позволяет
-вывести имена всех четырёх авторов.
-По ГОСТ имена последних трёх авторов опускаются.
 
-Кроме того, часто возникают проблемы с транслитерованными инициалами. Некоторые буквы русского
-алфавита по правилам транслитерации записываются двумя буквами латинского алфавита (ю-yu, ё-yo и
-т.д.).
-Такие инициалы \verb+biblatex+ будет сокращать до одной буквы, что неверно.
-Поправить его работу можно использовав опцию \verb+giveninits=false+.
-Пример использования этой опции можно видеть в ссылке~\cite{initials}.
-
-\section{Формулы}\label{sec:ch1/sec3}
-
-Благодаря пакету \textit{icomma}, \LaTeX~одинаково хорошо воспринимает
-в~качестве десятичного разделителя и запятую (\(3,1415\)), и точку (\(3.1415\)).
-
-\subsection{Ненумерованные одиночные формулы}\label{subsec:ch1/sec3/sub1}
-
-Вот так может выглядеть формула, которую необходимо вставить в~строку
-по~тексту: \(x \approx \sin x\) при \(x \to 0\).
-
-А вот так выглядит ненумерованная отдельностоящая формула c подстрочными
-и надстрочными индексами:
-\[
-    (x_1+x_2)^2 = x_1^2 + 2 x_1 x_2 + x_2^2
-\]
-
-Формула с неопределенным интегралом:
-\[
-    \int f(\alpha+x)=\sum\beta
-\]
-
-При использовании дробей формулы могут получаться очень высокие:
-\[
-    \frac{1}{\sqrt{2}+
-        \displaystyle\frac{1}{\sqrt{2}+
-            \displaystyle\frac{1}{\sqrt{2}+\cdots}}}
-\]
-
-В формулах можно использовать греческие буквы:
-%Все \original... команды заранее, ради этого примера, определены в Dissertation\userstyles.tex
-\[
-    \alpha\beta\gamma\delta\originalepsilon\epsilon\zeta\eta\theta%
-    \vartheta\iota\kappa\varkappa\lambda\mu\nu\xi\pi\varpi\rho\varrho%
-    \sigma\varsigma\tau\upsilon\originalphi\phi\chi\psi\omega\Gamma\Delta%
-    \Theta\Lambda\Xi\Pi\Sigma\Upsilon\Phi\Psi\Omega
-\]
-\[%https://texfaq.org/FAQ-boldgreek
-    \boldsymbol{\alpha\beta\gamma\delta\originalepsilon\epsilon\zeta\eta%
-        \theta\vartheta\iota\kappa\varkappa\lambda\mu\nu\xi\pi\varpi\rho%
-        \varrho\sigma\varsigma\tau\upsilon\originalphi\phi\chi\psi\omega\Gamma%
-        \Delta\Theta\Lambda\Xi\Pi\Sigma\Upsilon\Phi\Psi\Omega}
-\]
-
-Для добавления формул можно использовать пары \verb+$+\dots\verb+$+ и \verb+$$+\dots\verb+$$+,
-но~они считаются устаревшими.
-Лучше использовать их функциональные аналоги \verb+\(+\dots\verb+\)+ и \verb+\[+\dots\verb+\]+.
-
-\subsection{Ненумерованные многострочные формулы}\label{subsec:ch1/sec3/sub2}
-
-Вот так можно написать две формулы, не нумеруя их, чтобы знаки <<равно>> были
-строго друг под другом:
-\begin{align}
-    f_W & =  \min \left( 1, \max \left( 0, \frac{W_{soil} / W_{max}}{W_{crit}} \right)  \right), \nonumber \\
-    f_T & =  \min \left( 1, \max \left( 0, \frac{T_s / T_{melt}}{T_{crit}} \right)  \right), \nonumber
-\end{align}
-
-Выровнять систему ещё и по переменной \( x \) можно, используя окружение
-\verb|alignedat| из пакета \verb|amsmath|. Вот так:
-\[
-|x| = \left\{
-\begin{alignedat}{2}
-    &&x, \quad &\text{eсли } x\geqslant 0 \\
-    &-&x, \quad & \text{eсли } x<0
-\end{alignedat}
-\right.
-\]
-Здесь первый амперсанд (в исходном \LaTeX\ описании формулы) означает
-выравнивание по~левому краю, второй "--- по~\( x \), а~третий "--- по~слову
-<<если>>. Команда \verb|\quad| делает большой горизонтальный пробел.
-
-Ещё вариант:
-\[
-    |x|=
-    \begin{cases}
-        \phantom{-}x, \text{если } x \geqslant 0 \\
-        -x, \text{если } x<0
-    \end{cases}
-\]
-
-Кроме того, для  нумерованных формул \verb|alignedat| делает вертикальное
-выравнивание номера формулы по центру формулы. Например, выравнивание
-компонент вектора:
-\begin{equation}
-    \label{eq:2p3}
-    \begin{alignedat}{2}
-        {\mathbf{N}}_{o1n}^{(j)} = \,{\sin} \phi\,n\!\left(n+1\right)
-        {\sin}\theta\,
-        \pi_n\!\left({\cos} \theta\right)
-        \frac{
-        z_n^{(j)}\!\left( \rho \right)
-        }{\rho}\,
-        &{\boldsymbol{\hat{\mathrm e}}}_{r}\,+   \\
-        +\,
-        {\sin} \phi\,
-        \tau_n\!\left({\cos} \theta\right)
-        \frac{
-        \left[\rho z_n^{(j)}\!\left( \rho \right)\right]^{\prime}
-        }{\rho}\,
-        &{\boldsymbol{\hat{\mathrm e}}}_{\theta}\,+   \\
-        +\,
-        {\cos} \phi\,
-        \pi_n\!\left({\cos} \theta\right)
-        \frac{
-        \left[\rho z_n^{(j)}\!\left( \rho \right)\right]^{\prime}
-        }{\rho}\,
-        &{\boldsymbol{\hat{\mathrm e}}}_{\phi}\:.
-    \end{alignedat}
-\end{equation}
-
-Ещё об отступах. Иногда для лучшей <<читаемости>> формул полезно
-немного исправить стандартные интервалы \LaTeX\ с учётом логической
-структуры самой формулы. Например в формуле~\cref{eq:2p3} добавлен
-небольшой отступ \verb+\,+ между основными сомножителями, ниже
-результат применения всех вариантов отступа:
-\begin{align*}
-    \backslash!             & \quad f(x) = x^2\! +3x\! +2         \\
-    \mbox{по-умолчанию}     & \quad f(x) = x^2+3x+2               \\
-    \backslash,             & \quad f(x) = x^2\, +3x\, +2         \\
-    \backslash{:}           & \quad f(x) = x^2\: +3x\: +2         \\
-    \backslash;             & \quad f(x) = x^2\; +3x\; +2         \\
-    \backslash \mbox{space} & \quad f(x) = x^2\ +3x\ +2           \\
-    \backslash \mbox{quad}  & \quad f(x) = x^2\quad +3x\quad +2   \\
-    \backslash \mbox{qquad} & \quad f(x) = x^2\qquad +3x\qquad +2
-\end{align*}
-
-Можно использовать разные математические алфавиты:
-\begin{align}
-    \mathcal{ABCDEFGHIJKLMNOPQRSTUVWXYZ} \nonumber  \\
-    \mathfrak{ABCDEFGHIJKLMNOPQRSTUVWXYZ} \nonumber \\
-    \mathbb{ABCDEFGHIJKLMNOPQRSTUVWXYZ} \nonumber
-\end{align}
-
-Посмотрим на систему уравнений на примере аттрактора Лоренца:
+Абсолютно черным называется тело, которое поглощает все падающее
+со всех направлений излучение любой частоты без отражения, пропускания и
+рассеяния. Из закона Кирхгофа следует, что абсолютно черное тело также излучает
+максимальное количество энергии при данной температуре [68, с. 25], [67, с. 5].
+Интенсивность излучения абсолютно черного тела при температуре $T$ равна
 
 \[
-\left\{
-\begin{array}{rl}
-    \dot x = & \sigma (y-x)  \\
-    \dot y = & x (r - z) - y \\
-    \dot z = & xy - bz
-\end{array}
-\right.
+    I_{b\nu}(T) = \frac{2h\nu^3n^2}{c^2_0(e^{h\nu/kT} - 1)},
 \]
 
-А для вёрстки матриц удобно использовать многоточия:
+где $h$ -- постоянная Планка, $k$ - постоянная Больцмана, $c_0$ -- скорость света в вакууме,
+$T$ -- абсолютная температура, $n$ -- показатель преломления.
+Интегральная интенсивность злучения абсолютно черного тела $I_b(T)$ вычилсяется по формуле [68, с. 28], [67, с. 10]
 \[
-    \left(
-        \begin{array}{ccc}
-            a_{11} & \ldots & a_{1n} \\
-            \vdots & \ddots & \vdots \\
-            a_{n1} & \ldots & a_{nn} \\
-        \end{array}
-    \right)
+    I_b(T) = \int^{\infty}_0 I_{b\nu}(T) d\nu = \frac{n^2 \sigma T^4}{\pi},
+\]
+где $\sigma$ -- постоянная Стефана-Больцмана.
+
+
+Рассеяние излучения учитывается так же, как поглощение, с той разницей,
+что рассеянная энергия просто перенаправляется и возникает в приращении
+интенсивности излучения в другом направлении.
+Различают когерентное и некогерентное рассеяние.
+Рассеяние называется когерентным, если рассеянное излучение имеет ту же самую частоту,
+что и падающее излучение, и некогерентным, если частота рассеянного
+излучения отличается от частоты падающего излучения.
+В дальнейшем мы будем рассматривать только когерентное рассеяние.
+Обозначим через $\kappa_{s\nu}$ [$\text{м}^{-1}$] спектральный коэффициент рассеяния, равный
+доле падающего излучения, рассеянной веществом во всех направлениях на
+единице длины пути распространения излучения.
+Тогда приращение интенсивности излучения за счет «рассеяния вне» равно
+$(dI_{nu})_\text{расс.вне} = - \kappa_{s\nu}I_{nuds}$.
+Для описания "рассеяния в" вводится неотрицательная фазовая функция рассеяния
+$P_{nu} = (\omega, \omega')$ такая, что $\frac{1}{4\pi}\int_S P_{nu} (\omega, \omega')d\omega = 1$.
+Величина $\frac{1}{4\pi}\int_S P_{nu} (\omega, \omega')d\omega$
+определяет вероятность того, что излучение частоты $\nu$,
+падающее в направлении $\omega'$,
+будет рассеяно в пределах элементарного телесного угла $d\omega$ в направлении $\omega$.
+Случай $P_\nu \equiv 1$ соответствует изотропному рассеянию.
+Тогда для того, чтобы получить приращение интенсивности излучения за счет «рассеяния в», нужно
+проинтегрировать $I_\nu(\omega')P_\nu(\omega,\omega')/4\pi$ по всем входящим направлениям
+$\omega'$ [67, с. 283]:
+$(dI_\nu)_\text{расс.в} = ds \frac{\kappa_{s\nu}}{4\pi}\int_S I_\nu(\omega')P_{nu(\omega,\omega')d\omega'}$.
+Учитывая приращения интенсивности излучения с учетом поглощения,
+испускания и рассеяния, получим искомое уравнение переноса излучения
+[68, с. 272], [67, с. 284]:
+\[
+    \begin{aligned}
+        &\frac{1}{c} \frac{\partial I_v(x, \omega, t)}
+        {\partial t}+\omega \cdot \nabla_x I_v(x, \omega, t)+\kappa_v I_v(x, \omega, t)=\\
+        &=\mathrm{\kappa}_{a v} I_{b v}(T(x, t))+\frac{\mathrm{K}_{s v}}{4 \pi}
+        \int_S I_v\left(x, \omega^{\prime}, t\right) P_v\left(\omega, \omega^{\prime}\right) d \omega^{\prime}.
+    \end{aligned}
+\]
+Здесь $\kappa_{nu = \kappa_{a\nu} + \kappa_{s\nu}}$ -- полный спектральный коэффициент взаимодействия,
+$c$ --  скорость света в среде.
+
+
+Далее получим граничные условия для уравнения переноса излучения.
+Будем считать, что граница области непрозрачна, испускает излучение диффузно
+и отражает излучение диффузно и зеркально.
+Степенью черноты поверхности $\varepsilon \nu(x)$ называется отношение количества энергии,
+испускаемого данной поверхностью, к количеству энергии, испускаемому абсолютно черным телом при
+той же температуре.
+При диффузном испускании излучения степень черноты не зависит от направления и определяется формулой
+$\varepsilon_\nu(x) = \frac{I_{\nu,\text{исп}}(x)}{I_{b\nu}(T(x))}$, где
+$I_{\nu,\text{исп})}(x)$ -- интенсивность излучения, испускаемого
+поверхностью при температуре $T(x)$ [68, с. 53].
+
+При диффузном поглощении степень черноты равняется
+поглотительной способности, которая равна доле поглощенного излучения [67, с. 66].
+Также введем коэффициенты зеркального и диффузного отражения
+$\rho^s_\nu(x), \rho^d_\nu(x)$ как части зеркально и диффузно отраженного излучения соответственно.
+Отметим, что в случае непрозрачной поверхности $\varepsilon_\nu + \rho^s_\nu + \rho^d_{nu = 1}$.
+Граничное условие имеет вид [69], [67, с. 289]
+\[
+    \begin{aligned}
+        &I_v(x, \omega, t)=\varepsilon_v(x) I_{b v}(T(x, t))+\rho_v^s(x) I_v\left(x, \omega_R, t\right)+ \\
+        &\quad+\frac{\rho_v^d(x)}{\pi} \int_{\omega^{\prime} \cdot \mathbf{n}>0} I_v\left(x, \omega^{\prime},
+        t\right) \omega^{\prime} \cdot \mathbf{n} d \omega^{\prime}, \omega \cdot \mathbf{n}<0,
+    \end{aligned}
+\]
+где $\mathbf{n}$ -- вектор внешней нормали к границе области, $\omega$ -- входящее направление,
+$\omega_R$ -- направление отражения, определяемое из соотношения
+$\omega + (-\omega_R) = 2 \text{cos}\theta = \omega \cdot \mathbf{n}$ косинус угла между
+вектором нормали и направлением падающего излучения.
+Таким образом, $\omega_R = \omega -2(\omega \cdot \mathbf{n})\mathbf{n}$.
+
+
+Поле температуры описывается уравнением теплопроводности [67, с. 297]:
+\[
+    \rho c_p \frac{\partial T(x, t)}{\partial t}-k \Delta T(x, t)+\rho c_p
+    \mathbf{v}(x, t) \cdot \nabla T(x, t)=-\div \mathbf{q}_r(x, t),
 \]
 
-\subsection{Нумерованные формулы}\label{subsec:ch1/sec3/sub3}
+где $T[K]$ -- температура, $\mathbf{v}$ [м/с] поле скоростей, $k$ [Вт/м $\cdot К$]
+-- коэффициент теплопроводности, $c_p$ [Дж/(кг$\cdot K$)] -- удельная теплоёмкость при постоянном
+давлении, $\rho$ [кг/$\text{м}^3$] -- плотность,
+$\mathbf{q}_r$ -- вектор плотности потока излучения, определяемый формулой [67, с. 292]
+$\mathbf{q}_r(x, t) = \int^\infty_0\int_S I_\nu(x,\omega,t)\omega d\omega d\nu$.
+Дивергенция вектора плотности потока излучения $\div \mathbf{q}_r$
+характеризует изменение в единицу времени энергии излучения,
+заключенной в единице объема среды, по всему спектру частот вследствие испускания
+излучения во всё сферическое пространство и поглощения падающего из него излучения [68, с. 274].
+Для нахождения $\div \mathbf{q}_{r}$ проинтегрируем уравнение (1.1) по $\boldsymbol{\omega} \in S$, получим
+\[
+    \begin{gathered}
+        \frac{1}{c} \frac{\partial}{\partial t} \int_{S} I_{v}(x, \boldsymbol{\omega}, t) d
+        \boldsymbol{\omega}+\div \int_{S} I_{v}(x, \boldsymbol{\omega}, t) \boldsymbol{\omega} d
+        \boldsymbol{\omega}+\kappa_{v} \int_{S} I_{v}(x, \boldsymbol{\omega}, t) d \boldsymbol{\omega}= \\
+        =4 \pi \kappa_{a v} I_{b v}(T(x, t))+\frac{\kappa_{s v}}{4 \pi} \int_{S}
+        \int_{S} I_{v}\left(x, \boldsymbol{\omega}^{\prime}, t\right) P_{v}\left(\boldsymbol{\omega},
+        \boldsymbol{\omega}^{\prime}\right) d \boldsymbol{\omega}^{\prime} d \boldsymbol{\omega}.
+    \end{gathered}
+\]
 
-А вот так пишется нумерованная формула:
-\begin{equation}
-    \label{eq:equation1}
-    e = \lim_{n \to \infty} \left( 1+\frac{1}{n} \right) ^n
-\end{equation}
 
-Нумерованных формул может быть несколько:
-\begin{equation}
-    \label{eq:equation2}
-    \lim_{n \to \infty} \sum_{k=1}^n \frac{1}{k^2} = \frac{\pi^2}{6}
-\end{equation}
+Поменяем порядок интегрирования во втором слагаемом в правой части:
+\[
+    \begin{aligned}
+        \int_{S} \int_{S} I_{v}\left(x, \omega^{\prime}, t\right) P_{v} &\left(\boldsymbol{\omega},
+        \boldsymbol{\omega}^{\prime}\right) d \boldsymbol{\omega}^{\prime} d \boldsymbol{\omega}=\\
+        &=\int_{S} I_{v}\left(x, \boldsymbol{\omega}^{\prime}, t\right) \int_{S} P_{v}\left(\boldsymbol{\omega},
+        \omega^{\prime}\right) d \boldsymbol{\omega} d \boldsymbol{\omega}^{\prime}=4 \pi \int_{S} I_{v}\left(x,
+        \boldsymbol{\omega}^{\prime}, t\right) d \boldsymbol{\omega}^{\prime}.
+    \end{aligned}
+\]
 
-Впоследствии на формулы~\cref{eq:equation1, eq:equation2} можно ссылаться.
 
-Сделать так, чтобы номер формулы стоял напротив средней строки, можно,
-используя окружение \verb|multlined| (пакет \verb|mathtools|) вместо
-\verb|multline| внутри окружения \verb|equation|. Вот так:
-\begin{equation} % \tag{S} % tag - вписывает свой текст
-    \label{eq:equation3}
-    \begin{multlined}
-        1+ 2+3+4+5+6+7+\dots + \\
-        + 50+51+52+53+54+55+56+57 + \dots + \\
-        + 96+97+98+99+100=5050
-    \end{multlined}
-\end{equation}
+Обозначим через $G_{v}(x, t)=\int_{S} I_{v}(x, \omega, t) d \omega$
+пространственную плотность падающего излучения.
+Тогда
+\[
+    \frac{1}{c} \frac{\partial G_{v}(x, t)}{\partial t}+\div \int_{S} I_{v}(x, \boldsymbol{\omega}, t)
+    \boldsymbol{\omega} d \omega+\mathrm{\kappa}_{v} G_{v}(x, t)=4 \pi
+    \mathrm{\kappa}_{a v} I_{b v}(T(x, t))+\mathrm{\kappa}_{s v} G_{v}(x, t),
+\]
+отсюда
+\[
+    \begin{gathered}
+        \div \int_{S} I_{v}(x, \omega, t) \omega \boldsymbol{\omega} d
+        \boldsymbol{\omega}=4 \pi \mathrm{\kappa}_{a v} I_{b v}(T(x, t))-\mathrm{\kappa}_{a v}
+        G_{v}(x, t)-\frac{1}{c} \frac{\partial G_{v}(x, t)}{\partial t}, \\
+        \div \mathbf{q}_{r}(x, t)=\int_{0}^{\infty} \mathrm{\kappa}_{a v}
+        \left(4 \pi I_{b v}(T(x, t))-G_{v}(x, t)\right) d v-\frac{1}{c}
+        \frac{\partial}{\partial t} \int_{0}^{\infty} G_{v}(x, t) d v.
+    \end{gathered}
+\]
+Таким образом, уравнение теплопроводности принимает вид
+\[
+    \begin{aligned}
+        &\rho c_{p} \frac{\partial T(x, t)}{\partial t}-k \Delta T(x, t)+\rho c_{p} \mathbf{v}(x, t) \cdot \nabla T(x, t)= \\
+        &=-\int_{0}^{\infty} \int_{S} \kappa_{a v}\left(I_{b v}(T(x, t))-I_{v}(x, \omega, t)\right) d \omega d v+\frac{1}{c} \frac{\partial}{\partial t} \int_{0}^{\infty} \int_{S} I_{v}(x, \omega, t) d \omega d v
+    \end{aligned}
+\]
 
-Уравнения~\cref{eq:subeq_1,eq:subeq_2} демонстрируют возможности
-окружения \verb|\subequations|.
-\begin{subequations}
-    \label{eq:subeq_1}
-    \begin{gather}
-        y = x^2 + 1 \label{eq:subeq_1-1} \\
-        y = 2 x^2 - x + 1 \label{eq:subeq_1-2}
-    \end{gather}
-\end{subequations}
-Ссылки на отдельные уравнения~\cref{eq:subeq_1-1,eq:subeq_1-2,eq:subeq_2-1}.
-\begin{subequations}
-    \label{eq:subeq_2}
-    \begin{align}
-        y & = x^3 + x^2 + x + 1 \label{eq:subeq_2-1} \\
-        y & = x^2
-    \end{align}
-\end{subequations}
+Получим граничные условия для уравнения теплопроводности из закона Ньютона-Рихмана.
+Согласно этому закону, плотность теплового потока пропорциональна разности температур
+поверхности тела $T$ и окружающей среды $T_{b}$ : $q=h\left(T-T_{b}\right)$.
+Здесь $h\left[\right.$ Вт $\left./\left(\mathrm{м}^{2} \cdot \mathrm{K}\right)\right]$ - коэффициент
+теплоотдачи, характеризующий интенсивность теплообмена между поверхностью тела и окружающей средой.
+Численно он равен количеству тепла, отдаваемому (воспринимаемому) единицей поверхности в единицу времени
+при разности температур между поверхностью и средой в $1 \mathrm{~K}[70]$. Отметим, что непосредственно
+на поверхности контакта тела с окружающей средой $T=T_{b}$, однако мы считаем, что температура $T$ на
+границе поверхности - это температура за пределами пограничного слоя [71].
+Рассматривая граничное условие для уравнения переноса излучения (1.2),
+будем считать, что поверхностное излучение происходит из пограничного слоя,
+поэтому в качестве аргумента функции $I_{b v}(T)$ будем использовать $T_{b}$.
+По закону сохранения энергии количество тепла, отводимое с единицы поверхности
+вследствие теплоотдачи, должно равняться теплу, подводимому к единице поверхности
+вследствие теплопроводности из внутренних объемов тела, тогда
+$h\left(T-T_{b}\right)=\mathbf{q} \cdot \mathbf{n}=-k \nabla T
+\cdot \mathbf{n}=-k \frac{\partial T}{\partial n}$.
+Таким образом, граничное условие имеет вид:
 
-\subsection{Форматирование чисел и размерностей величин}\label{sec:units}
+\[
+    k \frac{\partial T(x, t)}{\partial n}+h(x)\left(T(x, t)-T_{b}(x, t)\right)=0 .
+\]
 
-Числа форматируются при помощи команды \verb|\num|:
-\num{5,3};
-\num{2,3e8};
-\num{12345,67890};
-\num{2,6 d4};
-\num{1+-2i};
-\num{.3e45};
-\num[exponent-base=2]{5 e64};
-\num[exponent-base=2,exponent-to-prefix]{5 e64};
-\num{1.654 x 2.34 x 3.430}
-\num{1 2 x 3 / 4}.
-Для написания последовательности чисел можно использовать команды \verb|\numlist| и \verb|\numrange|:
-\numlist{10;30;50;70}; \numrange{10}{30}.
-Значения углов можно форматировать при помощи команды \verb|\ang|:
-\ang{2.67};
-\ang{30,3};
-\ang{-1;;};
-\ang{;-2;};
-\ang{;;-3};
-\ang{300;10;1}.
+Следует отметить, что условия третьего рода для температуры обычно ставятся на твердой стенке,
+где $\mathbf{v} \cdot \mathbf{n}=0$.
+В данном случае постановка условий третьего рода на всей границе и, в частности,
+на участке втекания моделирует процесс теплообмена при малых значениях нормальной компоненты скорости.
 
-Обратите внимание, что ГОСТ запрещает использование знака <<->> для обозначения отрицательных чисел
-за исключением формул, таблиц и~рисунков.
-Вместо него следует использовать слово <<минус>>.
+В дальнейшем мы будем рассматривать случай «серой» среды,
+когда $\kappa_{a v}$ и $\mathrm{K}_{s v}$ не зависят от частоты $v$,
+так что $\mathrm{K}_{a v}=\mathrm{K}_{a}, \mathrm{~K}_{s v}=\mathrm{K}_{s}$.
+Граница области также предполагается «серой».
+В этом случае уравнения и граничные условия принимают вид (ср. [69]):
+\[
+    \begin{aligned}
+        & \frac{1}{c} \frac{\partial I(x, \boldsymbol{\omega}, t)}{\partial t}+\boldsymbol{\omega} \cdot \nabla_{x} I(x, \boldsymbol{\omega}, t)+\kappa I(x, \boldsymbol{\omega}, t)= \\
+        & =\frac{\kappa_{s}}{4 \pi} \int_{S} P\left(\omega, \omega^{\prime}\right) I\left(x, \omega^{\prime}, t\right) d \omega^{\prime}+\kappa_{a} \frac{\sigma n^{2} T^{4}(x, t)}{\pi}, \\
+        & \rho c_{p} \frac{\partial T(x, t)}{\partial t}-k \Delta T(x, t)+\rho c_{p} \mathbf{v}(x, t) \cdot \nabla T(x, t)= \\
+        & =-\mathrm{\kappa}_{a}\left(4 \sigma n^{2} T^{4}(x, t)-\int_{S} I(x, \boldsymbol{\omega}, t) d \boldsymbol{\omega}\right)+\frac{1}{c} \frac{\partial}{\partial t} \int_{S} I(x, \boldsymbol{\omega}, t) d \boldsymbol{\omega}, \\
+        & \text { гр.у.: } I(x, \boldsymbol{\omega}, t)=\varepsilon(x) \frac{\sigma n^{2}}{\pi} T_{b}^{4}(x, t)+\rho^{s}(x) I\left(x, \boldsymbol{\omega}_{R}, t\right)+ \\
+        & +\frac{\rho^{d}(x)}{\pi} \int_{\omega^{\prime} \cdot \mathbf{n}>0} I\left(x, \omega^{\prime}, t\right) \omega^{\prime} \cdot \mathbf{n} d \omega^{\prime}, \omega \cdot \mathbf{n}<0, \\
+        & \text { гр.у.: } k \frac{\partial T(x, t)}{\partial n}+h(x)\left(T(x, t)-T_{b}(x, t)\right)=0 \text {. } \\
+        & \text { Здесь } I=\int_{0}^{\infty} I_{v} d v \text {. }
+    \end{aligned}
+\]
+Поставим также начальные условия:
+\[
+    I(x, \boldsymbol{\omega}, 0)=I_{0}(x, \boldsymbol{\omega}), \quad T(x, 0)=T_{0}(x) .
+\]
+Соотношения (1.3)-(1.7) представляют собой модель сложного теплообмена с полным уравнением переноса излучения.
 
-Размерности можно записывать при помощи команд \verb|\si| и \verb|\SI|:
-\si{\farad\squared\lumen\candela};
-\si{\joule\per\mole\per\kelvin};
-\si[per-mode = symbol-or-fraction]{\joule\per\mole\per\kelvin};
-\si{\metre\per\second\squared};
-\SI{0.10(5)}{\neper};
-\SI{1.2-3i e5}{\joule\per\mole\per\kelvin};
-\SIlist{1;2;3;4}{\tesla};
-\SIrange{50}{100}{\volt}.
-Список единиц измерений приведён в таблицах~\cref{tab:unit:base,
-    tab:unit:derived,tab:unit:accepted,tab:unit:physical,tab:unit:other}.
-Приставки единиц приведены в~таблице~\cref{tab:unit:prefix}.
 
-С дополнительными опциями форматирования можно ознакомиться в~описании пакета \texttt{siunitx};
-изменить или добавить единицы измерений можно в~файле \texttt{siunitx.cfg}.
+Перейдем к безразмерным величинам. Обозначим
+\[
+    I(x, \omega, t)=\left(\frac{\sigma n^{2}}{\pi}
+    T_{\max }^{4}\right) I^{*}(x, \boldsymbol{\omega}, t),
+    \quad T(x, t)=T_{\max } \theta(x, t),
+\]
+Здесь $I^{*}-$ нормализованная интенсивность излучения, $\theta-$ нормализованная температура, $T_{\max }$ - максимальная температура в ненормализованной модели. Подставив (1.8) в уравнения $(1.3),(1.4)$, получим
+\[
+    \begin{aligned}
+        \frac{1}{c} \frac{\partial I^{*}(x, \omega, t)}{\partial t}+\omega \cdot \nabla_{x} I^{*}(x, \omega, t) &+\kappa I^{*}(x, \omega, t)=\\
+        =& \frac{\kappa_{s}}{4 \pi} \int_{S} P\left(\omega, \omega^{\prime}\right) I^{*}\left(x, \omega^{\prime}, t\right) d \omega^{\prime}+\kappa_{a} \theta^{4}(x, t),
+    \end{aligned}
+\]
+\[
+    \begin{aligned}
+        \frac{\partial \theta(x, t)}{\partial t} &-a \Delta \theta(x, t)+\mathbf{v}(x, t) \cdot \nabla \theta(x, t)=\\
+        &=-b \kappa_{a}\left(\theta^{4}(x, t)-\frac{1}{4 \pi} \int_{S} I^{*}(x, \omega, t) d \omega\right)+\frac{b}{4 \pi c} \frac{\partial}{\partial t} \int_{S} I^{*}(x, \omega, t) d \boldsymbol{\omega},
+    \end{aligned}
+\]
+где $a=\frac{k}{\rho c_{p}}, b=\frac{4 \sigma n^{2} T_{\max }^{3}}{\rho c_{p}}$.
+Подставляя (1.8) в граничные условия (1.5),
 
-\begin{table}
-    \centering
-    \captionsetup{justification=centering} % выравнивание подписи по-центру
-    \caption{Основные величины СИ}\label{tab:unit:base}
-    \begin{tabular}{llc}
-        \toprule
-        Название  & Команда                 & Символ         \\
-        \midrule
-        Ампер     & \verb|\ampere| & \si{\ampere}   \\
-        Кандела   & \verb|\candela| & \si{\candela}  \\
-        Кельвин   & \verb|\kelvin| & \si{\kelvin}   \\
-        Килограмм & \verb|\kilogram| & \si{\kilogram} \\
-        Метр      & \verb|\metre| & \si{\metre}    \\
-        Моль      & \verb|\mole| & \si{\mole}     \\
-        Секунда   & \verb|\second| & \si{\second}   \\
-        \bottomrule
-    \end{tabular}
-\end{table}
+и полагая $T_{b}=T_{\max } \theta_{b}$, получим
+\[
+    \begin{aligned}
+        & \text { гр.у.: } I^{*}(x, \boldsymbol{\omega}, t)=\varepsilon(x) \theta_{b}^{4}(x, t)+\rho^{s}(x) I^{*}\left(x, \omega_{R}, t\right)+ \\
+        & +\frac{\rho^{d}(x)}{\pi} \int_{\omega^{\prime} \cdot \mathbf{n}>0} I^{*}\left(x, \omega^{\prime}, t\right) \omega^{\prime} \cdot \mathbf{n} d \omega^{\prime}, \omega \cdot \mathbf{n}<0, \\
+        & \text { гр.у.: } a \frac{\partial \theta(x, t)}{\partial n}+\beta(x)\left(\theta(x, t)-\theta_{b}(x, t)\right)=0 \text {, }
+    \end{aligned}
+\]
+где $\beta=\frac{h}{\rho c_{p}}$. Аналогично получаем начальные условия:
+\[
+    I^{*}(x, \boldsymbol{\omega}, 0)=I_{0}^{*}(x, \boldsymbol{\omega}), \quad \theta(x, 0)=\theta_{0}(x),
+\]
+где $I_{0}^{*}(x, \boldsymbol{\omega})=\left(\frac{\sigma n^{2}}{\pi}
+T_{\max }^{4}\right)^{-1} I_{0}(x, \boldsymbol{\omega}), \quad \theta_{0}(x)=\frac{T_{0}(x)}{T_{\max }}$.
 
-\begin{table}
-    \small
-    \centering
-    \begin{threeparttable}% выравнивание подписи по границам таблицы
-        \caption{Производные единицы СИ}\label{tab:unit:derived}
-        \begin{tabular}{llc|llc}
-            \toprule
-            Название       & Команда                 & Символ              & Название & Команда & Символ \\
-            \midrule
-            Беккерель      & \verb|\becquerel| & \si{\becquerel}     &
-            Ньютон         & \verb|\newton| & \si{\newton}                                      \\
-            Градус Цельсия & \verb|\degreeCelsius| & \si{\degreeCelsius} &
-            Ом             & \verb|\ohm| & \si{\ohm}                                         \\
-            Кулон          & \verb|\coulomb| & \si{\coulomb}       &
-            Паскаль        & \verb|\pascal| & \si{\pascal}                                      \\
-            Фарад          & \verb|\farad| & \si{\farad}         &
-            Радиан         & \verb|\radian| & \si{\radian}                                      \\
-            Грей           & \verb|\gray| & \si{\gray}          &
-            Сименс         & \verb|\siemens| & \si{\siemens}                                     \\
-            Герц           & \verb|\hertz| & \si{\hertz}         &
-            Зиверт         & \verb|\sievert| & \si{\sievert}                                     \\
-            Генри          & \verb|\henry| & \si{\henry}         &
-            Стерадиан      & \verb|\steradian| & \si{\steradian}                                   \\
-            Джоуль         & \verb|\joule| & \si{\joule}         &
-            Тесла          & \verb|\tesla| & \si{\tesla}                                       \\
-            Катал          & \verb|\katal| & \si{\katal}         &
-            Вольт          & \verb|\volt| & \si{\volt}                                        \\
-            Люмен          & \verb|\lumen| & \si{\lumen}         &
-            Ватт           & \verb|\watt| & \si{\watt}                                        \\
-            Люкс           & \verb|\lux| & \si{\lux}           &
-            Вебер          & \verb|\weber| & \si{\weber}                                       \\
-            \bottomrule
-        \end{tabular}
-    \end{threeparttable}
-\end{table}
 
-\begin{table}
-    \centering
-    \begin{threeparttable}% выравнивание подписи по границам таблицы
-        \caption{Внесистемные единицы}\label{tab:unit:accepted}
+\section{$1.2$ Диффузионное $P_{1}$ приближение}
+$P_{1}$ приближение уравнения переноса излучения является частным случаем метода сферических гармоник $\left(P_{N}\right)$. Идея $P_{N}$ приближений состоит в том, что функцию интенсивности излучения $I(x, \omega)$ раскладывают в ряд Фурье по сферическим гармоникам $\mathcal{Y}_{l}^{m}(\boldsymbol{\omega})$ [67, с. 496]:
+\[
+    I(x, \omega)=\sum_{l=0}^{\infty} \sum_{m=-l}^{l} I_{l}^{m}(x) \mathcal{Y}_{l}^{m}(\omega),
+\]
+где $I_{l}^{m}(x)$ - коэффициенты, зависящие от $x$.
+Также в ряд раскладывают фазовую функцию $P\left(\omega, \omega^{\prime}\right)$.
+Тогда решение уравнения переноса излучения ищется в виде отрезка ряда Фурье для $l \leqslant N$.
+При подстановке указанной конечной суммы в исходное уравнение интегро-дифференциальное уравнение
+переноса излучения относительно $I(x, \omega)$ сводится к $(N+1)^{2}$ дифференциальным уравнениям
+относительно $I_{l}^{m}(x)$.
 
-        \begin{tabular}{llc}
-            \toprule
-            Название        & Команда                 & Символ          \\
-            \midrule
-            День            & \verb|\day| & \si{\day}       \\
-            Градус          & \verb|\degree| & \si{\degree}    \\
-            Гектар          & \verb|\hectare| & \si{\hectare}   \\
-            Час             & \verb|\hour| & \si{\hour}      \\
-            Литр            & \verb|\litre| & \si{\litre}     \\
-            Угловая минута  & \verb|\arcminute| & \si{\arcminute} \\
-            Угловая секунда & \verb|\arcsecond| & \si{\arcsecond} \\ %
-            Минута          & \verb|\minute| & \si{\minute}    \\
-            Тонна           & \verb|\tonne| & \si{\tonne}     \\
-            \bottomrule
-        \end{tabular}
-    \end{threeparttable}
-\end{table}
 
-\begin{table}
-    \centering
-    \captionsetup{justification=centering}
-    \caption{Внесистемные единицы, получаемые из эксперимента}\label{tab:unit:physical}
-    \begin{tabular}{llc}
-        \toprule
-        Название                & Команда                 & Символ                 \\
-        \midrule
-        Астрономическая единица & \verb|\astronomicalunit| & \si{\astronomicalunit} \\
-        Атомная единица массы   & \verb|\atomicmassunit| & \si{\atomicmassunit}   \\
-        Боровский радиус        & \verb|\bohr| & \si{\bohr}             \\
-        Скорость света          & \verb|\clight| & \si{\clight}           \\
-        Дальтон                 & \verb|\dalton| & \si{\dalton}           \\
-        Масса электрона         & \verb|\electronmass| & \si{\electronmass}     \\
-        Электрон Вольт          & \verb|\electronvolt| & \si{\electronvolt}     \\
-        Элементарный заряд      & \verb|\elementarycharge| & \si{\elementarycharge} \\
-        Энергия Хартри          & \verb|\hartree| & \si{\hartree}          \\
-        Постоянная Планка       & \verb|\planckbar| & \si{\planckbar}        \\
-        \bottomrule
-    \end{tabular}
-\end{table}
+В $P_{1}$ приближении используется линейное приближение для интенсивности излучения и фазовой функции:
+\[
+    \begin{gathered}
+        I^{*}(x, \omega, t)=\varphi(x, t)+\boldsymbol{\Phi}(x, t) \cdot \omega, \\
+        P\left(\omega, \omega^{\prime}\right)=1+A \omega \cdot \omega^{\prime} .
+    \end{gathered}
+\]
+Для фазовой функции выполняется условие нормировки:
+\[
+    \frac{1}{4 \pi} \int_{S} P\left(\omega, \omega^{\prime}\right) d \omega=1+\frac{A}{4 \pi}
+    \int_{S} \omega \cdot \omega^{\prime} d \omega=1,
+\]
+вычисление интеграла см. ниже. Коэффициент $A \in[-1,1]$ описывает анизотропию рассеяния,
+а величина $A / 3$ имеет смысл среднего косинуса угла рассеяния, поскольку
+\[
+    \frac{1}{4 \pi} \int_{S}\left(\omega \cdot \omega^{\prime}\right)
+    P\left(\omega, \omega^{\prime}\right) d \omega=\frac{1}{4 \pi}
+    \int_{S} \omega \cdot \omega^{\prime} d \omega+\frac{A}{4 \pi}
+    \int_{S}\left(\omega \cdot \omega^{\prime}\right)\left(\omega \cdot \omega^{\prime}\right) d \omega=\frac{A}{3},
+\]
+вычисление интегралов см. ниже. Случай $A=0$ соответствует изотропному рассеянию.
+Диапазон допустимых значений величины $A \in[-1,1]$ обусловлен тем, что при $|A|>1$
+фазовая функция может принимать отрицательные значения.
 
-\begin{table}
-    \centering
-    \begin{threeparttable}% выравнивание подписи по границам таблицы
-        \caption{Другие внесистемные единицы}\label{tab:unit:other}
-        \begin{tabular}{llc}
-            \toprule
-            Название                  & Команда                 & Символ             \\
-            \midrule
-            Ангстрем                  & \verb|\angstrom| & \si{\angstrom}     \\
-            Бар                       & \verb|\bar| & \si{\bar}          \\
-            Барн                      & \verb|\barn| & \si{\barn}         \\
-            Бел                       & \verb|\bel| & \si{\bel}          \\
-            Децибел                   & \verb|\decibel| & \si{\decibel}      \\
-            Узел                      & \verb|\knot| & \si{\knot}         \\
-            Миллиметр ртутного столба & \verb|\mmHg| & \si{\mmHg}         \\
-            Морская миля              & \verb|\nauticalmile| & \si{\nauticalmile} \\
-            Непер                     & \verb|\neper| & \si{\neper}        \\
-            \bottomrule
-        \end{tabular}
-    \end{threeparttable}
-\end{table}
+Отметим, что если функция $I^{*}$ ищется в виде (1.14), то [67, с. 502]
+\[
+    G(x, t)=\int_{S} I^{*}(x, \omega, t) d \omega=4 \pi \varphi(x, t),
+    \quad \mathbf{q}_{r}(x, t)=\int_{S} I^{*}(x, \boldsymbol{\omega}, t)
+    \boldsymbol{\omega} d \boldsymbol{\omega}=\frac{4 \pi}{3} \boldsymbol{\Phi}(x, t),
+\]
+поэтому
+\[
+    \varphi(x, t)=\frac{1}{4 \pi} G(x, t), \quad \Phi(x, t)=\frac{3}{4 \pi} \mathbf{q}_{r}(x, t),
+\]
+где $G$ - аппроксимация пространственной плотности падающего излучения,
+$\mathbf{q}_{r}-$ аппроксимация плотности потока излучения.
+Следовательно, функция $\varphi(x, t)$ имеет физический смысл нормализованной интенсивности излучения в
+точке $x$ в момент времени $t$, усредненной по всем направлениям.
 
-\begin{table}
-    \small
-    \centering
-    \begin{threeparttable}% выравнивание подписи по границам таблицы
-        \caption{Приставки СИ}\label{tab:unit:prefix}
-        \begin{tabular}{llcc|llcc}
-            \toprule
-            Приставка & Команда                  & Символ      & Степень &
-            Приставка & Команда                  & Символ      & Степень   \\
-            \midrule
-            Иокто     & \verb|\yocto|  & \si{\yocto} & -24     &
-            Дека      & \verb|\deca|  & \si{\deca}  & 1         \\
-            Зепто     & \verb|\zepto|  & \si{\zepto} & -21     &
-            Гекто     & \verb|\hecto|  & \si{\hecto} & 2         \\
-            Атто      & \verb|\atto|  & \si{\atto}  & -18     &
-            Кило      & \verb|\kilo|  & \si{\kilo}  & 3         \\
-            Фемто     & \verb|\femto|  & \si{\femto} & -15     &
-            Мега      & \verb|\mega|  & \si{\mega}  & 6         \\
-            Пико      & \verb|\pico|  & \si{\pico}  & -12     &
-            Гига      & \verb|\giga|  & \si{\giga}  & 9         \\
-            Нано      & \verb|\nano|  & \si{\nano}  & -9      &
-            Терра     & \verb|\tera|  & \si{\tera}  & 12        \\
-            Микро     & \verb|\micro|  & \si{\micro} & -6      &
-            Пета      & \verb|\peta|  & \si{\peta}  & 15        \\
-            Милли     & \verb|\milli|  & \si{\milli} & -3      &
-            Екса      & \verb|\exa|  & \si{\exa}   & 18        \\
-            Санти     & \verb|\centi|  & \si{\centi} & -2      &
-            Зетта     & \verb|\zetta|  & \si{\zetta} & 21        \\
-            Деци      & \verb|\deci| & \si{\deci}  & -1      &
-            Иотта     & \verb|\yotta| & \si{\yotta} & 24        \\
-            \bottomrule
-        \end{tabular}
-    \end{threeparttable}
-\end{table}
+Лемма 1. Справедливы равенства:
+\[
+    \begin{gathered}
+        \int_{S} 1 \cdot d \omega=4 \pi, \quad \int_{S} \mathbf{a} \cdot \boldsymbol{\omega} d \omega=0,
+        \quad \int_{S}(\mathbf{a} \cdot \boldsymbol{\omega})(\mathbf{b} \cdot \boldsymbol{\omega}) d
+        \omega=\frac{4 \pi}{3} \mathbf{a} \cdot \mathbf{b}, \\
+        \int_{S} \omega d \omega=0, \quad \int_{S}(\mathbf{a} \cdot \omega) \omega d
+        \omega=\frac{4 \pi}{3} \mathbf{a}, \\
+        \int_{\boldsymbol{\omega} \cdot \mathbf{a}>0} \mathbf{a} \cdot \boldsymbol{\omega} d
+        \boldsymbol{\omega}=\pi, \quad \int_{\omega \cdot \mathbf{a}>0}(\mathbf{a} \cdot
+        \boldsymbol{\omega})(\mathbf{b} \cdot \boldsymbol{\omega}) d \omega=\frac{2 \pi}{3} \mathbf{a} \cdot \mathbf{b},
+    \end{gathered}
+\]
+\includegraphics[width=\textwidth]{2022_10_02_2aab7a2952871da15492g-17}
 
-\subsection{Заголовки с формулами: \texorpdfstring{\(a^2 + b^2 = c^2\)}{%
-        a\texttwosuperior\ + b\texttwosuperior\ = c\texttwosuperior},
-    \texorpdfstring{\(\left\vert\textrm{{Im}}\Sigma\left(
-            \protect\varepsilon\right)\right\vert\approx const\)}{|ImΣ (ε)| ≈ const},
-    \texorpdfstring{\(\sigma_{xx}^{(1)}\)}{σ\_\{xx\}\textasciicircum\{(1)\}}
-}\label{subsec:with_math}
+\textbf{Доказательство.}
+Первое равенство вытекает из определения поверхностного интеграла и представляет собой выражение для площади
+поверхности единичной сферы.
 
-Пакет \texttt{hyperref} берёт текст для закладок в pdf-файле из~аргументов
-команд типа \verb|\section|, которые могут содержать математические формулы,
-а~также изменения цвета текста или шрифта, которые не отображаются в~закладках.
-Чтобы использование формул в заголовках не вызывало в~логе компиляции появление
-предупреждений типа <<\texttt{Token not allowed in~a~PDF string
-    (Unicode):(hyperref) removing...}>>, следует использовать конструкцию
-\verb|\texorpdfstring{}{}|, где в~первых фигурных скобках указывается
-формула, а~во~вторых "--- запись формулы для закладок.
 
-\section{Рецензирование текста}\label{sec:markup}
+Для вычисления остальных интегралов воспользуемся формулой перехода от поверхностного интеграла
+к двойному [72, с. 143, теорема 5.3]:
+\[
+    \int_{S} f(\omega) d \omega=\int_{D} f\left(\omega_{1}(u, v), \omega_{2}(u, v),
+    \omega_{3}(u, v)\right)\left|\boldsymbol{\omega}_{u} \times \boldsymbol{\omega}_{v}\right| d u d v
+\]
+где $D=\left\{(u, v): 0 \leqslant u \leqslant 2 \pi,-\frac{\pi}{2} \leqslant v \leqslant \frac{\pi}{2}\right\},
+\omega_{1}(u, v)=\cos u \cos v, \omega_{2}(u, v)=$ $\sin u \cos v, \omega_{3}(u, v)=\sin v,\left|\omega_{u}
+\times \omega_{v}\right| d u d v=\cos v d u d v-$ элемент площади поверхности единичной сферы.
+Тогда для вычисления остальных интегралов воспользуемся формулой перехода от поверхностного интеграла
+к двойному [72, с. 143, теорема 5.3]:
+\[
+    \int_{S} f(\omega) d \omega=\int_{D} f\left(\omega_{1}(u, v), \omega_{2}(u, v),
+    \omega_{3}(u, v)\right)\left|\boldsymbol{\omega}_{u} \times \boldsymbol{\omega}_{v}\right| d u d v
+\]
+где $D=\left\{(u, v): 0 \leqslant u \leqslant 2 \pi,-\frac{\pi}{2} \leqslant v \leqslant
+\frac{\pi}{2}\right\}, \omega_{1}(u, v)=\cos u \cos v, \omega_{2}(u, v)=$ $\sin u \cos v,
+\omega_{3}(u, v)=\sin v,\left|\omega_{u} \times \omega_{v}\right| d u d v=\cos v d u d v-$
+элемент площади поверхности единичной сферы.
+Тогда
+\[
+    \int_{S} f(\omega) d \omega=\int_{D} f\left(\omega_{1}(u, v), \omega_{2}(u, v),
+    \omega_{3}(u, v)\right)\left|\boldsymbol{\omega}_{u} \times \boldsymbol{\omega}_{v}\right| d u d v
+\]
 
-В шаблоне для диссертации и автореферата заданы команды рецензирования.
-Они видны при компиляции шаблона в режиме черновика или при установке
-соответствующей настройки (\verb+showmarkup+) в~файле \verb+common/setup.tex+.
 
-Команда \verb+\todo+ отмечает текст красным цветом.
-\todo{Например, так.}
 
-Команда \verb+\note+ позволяет выбрать цвет текста.
-\note{Чёрный, } \note[red]{красный, } \note[green]{зелёный, }
-\note[blue]{синий.} \note[orange]{Обратите внимание на ширину и расстановку
-    формирующихся пробелов, в~результате приведённой записи (зависит также
-    от~применяемого компилятора).}
+Для вычисления второго интеграла положим
+$f(\boldsymbol{\omega})=\mathbf{a} \cdot \boldsymbol{\omega}=\sum_{i=1}^{3} a_{i} \boldsymbol{\omega}_{i}$,
 
-Окружение \verb+commentbox+ также позволяет выбрать цвет.
+\[
+    \begin{aligned}
+        & \int_{S} \mathbf{a} \cdot \boldsymbol{\omega} d \boldsymbol{\omega}=
+        \int_{-\pi / 2}^{\pi / 2}
+        \int_{0}^{2 \pi}\left(a_{1} \cos u \cos v+a_{2} \sin u \cos v+a_{3} \sin v\right) \cos v d u d v=0. \\
+        & \text { получим } \\
+        & \text { В третьем интеграле положим } f(\boldsymbol{\omega})=(\mathbf{a} \cdot \boldsymbol{\omega})(\mathbf{b} \cdot \boldsymbol{\omega})=\sum_{i, j=1}^{3} a_{i} b_{j} \boldsymbol{\omega}_{i} \boldsymbol{\omega}_{j} \text {, } \\
+        & \int_{S}(\mathbf{a} \cdot \boldsymbol{\omega})(\mathbf{b} \cdot \boldsymbol{w}) d \boldsymbol{w}= \\
+        & =\int_{-\pi / 2}^{\pi / 2} \int_{0}^{2 \pi} \mathbf{a}^{T}\left(\begin{array}{ccc}
+                                                                              \cos ^{2} u \cos ^{2} v & \sin u \cos u \cos ^{2} v & \cos u \sin v \cos v \\\sin u \cos u \cos ^{2} v & \sin ^{2} u \cos ^{2} v & \sin u \sin v \cos v \\\cos u \sin v \cos v & \sin u \sin v \cos v & \sin ^{2} v
+        \end{array}\right) \mathbf{b} \cos v d u d v= \\
+        & =\int_{-\pi / 2}^{\pi / 2} \mathbf{a}^{T}\left(\begin{array}{ccc}
+                                                             \pi \cos ^{2} v & 0 & 0 \\0 & \pi \cos ^{2} v & 0 \\0 & 0 & 2 \pi \sin ^{2} v
+        \end{array}\right) \mathbf{b} \cos v d v=\frac{4 \pi}{3} \mathbf{a} \cdot \mathbf{b}
+    \end{aligned}
+\]
+здесь $\mathbf{a}, \mathbf{b}$ - векторы-столбцы.
 
-\begin{commentbox}[red]
-    Красный текст.
 
-    Несколько параграфов красного текста.
-\end{commentbox}
+Равенства во второй строке получаются из доказанных равенств:
+\[
+    \begin{gathered}
+        \int_{S} \omega d \boldsymbol{\omega}=\sum_{i=1}^{3} \mathbf{e}_{i}
+        \int_{S}\left(\boldsymbol{\omega} \cdot \mathbf{e}_{i}\right) d \boldsymbol{\omega}=0, \\
+        \int_{S}(\mathbf{a} \cdot \boldsymbol{\omega}) \omega d
+        \boldsymbol{\omega}=\sum_{i=1}^{3} \mathbf{e}_{i}
+        \int_{S}(\mathbf{a} \cdot \boldsymbol{\omega})\left(\boldsymbol{\omega} \cdot \mathbf{e}_{i}\right) d
+        \boldsymbol{\omega}=\frac{4 \pi}{3} \sum_{i=1}^{3}\left(\mathbf{a} \cdot \mathbf{e}_{i}\right)
+        \mathbf{e}_{i}=\frac{4 \pi}{3} \mathbf{a}.
+    \end{gathered}
+\]
 
-\begin{commentbox}[blue]
-    Синяя формула.
 
-    \begin{equation}
-        \alpha + \beta = \gamma
-    \end{equation}
-\end{commentbox}
+Для доказательства первого равенства в третьей строке введем систему координат так, чтобы ось $O z$ была сонаправлена с вектором а. Воспользуемся формулой (1.16), в которой вместо $S$ следует взять верхнюю полусферу, $D=$ $\left\{(u, v): 0 \leqslant u \leqslant 2 \pi, 0 \leqslant v \leqslant \frac{\pi}{2}\right\}$. Заметим, что $f(\omega)=\mathbf{a} \cdot \boldsymbol{\omega}=|\mathbf{a}| \sin v$. Таким образом,
+\[
+    \int_{\omega \cdot \mathbf{a}>0} \mathbf{a} \cdot \omega d \omega=|\mathbf{a}|
+    \int_{0}^{\pi / 2} \int_{0}^{2 \pi} \sin v \cos v d u d v=2 \pi \int_{0}^{\pi / 2} \sin v \cos v d v=\pi
+\]
+Для доказательства второго равенства в третьей строке заметим, что
+\[
+    \begin{gathered}
+        \int_{S}(\mathbf{a} \cdot \boldsymbol{\omega})(\mathbf{b} \cdot \boldsymbol{\omega}) d
+        \boldsymbol{\omega}=\int_{\boldsymbol{\omega} \cdot
+        \mathbf{a}>0}(\mathbf{a} \cdot \boldsymbol{\omega})(\mathbf{b} \cdot \mathbf{\omega}) d
+        \boldsymbol{\omega}+\int_{\boldsymbol{\omega} \cdot \mathbf{a}<0}(\mathbf{a} \cdot \boldsymbol{\omega})(\mathbf{b}
+        \cdot \boldsymbol{\omega}) d \boldsymbol{\omega}, \\
+        \int_{\omega \cdot \mathbf{a}>0}(\mathbf{a} \cdot \boldsymbol{\omega})(\mathbf{b} \cdot \boldsymbol{\omega}) d
+        \boldsymbol{\omega}=\int_{\boldsymbol{\omega} \cdot \mathbf{a}<0}(\mathbf{a} \cdot \boldsymbol{\omega})(\mathbf{b}
+        \cdot \boldsymbol{\omega}) d \boldsymbol{\omega},
+    \end{gathered}
+\]
+следовательно,
+\[
+    \int_{\boldsymbol{\omega} \cdot \mathbf{a}>0}(\mathbf{a} \cdot \boldsymbol{\omega})(\mathbf{b}
+    \cdot \boldsymbol{\omega}) d \boldsymbol{\omega}=\frac{1}{2} \int_{S}(\mathbf{a} \cdot \boldsymbol{\omega})(\mathbf{b}
+    \cdot \boldsymbol{\omega}) d \boldsymbol{\omega}=\frac{2 \pi}{3} \mathbf{a} \cdot \mathbf{b}
+\]
 
-\verb+commentbox+ позволяет закомментировать участок кода в~режиме чистовика.
-Чтобы убрать кусок кода для всех режимов, можно использовать окружение
-\verb+comment+.
 
-\begin{comment}
-Этот текст всегда скрыт.
-\end{comment}
+Подставляя $(1.14),(1.15)$ в (1.9), получаем
+\[
+    \begin{gathered}
+        \frac{1}{c}\left(\frac{\partial \varphi(x, t)}{\partial t}+\boldsymbol{\omega} \cdot
+        \frac{\partial \Phi(x, t)}{\partial t}\right)+\boldsymbol{\omega} \cdot \nabla
+        \varphi(x, t)+\boldsymbol{\omega} \cdot \nabla_{x}(\Phi(x, t) \cdot \boldsymbol{\omega})+\kappa
+        \varphi(x, t)+\mathrm{\kappa} \Phi(x, t) \cdot \boldsymbol{\omega}= \\
+        =\frac{\kappa_{s}}{4 \pi} \int_{S}\left(1+A \omega \cdot
+        \boldsymbol{\omega}^{\prime}\right)\left(\varphi(x, t)+\boldsymbol{\Phi}(x, t)
+        \cdot \boldsymbol{\omega}^{\prime}\right) d \boldsymbol{\omega}^{\prime}+\mathrm{\kappa}_{a} \theta^{4}(x, t).
+    \end{gathered}
+\]
+С учетом равенств
+\[
+    \int_{S} \Phi(x, t) \cdot \omega^{\prime} d \omega^{\prime}=0, \quad \int_{S} \omega \cdot \omega^{\prime} d
+    \omega^{\prime}=0, \quad \int_{S}\left(\Phi(x, t) \cdot \omega^{\prime}\right)\left(\omega \cdot
+    \omega^{\prime}\right) d \omega^{\prime}=\frac{4 \pi}{3} \Phi(x, t) \cdot \omega
+\]
+имеем
+\[
+    \begin{gathered}
+        \frac{1}{c}\left(\frac{\partial \varphi(x, t)}{\partial t}+\omega \cdot
+        \frac{\partial \Phi(x, t)}{\partial t}\right)+\boldsymbol{\omega} \cdot
+        \nabla \varphi(x, t)+\boldsymbol{\omega} \cdot \nabla_{x}(\boldsymbol{\Phi}(x, t)
+        \cdot \boldsymbol{\omega})+\boldsymbol{\kappa} \varphi(x, t)+\mathrm{\kappa}
+        \boldsymbol{\Phi}(x, t) \cdot \boldsymbol{\omega}= \\
+        =\mathrm{k}_{s}\left(\varphi(x, t)+\frac{A}{3} \boldsymbol{\Phi}(x, t) \cdot
+        \boldsymbol{\omega}\right)+\mathrm{\kappa}_{a} \theta^{4}(x, t),
+    \end{gathered}
+\]
+или
+\begin{gather*}
+    \frac{1}{c}\left(\frac{\partial \varphi(x, t)}{\partial t}+\omega \cdot
+    \frac{\partial \Phi(x, t)}{\partial t}\right)+\omega \cdot \nabla
+    \varphi(x, t)+\omega \cdot \nabla_{x}(\Phi(x, t) \cdot \omega)+\\
+    +\mathrm{\kappa}_{a} \varphi(x, t)+\left(\mathrm{\kappa}_{a}+\mathrm{\kappa}_{s}^{\prime}\right)
+    \Phi(x, t) \cdot \omega=\mathrm{\kappa}_{a} \theta^{4}(x, t),\\
+\end{gather*}
+где $\kappa_{s}^{\prime}=\kappa_{s}(1-A / 3)$ - приведенный коэффициент рассеяния.
 
-\section{Работа со списком сокращений и~условных обозначений}\label{sec:acronyms}
 
-С помощью пакета \texttt{nomencl} можно создавать удобный сортированный список
-сокращений и условных обозначений во время написания текста. Вызов
-\verb+\nomenclature+ добавляет нужный символ или сокращение с~описанием
-в~список, который затем печатается вызовом \verb+\printnomenclature+
-в~соответствующем разделе.
-Для того, чтобы эти операции прошли, потребуется дополнительный вызов
-\verb+makeindex -s nomencl.ist -o %.nls %.nlo+ в~командной строке, где вместо
-\verb+%+ следует подставить имя главного файла проекта (\verb+dissertation+
-для этого шаблона).
-Затем потребуется один или два дополнительных вызова компилятора проекта.
-\begin{equation}
-    \omega = c k,
-\end{equation}
-где \( \omega \) "--- частота света, \( c \) "--- скорость света, \( k \) "---
-модуль волнового вектора.
-\nomenclature{\(\omega\)}{частота света\nomrefeq}
-\nomenclature{\(c\)}{скорость света\nomrefpage}
-\nomenclature{\(k\)}{модуль волнового вектора\nomrefeqpage}
-Использование
-\begin{verbatim}
-\nomenclature{\(\omega\)}{частота света\nomrefeq}
-\nomenclature{\(c\)}{скорость света\nomrefpage}
-\nomenclature{\(k\)}{модуль волнового вектора\nomrefeqpage}
-\end{verbatim}
-после уравнения добавит в список условных обозначений три записи.
-Ссылки \verb+\nomrefeq+ на последнее уравнение, \verb+\nomrefpage+ "--- на
-страницу, \verb+\nomrefeqpage+ "--- сразу на~последнее уравнение и~на~страницу,
-можно опускать и~не~использовать.
+Проинтегрируем уравнение (1.17) по $\omega \in S$.
+Получим
+\[
+    \frac{1}{c} \frac{\partial \varphi(x, t)}{\partial t}+\frac{1}{3} \div \Phi(x, t)+\mathrm{\kappa}_{a}
+    \varphi(x, t)=\mathrm{\kappa}_{a} \theta^{4}(x, t),
+\]
+так как
+\[
+    \begin{gathered}
+        \int_{S} \omega \cdot \nabla_{x}(\Phi(x, t) \cdot \boldsymbol{\omega}) d \boldsymbol{\omega}=\sum_{i=1}^{3}
+        \int_{S}\left(\boldsymbol{\omega} \cdot \mathbf{e}_{i}\right)\left(\omega \cdot
+        \frac{\partial \Phi(x, t)}{\partial x_{i}}\right) d \boldsymbol{\omega}= \\
+        =\frac{4 \pi}{3} \sum_{i=1}^{3} \frac{\partial \Phi(x, t)}{\partial x_{i}} \cdot
+        \mathbf{e}_{i}=\frac{4 \pi}{3} \sum_{i=1}^{3} \frac{\partial \Phi_{i}(x, t)}{\partial x_{i}}=
+        \frac{4 \pi}{3} \div \boldsymbol{\Phi}(x, t).
+    \end{gathered}
+\]
 
-Группировкой и сортировкой пунктов в списке можно управлять с~помощью указания
-дополнительных аргументов к команде \verb+nomenclature+.
-Например, при вызове
-\begin{verbatim}
-\nomenclature[03]{\( \hbar \)}{постоянная Планка}
-\nomenclature[01]{\( G \)}{гравитационная постоянная}
-\end{verbatim}
-\( G \) будет стоять в списке выше, чем \( \hbar \).
-Для корректных вертикальных отступов между строками в описании лучше
-не~использовать многострочные формулы в~списке обозначений.
+$\mathrm{Y}_{\text {множим уравнение }}(1.17)$ на $\omega:$
 
-\nomenclature{%
-    \( \begin{rcases}
-        a_n \\
-        b_n
-    \end{rcases} \)%
-}{коэффициенты разложения Ми в дальнем поле соответствующие электрическим и
-    магнитным мультиполям}
-\nomenclature[a\( e \)]{\( {\boldsymbol{\hat{\mathrm e}}} \)}{единичный вектор}
-\nomenclature{\( E_0 \)}{амплитуда падающего поля}
-\nomenclature{\( j \)}{тип функции Бесселя}
-\nomenclature{\( k \)}{волновой вектор падающей волны}
-\nomenclature{%
-    \( \begin{rcases}
-        a_n \\
-        b_n
-    \end{rcases} \)%
-}{и снова коэффициенты разложения Ми в дальнем поле соответствующие
-    электрическим и магнитным мультиполям. Добавлено много текста, так что
-    описание группы условных обозначений значительно превысило высоту этой
-    группы...}
-\nomenclature{\( L \)}{общее число слоёв}
-\nomenclature{\( l \)}{номер слоя внутри стратифицированной сферы}
-\nomenclature{\( \lambda \)}{длина волны электромагнитного излучения в вакууме}
-\nomenclature{\( n \)}{порядок мультиполя}
-\nomenclature{%
-    \( \begin{rcases}
-        {\mathbf{N}}_{e1n}^{(j)} & {\mathbf{N}}_{o1n}^{(j)} \\
-        {\mathbf{M}_{o1n}^{(j)}} & {\mathbf{M}_{e1n}^{(j)}}
-    \end{rcases} \)%
-}{сферические векторные гармоники}
-\nomenclature{\( \mu \)}{магнитная проницаемость в вакууме}
-\nomenclature{\( r, \theta, \phi \)}{полярные координаты}
-\nomenclature{\( \omega \)}{частота падающей волны}
+\[
+    \begin{aligned}
+        \frac{1}{c} \frac{\partial \varphi(x, t)}{\partial t} \omega+&
+        \frac{1}{c}\left(\omega \cdot \frac{\partial \Phi(x, t)}{\partial t}\right)
+        \omega+(\omega \cdot \nabla \varphi(x, t)) \omega+\left(\omega \cdot \nabla_{x}(\Phi(x, t)
+        \cdot \omega)\right) \omega+\\
+        &+\kappa_{a} \varphi(x, t) \omega+\left(\kappa_{a}+\kappa_{s}^{\prime}\right)(\Phi(x, t)
+        \cdot \omega) \omega=\kappa_{a} \theta^{4}(x, t) \omega
+    \end{aligned}
+\]
+и проинтегрируем полученное равенство по $\omega \in S$.
 
-С помощью \verb+nomenclature+ можно включать в~список сокращения,
-не~используя их~в~тексте.
-% запись сокращения в список происходит командой \nomenclature,
-% а не употреблением самого сокращения
-\nomenclature{FEM}{finite element method, метод конечных элементов}
-\nomenclature{FIT}{finite integration technique, метод конечных интегралов}
-\nomenclature{FMM}{fast multipole method, быстрый метод многополюсника}
-\nomenclature{FVTD}{finite volume time-domain, метод конечных объёмов
-    во~временной области}
-\nomenclature{MLFMA}{multilevel fast multipole algorithm, многоуровневый
-    быстрый алгоритм многополюсника}
-\nomenclature{BEM}{boundary element method, метод граничных элементов}
-\nomenclature{CST MWS}{Computer Simulation Technology Microwave Studio
-    программа для компьютерного моделирования уравнен Максвелла}
-\nomenclature{DDA}{discrete dipole approximation, приближение дискретиных
-    диполей}
-\nomenclature{FDFD}{finite difference frequency domain, метод конечных
-    разностей в~частотной области}
-\nomenclature{FDTD}{finite difference time domain, метод конечных разностей
-    во~временной области}
-\nomenclature{MoM}{method of moments, метод моментов}
-\nomenclature{MSTM}{multiple sphere T-Matrix, метод Т-матриц для множества
-    сфер}
-\nomenclature{PSTD}{pseudospectral time domain method, псевдоспектральный метод
-    во~временной области}
-\nomenclature{TLM}{transmission line matrix method, метод матриц линий передач}
 
-\FloatBarrier
+Для вычисления четвертого слагаемого представим интеграл по единичной сфере $S$
+как сумму интегралов по верхней $S_{1}$ и нижней $S_{2}$ полусферам и воспользуемся тем, что
+\[
+    \int_{S_{2}}\left(\omega \cdot \nabla_{x}(\Phi(x, t) \cdot \omega)\right) \omega d
+    \omega=-\int_{S_{1}}\left(\omega \cdot \nabla_{x}(\Phi(x, t) \cdot \omega)\right) \omega d \omega,
+\]
+следовательно, интеграл равен 0. Таким образом,
+\[
+    \frac{1}{c} \frac{\partial \Phi(x, t)}{\partial t}+\left(\kappa_{a}+\kappa_{s}^{\prime}\right)
+    \Phi(x, t)+\nabla \varphi(x, t)=0.
+\]
+Итак, уравнения (1.18), (1.19) представляют собой $P_{1}$ приближение для уравнения переноса излучения.
+Дальнейшие преобразования основываются на предположении, что выполняется закон Фика:
+\[
+    \Phi(x, t)=-3 \alpha \nabla \varphi(x, t),
+\]
+где $\alpha=\frac{1}{3\left(\kappa_{a}+\kappa_{s}^{\prime}\right)}=\frac{1}{3 \kappa-A \kappa_{s}}$.
+Фактически мы пренебрегаем производной $\frac{\partial \Phi}{\partial t}$ в уравнении (1.19).
+Подставив (1.20) в (1.18), получим
+\[
+    \frac{1}{c} \frac{\partial \varphi(x, t)}{\partial t}-\alpha \Delta
+    \varphi(x, t)+\kappa_{a}\left(\varphi(x, t)-\theta^{4}(x, t)\right)=0 .
+\]
+
+
+Чтобы получить уравнение для температуры, подставим (1.14) в (1.10).
+Получим
+\[
+    \frac{\partial \theta(x, t)}{\partial t}-a \Delta \theta(x, t)+\mathbf{v}(x, t) \cdot
+    \nabla \theta(x, t)+b \kappa_{a}\left(\theta^{4}(x, t)-\varphi(x, t)\right)=\frac{b}{c}
+    \frac{\partial \varphi(x, t)}{\partial t}.
+\]
+Учитывая (1.21), уравнение (1.22) можно записать в виде с кросс-диффузией:
+\[
+    \frac{\partial \theta(x, t)}{\partial t}-a \Delta \theta(x, t)+\mathbf{v}(x, t) \cdot
+    \nabla \theta(x, t)=b \alpha \Delta \varphi(x, t).
+\]
+
+В дальнейшем вместо уравнения (1.22) будем использовать уравнение с нулевой правой частью (см., например, [73])
+\[
+    \frac{\partial \theta(x, t)}{\partial t}-a \Delta \theta(x, t)+\mathbf{v}(x, t) \cdot \nabla
+    \theta(x, t)+b \kappa_{a}\left(\theta^{4}(x, t)-\varphi(x, t)\right)=0.
+\]
+
+Далее выведем граничные условия типа Маршака для $P_{1}$ приближения (см. [74]).
+Для этого подставим (1.14) в граничное условие (1.11):
+\[
+    \begin{gathered}
+        \varphi(x, t)+\boldsymbol{\Phi}(x, t) \cdot \boldsymbol{\omega}=\varepsilon(x)
+        \theta_{b}^{4}(x, t)+\rho^{s}(x)\left(\varphi(x, t)+\boldsymbol{\Phi}(x, t)
+        \cdot \boldsymbol{\omega}_{R}\right)+ \\
+        +\frac{\rho^{d}(x)}{\pi} \int_{\omega^{\prime} \cdot
+        \mathbf{n}>0}\left(\varphi(x, t)+\boldsymbol{\Phi}(x, t) \cdot
+        \boldsymbol{\omega}^{\prime}\right) \omega^{\prime} \cdot \mathbf{n} d \omega^{\prime},
+        \quad \boldsymbol{\omega} \cdot \mathbf{n}<0, \quad
+        \boldsymbol{\omega}_{R}=\boldsymbol{\omega}-2(\boldsymbol{\omega} \cdot
+        \mathbf{n}) \mathbf{n}.
+    \end{gathered}
+\]
+
+
+Для вычисления интеграла применим лемму 1 :
+\[
+    \begin{aligned}
+        \varphi(x, t)+\boldsymbol{\Phi}(x, t) \cdot \boldsymbol{\omega} &=\varepsilon(x) \theta_{b}^{4}(x, t)+\rho^{s}(x)[\varphi(x, t)+\boldsymbol{\Phi}(x, t) \cdot \boldsymbol{\omega}-2(\boldsymbol{\omega} \cdot \mathbf{n})(\boldsymbol{\Phi}(x, t) \cdot \mathbf{n})]+\\
+        &+\rho^{d}(x)\left(\varphi(x, t)+\frac{2}{3} \boldsymbol{\Phi}(x, t) \cdot \mathbf{n}\right), \quad \boldsymbol{\omega} \cdot \mathbf{n}<0 .
+    \end{aligned}
+\]
+Умножим данное равенство на $\boldsymbol{\omega} \cdot \mathbf{n}$ и проинтегрируем по множеству входящих направлений, для которых $\boldsymbol{\omega} \cdot \mathbf{n}<0$. Получим
+\[
+    \begin{gathered}
+        -\pi \varphi(x, t)+\frac{2 \pi}{3} \boldsymbol{\Phi}(x, t) \cdot \mathbf{n}=
+        -\pi \varepsilon(x) \theta_{b}^{4}(x, t)-\pi \rho^{s}(x) \varphi(x, t)+\frac{2 \pi \rho^{s}(x)}{3}
+        \boldsymbol{\Phi}(x, t) \cdot \mathbf{n}- \\
+        -\frac{4 \pi \rho^{s}(x)}{3} \boldsymbol{\Phi}(x, t) \cdot \mathbf{n}-\pi
+        \rho^{d}(x)\left(\varphi(x, t)+\frac{2}{3} \boldsymbol{\Phi}(x, t) \cdot \mathbf{n}\right),
+    \end{gathered}
+\]
+ИЛИ
+\[
+    \varepsilon(x) \varphi(x, t)=\varepsilon(x) \theta_{b}^{4}(x, t)+
+    \frac{2(2-\varepsilon(x))}{3} \boldsymbol{\Phi}(x, t) \cdot \mathbf{n}.
+\]
+Воспользуемся равенством (1.20), будем иметь
+\[
+    \alpha \frac{\partial \varphi(x, t)}{\partial n}+\gamma(x)\left(\varphi(x, t)-\theta_{b}^{4}(x, t)\right)=0,
+\]
+где $\gamma=\frac{\varepsilon}{2(2-\varepsilon)}$.
+Отметим, что на участках втекания и вытекания среды можно принять $\gamma=1 / 2[75]$.
+
+
+Дополним полученные соотношения граничным условием для температуры (1.12):
+\[
+    a \frac{\partial \theta(x, t)}{\partial n}+\beta(x)\left(\theta(x, t)-\theta_{b}(x, t)\right)=0
+\]
+и начальными условиями
+\[
+    \theta(x, 0)=\theta_{0}(x), \quad \varphi(x, 0)=\varphi_{0}(x) .
+\]
+Соотношения (1.21), (1.23), (1.24)-(1.26) образуют диффузионную модель сложного теплообмена.
+
+Укажем возможные пути обоснования закона Фика (1.20).
+В [76, с. 136], [77, с. 222$]$, [78, с. 96] указано, что в уравнении (1.19) можно пренебречь
+слагаемым $\frac{1}{c} \frac{\partial \Phi}{\partial t}$, если
+\[
+    \frac{1}{|\Phi|} \frac{\partial|\Phi|}{\partial t} \ll c\left(\kappa_{a}+\kappa_{s}^{\prime}\right).
+\]
+Это предположение означает, что относительное изменение плотности потока излучения во времени много
+меньше частоты столкновений фотонов, так как величина
+$\frac{1}{\mathrm{~K}_{a}+\mathrm{K}_{s}^{\prime}}$ есть средняя длина свободного пробега (transport mean free path) [78]
+
+В диффузионном приближении предполагается, что среда имеет большое альбедо $\left(\kappa_{a} \ll \kappa_{s}\right)$ и
+излучение почти изотропно [78, с. 88].
+В [78, с. 97] указано, что предположения о почти изотропности излучения
+(направленное расширение) и о малом относительном изменении плотности потока излучения (временное расширение потока
+фотонов по отношению к среднему времени свободного пробега) выполняются при большом числе рассеяний фотонов,
+так что оба приближения можно свести к предположению $\kappa_{s}^{\prime} \gg \kappa_{a}$.
+Кроме того, необходимо, чтобы точка наблюдения находилась достаточно далеко от источников и от границ.
+
+В [79, 80] делается предположение $3 \omega_{0} \alpha \ll c$, где $\omega_{0}$ --
+частота синусоидально модулированного источника.
+Авторы [79,81] сначала выводят из (1.18), (1.19) уравнение второго порядка по времени,
+а затем отбрасывают некоторые слагаемые, которые можно считать малыми в силу указанного предположения.
+Применив к уравнению (1.18) операцию дифференцирования по $t$, а к уравнению (1.19) операцию дивергенции, получим
+\[
+    \begin{gathered}
+        \frac{1}{c} \frac{\partial^{2} \varphi}{\partial t^{2}}+\frac{1}{3}
+        \frac{\partial}{\partial t} \div \Phi+\kappa_{a} \frac{\partial \varphi}{\partial t}=\kappa_{a}
+        \frac{\partial\left(\theta^{4}\right)}{\partial t} \\
+        \frac{1}{c} \frac{\partial}{\partial t} \div
+        \Phi+\left(\kappa_{a}+\kappa_{s}^{\prime}\right) \div \Phi+\Delta \varphi=0
+    \end{gathered}
+\]
+Умножим второе уравнение на $c/3$ и вычтем из первого уравнения.
+Учитывая (1.18), будем иметь
+\[
+    \frac{1}{c} \frac{\partial \varphi}{\partial t}-\alpha \Delta
+    \varphi+\kappa_{a}\left(\varphi-\theta^{4}\right)+\frac{3 \alpha \kappa_{a}}{c}
+    \frac{\partial \varphi}{\partial t}+\frac{3 \alpha}{c^{2}}
+    \frac{\partial^{2} \varphi}{\partial t^{2}}=\frac{3 \alpha \kappa_{a}}{c}
+    \frac{\partial\left(\theta^{4}\right)}{\partial t}.
+\]
+Подчеркнутые слагаемые отбрасываем, принимая во внимание,
+что $3 \alpha \kappa_{a}=\frac{\kappa_{a}}{\kappa_{a}+\kappa_{s}^{\prime}} \ll 1$.
+Более точные оценки с переходом в частотную область указаны в $[79,80]$.
+Однако их применение для нашей задачи требует дополнительных оценок правой части (1.27), содержащей $\theta$.
+
+
+Также автор [67, с. 509] отмечает, что $P_{1}$ приближение может давать ошибочный результат
+в оптически тонкой среде со слишком анизотропным распределением интенсивности, в частности,
+в многомерных областях с длинными узкими конфигурациями и/или когда излучение поверхности
+преобладает над излучением среды.
+Среда называется оптически толстой, если средняя длина
+свободного пробега фотона мала по сравнению с ее характерным размером [68, с. 343].
+Авторы $[82$, с. 228] также указывают, что для применения диффузионного $P_{1}$ приближения альбедо
+$\mathrm{k}_{s} / \mathrm{k}$ должно быть близко к единице и среда должна быть оптически толстой.
+В [79, с. 8] указано, что фазовая функция не должна быть слишком анизотропной $(\|A / 3\| \text{ не слишком близко к } 1)$.
+
+Таким образом, благоприятными условиями для применения $P_{1}$ приближения являются:
+1) $\kappa_{a} \ll \kappa_{s}^{\prime}$;
+
+2) оптически толстая среда;
+
+3) удаление от границ области.
