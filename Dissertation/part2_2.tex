@@ -1,0 +1,333 @@
+\section{Задача сложного теплообмена с граничными условиями типа Коши}\label{sec:ch2_sec2}
+
+\subsection{Постановка обратной задачи}\label{subsec:2_1_init}
+
+Стационарный радиационный и диффузионный теплообмен в
+ограниченной области $\Omega\subset \mathbb{R}^3$ с границей
+$\Gamma=\partial\Omega$ моделируется в рамках $P_1$--приближения для уравнения
+переноса излучения следующей системой эллиптических уравнений~\cite{Pinnau07,AMC-13,Kovt14-1}:
+\begin{equation}
+    \label{eq1}
+    - a\Delta\theta + b\kappa_a(|\theta|\theta^3- \varphi)=0,   \quad
+    -\alpha \Delta \varphi + \kappa_a(\varphi-|\theta|\theta^3)=0,\; x\in\Omega.
+\end{equation}
+Здесь $\theta$ -- нормализованная температура, $\varphi$ --
+нормализованная интенсивность излучения, усредненная по всем
+направлениям.
+Положительные физические параметры
+$a$, $b$, $\kappa_a$ и $\alpha$, описывающие
+свойства среды, определяются стандартным образом~\cite{Kovt14-1}.
+Подробный теоретический и численный анализ различных постановок краевых и обратных задач, а также задач управления
+для уравнений радиационного теплообмена
+в рамках $P_1$--приближения для уравнения
+переноса излучения представлен в~\cite{Pinnau07}--\cite{CMMP20}.
+Отметим также серьезный анализ интересных краевых задач, связанных с радиационным теплообменом,
+представленный в~\cite{Amosov05}--\cite{Amosov20}.
+
+Будем предполагать, что на границе $\Gamma = \partial \Omega$ известно температурное поле,
+\begin{equation}
+    \label{bc1} \theta = \theta_b.
+\end{equation}
+Для задания краевого условия для интенсивности излучения
+требуется знать функцию, описывающую отражающие свойства границы \cite{JVM-14}.
+В том случае, если указанная функция неизвестна, естественно вместо
+краевого условия для интенсивности излучения задавать тепловые потоки на границе
+\begin{equation}
+    \label{bc2} \partial_n\theta = q_b.
+\end{equation}
+Здесь через $\partial_n$ обозначаем производную в направлении
+внешней нормали $\mathbf n$.
+
+Нелокальная разрешимость
+нестационарной и стационарной краевых задач для уравнений сложного теплообмена
+без краевых условий на интенсивность излучения и
+с условиями~\eqref{bc1},\eqref{bc2} для температуры доказана в~\cite{CNSNS19,CMMP20}.
+
+Данная статья посвящена анализу предлагаемого оптимизационного метода решения краевой задачи
+~\eqref{eq1}-\eqref{bc2} с условиями типа Коши для температуры.
+Указанный метод заключается в рассмотрении задачи граничного оптимального управления для
+системы ~\eqref{eq1} с  "искусственными" краевыми условиями
+\begin{equation}
+    \label{bc3} a(\partial_n\theta+\theta) = r,\;\; \alpha(\partial_n\varphi+\varphi) = u \text{  на  }\Gamma.
+\end{equation}
+Функция $r(x),\, x\in\Gamma$ является заданной, а неизвестная функция $u(x),\, x\in\Gamma$
+играет роль управления.
+Экстремальная задача заключается в отыскании тройки $\{\theta_\lambda,\varphi_\lambda,u_\lambda\}$
+такой, что
+\begin{equation}
+    \label{cost}
+    J_\lambda(\theta, u) = \frac{1}{2}\int\limits_\Gamma (\theta - \theta_b)^2d\Gamma
+    + \frac{\lambda}{2}\int\limits_\Gamma u^2d\Gamma \rightarrow\inf
+\end{equation}
+на решениях краевой задачи~\eqref{eq1},\eqref{bc3}.
+Функция $\theta_b(x),\, x\in\Gamma$  и параметр регуляризации $\lambda>0$ заданы.
+
+Как будет показано ниже, задача оптимального управления~\eqref{eq1},\eqref{bc3},\eqref{cost}, если
+$r:=a(\theta_b+q_b)$, где $q_b$ -- заданная на $\Gamma$ функция,
+является при малых $\lambda$ аппроксимацией краевой задачи~\eqref{eq1}-\eqref{bc2}.
+
+Статья организована следующим образом.
+В п.2 вводятся необходимые пространства и операторы, приводится
+формализация задачи оптимального управления.
+Априорные оценки решения задачи~\eqref{eq1},\eqref{bc3}, на основе которых
+доказана разрешимость указанной краевой задачи и задачи оптимального управления~\eqref{eq1},\eqref{bc3},\eqref{cost}, получены в п.3.
+В п.4 выводится система оптимальности. В п.5 показано, что
+последовательность $\{\theta_\lambda,\varphi_\lambda\}$, соответствующая решениям
+экстремальной задачи,
+сходится при $\lambda\to +0$ к решению краевой задачи~\eqref{eq1}-\eqref{bc2} с условиями типа Коши для температуры.
+Наконец, в п.6 представлен алгоритм решения задачи управления, работа которого проиллюстрирована численными примерами.
+
+\subsection{Формализация задачи управления}\label{subsec:2_formalization}
+В дальнейшем считаем, что $\Omega\subset \mathbb{R}^3$~--- ограниченная строго липшицева
+область, граница $\Gamma$ которой состоит из конечного числа
+гладких кусков.
+Через $L^p$, $1 \leq p \leq \infty$ обозначаем
+пространство Лебега, а через $H^s$ -- пространство Соболева $W^s_2$.
+Пусть $H = L^2(\Omega), \; V = H^1(\Omega)$, через $V'$ обозначаем
+пространство, сопряженное с пространством $V$.
+Пространство $H$ отождествляем с пространством $H'$ так, что $V \subset H = H' \subset V'$.
+Обозначим через $\|\cdot\|$ стандартную норму в $H$, а через
+$(f,v)$ -- значение функционала $f\in V'$ на элементе $v\in V$,
+совпадающее со скалярным произведением в $H$, если $f\in H$.
+Через $U$ обозначаем пространство $L^2(\Gamma)$ с нормой
+$\|u\|_\Gamma=\left(\int_\Gamma u^2d\Gamma\right)^{1/2}.$
+
+
+
+Будем предполагать, что
+
+$(i) \;\; a,b,\alpha,\kappa_a, \lambda ={\rm Const}> 0 ,$
+
+$(ii) \;\, \theta_b, \,q_b \in U,\;\; r=a(\theta_b+q_b).$
+
+
+Определим операторы $A\colon V \to V'$, $B\colon U \to V'$, используя
+следующие равенства, справедливые для любых $y,z \in V$, $w\in U$:
+\[
+    (Ay,z) = (\nabla y, \nabla z) +
+    \int\limits_{\Gamma}yz d\Gamma, \;\;\; (Bw, z)
+    = \int\limits_{\Gamma}wz d\Gamma.
+\]
+Билинейная форма $(Ay,z)$ определяет скалярное произведение
+в пространстве $V$, а соответствующая норма $\|z\|_V=\sqrt{(Az,z)}$ эквивалентна
+стандартной норме $V$.
+Поэтому определен непрерывный обратный оператор
+$A^{-1}:\,V'\mapsto V.$ Отметим, что для любых
+$v\in V$, $w\in U$, $g\in V'$ справедливы неравенства
+\begin{equation}
+    \label{E}
+    \|v\|^2\leq C_0\|v\|^2_V,\; \|v\|_{V'}\leq C_0\|v\|_V,\; \|Bw\|_{V'}\leq \|w\|_\Gamma,\;
+    \|A^{-1}g\|_{V}\leq \|g\|_{V'}.
+\end{equation}
+Здесь постоянная $C_0>0$ зависит только от области $\Omega.$
+
+
+Далее используем следующее обозначение
+$[h]^s := |h|^s \mathrm{sign}\, h$,
+$s > 0$, $h \in \mathbb R$ для монотонной степенной функции.
+    {\bf Определение.} Пара $\theta, \varphi\in V$
+называется {\it слабым решением} задачи~\eqref{eq1},\eqref{bc3}, если
+\begin{equation}
+    \label{w1}
+    a A \theta + b \kappa_a ([\theta]^4 - \varphi ) = Br,\quad
+    \alpha A \varphi + \kappa_a (\varphi - [\theta]^4)  = Bu.
+\end{equation}
+
+Для формулировки задачи оптимального управления определим оператор
+ограничений $F(\theta, \varphi, u) : V \times V \times U \rightarrow V' \times V'$,
+\[
+    F(\theta, \varphi, u) = \{ aA\theta + b \kappa_a ( [\theta]^4- \varphi) - Br,\;
+    \alpha A \varphi + \kappa_a (\varphi -[\theta]^4) - Bu\}.
+\]
+
+
+\textbf{Задача $(CP)$.} Найти тройку $\{\theta, \varphi, u \} \in V \times V \times U$
+такую, что
+\begin{equation}
+    \label{CP}
+    J_\lambda(\theta, u) \equiv \frac{1}{2}\|\theta -\theta_b\|^2_\Gamma
+    + \frac{\lambda}{2}\|u\|^2_\Gamma \rightarrow \text{inf},\;\; F(\theta, \varphi, u)=0.
+\end{equation}
+
+\subsection{Разрешимость задачи $(CP)$}\label{2_solvability}
+
+
+    Докажем предварительно однозначную разрешимость краевой задачи~\eqref{eq1},\eqref{bc3}.
+
+    \textbf{Лемма 1.}
+    {\it
+    Пусть выполняются условия} (i),(ii), $u\in U$. {\it Тогда
+    существует единственное слабое решение задачи~\eqref{eq1},\eqref{bc3} и при этом}
+    \begin{equation}
+        \label{E1}
+        \begin{aligned}
+            a\|\theta\|_V \leq \|r\|_\Gamma + \frac{C_0\kappa_a}{\alpha}\|r+bu\|_\Gamma, \\
+            \alpha b \|\varphi\|_V \leq \|r\|_\Gamma +
+            \left(\frac{C_0\kappa_a}{\alpha} + 1\right)\|r+bu\|_\Gamma.
+        \end{aligned}
+    \end{equation}
+
+    {\bf Доказательство.}
+    Если второе уравнение в~\eqref{w1} умножить на $b$ и сложить с первым, то получим равенства
+    \begin{gather*}
+        A \left( a \theta + \alpha b \varphi \right) = B(r + bu),\;
+        a\theta + \alpha b \varphi = A^{-1}B(r + bu),\;
+        \varphi = \frac{1}{\alpha b}(A^{-1}B(r +bu) - a\theta).
+    \end{gather*}
+    Поэтому $\theta \in V$ является решением следующего уравнения:
+    \begin{equation}
+        \label{lemma-1-1}
+        a A \theta + \frac{\kappa_a}{\alpha} \theta + b\kappa_a [\theta]^4 = g.
+    \end{equation}
+    Здесь \[ g = Br + \frac{\kappa_a}{\alpha}A^{-1}B(r+bu) \in V'. \]
+    Однозначная разрешимость уравнения~\eqref{lemma-1-1} с монотонной нелинейностью
+    хорошо известна (см.
+    например~\cite{Kufner}).
+    Следовательно задача~\eqref{w1} однозначно разрешима.
+
+    Для получения оценок~\eqref{E1} умножим скалярно~\eqref{lemma-1-1} на $\theta \in V$ и отбросим неотрицательные
+    слагаемые в левой части.
+    Тогда
+    \[
+        a \|\theta\|^2_V \leq (g, \theta) \leq \|g\|_{V'}\|\theta\|_V,
+        \quad a\|\theta\|_V \leq \|g\|_{V'}.
+    \]
+    Неравенства~\eqref{E} позволяют оценить $\|g\|_{V'}$ и $\|\varphi\|_V $,
+    \[
+        \|g\|_{V'} \leq \|r\|_\Gamma + \frac{C_0\kappa_a}{\alpha}\|r + bu\|_\Gamma, \quad
+        \|\varphi\|_V \leq \frac{1}{\alpha b} \|r + bu\|_\Gamma + \frac{a}{\alpha b} \|\theta\|_V.
+    \]
+    В результате получаем оценки~\eqref{E1}.
+
+    Полученные оценки решения управляемой системы позволяют доказать
+    разрешимость задачи оптимального управления.
+
+    \textbf{Теорема 1.}
+    {\it
+    Пусть выполняются условия} (i),(ii).
+        {\it Тогда существует решение задачи $(CP).$
+    }
+
+        {\bf Доказательство.}
+    Пусть $j_\lambda = \inf J_\lambda$ на множестве $u \in U$, $F(\theta, \varphi, u)=0.$
+    Выберем минимизирующую последовательность
+    $u_m \in U, \; \theta_m \in V, \;\varphi_m\in V$, $$J_\lambda(\theta_m, u_m)
+    \rightarrow j_\lambda,$$
+    \begin{equation}
+        \label{MS}
+        a A \theta_m +b \kappa_a([\theta]^4 - \varphi_m) = Br, \;\;
+        \alpha A \varphi_m + \kappa_a (\varphi_m - [\theta]^4) = B u_m.
+    \end{equation}
+    Из ограниченности последовательности $u_m$ в пространстве $U$ следуют, на основании
+    леммы 1, оценки
+    \[
+        \|\theta_m\|_V \leq C,\;\;
+        \|\varphi_m\|_V \leq C,\;\;\|\theta_m\|_{L^6(\Omega)} \leq C.
+    \]
+    Здесь через $C>0$ обозначена наибольшая из постоянных, ограничивающих соответствующие нормы и не зависящих от $m$.
+    Переходя при необходимости к подпоследовательностям, заключаем, что
+    существует тройка $\{ \hat{u}, \hat{\theta}, \hat{\varphi} \} \in U \times V \times V,$
+    \begin{equation}
+        \label{L}
+        u_m \rightarrow \hat{u} \text{  слабо в } U, \;\;
+        \theta_m, \varphi_m \rightarrow \hat{\theta}, \hat{\varphi} \text{
+            слабо в } V, \text{
+            сильно в } L^4(\Omega).
+    \end{equation}
+    Заметим также, что $\forall v \in V$
+    \begin{equation}
+        \label{L1}
+        |( [\theta_m]^4 - [\hat{\theta}]^4, v)
+        \leq 2 \| \theta_m - \hat{\theta}\|_{L^4(\Omega)} \|v\|_{L^4(\Omega)}
+        \left( \| \theta_m \|^3_{L_6(\Omega)} + \| \hat{\theta} \|^3_{L_6(\Omega)}\right).
+    \end{equation}
+    Результаты о сходимости~\eqref{L},\eqref{L1} позволяют перейти
+    к пределу в~\eqref{MS}.
+    Поэтому
+    \[
+        a A \hat{\theta} + b \kappa_a ([\hat{\theta}]^4 - \hat{\varphi} = Br), \;
+        \alpha A \hat{\varphi} + \kappa_a (\hat{\varphi} -[\hat{\theta}]^4) = B \hat{u},
+    \]
+    и при этом $j_\lambda \leq J_\lambda(\hat{\theta}, \hat{u}) \leq \varliminf J_\lambda(\theta_m, u_m) =
+    j_\lambda$.
+    Следовательно тройка $\{\hat{\theta}, \hat{\varphi}, \hat{u} \}$ есть
+    решение задачи $(CP).$
+
+\subsection{Условия оптимальности}\label{subsec:2_optimality}
+
+
+    Для получения системы оптимальности достаточно использовать
+    принцип Лагранжа для гладко-выпуклых экстремальных задач~\cite{10,11}.
+    Проверим справедливость ключевого условия, что образ производной
+    оператора ограничений $F(y, u)$, где $y=\{\theta,\varphi\}\in V\times V$,
+    совпадает с пространством $V'\times V'.$ Именно это условие гарантирует
+    невырожденность условий оптимальности.
+    Напомним, что
+    \[
+        F(y, u) = \{ aA\theta + b \kappa_a ( [\theta]^4- \varphi) - Br,\;
+        \alpha A \varphi + \kappa_a (\varphi -[\theta]^4) - Bu\}.
+    \]
+
+
+    \textbf{Лемма 2.}
+    {\it
+    Пусть выполняются условия} (i),(ii).
+        {\it Для любой пары $\hat{y} \in V \times V, \hat{u} \in U$ справедливо равенство}
+    \[
+        \texttt{Im}F_y'(y, u) = V' \times V'.
+    \]
+
+
+        {\bf Доказательство.} Достаточно проверить, что задача
+    \[
+        aA \xi + b \kappa_a (4|\hat{\theta}|^3 \xi - \eta) = f_1, \; \;
+        \alpha A \eta + \kappa_a (\eta - 4|\hat{\theta}|^3 \xi) = f_2
+    \]
+    разрешима для всех $f_{1,2}\in V'.$ Данная задача равносильна системе
+    \[
+        aA\xi + \kappa_a\left(4b|\theta|^3 + \frac{a}{\alpha}\right) \xi = f_1
+        +\frac{\kappa_a}{\alpha}f_3, \; \;
+        \eta =\frac{1}{\alpha b}( f_3-a\xi).
+    \]
+    Здесь $f_3=A^{-1}(f_1+bf_2)\in V.$ Разрешимость первого уравнения указанной системы очевидным образом следует из леммы Лакса-Мильграма.
+
+
+    В соответствии с леммой 2, лагранжиан задачи $(CP)$ имеет вид
+    \[
+        L(\theta, \varphi, u, p_1, p_2) = J_\lambda(\theta, u)
+        + (aA\theta + b\kappa_a([\theta]^4 - \varphi) - Br, p_1)
+        + (\alpha A \varphi + \kappa_a(\varphi - [\theta]^4) - Bu, p_2).
+    \]
+    Здесь $p=\{p_1,p_2\}\in V\times V$ -- сопряженное состояние.
+    Если $\{\hat{\theta}, \hat{\varphi}, \hat{u} \}$ -- решение задачи $(CP)$, то
+    в силу принципа Лагранжа~\cite[Теорема 1.5]{10} справедливы вариационные равенства
+    $\forall v\in V,\, w\in U$
+    \begin{equation}
+        \label{OC1}
+        (\hat{\theta} -\theta_b, v)_\Gamma + (aAv + 4 b\kappa_a |\hat{\theta}|^3v, p_1)
+        - \kappa_a ( 4 |\hat{\theta}|^3v, p_2) = 0,\;
+        b \kappa_a (v, p_1)+ (\alpha A v + \kappa_a v, p_2) = 0,
+    \end{equation}
+    \begin{equation}
+        \label{OC2}
+        \lambda(\hat{u},w)_\Gamma - (Bw, p_2) = 0.
+    \end{equation}
+    Таким образом, из условий~\eqref{OC1},\eqref{OC2}
+    получаем следующий результат, который вместе с уравнениями \eqref{w1}
+    для оптимальной тройки определяет систему оптимальности задачи $(CP)$.
+gg
+    \textbf{Теорема 2.}
+    {\it Пусть выполняются условия} (i),(ii).
+        {\it Если $\{\hat{\theta}, \hat{\varphi}, \hat{u}\}$ -- решение
+    задачи $(CP)$, то существует единственная пара $\{p_1, p_2 \} \in V\times V$
+        такая, что}
+    \begin{equation}
+        \label{AS}
+        aAp_1 +4|\hat{\theta}|^3 \kappa_a(bp_1 - p_2) = B(\theta_b - \hat{\theta}), \;\;
+        \alpha A p_2 + \kappa_a (p_2 - b p_1)=0
+    \end{equation}
+    {\it и при этом} $\lambda\hat{u} = p_2.$
+
+
+
+
