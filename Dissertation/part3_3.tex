@@ -1,0 +1,188 @@
+\section{Inverse problem}
+В липшицевой ограниченной области $\Omega \subset \mathbb{R}^{3}$ с границей
+$\Gamma:=\partial \Omega$ рассмотрим следующую систему нелинейных уравнений [1]:
+\[
+-a \Delta \theta+b \kappa_{a}\left(|\theta| \theta^{3}-\varphi\right)=0,
+\quad-\alpha \Delta \varphi+\kappa_{a}\left(\varphi-|\theta| \theta^{3}\right)=0, x \in \Omega.
+\]
+Здесь $\theta$ — нормированная температура, $\varphi$ — нормированная усредненная интенсивность излучения.
+Приведены положительные параметры $a, b, \kappa_{a}$ и $\alpha$, описывающие внутренние свойства среды [1].
+
+
+Предположим, что $\Gamma=\bar{\Gamma}_{1} \cup \bar{\Gamma}_{2}$ такое,
+ что $\Gamma_{1} \cap \Gamma_{2}=\emptyset$.
+На границе $\Gamma$ задаем тепловой поток $q_{b}$,
+\[
+a \partial_{n} \theta=q_{b}, \quad x \in \Gamma.
+\]
+Граничное условие для интенсивности излучения при $\Gamma_{2}$ не задано.
+ В качестве условия паратерминации на границе $\Gamma_{1}$ зададим следующие условия:
+\[
+\alpha \partial_{n} \varphi+\gamma\left(\varphi-\theta_{b}^{4}\right)=0,
+\quad \theta=\theta_{b} \quad x \in \Gamma_{ 1} .
+\]
+
+Оптимизационный метод решения задачи (1)-(3) заключается в рассмотрении задачи
+граничного оптимального управления для эквивалентной системы эллиптических уравнений.
+
+Определим новую неизвестную функцию $\psi=a \theta+\alpha b \varphi$.
+Складывая первое уравнение в (1) со вторым, умноженным на $b$, заключаем,
+что $\psi$ является гармонической функцией. Исключая $\varphi$ из первого
+уравнения (1) и используя граничные условия (2) и (3), получаем краевую задачу
+\[
+\begin{gathered}
+\quad a \Delta \theta+g(\theta)=\frac{\kappa_{a}}{\alpha} \psi, \quad \Delta \psi=0, \quad x \in \Omega, \\
+a \partial_{n} \theta=q_{b}, \quad \text { on } \Gamma, \quad \alpha \partial_{n} \psi+\gamma \psi=r, \quad \theta=\theta_{ b} \text { on } \Gamma_{1} .
+\end{gathered}
+\]
+Здесь $g(\theta)=b \kappa_{a}|\theta| \theta^{3}+a \kappa_{a} \theta / \alpha,
+r=\alpha b \gamma \theta_{b}^{4}+\alpha q_{b}+a \gamma \theta_{b }$.
+
+
+Задача оптимального управления, аппроксимирующая задачу (4), (5),
+заключается в нахождении тройки $\left\{\theta_{\lambda}, \psi_{\lambda}, u_{\lambda}\right\}$
+такой, что
+
+\[
+\begin{gathered}
+J_{\lambda}(\theta, u)=\frac{1}{2} \int_{\Gamma_{1}}\left(\theta-\theta_{b}\right)^{2} d
+\Gamma+\frac{\lambda}{2} \int_{\Gamma_{2}} u^{2} d \Gamma \rightarrow \text{ inf } \\
+-a \Delta \theta+g(\theta)=\frac{\kappa}{\alpha} \psi, \quad \Delta \psi=0, \quad x \in \Omega \\
+a \partial_{n} \theta+s \theta=q_{b}+s \theta_{b},
+\quad \alpha \partial_{n} \psi+\gamma \psi=r \text{ on } \Gamma_{1},
+\quad a \partial_{n} \theta=q_{b}, \quad \alpha \partial_{n} \psi=u \text{ on } \Gamma_{2}.
+\end{gathered}
+\]
+
+
+Здесь $\lambda, s>0$ — регуляризующие параметры.
+
+\section{Solvability of the control problem}
+Пусть $U=L^{2}\left(\Gamma_{2}\right)$ — пространство управлений,
+$H=L^{2}(\Omega), V=H^{1}(\Omega )=W_{2}^{1}(\Omega)$, а $V^{\prime}$ двойственно к $V$.
+Тогда мы отождествим $H$ с его двойственным пространством $H^{\prime}$ таким,
+что $V \subset H=H^{\prime} \subset V^{\prime}$, и обозначим через $\|\cdot \|$ норму в $H$,
+а через $(f, v)$ значение функционала $f \in V^{\prime}$ на элементе $v \in V$,
+совпадающее со скалярным произведением в $ H$, если $f \in H$.
+
+
+Предположим, что выполняются следующие условия:
+
+(i) $a, b, \alpha, \kappa_{a}, \lambda, s=$ Const $>0$,
+
+(ii) $0<\gamma_{0} \leq \gamma \in L^{\infty}\left(\Gamma_{1}\right), \quad \theta_{b},
+ r \in L^{2}\left(\Gamma_{1}\right), \quad q_{b} \in L^{2}(\Gamma)$.
+
+Пусть $A_{1,2}: V \rightarrow V^{\prime}, B_{1}: L^{2}\left(\Gamma_{1}\right) \rightarrow V^{\prime},
+B_{2}: U \rightarrow V^{\prime}$ такое, что для любого
+$y, z \in V$, $f, v \in L^{2}\left(\Gamma_{1}\right)$, и $h, w \in U$
+
+\[
+\begin{gathered}
+\left(A_{1} y, z\right)=a(\nabla y, \nabla z)+s \int_{\Gamma_{1}} y z d \Gamma,
+\quad\left(A_{2} y, z\right)=\alpha(\nabla y, \nabla z)+\int_{\Gamma_{1}} \gamma y z d \Gamma, \\
+\left(B_{1} f, v\right)=\int_{\Gamma_{1}} f v d \Gamma, \quad\left(B_{2} h, w\right)=\int_{\Gamma_{2}} h w d \Gamma
+\end{gathered}
+\]
+
+Слабая постановка краевой задачи на
+решения, функционал (1) которых минимизируется, имеет вид:
+
+\[
+A_{1} \theta+g(\theta)=\frac{\kappa_{a}}{\alpha} \psi+f_{1}, \quad A_{2} \psi=f_{2}+B_{2} u
+\]
+где $f_{1}=B_{1}\left(q_{b}+s \theta_{b}\right)+B_{2} q_{b}$ и $f_{2}=B_{1} r$.
+
+Определим оператор ограничения $F(\theta, \psi, u): V \times V \times U \rightarrow V^{\prime} \times V^{\prime}$,
+
+\[
+F(\theta, \psi, u)=\left\{A_{1} \theta+g(\theta)
+- \frac{\kappa_{a}}{\alpha} \psi-f_{1}, A_{2} \psi-f_{2}-B_{2} u\right\}
+\]
+
+Задача $\left(P_{\lambda}\right)$.
+Найдём тройку $\left\{\theta_{\lambda}, \psi_{\lambda}, u_{\lambda}\right\} \in V \times V \times U$
+такую, что
+\[
+J_{\lambda}(\theta, u)=\frac{1}{2}\left\|\theta-\theta_{b}\right\|_{L^{2}\left(\Gamma_{1}\right)}^{2}
++ \frac{\lambda}{2}\|u\|_{U}^{2} \rightarrow \inf , \quad F(\theta, \psi, u)=0.
+\]
+
+\textbf{Теорема 1.}
+Пусть выполнены условия (i), (ii).
+ Тогда существует хотя бы одно решение $\operatorname{задачи}\left(P_{\lambda}\right)$
+
+\section{Optimality conditions}
+В силу принципа Лагранжа для гладких выпуклых экстремальных задач [2]
+невырожденность условий оптимальности гарантируется условием
+что образ производной оператора
+$F(y, u)$, где $y=\{\theta, \psi\} \in V \times V$, совпадает с $V^{\prime} \times V^{\prime}$.
+Это означает, что система
+
+
+\[
+A_{1} \xi+g^{\prime}(\theta) \xi-\frac{\kappa_{a}}{\alpha} \eta=q_{1}, \quad A_{2} \eta=q_{2}
+\]
+решаемо для всех $\theta \in V, q_{1}, q_{2} \in V^{\prime}$.
+Здесь $g^{\prime}(\theta)=4b\kappa_{a}|\theta|^{3}+\kappa_{a} / \alpha$.
+Из второго уравнения получаем $\eta=A_{2}^{-1} q_{2}$.
+Разрешимость первого уравнения при известном $\eta \in V$ очевидным образом следует из леммы Лакса-Мильграма.
+Справедливость остальных условий принципа Лагранжа очевидна.
+
+Лагранжиан задачи $\left(P_{\lambda}\right)$ имеет вид
+
+\[
+L\left(\theta, \psi, u, p_{1}, p_{2}\right)=J_{\lambda}(\theta, u)
++ \left(A_{1} \theta+g(\theta)-\frac{\kappa_{a}}{\alpha} \psi-f_{1},
+p_{1}\right)+\left(A_{2} \psi-f_{2}-B_{2} u, p_{2}\right),
+\]
+где $p=\left\{p_{1}, p_{2}\right\} \in V \times V$ — сопряженное состояние.
+
+Пусть $\{\widehat{\theta}, \widehat{\varphi}, \widehat{u}\}$
+будет решением задачи $\left(P_{\lambda}\right)$.
+По принципу Лагранжа $[2$, Th. 1,5],
+получаем следующие равенства $\forall v \in V, w \in U$:
+\[
+\begin{gathered}
+\left(B_{1}\left(\widehat{\theta}-\theta_{b}\right), v\right)+\left(A_{1} v
++g^{\prime}(\widehat{\theta}) v, p_{1}\right)=0,
+-\frac{\kappa_{a}}{\alpha}\left(v, p_{1}\right)+\left(A_{2} v, p_{2}\right)=0, \\
+\lambda\left(B_{2} \widehat{u}, w\right)-\left(B_{2} w, p_{2}\right)=0 .
+\end{gathered}
+\]
+
+Из (9), (10) следуют уравнения для сопряженного состояния.
+
+\textbf{Theorem 2.}
+Пусть выполняются условия (i), (ii) и
+$\{\widehat{\theta}, \widehat{\psi}, \widehat{u}\}$
+есть решение $\left(P_{\lambda}\right)$,
+тогда есть единственная пара $\left\{p_{1}, p_{2}\right\} \in V \times V$ такая, что
+\[
+A_{1} p_{1}+g^{\prime}(\widehat{\theta}) p_{1}=-B_{1}\left(\widehat{\theta}-\theta_{b}\right),
+\quad A_{2} p_{2}=\frac{\kappa_{a}}{\alpha} p_{1}, \quad \lambda \widehat{u}=\left.p_{2}\right|_{\Gamma_{2}}.
+\]
+
+\section{Аппроксимация обратной задачи}
+Докажем, что если пара $\{\theta, \varphi\} \in V \times V$ является решением задачи (1)-(3) и,
+кроме того, $q=\left.a \partial_ {n} \varphi\right|_{\Gamma_{2}} \in L^{2}\left(\Gamma_{2}\right)$,
+то решения задачи $\left(P_{\lambda} \right)$ как $\lambda \rightarrow+0$ аппроксимирует решение задачи (1)-(3).
+Заметим, что пара для всех $v \in V$ удовлетворяет равенствам
+\[
+\begin{gathered}
+a(\nabla \theta, \nabla v)+b \kappa_{a}\left(|\theta| \theta^{3}-\varphi, v\right)=\int_{\Gamma} q_{b} v d \Gamma, \\
+\alpha(\nabla \varphi, \nabla v)+\int_{\Gamma_{1}} \gamma \varphi v d
+\Gamma+\kappa_{a}\left(\varphi-|\theta| \theta^{3}, v\right)=\int_{\Gamma_{1}} \gamma \theta_{b}^{4} v d
+\Gamma+\int_{\Gamma_{2}} q v d \Gamma,
+\end{gathered}
+\]
+и при этом $\left.\theta\right|_{\Gamma_{1}}=\theta_{b}$.
+
+\textbf{Theorem 3.}
+Пусть выполнены условия (i), (ii) и существует решение задачи (1)-(3), удовлетворяющее равенствам (12) и (13).
+Если $\left\{\theta_{\lambda}, \psi_{\lambda}, u_{\lambda}\right\}$
+является решением задачи $\left(P_{\lambda}\right)$ при $\lambda>0$,
+тогда существует последовательность $\lambda \rightarrow+0$
+такая, что $\theta_{\lambda} \rightarrow \theta_{*},
+\left(\psi_{\lambda}-a \theta_{\lambda}\right) / \alpha b \rightarrow \varphi_{*}$
+слабо в $V$, сильно в $H$, где $\theta_{*}, \varphi_{*}$ есть решение задачи (1)-(3).

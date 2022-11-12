@@ -123,8 +123,7 @@ $U_{ad} = \{u \in U, u_1 \le u \le u_2 \}$ --- множество допусти
 Для доказательства разрешимости задачи~\eqref{eq:minimizationOperational}
 нам необходимо также установить некоторые свойства решения задачи~\eqref{eq:initial},~\eqref{eq:initial-boundary}.
 
-\begin{lem}[\cite{lemma_proof}]
-    \label{SolvabilityLemma}
+\textbf{Лемма 1.}
     Пусть выполняется условие (i).
     Тогда для каждого $ u \in U_{ad} $ существует единственное слабое решение
     $\{\theta, \varphi \}$ для задачи~\eqref{eq:initial},\eqref{eq:initial-boundary} и справедливы оценки:
@@ -138,23 +137,22 @@ $U_{ad} = \{u \in U, u_1 \le u \le u_2 \}$ --- множество допусти
     \end{equation}
     Здесь $M_1 = \text{ess inf } \theta_b, M_2 = \text{ess sup } \theta_b$, и константа $C > 0$ зависит
     только от \\ $a, b, \alpha, \kappa_a, \beta, \gamma, \|u\|_{L^\infty(\Gamma)}$ и области $\Omega$.
-\end{lem}
 
 На основе оценок~\eqref{eq:lemma_1} и~\eqref{eq:lemma_2} аналогично~\cite{cheb_origin}
 доказывается разрешимость экстремальной задачи~\eqref{eq:minimizationOperational}.
-\begin{thm}
+    \textbf{Теорема 1.}
     Пусть выполняется условие (i).
     Тогда существует хотя бы одно решение задачи~\eqref{eq:minimizationOperational}.
-\end{thm}
 
 
 
 Для вывода системы оптимальности, покажем дифференцируемость функционала $J$.
-\begin{lem}
+\textbf{Лемма 2.}
     \label{freshet_diff}
     Функционал $J : V \rightarrow \mathbb{R}$ дифференцируем по Фреше.
-\end{lem}
-\begin{proof}
+
+
+\textit{Доказательство.}
     Покажем, что для произвольной функции $\theta \in V$ выполняется следующее равенство:
     \begin{equation}
         \label{eq:lemma_proof_1}
@@ -176,12 +174,10 @@ $U_{ad} = \{u \in U, u_1 \le u \le u_2 \}$ --- множество допусти
         \frac{r(\theta,h)}{\| h \|_V} \leq
         \frac{1}{2} C^2 \| h \|_V \rightarrow 0 \quad \text{при } \| h \|_V \rightarrow 0.
     \]
-\end{proof}
 
 
 Вывод условий оптимальности основан на принципе множителей Лагранжа для гладко-выпуклых задач минимизации.
-\begin{thm}
-    \label{adjoint_theorem}
+\textbf{Теорема 2.}
     Пусть $\hat{y}=\{\hat{\theta},\hat{\varphi} \} \in Y, \hat{u} \in U_{ad}$ --- решение экстремальной задачи \eqref{minimization_operational}. Тогда существует пара $p = (p_1, p_2)$, $p \in Y$
     такая, что тройка $(\hat{y}, \hat{u}, p)$, удовлетворяет следующим условиям:
     \begin{equation}
@@ -196,8 +192,9 @@ $U_{ad} = \{u \in U, u_1 \le u \le u_2 \}$ --- множество допусти
         \label{therorem_2_eq3}
         \int_{\Gamma_1} p_2 (\hat{\varphi} - \theta_b^4)(u-w) \leq 0 \quad \forall w \in U_{ad}.
     \end{equation}
-\end{thm}
-\begin{proof}
+
+
+\textit{Доказательство.}
     Перепишем уравнения~\eqref{weak_operational} следующим образом:
     \[ H(y,u) = 0,\;\; y = \{\theta,\varphi\} \in Y, \]
     где
@@ -234,7 +231,6 @@ $U_{ad} = \{u \in U, u_1 \le u \le u_2 \}$ --- множество допусти
     \end{equation}
     Сопряжённые уравнения~\eqref{therorem_2_eq1},\eqref{therorem_2_eq2} являются прямым следствием
     вариационных равенств~\eqref{eq:th2_proof_1} и~\eqref{eq:th2_proof_2}.
-\end{proof}
 
 
 \FloatBarrier
