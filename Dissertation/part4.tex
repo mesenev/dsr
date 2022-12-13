@@ -14,21 +14,23 @@
 где $\varphi(u)$ есть интенсивность излучения, $p_2$ -- соответствующая переменная сопряжённой системы.
 
 Предлагаемый алгоритм решения выглядит следующим образом:
-\begin{algorithm}[H]
-    \caption{Алгоритм градиентного спуска с проекцией}
-    \begin{algorithmic}[1]
-        \State Выбираем значение градиентного шага $\lambda$,
-        \State Выбираем количество итераций $N$,
-        \State Выбираем произвольное $u_0 \in U_{ad}$,
-        \For{$k \gets 0,1,2,...,N$}
-            :
-            \State Для полученного $u_k$ расчитываем состояние $y_k = \{\theta_k, \varphi_k\}$ из  (\ref{weak_operational}).
-            \State Расчитываем значение функционала качества $J(\theta_k)$ из (\ref{quality}).
-            \State Расчитываем сопряжённое состояние $p_k=\{p_{1k},p_{2k}\}$ из уравнений \eqref{therorem_2_eq1}--\eqref{therorem_2_eq2}, где $ \hat{\theta} := \theta_k, \hat{u}=u_k$.
-            \State Пересчитываем управление $u_{k+1} = P_{ad}\left[ u_k - \lambda (\varphi_k - \theta_b^4)p_{2k} \right]$.
-        \EndFor
-    \end{algorithmic}\label{alg:algorithm}
-\end{algorithm}
+%\begin{algorithm}[H]
+%    \caption{Алгоритм градиентного спуска с проекцией}
+%    \begin{algorithmic}[1]
+%        \State Выбираем значение градиентного шага $\lambda$,
+%        \State Выбираем количество итераций $N$,
+%        \State Выбираем произвольное $u_0 \in U_{ad}$,
+%        \For{$k \gets 0,1,2,...,N$}
+%            :
+%            \State Для полученного $u_k$ расчитываем состояние $y_k = \{\theta_k, \varphi_k\}$ из  (\ref{weak_operational}).
+%            \State Расчитываем значение функционала качества $J(\theta_k)$ из (\ref{quality}).
+%            \State Расчитываем сопряжённое состояние $p_k=\{p_{1k},p_{2k}\}$ из уравнений \eqref{therorem_2_eq1}--\eqref{therorem_2_eq2}, где $ \hat{\theta} := \theta_k, \hat{u}=u_k$.
+%            \State Пересчитываем управление $u_{k+1} = P_{ad}\left[ u_k - \lambda (\varphi_k - \theta_b^4)p_{2k} \right]$.
+%        \EndFor
+%    \end{algorithmic}\label{alg:algorithm}
+%\end{algorithm}
+
+
 Оператор проекции $P_{ad} : U \to U_{ad}$ определён следующим образом
 \[
     P_{ad}[v] =
@@ -82,7 +84,7 @@ $\beta = 0.00005[\text{см}/\text{с}]$, $\kappa=1[\text{см}^{-1}]$, $\kappa_
 Также наблюдается существенное падение скорости уменьшения функционала качества с
 каждой итерацией после того, как среднее значение найденной функции контроля
 становится близко к тестовой функции.
-\begin{figure}[H]
+\begin{figure}
     \centering
     \subfloat[Первый эксперимент]
     {
@@ -98,7 +100,7 @@ $\beta = 0.00005[\text{см}/\text{с}]$, $\kappa=1[\text{см}^{-1}]$, $\kappa_
     \label{fig:control}
 \end{figure}
 
-\begin{figure}[H]
+\begin{figure}
     \centering
     \subfloat[Первый эксперимент]
     {
@@ -212,23 +214,23 @@ $\|\theta_\lambda -\theta_b\|^2_\Gamma\leq C\lambda$, а поскольку $\pa
 Здесь $p_2$ -- соответствующая компонента сопряженного состояния из системы ~\eqref{AS},
 где $\hat{\theta}\coloneqq\theta(u)$.
 
-\begin{algorithm}[H]
-    \caption{Алгоритм градиентного спуска}
-    \label{alg:algorithm}
-    \begin{algorithmic}[1]
-        \State Выбираем значение градиентного шага $\varepsilon$,
-        \State Выбираем количество итераций $N$,
-        \State Выбираем начальное приближение для управления $u_0 \in U$,
-        \For{$k \gets 0,1,2,\dots,N$}
-            \State Для данного $u_k$ рассчитываем состояние $y_k = \{\theta_k, \varphi_k\}$ --
-            решение задачи~\eqref{eq1},\eqref{bc1}.
-            \State Рассчитываем значение функционала качества $J_\lambda(\theta_k, u_k)$.
-            \State Рассчитываем сопряженное состояние $p_k=\{p_{1k},p_{2k}\}$ из уравнений ~\eqref{OC1},
-            где $ \hat{\theta} \coloneqq \theta_k, \hat{u}=u_k$.
-            \State Пересчитываем управление $u_{k+1} = u_k - \varepsilon (\lambda u_k - p_2)$
-        \EndFor
-    \end{algorithmic}
-\end{algorithm}
+%\begin{algorithm}[H]
+%    \caption{Алгоритм градиентного спуска}
+%    \label{alg:algorithm}
+%    \begin{algorithmic}[1]
+%        \State Выбираем значение градиентного шага $\varepsilon$,
+%        \State Выбираем количество итераций $N$,
+%        \State Выбираем начальное приближение для управления $u_0 \in U$,
+%        \For{$k \gets 0,1,2,\dots,N$}
+%            \State Для данного $u_k$ рассчитываем состояние $y_k = \{\theta_k, \varphi_k\}$ --
+%            решение задачи~\eqref{eq1},\eqref{bc1}.
+%            \State Рассчитываем значение функционала качества $J_\lambda(\theta_k, u_k)$.
+%            \State Рассчитываем сопряженное состояние $p_k=\{p_{1k},p_{2k}\}$ из уравнений ~\eqref{OC1},
+%            где $ \hat{\theta} \coloneqq \theta_k, \hat{u}=u_k$.
+%            \State Пересчитываем управление $u_{k+1} = u_k - \varepsilon (\lambda u_k - p_2)$
+%        \EndFor
+%    \end{algorithmic}
+%\end{algorithm}
 Значение параметра $\varepsilon$ выбирается эмпирически таким образом, чтобы значение
 $\varepsilon (\lambda u_k - p_2)$ являлось существенной поправкой для $u_{k+1}$.
 Количество итераций $N$ выбирается достаточным для выполнения условия
@@ -278,12 +280,12 @@ $\{\theta_\lambda, \varphi_\lambda, u_\lambda\}$ задачи (CP).
 разности $\|\theta_\lambda -\theta_b\|^2_\Gamma$.
 На остальных гранях куба значения относительного отклонения имеют тот же порядок малости.
 
-\begin{figure}[H]
+\begin{figure}
     \centering
     \subfloat[$|\partial_n\theta_\lambda-q_b|/|q_b|$]
-    { \label{fig:img_test_1_iso} \includegraphics[width=.49\linewidth]{img/exp1/theta_n_diff_iso} }
+    { \label{fig:img_test_1_iso} \includegraphics[width=.49\linewidth]{exp1/theta_n_diff_iso} }
     \subfloat[Изменение функционала качества по итерациям]
-    {\label{fig:quality_1}  \includegraphics[width=.49\linewidth]{img/exp1/quality} }
+    {\label{fig:quality_1}  \includegraphics[width=.49\linewidth]{exp1/quality} }
     \caption{Результаты первого эксперимента}
 \end{figure}
 
@@ -316,12 +318,12 @@ $\widehat{\theta} = (x_1-0.5)^2 - 0.5x_2+0.75$.
 Значение функционала качества, определяющего норму разности $\|\theta_\lambda -\theta_b\|^2_\Gamma$,
 равно $~0.000255$ и стабилизируется после 10 итераций~\ref{fig:quality_2}.
 
-\begin{figure}[H]
+\begin{figure}
     \centering
     \subfloat[Полученное решение $\theta$]
-        { \label{fig:theta_auto_2} \includegraphics[width=.49\linewidth]{img/exp2/theta_auto} }
+        { \label{fig:theta_auto_2} \includegraphics[width=.49\linewidth]{exp2/theta_auto} }
     \subfloat[Изменение функционала качества]
-    { \label{fig:quality_2} \includegraphics[width=.49\linewidth]{img/exp2/quality} }
+    { \label{fig:quality_2} \includegraphics[width=.49\linewidth]{exp2/quality} }
     \caption{Результаты второго эксперимента}
 \end{figure}
 
@@ -433,23 +435,23 @@ $u=\alpha bq+\alpha q_b|_{\Gamma_2}$, получаем
 Здесь $p_2$ -- соответствующая компонента сопряженного состояния из системы ~\eqref{AS},
 где $\hat{\theta}\coloneqq\theta(u)$.
 
-\begin{algorithm}[H]
-    \caption{Алгоритм градиентного спуска}
-    \label{alg:algorithm}
-    \begin{algorithmic}[1]
-        \State Выбираем значение градиентного шага $\varepsilon$,
-        \State Выбираем количество итераций $N$,
-        \State Выбираем начальное приближение для управления $u_0 \in U$,
-        \For{$k \gets 0,1,2,\dots,N$}
-            \State Для данного $u_k$ рассчитываем состояние $y_k = \{\theta_k, \varphi_k\}$ --
-            решение задачи~\eqref{eq1},\eqref{bc1}.
-            \State Рассчитываем значение целевого функционала $J_\lambda(\theta_k, u_k)$.
-            \State Рассчитываем сопряженное состояние $p_k=\{p_{1k},p_{2k}\}$ из уравнений ~\eqref{OC1},
-            где $ \hat{\theta} \coloneqq \theta_k, \hat{u}=u_k$.
-            \State Пересчитываем управление $u_{k+1} = u_k - \varepsilon (\lambda u_k - p_2)$
-        \EndFor
-    \end{algorithmic}
-\end{algorithm}
+% \begin{algorithm}[H]
+%     \caption{Алгоритм градиентного спуска}
+%     \label{alg:algorithm}
+%     \begin{algorithmic}[1]
+%         \State Выбираем значение градиентного шага $\varepsilon$,
+%         \State Выбираем количество итераций $N$,
+%         \State Выбираем начальное приближение для управления $u_0 \in U$,
+%         \For{$k \gets 0,1,2,\dots,N$}
+%             \State Для данного $u_k$ рассчитываем состояние $y_k = \{\theta_k, \varphi_k\}$ --
+%             решение задачи~\eqref{eq1},\eqref{bc1}.
+%             \State Рассчитываем значение целевого функционала $J_\lambda(\theta_k, u_k)$.
+%             \State Рассчитываем сопряженное состояние $p_k=\{p_{1k},p_{2k}\}$ из уравнений ~\eqref{OC1},
+%             где $ \hat{\theta} \coloneqq \theta_k, \hat{u}=u_k$.
+%             \State Пересчитываем управление $u_{k+1} = u_k - \varepsilon (\lambda u_k - p_2)$
+%         \EndFor
+%     \end{algorithmic}
+% \end{algorithm}
 Значение параметра $\varepsilon$ выбирается эмпирически таким образом, чтобы значение
 $\varepsilon (\lambda u_k - p_2)$ являлось существенной поправкой для $u_{k+1}$.
 Количество итераций $N$ выбирается достаточным для выполнения условия
@@ -481,17 +483,17 @@ $\alpha = 0.(3)[\text{см}]$.
 Пусть граничные данные обратной задачи в~\eqref{bc1},\eqref{bc2} имеют вид $q_b = 0.5$ и $\theta_b=0.1 + z/2 $.
 Обратную задачу решаем, используя предложенный оптимизационный алгоритм с параметром регуляризации
 $\lambda=10^{-12}$ и начальным приближением управления $u_0 = 0$.
-\begin{figure}[H]
+\begin{figure}
     \centering
     \subfloat[$\theta|_{z=1} $]
     {
         \label{fig:1_theta}
-        \includegraphics[width=.5\linewidth]{img/1_theta}
+        \includegraphics[width=.5\linewidth]{3rd/1_theta}
     }
     \subfloat[$\phi|_{z=1} $]
     {
         \label{fig:1_phi}
-        \includegraphics[width=.5\linewidth]{img/1_phi}
+        \includegraphics[width=.5\linewidth]{3rd/1_phi}
     }
     \caption{Результаты первого эксперимента}
     \label{fig:1}
@@ -519,17 +521,17 @@ $\lambda=10^{-12}$ и начальным приближением управле
         -0.2, & \text{если } x \in \Gamma_2.
     \end{cases}
 \end{gather*}
-\begin{figure}[H]
+\begin{figure}
     \centering
     \subfloat[$\theta$]
     {
         \label{fig:2_theta}
-        \includegraphics[width=.5\linewidth]{img/2_theta}
+        \includegraphics[width=.5\linewidth]{3rd/2_theta}
     }
     \subfloat[$\phi$]
     {
         \label{fig:2_phi}
-        \includegraphics[width=.5\linewidth]{img/2_phi}
+        \includegraphics[width=.5\linewidth]{3rd/2_phi}
     }
     \caption{Результаты второго эксперимента}
     \label{fig:2}
