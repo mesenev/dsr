@@ -1,13 +1,10 @@
-
-
-
-\section{Первая статья}\label{sec:ch3/sec1}
+\section{Первая статья}\label{sec:ch4/sec1}
 % TODO !!! Добавить вывод всей ерунды аналогично другим статьям.
 Пусть функционал $J(\theta)$ удовлетворяет условиям, указанным в \autoref{sec:optimality}.
 Для удобства введём переобозначение $\hat{J}(u):=J(\theta(u)), \hat{J}:L^2(\Gamma_1) \to \mathbb{R}$.
 Здесь $\theta(u)$ -- температурное поле задачи~\eqref{initial}--\eqref{initial-boundary} отвечающее
 управлению $u \in L^2(\Gamma_1)$.
-Согласно формуле \eqref{therorem_2_eq3} градиент функционала $\hat{J}(u)$~\cite{grenkin_13} имеет вид
+Согласно формуле~\eqref{therorem_2_eq3} градиент функционала $\hat{J}(u)$~\cite{grenkin_13} имеет вид
 \[
     \hat{J}'(u)= (\varphi(u) -\theta_b^4)p_2,
 \]
@@ -119,7 +116,7 @@ $\beta = 0.00005[\text{см}/\text{с}]$, $\kappa=1[\text{см}^{-1}]$, $\kappa_
 \clearpage
 
 
-\section{Вторая статья}\label{sec:ch3/sec2}
+\section{Вторая статья}\label{sec:ch4/sec2}
 
 \subsection{Аппроксимация задачи с условиями типа коши}\label{subsec:ch3/3_1}
 Рассмотрим краевую задачу~\eqref{eq1}-\eqref{bc2} для уравнений сложного теплообмена, в которой нет краевых условий на
@@ -203,7 +200,7 @@ $\|\theta_\lambda -\theta_b\|^2_\Gamma\leq C\lambda$, а поскольку $\pa
 при малых $\lambda$
 аппроксимируют краевые условия задачи~\eqref{eq1}-\eqref{bc2}.
 
-\subsection{Численные эксперименты}
+\subsection{Численные эксперименты}\label{subsec:ch4}
 
 Представим итерационный алгоритм решения задачи оптимального управления.
 Пусть $\tilde J_\lambda(u)=J_\lambda(\theta(u), u)$, где $\theta(u)$ компонента решения
@@ -334,7 +331,7 @@ $\widehat{\theta} = (x_1-0.5)^2 - 0.5x_2+0.75$.
 
 \section{Вторая статья}\label{sec:ch3/sec2}
 
-\subsection{Аппроксимация решения без заданного условия излучения на границе}\label{subsec:ch3/3_1}
+\subsection{Аппроксимация решения без заданного условия излучения на границе}\label{subsec:ch4/3_1}
 
 
 Покажем, что если существует пара $\{\theta,\varphi\}\in V\times V$
@@ -402,7 +399,7 @@ $u=\alpha bq+\alpha q_b|_{\Gamma_2}$, получаем
 где постоянная $C>0$ не зависит от $\lambda.$
 Поэтому можно выбрать последовательность $\lambda\to+0$ такую, что
 \begin{equation}
-    \label{LL}
+    \label{eq:LL}
     \begin{split}
         u_\lambda \rightarrow u_* \text{ \textit{  слабо в} } U, \;\;
         \theta_\lambda, \psi_\lambda \rightarrow \theta_*,\psi_* \text{
@@ -415,7 +412,7 @@ $u=\alpha bq+\alpha q_b|_{\Gamma_2}$, получаем
 Результаты~\eqref{LL} позволяют перейти к пределу при $\lambda\to+0$
 в уравнениях для $\theta_\lambda,\psi_\lambda,u_\lambda$ и тогда
 \begin{equation}
-    \label{CC}
+    \label{eq:cc}
     A_1 \theta_* + g(\theta_*) = \frac{\kappa_a}{\alpha}\psi_*+f_1,\quad
     A_2\psi_*  =f_2+ B_2u_*,\quad \theta_*|_{\Gamma_1}=\theta_b.
 \end{equation}
