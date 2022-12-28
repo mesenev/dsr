@@ -1,0 +1,308 @@
+\section{граничная обратная задача с незаданным
+краевым условием для интенсивности излучения}\label{sec:ch2_sec3}
+
+\subsection{Постановка обратной задачи}\label{subsec:3_1_init}
+
+Рассмотрим следующую систему полулинейных эллиптических уравнений, которая
+моделирует радиационный и диффузионный (сложный) теплообмен в
+ограниченной липшицевой области $\Omega\subset \mathbb{R}^3$ с границей
+$\Gamma=\partial\Omega$ ~\cite{Pinnau07}-\cite{Kovt14-1}.
+\begin{equation}
+    \label{eq1}
+    - a\Delta\theta + b\kappa_a(|\theta|\theta^3- \varphi)=0,   \quad
+    -\alpha \Delta \varphi + \kappa_a(\varphi-|\theta|\theta^3)=0,\; x\in\Omega.
+\end{equation}
+Через $\theta$ -- температура,  $\varphi$ -- усредненная по всем
+направлениям интенсивность теплового излучения.
+Положительные параметры
+$a$, $b$, $\kappa_a$ и $\alpha$, описывающие
+свойства среды, являются заданными~\cite{Kovt14-1}.
+
+
+Пусть граница области состоит из двух участков, $\Gamma \coloneqq \partial \Omega =\overline{\Gamma}_1 \cup \overline{\Gamma}_2$,
+так что $\Gamma_1 \cap \Gamma_2 =  \emptyset$.
+На всей границе $\Gamma$ задается тепловой поток $q_b$,
+\begin{equation}
+    \label{bc1}
+    a\partial_n\theta = q_b, \quad x\in \Gamma.
+\end{equation}
+Для задания краевого условия для интенсивности излучения
+требуется знать функцию $\gamma$, описывающую отражающие свойства границы~\cite{JVM-14}.
+В случае, если эта функция неизвестна на части границы $\Gamma_2$,
+краевое условие для интенсивности излучения на $\Gamma_2$ не ставится, а в качестве условия
+переопределения на $\Gamma_1$, в дополнение к условию на
+$\varphi$, задается температурное поле $\theta_b$,
+\begin{equation}
+    \label{bc2}
+    \alpha\partial_n\varphi + \gamma (\varphi - \theta_b ^4 ) = 0,\;\;
+    \theta=\theta_b\quad x\in \Gamma_1.
+\end{equation}
+Здесь через $\partial_n$ обозначаем производную в направлении
+внешней нормали $\mathbf n$.
+
+В данной работе предлагается оптимизационный метод решения задачи~\eqref{eq1}-\eqref{bc2},
+который заключается в рассмотрении задачи граничного оптимального
+управления для эквивалентной системы эллиптических уравнений.
+Для постановки задачи управления введем новую неизвестную функцию
+$\psi= a\theta + \alpha b \varphi$. Складывая первое уравнение в \eqref{eq1} со вторым, умноженным на $b$,
+заключаем, что $\psi$ -- гармоническая функция.
+Исключая $\varphi$ из первого уравнения в~\eqref{eq1} и используя краевые условия
+\eqref{bc1},\eqref{bc2},
+получаем краевую задачу
+\begin{equation}
+    \label{eq2}
+    - a \Delta \theta + g (\theta) = \frac{\kappa_a}{\alpha}\psi, \quad
+    \Delta \psi = 0, \; x \in \Omega,
+\end{equation}
+\begin{equation}
+    \label{bc3}
+    a \partial_n \theta = q_b, \; \text{ на }\Gamma, \;\;
+    \alpha \partial_n \psi + \gamma \psi  =  r,\;\;
+    \theta = \theta_b  \text{ на }\Gamma_1.
+\end{equation}
+Здесь $g(\theta) = b \kappa_a|\theta|\theta^3 + \frac{a\kappa_a}{\alpha}\theta$, $r=\alpha b \gamma \theta_b^4+ \alpha q_b + a \gamma \theta_b$.
+
+Сформулируем задачу оптимального управления, которая аппроксимирует задачу~\eqref{eq2},\eqref{bc3}.
+Задача состоит в отыскании тройки $\{\theta_\lambda,\psi_\lambda,u_\lambda\}$ такой, что
+\begin{equation}
+    \label{cost}
+    \begin{split}
+        J_\lambda(\theta, u) = \frac{1}{2}\int\limits_{\Gamma_1} (\theta - \theta_b)^2d\Gamma
+        + \frac{\lambda}{2}\int\limits_{\Gamma_2} u^2d\Gamma \rightarrow\inf, \\
+        - a \Delta \theta + g (\theta) = \frac{\kappa}{\alpha}\psi, \quad
+        \Delta \psi = 0, \; x \in \Omega,\\
+        a \partial_n \theta + s \theta = q_b + s\theta_b, \; \alpha \partial_n \psi + \gamma \psi = r,
+        \text{ на } \Gamma_1,\;\; a \partial_n \theta  = q_b,\;
+        \alpha \partial_n \psi = u \text{ на } \Gamma_2.
+    \end{split}
+\end{equation}
+Здесь $\lambda, s > 0$ -- регуляризирующие параметры.
+
+
+Нелинейные модели сложного теплообмена в рамках $P_1$ приближения для уравнения переноса теплового
+излучения достаточно полно изучены.
+В работах~\cite{Pinnau07}-\cite{Mesenev22} представлены постановки и анализ различных краевых,
+обратных и экстремальных задач для таких моделей.
+Интересные результаты анализа краевых задач сложного теплообмена,
+без использования $P_1$ приближения, получены в~\cite{Amosov16}-\cite{Amosov20-1}.
+
+\subsection{Разрешимость задачи оптимального управления}
+
+
+Рассмотрим пространства $H = L^2(\Omega), \; V = H^1(\Omega)=W^1_2(\Omega)$, $V'$ -- пространство, сопряженное с $V$.
+Пространство $H$ отождествляем с пространством $H'$ так, что $V \subset H = H' \subset V'$. Через $U$ обозначаем пространство управлений $L^2(\Gamma_2)$.
+Стандартную норму в $H$ обозначаем $\|\cdot\|$,
+$(f,v)$ -- значение функционала $f\in V'$ на элементе $v\in V$,
+совпадающее со скалярным произведением в $H$, если $f\in H$.
+
+
+Будем предполагать, что исходные данные удовлетворяют условиям:
+
+(i) $\;\; a,b,\alpha,\kappa_a, \lambda, s ={\textrm Const}> 0 ,$
+
+(ii) $\;\,0<\gamma_0\leq \gamma\in L^\infty(\Gamma_1),\,\theta_b, r \in L^2(\Gamma_1),\;\; q_b\in L^2(\Gamma).$
+
+
+Определим операторы $A_{1,2}\colon V \to V'$, $B_1\colon L^2(\Gamma_1)\to V'$,
+$B_2\colon U\to V'$ используя
+равенства, справедливые для любых $y,z \in V$, $f,v\in L^2(\Gamma_1)$,
+$h,w\in U$:
+\[
+    (A_1y,z) =a (\nabla y, \nabla z) +
+    s\int\limits_{\Gamma_1}yz d\Gamma, \;\;
+    (A_2y,z) =\alpha (\nabla y, \nabla z) +
+    \int\limits_{\Gamma_1}\gamma yz d\Gamma,
+\]
+$$
+(B_1f, v)
+= \int\limits_{\Gamma_1}fv d\Gamma,\;\; (B_2h, w)
+= \int\limits_{\Gamma_2}hw d\Gamma.
+$$
+Заметим, что
+билинейная форма $(A_1y,z)$ определяет скалярное произведение
+в пространстве $V$ и норма $\|z\|_V=\sqrt{(A_1z,z)}$ эквивалентна
+стандартной норме $V$. Кроме того, определены непрерывные обратные
+операторы
+$A_{1,2}^{-1}:\,V'\mapsto V.$ Для
+$y\in V$, $f\in L^2(\Gamma_1)$, $h\in V'$ справедливы неравенства
+\begin{equation}
+    \label{E}
+    \|y\|\leq K_0\|y\|_V,\; \; \|B_1f\|_{V'}\leq K_1\|w\|_{L^2(\Gamma_1)},
+    \;\;
+    \|B_2 h\|_{V'}\leq K_2\|h\|_{U}.
+\end{equation}
+Здесь постоянные $K_j>0$ зависят только от области $\Omega.$
+
+Используя введенные операторы, слабую формулировку краевой задачи, на решениях которой минимизируется функционал \eqref{cost}, нетрудно записать в виде
+\begin{equation}
+    \label{CS}
+    A_1\theta+g(\theta)=\frac{\kappa_a}{\alpha}\psi+f_1,\;\;\; A_2\psi=f_2+B_2u,
+\end{equation}
+где $f_1=B_1(q_b+s\theta_b)+B_2q_b$, $f_2=B_1r.$
+
+Для формализации задачи оптимального управления
+определим оператор
+ограничений $F(\theta, \psi, u) : V \times V \times U \rightarrow V' \times V'$,
+\[
+    F(\theta, \psi, u) = \{A_1\theta+g(\theta)-\frac{\kappa_a}{\alpha}\psi-f_1 ,\;
+    A_2\psi-f_2-B_2u, \}.
+\]
+
+
+\textbf{Задача $(P_\lambda)$.} Найти тройку $\{\theta_\lambda, \psi_\lambda, u_\lambda \} \in V \times V \times U$
+такую, что
+\begin{equation}
+    \label{CP}
+    J_\lambda(\theta, u) = \frac{1}{2}\|\theta -\theta_b\|^2_{L^2(\Gamma_1)}
+    + \frac{\lambda}{2}\|u\|^2_U \rightarrow \text{inf},\;\; F(\theta, \psi, u)=0.
+\end{equation}
+
+\textbf{Лемма 1.}
+\textit{
+    Пусть выполняются условия} (i),(ii), $u\in U$. \textit{ Тогда
+существует единственное решение системы~\eqref{CS} и при этом}
+\begin{equation}
+    \label{E1}
+    \begin{aligned}
+        \|\theta\|_V \leq
+        \frac{K_0^2\kappa_a}{\alpha}\|\psi\|_V+\|f_1\|_{V'}, \\
+        \|\psi\|_V\leq \|A_2^{-1}\|\left(\|f_2\|_{V'}+K_2\|u\|_U\right).
+    \end{aligned}
+\end{equation}
+
+\textbf{Доказательство.}
+Из второго уравнения в \eqref{CS} следует, что $\psi=A_2^{-1}(f_2+B_2u)$  и поэтому
+$$
+\|\psi\|_V\leq \|A_2^{-1}\|\left(\|f_2\|_{V'}+K_2\|u\|_U\right).
+$$
+Однозначная разрешимость первого уравнения~\eqref{CS} с монотонной нелинейностью хорошо известна (см.
+например~\cite{Kufner}). Умножим скалярно это уравнение на
+на $\theta $, отбросим неотрицательное
+слагаемое $(g(\theta),\theta)$ и оценим правую часть, используя неравенство Коши-Буняковского.
+Тогда, с учетом неравенств \eqref{E}, получаем
+\[
+    \|\theta\|^2_V \leq \frac{\kappa_a}{\alpha}\|\psi\|\|\theta\|+\|f_1\|_{V'}\|\theta\|_V\leq
+    \frac{K_0^2\kappa_a}{\alpha}\|\psi\|_V\|\theta\|_V+\|f_1\|_{V'}\|\theta\|_V
+\]
+В результате получаем оценки~\eqref{E1}.
+
+\textbf{Теорема 1.}
+\textit{
+    При выполнении условий} (i),(ii)
+\textit{ существует решение задачи $(P_\lambda).$
+}
+
+\textbf{ Доказательство.}
+Обозначим через
+$j_\lambda $ точную нижнюю грань целевого функционала $J_\lambda$
+на множестве $u \in U$, $F(\theta, \psi, u)=0$ и рассмотрим
+последовательности такие, что
+$u_m \in U, \; \theta_m \in V, \;\psi_m\in V$, $J_\lambda(\theta_m, u_m)
+\rightarrow j_\lambda,$
+\begin{equation}
+    \label{MS}
+    A_1\theta_m+g(\theta_m)=\frac{\kappa_a}{\alpha}\psi_m+f_1,\;\;\; A_2\psi_m=f_2+B_2u_m.
+\end{equation}
+Из ограниченности последовательности $u_m$ в пространстве $U$ следуют, на основании
+леммы 1, оценки
+\[
+    \|\theta_m\|_V \leq C,\;\;
+    \|\psi_m\|_V \leq C,\;\;\|\theta_m\|_{L^6(\Omega)} \leq C.
+\]
+Здесь через $C>0$ обозначена наибольшая из постоянных, ограничивающих соответствующие нормы и не зависящих от $m$.
+Переходя при необходимости к подпоследовательностям, заключаем, что
+существует тройка $\{ \hat{u}, \hat{\theta}, \hat{\psi} \} \in U \times V \times V,$
+\begin{equation}
+    \label{L}
+    u_m \rightarrow \hat{u} \text{  слабо в } U, \;\;
+    \theta_m, \psi_m \rightarrow \hat{\theta}, \hat{\psi} \text{
+        слабо в } V, \text{
+        сильно в } L^4(\Omega).
+\end{equation}
+Заметим также, что $\forall v \in V$ имеем
+\begin{equation}
+    \label{L1}
+    |( [\theta_m]^4 - [\hat{\theta}]^4, v)|
+    \leq 2 \| \theta_m - \hat{\theta}\|_{L^4(\Omega)} \|v\|_{L^4(\Omega)}
+    \left( \| \theta_m \|^3_{L_6(\Omega)} + \| \hat{\theta} \|^3_{L_6(\Omega)}\right).
+\end{equation}
+Результаты о сходимости~\eqref{L} и неравенство \eqref{L1} позволяют перейти
+к пределу в~\eqref{MS}. В результате получим
+\begin{equation}
+    \label{w1}
+    A_1 \hat{\theta} + g(\hat{\theta}) = \frac{\kappa_a}{\alpha}\hat{\psi}+f_1,\;\;\; A_2\hat{\psi}=f_2+B_2\hat{u}.
+\end{equation}
+Поскольку целевой функционал слабо полунепрерывен снизу, то   $j_\lambda \leq J_\lambda(\hat{\theta}, \hat{u}) \leq \varliminf J_\lambda(\theta_m, u_m) =
+j_\lambda$ и поэтому
+тройка $\{\hat{\theta}, \hat{\psi}, \hat{u} \}$ есть
+решение задачи $(P_\lambda).$
+
+\subsection{Условия оптимальности первого порядка}\label{subsec:3_optimality}
+
+
+Воспользуемся принципом
+Лагранжа для гладко-выпуклых экстремальных задач~\cite{10},\cite{11}.
+Невырожденность условий оптимальности гарантируется условием, что
+образ производной
+оператора ограничений $F(y, u)$, где $y=\{\theta,\psi\}\in V\times V$,
+совпадает с пространством $V'\times V'.$  Последнее означает, что
+линейная система
+\[
+    A_1\xi+g'(\theta)\xi-\frac{\kappa_a}{\alpha}\eta=q_1,\quad
+    A_2\eta=q_2
+\]
+разрешима для всех $\theta\in V$, $q_1,q_2\in V'$.
+Здесь $g'(\theta)=4b\kappa_a|\theta|^3+\frac{\kappa_a}{\alpha}$.
+Из второго уравнения получаем $\eta=A_2^{-1}q_2$.
+Разрешимость первого уравнения при известном $\eta\in V$
+очевидным образом следует из леммы Лакса--Мильграма.
+Отметим, что справедливость остальных условий принципа Лагранжа также очевидна.
+
+Функция Лагранжа задачи $(P_\lambda)$
+имеет вид
+\[
+    L(\theta, \psi, u, p_1, p_2) = J_\lambda(\theta, u)
+    + (A_1\theta+g(\theta)-\frac{\kappa_a}{\alpha}\psi-f_1 ,p_1)+
+    (A_2\psi-f_2-B_2u,p_2),
+\]
+где $p=\{p_1,p_2\}\in V\times V$ -- сопряженное состояние.
+
+Пусть $\{\hat{\theta}, \hat{\varphi}, \hat{u} \}$ -- решение задачи $(P_\lambda)$.
+Вычислив производные Гато функции Лагранжа по $\theta,\,\psi$ и $u$, получаем
+в силу принципа Лагранжа~\cite[Теорема 1.5]{10} следующие равенства
+$\forall v\in V,\, w\in U$
+\begin{equation}
+    \label{OC1}
+    (B_1(\hat{\theta} -\theta_b), v) + (A_1v+g'(\hat{\theta})v,p_1)=0,\;
+    -\frac{\kappa_a}{\alpha}(v ,p_1)+
+    (A_2v,p_2),    = 0,
+\end{equation}
+\begin{equation}
+    \label{OC2}
+    \lambda(B_2\hat{u},w) - (B_2w, p_2) = 0.
+\end{equation}
+Из условий~\eqref{OC1},\eqref{OC2} вытекают уравнения для сопряженного состояния,
+которые вместе с уравнениями~\eqref{w1}
+для оптимальной тройки дают систему оптимальности задачи $(P_\lambda)$.
+
+\textbf{Теорема 2.}
+\textit{ Пусть выполняются условия} (i),(ii).
+\textit{ Если $\{\hat{\theta}, \hat{\psi}, \hat{u}\}$ -- решение
+задачи $(P_\lambda)$, то существует единственная пара $\{p_1, p_2 \} \in V\times V$
+    такая, что}
+\begin{equation}
+    \label{AS}
+    A_1p_1+g'(\hat{\theta}) p_1=-B_1(\hat{\theta} -\theta_b),\;\;
+    A_2p_2=\frac{\kappa_a}{\alpha}p_1,\;\;
+    \lambda\hat{u}=p_2|_{\Gamma_2}.
+\end{equation}
+
+\textbf{Замечание.} Если рассмотреть приведенный целевой функционал $\tilde J_\lambda(u)=J_\lambda(\theta(u), u)$,
+где $\theta(u)$ компонента решения
+задачи~\eqref{CS}, соответствующая управлению $u\in U$,
+то градиент функционала $\tilde J_\lambda(u)$ равен
+$ \tilde J'_\lambda (u) = \lambda u - p_2. $
+Здесь $p_2$ -- компонента решения сопряженной системы~\eqref{AS},
+где $\hat{\theta}\coloneqq\theta(u)$.
+
+

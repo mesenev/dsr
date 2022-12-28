@@ -22,12 +22,7 @@
 %%% Библиография. Выбор движка для реализации %%%
 % Здесь только проверка установленного ключа. Сама настройка выбора движка
 % размещена в common/setup.tex
-\ifnumequal{\value{bibliosel}}{0}{%
-    \input{biblio/predefined}   % Встроенная реализация с загрузкой файла через движок bibtex8
-}{
-    \input{biblio/biblatex}     % Реализация пакетом biblatex через движок biber
-}
-
+\ifnumequal{\value{bibliosel}}{0}{\input{biblio/predefined}}{\input{biblio/biblatex}}
 % Вывести информацию о выбранных опциях в лог сборки
 \typeout{Selected options:}
 \typeout{Draft mode: \arabic{draft}}
@@ -52,51 +47,54 @@
 \begin{document}
 %%% Переопределение именований типовых разделов
 % https://tex.stackexchange.com/a/156050
-\gappto\captionsrussian{\input{common/renames}\unskip} % for polyglossia and babel
-\input{common/renames}
+    \gappto\captionsrussian{\input{common/renames}\unskip} % for polyglossia and babel
+    \input{common/renames}
 
 %%% Структура диссертации (ГОСТ Р 7.0.11-2011, 4)
-\include{Dissertation/title}           % Титульный лист
-\include{Dissertation/contents}        % Оглавление
-\ifnumequal{\value{contnumfig}}{1}{}{\counterwithout{figure}{chapter}}
-\ifnumequal{\value{contnumtab}}{1}{}{\counterwithout{table}{chapter}}
-\include{Dissertation/introduction}    % Введение
-\ifnumequal{\value{contnumfig}}{1}{\counterwithout{figure}{chapter}
-}{\counterwithin{figure}{chapter}}
-\ifnumequal{\value{contnumtab}}{1}{\counterwithout{table}{chapter}
-}{\counterwithin{table}{chapter}}
-\include{Dissertation/part1}           % Глава 1
+    \include{Dissertation/title}           % Титульный лист
+    \include{Dissertation/contents}        % Оглавление
+    \ifnumequal{\value{contnumfig}}{1}{}{\counterwithout{figure}{chapter}}
+    \ifnumequal{\value{contnumtab}}{1}{}{\counterwithout{table}{chapter}}
+    \include{Dissertation/introduction}    % Введение
+    \ifnumequal{\value{contnumfig}}{1}{\counterwithout{figure}{chapter}
+    }{\counterwithin{figure}{chapter}}
+    \ifnumequal{\value{contnumtab}}{1}{\counterwithout{table}{chapter}
+    }{\counterwithin{table}{chapter}}
+    \include{Dissertation/part1}           % Глава 1
 
-\chapter{Теоретический анализ проблем абляции }\label{ch:ch2}
-\include{Dissertation/part2_1}
-\include{Dissertation/part2_2}
-\include{Dissertation/part2_3}
 
-\chapter{Теоретический анализ обратных задач сложного теплообмена}\label{ch:ch3}
-\include{Dissertation/part3_1}
-\include{Dissertation/part3_2}
-\include{Dissertation/part3_3}
+    \chapter{Граничные обратные задачи и задачи с данными Коши}\label{ch:ch2}
+    \input{Dissertation/part2_1}
+    \input{Dissertation/part2_2}
+    \input{Dissertation/part2_3}
 
-\chapter{Численные методы и комплексы программ}\label{ch:ch4}
-\include{Dissertation/part4}
 
-\include{Dissertation/conclusion}      % Заключение
-\include{Dissertation/acronyms}        % Список сокращений и условных обозначений
-\include{Dissertation/dictionary}      % Словарь терминов
-\include{Dissertation/references}      % Список литературы
-\include{Dissertation/lists}           % Списки таблиц и изображений (иллюстративный материал)
+    \chapter{Анализ задач оптимального управления для квазистационарных уравнений сложного теплообмена}\label{ch:ch3}
+    \input{Dissertation/part3_1}
+    \input{Dissertation/part3_2}
+    \input{Dissertation/part3_3}
 
-\setcounter{totalchapter}{\value{chapter}} % Подсчёт количества глав
+
+    \chapter{Численные методы и комплексы программ}\label{ch:ch4}
+    \input{Dissertation/part4}
+
+    \include{Dissertation/conclusion}      % Заключение
+    \include{Dissertation/acronyms}        % Список сокращений и усло   вных обозначений
+    \include{Dissertation/dictionary}      % Словарь терминов
+    \include{Dissertation/references}      % Список литературы
+    \include{Dissertation/lists}           % Списки таблиц и изображений (иллюстративный материал)
+
+    \setcounter{totalchapter}{\value{chapter}} % Подсчёт количества глав
 
 %%% Настройки для приложений
-\appendix
+    \appendix
 % Оформление заголовков приложений ближе к ГОСТ:
-\setlength{\midchapskip}{20pt}
-\renewcommand*{\afterchapternum}{\par\nobreak\vskip \midchapskip}
-\renewcommand\thechapter{\Asbuk{chapter}} % Чтобы приложения русскими буквами нумеровались
+    \setlength{\midchapskip}{20pt}
+    \renewcommand*{\afterchapternum}{\par\nobreak\vskip \midchapskip}
+    \renewcommand\thechapter{\Asbuk{chapter}} % Чтобы приложения русскими буквами нумеровались
 
-\include{Dissertation/appendix}        % Приложения
+    \include{Dissertation/appendix}        % Приложения
 
-\setcounter{totalappendix}{\value{chapter}} % Подсчёт количества приложений
+    \setcounter{totalappendix}{\value{chapter}} % Подсчёт количества приложений
 
 \end{document}
