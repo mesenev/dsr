@@ -1,362 +1,573 @@
-\section{Анализ оптимизационного метода для квазистационарной модели}\label{sec:ch2/sec2}
+\section{Анализ оптимизационного метода для квазистационарной модели}\label{sec:ch2/sec3}
 
-\subsection{Formulation of an Optimal Control Problem}
-Quasi-stationary radiative and diffusion heat transfer in a bounded domain $\Omega \subset$ $\mathrm{R}^{3}$ with a boundary $\Gamma=\partial \Omega$ is modeled within the $P_{1}$-approximation for the radiative transfer equation by the following initial-boundary value problem [16, 23]:
+\subsection{Formulation of an Optimal Control Problem}\label{subsec:ch2/sec3/subsec1}
+квазистационарный радиационный и диффузионный теплообмен в ограниченной области
+$\Omega \subset \mathrm{R}^{3}$ с границей $\Gamma=\partial \Omega$ моделируется
+$P_{1}$-аппроксимацией для уравнения переноса излучения со следующей начально-краевой задачей [16, 23]:
 
-$$
+\[
 \begin{gathered}
-\frac{\partial \theta}{\partial t}-a \Delta \theta+b \kappa_{a}\left(|\theta| \theta^{3}-\varphi\right)=0, \\
--\alpha \Delta \varphi+\kappa_{a}\left(\varphi-|\theta| \theta^{3}\right)=0, \quad x \in \Omega, \quad 0<t<T ; \\
-a\left(\partial_{n} \theta+\theta\right)=r, \quad \alpha\left(\partial_{n} \varphi+\varphi\right)=u \text { on } \Gamma ; \\
-\left.\theta\right|_{t=0}=\theta_{0} .
+\frac{\partial \theta}{\partial t}-a \Delta \theta+b
+\kappa_{a}\left(|\theta| \theta^{3}-\varphi\right)=0, \\
+-\alpha \Delta \varphi+\kappa_{a}\left(\varphi-|\theta| \theta^{3}\right)=0,
+\quad x \in \Omega, \quad 0<t<T; \\
+a\left(\partial_{n} \theta+\theta\right)=r,
+\quad \alpha\left(\partial_{n} \varphi+\varphi\right)=u \text { на } \Gamma; \\
+\left.\theta\right|_{t=0}=\theta_{0}.
 \end{gathered}
-$$
-
-\begin{itemize}
-  \item This work was supported by the Russian Foundation for Basic Research (project no. 200100113 (a)) and by the Ministry of Science and Higher Education of the Russian Federation (contract no. 075-02-2020-1482-1, 21.04.2020)
-\end{itemize}
+\]
 
 \includegraphics[max width=\textwidth, center]{2022_12_28_417a2ab16b2d49239661g-01}
-mons License Attribution 4.0 International (CC BY 4.0). Here, $\theta$ is the normalized temperature, $\varphi$ is the normalized intensity of radiation averaged over all directions. The positive parameters $a, b, \kappa_{a}$, and $\alpha$, describing medium properties, are determined by a standard way [18]. The function $r(x, t), x \in \Gamma, t \in(0, T)$ is given, and the unknown function $u(x, t), x \in \Gamma, t \in$ $(0, T)$ is a control. By $\partial_{n}$ we denote the derivative in direction of the outward normal $\mathbf{n}$.
+Здесь $\theta$ — нормированная температура, $\varphi$ — нормированная интенсивность излучения,
+усредненная по всем направлениям.
+Положительные параметры $a, b, \kappa_{a}$ и $\alpha$, описывающие свойства среды,
+определяются стандартным образом [18].
+Задана функция $r(x, t), x \in \Gamma, t \in(0, T)$,
+а неизвестная функция $u(x, t), x \in \Gamma, t \in$ $(0, T)$ — управление.
+Через $\partial_{n}$ мы обозначаем производную по направлению внешней нормали $\mathbf{n}$.
 
-Extremal problem is to find a triple $\left\{\theta_{\lambda}, \varphi_{\lambda}, u_{\lambda}\right\}$ such that
 
-$$
-J_{\lambda}(\theta, u)=\frac{1}{2} \int_{0}^{T} \int_{\Gamma}\left(\theta-\theta_{b}\right)^{2} d \Gamma d t+\frac{\lambda}{2} \int_{0}^{T} \int_{\Gamma} u^{2} d \Gamma d t \rightarrow \inf
-$$
+Экстремальная задача состоит в том, чтобы найти тройку
+$\left\{\theta_{\lambda}, \varphi_{\lambda}, u_{\lambda}\right\}$ такую, что
 
-on solutions of the problem (1)-(3). The function $\theta_{b}(x, t), x \in \Gamma, t \in(0, T)$ and the regularization parameter $\lambda>0$ are given.
+\[
+J_{\lambda}(\theta, u)=\frac{1}{2} \int_{0}^{T}
+\int_{\Gamma}\left(\theta-\theta_{b}\right)^{2} d \Gamma d t+\frac{\lambda}{2}
+\int_{0}^{T} \int_{\Gamma} u^{2} d \Gamma d t \rightarrow \inf
+\]
+на решениях задачи (1)-(3).
 
-The optimal control problem (1)-(4) if $r:=a\left(\theta_{b}+q_{b}\right)$, where $q_{b}$ is a given function on $\Sigma=\Gamma \times(0, T)$, is for small values of $\lambda$ an approximation of the boundary-value problem for equation (1) for which the boundary conditions for the intensity of radiation $\varphi$ are unknown. Instead them the boundary temperature and flow are set,
+Функция $\theta_{b}(x, t), x \in \Gamma, t \in(0, T)$,
+а также регуляризирующий параметр $\lambda>0$ являются заданными.
 
-$$
-\left.\theta\right|_{\Gamma}=\theta_{b},\left.\quad \partial_{n} \theta\right|_{\Gamma}=q_{b} .
-$$
+Задача оптимального управления (1)-(4), если $r \coloneqq a\left(\theta_{b}+q_{b}\right)$,
+где $q_{b}$ — заданная функция на $\Sigma =\Gamma \times(0, T)$,
+является при малых значениях $\lambda$ аппроксимацией краевой задачи для уравнения (1),
+для которого неизвестны граничные условия для интенсивности излучения $\varphi$.
+Вместо них задаются граничные температура и внешний поток,
+\[
+\left.\theta\right|_{\Gamma}=\theta_{b},\left.\quad \partial_{n} \theta\right|_{\Gamma}=q_{b}.
+\]
 
-Mathematical modeling of heat exchange accounting for the radiation effects is used in various applications, e.g., electron microscopic diagnosis [22, 24], glass manufacturing $[13,14]$, and laser thermotherapy [20]. A detailed theoretical and numerical analysis of various formulations of boundary and inverse problems, as well as control problems for the equations of radiation heat transfer within the $P_{1}$-approximation for the radiation transfer equation, is presented in [7$11,16,18,19,23]$. Interesting boundary value problems associated with radiative heat transfer are studied in [2-6]. The nonlocal solvability of nonstationary and steady-state boundary-value problems for the equations of complex heat transfer without boundary conditions on the radiation intensity and with the conditions (5) for temperature is proved in [12].
+Математическое моделирование теплообмена с учетом радиационных эффектов используется в различных
+приложениях, например, в электронно-микроскопической диагностике [22, 24],
+производстве стекла [13, 14] и лазерной термотерапии [20].
+Подробный теоретический и численный анализ различных постановок краевых и обратных задач,
+а также задач управления для уравнений радиационного теплообмена в рамках $P_1$-приближения
+для уравнения переноса излучения представлен в в [7, 11,16,18, 19,23].
+Интересные краевые задачи, связанные с радиационным теплообменом,
+изучаются в [2-6].
+В [12] доказана нелокальная разрешимость нестационарных и стационарных
+краевых задач для уравнений комплексного теплообмена без граничных
+условий на интенсивность излучения и с условиями (5) на температуру.
 
-The main results of the work are to obtain a priori estimates for the solution of the problem (1), (2), on the basis of which the solvability of the optimal control problem (1)-(4) is proved and an optimality system is derived. It is shown that the sequence $\left\{\theta_{\lambda}, \varphi_{\lambda}, u_{\lambda}\right\}$ of solutions to the extremal problem (1)-(4) for $\lambda \rightarrow+0$ converges to the solution of the initial-boundary value problem (1), (5) with conditions of Cauchy type for temperature. An algorithm for solving the control problem is presented.
+Основные результаты работы заключаются в получении априорных оценок решения задачи (1), (2),
+на основании которых доказывается разрешимость задачи оптимального управления (1)-(4)
+и оптимальность система является производной.
+Показано, что последовательность $\left\{\theta_{\lambda}, \varphi_{\lambda}, u_{\lambda}\right\}$
+решений экстремальной задачи (1)-(4) при $ \lambda \rightarrow+0$
+сходится к решению начально-краевой задачи (1), (5) с условиями типа Коши для температуры.
+Представлен алгоритм решения задачи управления.
 
-\subsection{Formalization of the Control Problem}
-In what follows, we assume that $\Omega \subset \mathrm{R}^{3}$ is a bounded strictly Lipschitz domain whose boundary $\Gamma$ consists of a finite number of smooth pieces. By $L^{s}, 1 \leq s \leq$ $\infty$ we denote the Lebesgue space, and by $H^{s}$ the Sobolev space $W_{2}^{s}$. Let $H=$ $L^{2}(\Omega), V=H^{1}(\Omega)$. By $V^{\prime}$ we denote the dual space of $V$, and by $L^{s}(0, T ; X)$ the Lebesgue space of functions from $L^{s}$, defined on $(0, T)$, with values in the space $X$. The space $H$ is identified with the space $H^{\prime}$ so that $V \subset H=H^{\prime} \subset V^{\prime}$. We denote by $\|\cdot\|$ the standard norm in $H$, and by $(f, v)$ the value of the functional $f \in V^{\prime}$ at the element $v \in V$, which coincides with the inner product in $H$ if $f \in H$.
+\subsection{Формализация задачи управления}\label{subsec:ch2/sec3/subsec2}
+В дальнейшем предполагается, что $\Omega \subset \mathrm{R}^{3}$ — ограниченная строго липшицева область,
+граница которой $\Gamma$ состоит из конечного числа гладких кусков.
+Через $L^{s}, 1 \leq s \leq$ $\infty$
+обозначается пространство Лебега, а через $H^{s}$ пространство Соболева $W_{2}^{s}$.
+Пусть $H=$ $L^{2}(\Omega), V=H^{1}(\Omega)$.
+Через $V^{\prime}$ обозначим двойственное к $V$ пространство, а через $L^{s}(0, T; X)$
+пространство Лебега функций из $L^{s}$, определенных на $(0, T)$ со значениями в пространстве $X$.
+Пространство $H$ отождествляется с пространством
+$H^{\prime}$ так, что $V \subset H=H^{\prime} \subset V^{\prime}$.
+Обозначим через $\|\cdot\|$ стандартную норму в $H$, а через $(f, v)$
+значение функционала $f \in V^{\prime}$ в элементе $v \in V$,
+что совпадает со скалярным произведением в $H$, если $f \in H$.
 
-By $U$ we denote the space $L^{2}(\Sigma)$ with the norm
+Через $U$ обозначим пространство $L^{2}(\Sigma)$ с нормой
 
-$$
-\|u\|_{\Sigma}=\left(\int_{\Sigma} u^{2} d \Gamma d t\right)^{1 / 2} .
-$$
+\[ \|u\|_{\Sigma}=\left(\int_{\Sigma} u^{2} d \Gamma d t\right)^{1 / 2}. \]
 
-We will also use the space $W=\left\{y \in L^{2}(0, T ; V): \quad y^{\prime} \in L^{2}\left(0, T, V^{\prime}\right)\right\}$, where $y^{\prime}=d y / d t$.
+Мы также будем использовать пространство
+$W=\left\{y \in L^{2}(0, T ; V): \quad y^{\prime}
+\in L^{2}\left(0, T, V^{\prime}\right)\right\}$,
+где $y^{\prime}=d y / d t$.
 
-We will assume that
-
+Будем считать, что
 (i) $a, b, \alpha, \kappa_{a}, \lambda=$ Const $>0$,
-
 (ii) $\theta_{b}, q_{b} \in U, r=a\left(\theta_{b}+q_{b}\right) \in L^{5}(\Sigma) \theta_{0} \in L^{5}(\Omega)$.
 
-Let us define the operators $A: V \rightarrow V^{\prime}, B: U \rightarrow V^{\prime}$, using the following equalities, which are valid for any $y, z \in V, w \in L^{2}(\Gamma)$ :
+Определим операторы $A: V \rightarrow V^{\prime}, B: U \rightarrow V^{\prime}$,
+используя следующие равенства, справедливые для любых $y, z \in V, w \in L^{2}(\Gamma)$:
 
-$$
-(A y, z)=(\nabla y, \nabla z)+\int_{\Gamma} y z d \Gamma, \quad(B w, z)=\int_{\Gamma} w z d \Gamma .
-$$
+\[
+(A y, z)=(\nabla y, \nabla z)+\int_{\Gamma} y z d \Gamma, \quad(B w, z)=\int_{\Gamma} w z d \Gamma.
+\]
 
-The bilinear form $(A y, z)$ defines the inner product in the space $V$, and the corresponding norm $\|z\|_{V}=\sqrt{(A z, z)}$ is equivalent to the standard norm in $V$. Therefore, the continuous inverse operator is defined $A^{-1}: V^{\prime} \mapsto V$. Note that for any $v \in V, w \in L^{2}(\Gamma), g \in V^{\prime}$ the following inequalities hold:
+Билинейная форма $(A y, z)$ определяет скалярное произведение в пространстве $V$,
+и соответствующая норма $\|z\|_{V}=\sqrt{(A z, z)}$ эквивалентна к стандартной норме в $V$.
+Следовательно, определен непрерывный обратный оператор $A^{-1}: V^{\prime} \mapsto V$.
+Заметим, что для любых $v \in V, w \in L^{2}(\Gamma), g \in V^{\prime}$ выполняются следующие неравенства:
 
-$$
-\|v\|^{2} \leq C_{0}\|v\|_{V}^{2},\|v\|_{V^{\prime}} \leq C_{0}\|v\|_{V},\|B w\|_{V^{\prime}} \leq\|w\|_{\Gamma},\left\|A^{-1} g\right\|_{V} \leq\|g\|_{V^{\prime}} .
-$$
+\[
+\|v\|^{2} \leq C_{0}\|v\|_{V}^{2},\|v\|_{V^{\prime}} \leq C_{0}\|v\|_{V},\|B w\|_{V^{\prime}}
+\leq\|w\|_{\Gamma},\left\|A^{-1} g\right\|_{V} \leq\|g\|_{V^{\prime}}.
+\]
 
-Here, the constant $C_{0}>0$ depends only on the domain $\Omega$.
+Здесь константа $C_{0}>0$ зависит только от домена $\Omega$.
 
-In what follows, we use the following notation $[h]^{s}:=|h|^{s} \operatorname{sign} h, s>0, h \in \mathbf{R}$ for the monotone power function.
+В дальнейшем будем использовать следующие обозначени
+$[h]^{s} \coloneqq |h|^{s} \operatorname{sign} h, s>0, h \in \mathbf{R}$
+для монотонной степенной функции.
 
-Definition. The pair $\theta \in W, \varphi \in L^{2}(0, T ; V)$ is called a weak solution of the problem (1)-(3) if
 
-$$
-\theta^{\prime}+a A \theta+b \kappa_{a}\left([\theta]^{4}-\varphi\right)=B r, \quad \theta(0)=\theta_{0}, \quad \alpha A \varphi+\kappa_{a}\left(\varphi-[\theta]^{4}\right)=B u
-$$
+\textbf{Определение.}
+Пара $\theta \in W, \varphi \in L^{2}(0, T ; V)$ называется слабым решением задачи (1)-(3), если
 
-To formulate the optimal control problem, we define the constraint operator $F(\theta, \varphi, u): W \times L^{2}(0, T ; V) \times U \rightarrow L^{2}\left(0, T, V^{\prime}\right) \times L^{2}\left(0, T, V^{\prime}\right) \times H$ such that
+\[
+\theta^{\prime}+a A \theta+b \kappa_{a}\left([\theta]^{4}-\varphi\right)=B r,
+\quad \theta(0)=\theta_{0}, \quad \alpha A \varphi+\kappa_{a}\left(\varphi-[\theta]^{4}\right)=B u.
+\]
 
-$$
-F(\theta, \varphi, u)=\left\{\theta^{\prime}+a A \theta+b \kappa_{a}\left([\theta]^{4}-\varphi\right)-B r, \alpha A \varphi+\kappa_{a}\left(\varphi-[\theta]^{4}\right)-B u, \theta(0)-\theta_{0}\right\} .
-$$
+Для формулировки задачи оптимального управления определим оператор ограничения
+$F(\theta, \varphi, u): W \times L^{2}(0, T; V) \times U
+\rightarrow L^{2}\ left(0, T, V^{\prime}\right) \times L^{2}\left(0, T, V^{\prime}\right) \times H$ таким, что
 
-Problem $(\mathbf{O C})$. Find the triple $\{\theta, \varphi, u\} \in W \times L^{2}(0, T ; V) \times U$ such that
+\[
+F(\theta, \varphi, u)=\left\{\theta^{\prime}+a A
+\theta+b \kappa_{a}\left([\theta]^{4}-\varphi\right)-B r,
+\alpha A \varphi+\kappa_{a}\left(\varphi-[\theta]^{4}\right)-B u, \theta(0)-\theta_{0}\right\}.
+\]
 
-$$
-J_{\lambda}(\theta, u) \equiv \frac{1}{2}\left\|\theta-\theta_{b}\right\|_{\Sigma}^{2}+\frac{\lambda}{2}\|u\|_{\Sigma}^{2} \rightarrow \inf , \quad F(\theta, \varphi, u)=0 .
-$$
+Таким образом задача $(\mathbf{OC})$ заключается в отыскании тройки
+$\{\theta, \varphi, u\} \in W \times L^{2}(0, T ; V) \times U$ такой, что
 
-\subsection{Solvability of the Problem (OC)}
-Let us first prove the unique solvability of the problem (1)-(3).
+\[
+J_{\lambda}(\theta, u) \equiv \frac{1}{2}\left\|\theta-\theta_{b}\right\|_{\Sigma}^{2}+
+\frac{\lambda}{2}\|u\|_{\Sigma}^{2} \rightarrow \inf , \quad F(\theta, \varphi, u)=0.
+\]
 
-Lemma 1. Let conditions (i), (ii), $u \in U$ hold. Then there is a unique weak solution to the problem (1)-(3) and, moreover,
+\subsection{Разрешимость задачи $(\mathbf{OC})$}\label{subsec:ch2/sec3/subsec3}
+Докажем сначала однозначную разрешимость задачи (1)-(3).
 
-$$
-\psi=[\theta]^{5 / 2} \in L^{\infty}(0, T ; H) \cap L^{2}(0, T ; V), \quad[\theta]^{4} \in L^{2}(0, T ; H) .
-$$
+\textbf{Лемма 1.}
+Пусть выполняются условия (i), (ii), $u \in U$.
+Тогда существует единственное слабое решение задачи (1)-(3) и, кроме того,
 
-Proof. Let us express $\varphi$ from the last equation of (6) and substitute it into the first one. As a result, we obtain the following Cauchy problem for an equation with operator coefficients:
+\[
+\psi=[\theta]^{5 / 2} \in L^{\infty}(0, T; H) \cap L^{2}(0, T ; V),
+\quad[\theta]^{4} \in L^{2}(0, T ; H).
+\]
 
-$$
-\theta^{\prime}+a A \theta+L[\theta]^{4}=B r+f, \quad \theta(0)=\theta_{0} .
-$$
+\textit{Доказательство.}
+Выразим $\varphi$ из последнего уравнения (6) и подставим его в первое.
+В результате получаем следующую задачу Коши для уравнения с операторными коэффициентами:
 
-Here,
+\[
+\theta^{\prime}+a A \theta+L[\theta]^{4}=B r+f, \quad \theta(0)=\theta_{0}.
+\]
 
-$$
-L=\alpha b \kappa_{a} A\left(\alpha A+\kappa_{a} I\right)^{-1}: V^{\prime} \rightarrow V^{\prime}, f=b \kappa_{a}\left(\alpha A+\kappa_{a} I\right)^{-1} B u \in L^{2}(0, T ; V) .
-$$
+Здесь
 
-Let us obtain a priori estimates for the solution of the problem (7), on the basis of which the solvability of this problem is derived in a standard way. Let $[\zeta, \eta]=\left(\left(\alpha I+\kappa_{a} A^{-1}\right) \zeta, \eta\right), \zeta \in V^{\prime}, \eta \in V$. Note that the expression $[[\eta]]=\sqrt{[\eta, \eta]}$ defines the norm in $H$ equivalent to the standard one.
+\[
+L=\alpha b \kappa_{a} A\left(\alpha A+\kappa_{a} I\right)^{-1}: V^{\prime}
+\rightarrow V^{\prime}, f=b \kappa_{a}\left(\alpha A+\kappa_{a} I\right)^{-1} B u \in L^{2}(0, T ; V).
+\]
 
-Multiplying, in the sense of the inner product of $H$, the equation in (7) by $\left(\alpha I+\kappa_{a} A^{-1}\right) \theta$, we obtain
+Получим априорные оценки решения задачи (7), на основании которых стандартным образом выводится
+разрешимость этой задачи.
+Пусть $[\zeta, \eta]=\left(\left(\alpha I+\kappa_{a} A^{-1}\right) \zeta,
+\eta\right), \zeta \in V^{\prime}, \eta \in V$.
+Отметим, что выражение $[[\eta]]=\sqrt{[\eta, \eta]}$ определяет норму в $H$, эквивалентную стандартной.
 
-$$
-\frac{1}{2} \frac{d}{d t}[[\theta]]^{2}+a \alpha(A \theta, \theta)+a \kappa_{a}\|\theta\|^{2}+\alpha b \kappa_{a}\|\theta\|_{L^{5}(\Omega)}^{5}=[B r, \theta]+[f, \theta] .
-$$
+Умножая скалярно в $H$ уравнение в (7) на $\left(\alpha I+\kappa_{a} A^{-1}\right) \theta$, получаем
 
-The equality (8) implies the estimate
+\[
+\frac{1}{2} \frac{d}{d t}[[\theta]]^{2}+a
+\alpha(A \theta, \theta)+a \kappa_{a}\|\theta\|^{2}+\alpha
+b \kappa_{a}\|\theta\|_{L^{5}(\Omega)}^{5}=[B r, \theta]+[f, \theta].
+\]
 
-$$
+Из равенства (8) следует оценка
+
+\[
 \|\theta\|_{L^{\infty}(0, T ; H)}+\|\theta\|_{L^{2}(0, T ; V)}+\|\theta\|_{L^{5}(Q)} \leq C_{1},
-$$
+\]
 
-where $C_{1}$ depends only on $a, b, \alpha, \kappa_{a},\|f\|_{L^{2}(0, T ; H)},\left\|\theta_{0}\right\|,\|r\|_{L^{2}(\Sigma)}$.
+где $C_{1}$ зависит только от $a, b, \alpha, \kappa_{a},\|f\|_{L^{2}(0, T ; H)},
+\left\|\ theta_{0}\right\|,\|r\|_{L^{2}(\Sigma)}$.
 
-Further, let $\psi=[\theta]^{5 / 2}$. Note that
+Далее положим $\psi=[\theta]^{5 / 2}$.
+В таком случае
 
-$$
-\left(\theta^{\prime},[\theta]^{4}\right)=\frac{1}{5} \frac{d}{d t}\|\psi\|^{2}, \quad\left(A \theta,[\theta]^{4}\right)=\frac{16}{25}\|\nabla \psi\|^{2}+\|\psi\|_{L^{2}(\Gamma)}^{2} .
-$$
+\[
+\left(\theta^{\prime},[\theta]^{4}\right)=\frac{1}{5} \frac{d}{d t}\|\psi\|^{2},
+\quad\left(A \theta,[\theta]^{4}\right)=\frac{16}{25}\|\nabla \psi\|^{2}+\|\psi\|_{L^{2}(\Gamma)}^{2}.
+\]
 
-Multiplying, in the sense of the inner product of $H$, the equation in (7) by $[\theta]^{4}=[\psi]^{8 / 5}$, we obtain
+Умножая скалярно в $H$ уравнение в (7) на $[\theta]^{4}=[\psi]^{8 / 5}$, получаем
 
-$$
-\frac{1}{5} \frac{d}{d t}\|\psi\|^{2}+a\left(\frac{16}{25}\|\nabla \psi\|^{2}+\|\psi\|_{L^{2}(\Gamma)}^{2}\right)+\left(L[\psi]^{8 / 5},[\psi]^{8 / 5}\right)=\left(B r+f,[\psi]^{8 / 5}\right) .
-$$
+\[
+\frac{1}{5} \frac{d}{d t}\|\psi\|^{2}+a\left(\frac{16}{25}\|\nabla \psi\|^{2}+
+\|\psi\|_{L^{2}(\Gamma)}^{2}\right)+\left(L[\psi]^{8 / 5},[\psi]^{8 / 5}\right)=\left(B r+f,[\psi]^{8 / 5}\right).
+\]
 
-The equality (10) implies the estimate
+Равенство (10) влечет оценку
 
-$$
-\|\psi\|_{L^{\infty}(0, T ; H)}+\|\psi\|_{L^{2}(0, T ; V)}+\left\|[\theta]^{4}\right\|_{L^{2}(0, T ; H)} \leq C_{2},
-$$
+\[
+\|\psi\|_{L^{\infty}(0, T ; H)}+\|\psi\|_{L^{2}(0, T ; V)}+
+\left\|[\theta]^{4}\right\|_{L^{2}(0, T ; H)} \leq C_{2},
+\]
 
-where $C_{2}$ depends only on $a, b, \alpha, \kappa_{a},\|f\|_{L^{2}(0, T ; H)},\left\|\theta_{0}\right\|_{L^{5}(\Omega)},\|r\|_{L^{5}(\Sigma)}$. Further, let us estimate $\left\|\theta^{\prime}\right\|_{L^{2}\left(0, T ; V^{\prime}\right)}$ taking into account $\theta^{\prime}=B r+f-a A \theta-L[\theta]^{4}$. Due to the conditions on the initial data, it is true that $B r, f \in L^{2}\left(0, T ; V^{\prime}\right)$. Since $\theta \in L^{2}(0, T ; V)$, then $A \theta \in L^{2}\left(0, T ; V^{\prime}\right)$. Let $\zeta=L[\theta]^{4}$. Then
+где $C_{2}$ зависит только от $a, b, \alpha, \kappa_{a},\|f\|_{L^{2}(0, T ; H)},
+\left\|\ theta_{0}\right\|_{L^{5}(\Omega)},\|r\|_{L^{5}(\Sigma)}$.
+Дадим оценку $\left\|\theta^{\prime}\right\|_{L^{2}\left(0, T ; V^{\prime}\right)}$
+с учетом $ \theta^{\prime}=B r+f-a A \theta-L[\theta]^{4}$.
+В силу условий на начальные данные верно $B r, f \in L^{2}\left(0, T ; V^{\prime}\right)$.
+Поскольку $\theta \in L^{2}(0, T ; V)$, то $A \theta \in L^{2}\left(0, T ; V^{\prime}\right)$.
+Пусть $\zeta=L[\theta]^{4}$.
+Таким образом
 
-$$
-\alpha \zeta+\kappa_{a} A^{-1} \zeta=\alpha b \kappa_{a}[\theta]^{4} .
-$$
+\[
+\alpha \zeta+\kappa_{a} A^{-1} \zeta=\alpha b \kappa_{a}[\theta]^{4}.
+\]
 
-Multiplying, in the sense of the inner product of $H$, the last equality by $\zeta$, we obtain
 
-$$
-\alpha\|\zeta\|^{2}+\kappa_{a}\left(A^{-1} \zeta, \zeta\right)=\alpha b \kappa_{a}\left([\theta]^{4}, \zeta\right) \leq \alpha\left(\|\zeta\|^{2}+\frac{\left(b \kappa_{a}\right)^{2}}{4}\left\|[\theta]^{4}\right\|^{2}\right) \text {. }
-$$
+Умножая в смысле скалярного произведения $H$ последнее равенство на $\zeta$, получаем
 
-Therefore, $\|\zeta\|_{V^{\prime}}^{2}=\left(A^{-1} \zeta, \zeta\right) \leq \frac{\alpha \kappa_{a} b^{2}}{4}\left\|[\theta]^{4}\right\|^{2}$ and, by virtue of the estimates (9), (11), we obtain
+\[
+\alpha\|\zeta\|^{2}+\kappa_{a}\left(A^{-1} \zeta,
+\zeta\right)=\alpha b \kappa_{a}\left([\theta]^{4},
+\zeta\right) \leq \alpha\left(\|\zeta\|^{2}+\frac{\left(b \kappa_{a}\right)^{2}}{4}\left\|
+[\theta]^{4}\right\|^{2}\right).
+\]
 
-$$
-\left\|\theta^{\prime}\right\|_{L^{2}\left(0, T ; V^{\prime}\right)} \leq\|B r+f\|_{L^{2}\left(0, T ; V^{\prime}\right)}+a C_{1}+\sqrt{\alpha \kappa_{a}} b C_{2} .
-$$
 
-The estimates (9)-(12) are sufficient to prove the solvability of the problem.
+Следовательно, $\|\zeta\|_{V^{\prime}}^{2}=\left(A^{-1} \zeta,
+\zeta\right) \leq \frac{\alpha \kappa_{ a} b^{2}}{4}\left\|[\theta]^{4}\right\|^{2}$
+и в силу оценок (9), (11) получаем
 
-Let $\theta_{1,2}$ be solutions of the problem (7), $\eta=\theta_{1}-\theta_{2}$. Then
+\[
+\left\|\theta^{\prime}\right\|_{L^{2}\left(0, T; V^{\prime}\right)}
+\leq\|B r+f\|_{L^{2}\left(0, T ; V^{\prime}\right)}+a C_{1}+\sqrt{\alpha \kappa_{a}} b C_{2}.
+\]
 
-$$
-\eta^{\prime}+a A \eta+L\left(\left[\theta_{1}\right]^{4}-\left[\theta_{1}\right]^{4}\right)=0, \quad \eta(0)=0 .
-$$
 
-Multiplying, in the sense of the inner product of $H$, the last equation by $\left(\alpha I+\kappa_{a} A^{-1}\right) \eta$, we obtain
+Оценок (9)—(12) достаточно для доказательства разрешимости задачи.
 
-$$
-\frac{1}{2} \frac{d}{d t}[[\eta]]^{2}+a \alpha(A \eta, \eta)+a \kappa_{a}\|\eta\|^{2}+\alpha b \kappa_{a}\left(\left[\theta_{1}\right]^{4}-\left[\theta_{1}\right]^{4}, \theta_{1}-\theta_{2}\right)=0 .
-$$
+Пусть $\theta_{1,2}$ — решения задачи (7), $\eta=\theta_{1}-\theta_{2}$.
+Затем
+\[
+\eta^{\prime}+a A \eta+L\left(\left[\theta_{1}\right]^{4}-
+\left[\theta_{1}\right]^{4}\right)=0, \quad \eta(0)=0.
+\]
 
-The last term on the left-hand side is non-negative and therefore, integrating the resulting equality over time, we derive $\eta=\theta_{1}-\theta_{2}=0$, which means the uniqueness of the solution. The lemma is proved.
 
-Theorem 1. Let conditions (i), (ii) hold. Then there is a solution of the problem $(O C)$.
+Умножая в смысле скалярного произведения $H$ последнее уравнение на
+$\left(\alpha I+\kappa_{a} A^{-1}\right) \eta$, получаем
 
-Proof. Let $j_{\lambda}=\inf J_{\lambda}$ on the set $u \in U, F(\theta, \varphi, u)=0$. We choose a minimizing sequence $u_{m} \in U, \theta_{m} \in W, \varphi_{m} \in L^{2}(0, T ; V), J_{\lambda}\left(\theta_{m}, u_{m}\right) \rightarrow j_{\lambda}$,
+\[
+\frac{1}{2} \frac{d}{d t}[[\eta]]^{2}+a \alpha(A \eta, \eta)
++a \kappa_{a}\|\eta\|^{2}+\alpha b \kappa_{a}\left(\left[\theta_{1}\right]^{4}
+-\left[\theta_{1}\right]^{4}, \theta_{1}-\theta_{2}\right)=0.
+\]
 
-$$
+
+Последний член в левой части неотрицательный, поэтому, интегрируя полученное равенство по времени,
+получаем $\eta=\theta_{1}-\theta_{2}=0$, что означает единственность решение.
+Лемма доказана.
+
+\textbf{Теорема 1.}
+Пусть выполняются условия (i), (ii).
+Тогда есть решение проблемы $(OC)$.
+
+\textit{Доказательство.}
+Пусть $j_{\lambda}=\inf J_{\lambda}$ on the set $u \in U, F(\theta, \varphi, u)=0$.
+Выберем минимизирующую последовательность
+$u_{m} \in U, \theta_{m} \in W, \varphi_{m} \in L^{2}(0, T; V),
+J_{\lambda}\left(\theta_{m}, u_{m}\right) \rightarrow j_{\lambda}$,
+
+\[
 \begin{aligned}
-\theta_{m}^{\prime}+a A \theta_{m}+b \kappa_{a}\left(\left[\theta_{m}\right]^{4}-\varphi_{m}\right)=B r, & \theta_{m}(0)=\theta_{0}, \\
-& \alpha A \varphi_{m}+\kappa_{a}\left(\varphi_{m}-\left[\theta_{m}\right]^{4}\right)=B u_{m} .
+\theta_{m}^{\prime}+a A \theta_{m}+b \kappa_{a}\left(\left[\theta_{m}\right]^{4}-
+\varphi_{m}\right)=B r, & \theta_{m}(0)=\theta_{0}, \\
+& \alpha A \varphi_{m}+\kappa_{a}\left(\varphi_{m}-
+\left[\theta_{m}\right]^{4}\right)=B u_{m}.
 \end{aligned}
-$$
+\]
 
-The boundedness of the sequence $u_{m}$ in the space $U$ implies, by Lemma 1 , the estimates
+Ограниченность последовательности $u_{m}$ в пространстве $U$ влечет по лемме 1 оценки
 
-$$
+\[
 \begin{gathered}
-\left\|\theta_{m}\right\|_{L^{2}(0, T ; V)} \leq C, \quad\left\|\theta_{m}\right\|_{L^{\infty}\left(0, T ; L^{5}(\Omega)\right)} \leq C,\left\|\theta_{m}^{\prime}\right\|_{L^{2}\left(0, T ; V^{\prime}\right)} \leq C, \\
-\int_{0}^{T} \int_{\Omega}\left|\theta_{m}\right|^{8} d x d t \leq C, \quad\left\|\varphi_{m}\right\|_{L^{2}(0, T ; V)} \leq C .
+\left\|\theta_{m}\right\|_{L^{2}(0, T ; V)} \leq C,
+\quad\left\|\theta_{m}\right\|_{L^{\infty}\left(0, T; L^{5}(\Omega)\right)} \leq C,
+\left\|\theta_{m}^{\prime}\right\|_{L^{2}\left(0, T; V^{\prime}\right)} \leq C, \\
+\int_{0}^{T} \int_{\Omega}\left|\theta_{m}\right|^{8} d x d t \leq C,
+\quad\left\|\varphi_{m}\right\|_{L^{2}(0, T ; V)} \leq C.
 \end{gathered}
-$$
+\]
 
-Here, $C>0$ denotes the largest of the constants limiting the corresponding norms and not depending on $m$. Passing, if necessary, to subsequences, we conclude that there is a triple $\{\widehat{u}, \widehat{\theta}, \widehat{\varphi}\} \in U \times W \times L^{2}(0, T ; V)$,
+Здесь $C>0$ обозначает наибольшую из констант, ограничивающих соответствующие нормы и не зависящих от $m$.
+Переходя, если необходимо, к подпоследовательностям, заключаем, что существует тройка
+$\{\widehat{u}, \widehat{\theta}, \widehat{\varphi}\} \in U \times W \times L^{2}(0, T; V)$,
 
-$$
+\[
 \begin{gathered}
-u_{m} \rightarrow \widehat{u} \text { weakly in } U \\
-\theta_{m} \rightarrow \widehat{\theta} \text { weakly in } L^{2}(0, T ; V), \text { strongly in } L^{2}(Q), \\
-\varphi_{m} \rightarrow \widehat{\varphi} \text { weakly in } L^{2}(0, T ; V) .
+u_{m} \rightarrow \widehat{u} \text { слабо в } U \\
+\theta_{m} \rightarrow \widehat{\theta} \text{ слабо в } L^{2}(0, T; V), \text { сильно в } L^{2}(Q), \\
+\varphi_{m} \rightarrow \widehat{\varphi} \text{ слабо в }  L^{2}(0, T ; V).
 \end{gathered}
-$$
+\]
 
-Moreover, $\widehat{\theta} \in L^{8}(Q) \cap L^{\infty}\left(0, T ; L^{5}(\Omega)\right)$.
 
-Convergence results allow us to pass to the limit in (13). In this case, the passage to the limit in the nonlinear terms follows from the following inequality, which is valid for $\xi \in C^{\infty}(\bar{Q})$ :
+Более того, $\widehat{\theta} \in L^{8}(Q) \cap L^{\infty}\left(0, T ; L^{5}(\Omega)\right)$.
 
-$$
+Результаты сходимости позволяют перейти к пределу в (13).
+В этом случае предельный переход в нелинейной части следует из следующего неравенства,
+справедливого при $\xi \in C^{\infty}(\bar{Q})$:
+
+\[
 \begin{aligned}
-& \int_{0}^{T}\left|\left(\left[\theta_{m}\right]^{4}-[\widehat{\theta}]^{4}, \xi\right)\right| d t \leq \\
-& \quad 2 \max _{\bar{Q}}|\xi|\left(\left\|\theta_{m}\right\|_{L^{5}(\Omega)}^{5 / 3}\left\|\theta_{m}\right\|_{L^{8}(\Omega)}^{4 / 3}+\|\widehat{\theta}\|_{L^{5}(\Omega)}^{5 / 3}\|\widehat{\theta}\|_{L^{8}(\Omega)}^{4 / 3}\right)\left\|\theta_{m}-\widehat{\theta}\right\|_{L^{2}(Q)} .
+& \int_{0}^{T}\left|\left(\left[\theta_{m}\right]^{4}-[\widehat{\theta}]^{4},
+\xi\right)\right| d t \leq \\
+& \quad 2 \max _{\bar{Q}}|\xi|\left(\left\|\theta_{m}\right\|_{L^{5}(\Omega)}^{5 / 3}\left\|
+\theta_{m}\right\|_{L^{8}(\Omega)}^{4 / 3}+\|\widehat{\theta}\|_{L^{5}(\Omega)}^{5 / 3}
+\|\widehat{\theta}\|_{L^{8}(\Omega)}^{4 / 3}\right)\left\|\theta_{m}-\widehat{\theta}\right\|_{L^{2}(Q)}.
 \end{aligned}
-$$
+\]
 
-Therefore,
 
-$$
-\widehat{\theta}^{\prime}+a A \widehat{\theta}+b \kappa_{a}\left([\widehat{\theta}]^{4}-\widehat{\varphi}\right)=B r, \quad \widehat{\theta}(0)=\theta_{0}, \quad \alpha A \widehat{\varphi}+\kappa_{a}\left(\widehat{\varphi}-[\widehat{\theta}]^{4}\right)=B \widehat{u},
-$$
+Получаем, что
 
-and wherein $j_{\lambda} \leq J_{\lambda}(\widehat{\theta}, \widehat{u}) \leq \underline{\lim } J_{\lambda}\left(\theta_{m}, u_{m}\right)=j_{\lambda}$. Thus, the triple $\{\widehat{\theta}, \widehat{\varphi}, \widehat{u}\}$ is a solution of the problem $(O C)$.
+\[
+\widehat{\theta}^{\prime}+a A \widehat{\theta}+b
+\kappa_{a}\left([\widehat{\theta}]^{4}-\widehat{\varphi}\right)=B r,
+\quad \widehat{\theta}(0)=\theta_{0},
+\quad \alpha A \widehat{\varphi}+\kappa_{a}\left(\widehat{\varphi}-
+[\widehat{\theta}]^{4}\right)=B \widehat{u},
+\]
 
-\subsection{Optimality Conditions}
-To obtain an optimality system, it is sufficient to use the Lagrange principle for smooth-convex extremal problems [15,17]. Let us check the validity of the key condition that the image of the derivative of the constraint operator $F_{y}^{\prime}(y, u)$, where $y=\{\theta, \varphi\} \in W \times L^{2}(0, T ; V)$, coincides with space $L^{2}\left(0, T ; V^{\prime}\right) \times L^{2}\left(0, T ; V^{\prime}\right) \times H$. It is this condition that guarantees the nondegeneracy of the optimality conditions. Recall that
+где $j_{\lambda} \leq J_{\lambda}(\widehat{\theta},
+\widehat{u}) \leq \underline{\lim }
+J_{\lambda}\left(\theta_{m}, u_{m}\right)=j_{\lambda}$.
+Таким образом, тройка $\{\widehat{\theta}, \widehat{\varphi}, \widehat{u}\}$ есть решение задачи $(OC)$.
 
-$F(\theta, \varphi, u)=\left\{\theta^{\prime}+a A \theta+b \kappa_{a}\left([\theta]^{4}-\varphi\right)-B r, \alpha A \varphi+\kappa_{a}\left(\varphi-[\theta]^{4}\right)-B u, \theta(0)-\theta_{0}\right\}$.
+\subsection{Условия оптимальности}\label{subsec:ch2/sec3/subsec4}
+Для получения системы оптимальности достаточно использовать принцип Лагранжа
+для гладко-выпуклых экстремальных задач [15,17].
+Проверим выполнение ключевого условия,
+что образ производной оператора связи $F_{y}^{\prime}(y, u)$,
+где $y=\{\theta, \varphi\} \ в W \times L^{2}(0, T ; V)$,
+совпадает с пространством
+$L^{2}\left(0, T; V^{\prime}\right) \times L^{2} \left(0, T ; V^{\prime}\right) \times H$.
+Именно это условие гарантирует невырожденность условий оптимальности.
+Напомним, что
 
-Lemma 2. Let the conditions (i), (ii) hold. If $\widehat{y} \in W \times L^{2}(0, T ; V), \widehat{u} \in U$ is a solution of the problem (OC), then the following equality is valid:
+$F(\theta, \varphi, u)=\left\{\theta^{\prime}+
+a A \theta+b \kappa_{a}\left([\theta]^{4}-\varphi\right)-B r,
+\alpha A \varphi+\kappa_{a}\left(\varphi-[\theta]^{4}\right)-B u, \theta(0)-\theta_{0}\right\}$.
 
-$$
-\operatorname{Im} F_{y}^{\prime}(\widehat{y}, \widehat{u})=L^{2}\left(0, T ; V^{\prime}\right) \times L^{2}\left(0, T ; V^{\prime}\right) \times H .
-$$
+\textbf{Лемма 2.}
+Пусть выполнены условия (i), (ii).
+Если $\widehat{y} \in W \times L^{2}(0, T ; V), \widehat{u} \in U$
+является решением задачи $(OC)$, то справедливо равенство:
 
-Proof. It is enough to check that the problem
+\[
+\operatorname{Im} F_{y}^{\prime}
+(\widehat{y}, \widehat{u})=L^{2}\left(0, T; V^{\prime}\right)
+\times L^{2}\left(0, T; V^{\prime}\right) \times H.
+\]
 
-$$
-\xi^{\prime}+a A \xi+b \kappa_{a}\left(4|\widehat{\theta}|^{3} \xi-\eta\right)=f_{1}, \quad \xi(0)=\xi_{0}, \quad \alpha A \eta+\kappa_{a}\left(\eta-4|\widehat{\theta}|^{3} \xi\right)=f_{2}
-$$
+\textit{Доказательство.}
+Достаточно проверить, что проблема
 
-is solvable for all $f_{1,2} \in L^{2}\left(0, T ; V^{\prime}\right), \xi_{0} \in H$. Let us express $\eta$ from the last equation and substitute it into the first one. As a result, we get the following problem:
+\[
+\xi^{\prime}+a A \xi+b \kappa_{a}\left(4|\widehat{\theta}|^{3}
+\xi-\eta\right)=f_{1}, \quad \xi(0)=\xi_{0},
+\quad \alpha A \eta+\kappa_{a}\left(\eta-4|\widehat{\theta}|^{3} \xi\right)=f_{2}
+\]
 
-$$
-\xi^{\prime}+a A \xi+4 L\left(|\widehat{\theta}|^{3} \xi\right)=f_{1}+b \kappa_{a}\left(\alpha A+\kappa_{a} I\right)^{-1} f_{2}, \xi(0)=\xi_{0} .
-$$
+разрешима для всех $f_{1,2} \in L^{2}\left(0, T; V^{\prime}\right), \xi_{0} \in H$.
+Выразим $\eta$ из последнего уравнения и подставим его в первое.
+В результате получаем следующую задачу:
 
-The unique solvability of the linear problem (14) is proved similarly to Lemma 1. According to Lemma 2, the Lagrangian of the problem (OC) has the form
 
-$$
+\[
+\xi^{\prime}+a A \xi+4 L\left(|\widehat{\theta}|^{3}
+\xi\right)=f_{1}+b \kappa_{a}\left(\alpha A+\kappa_{a}
+I\right)^{-1} f_{2}, \xi(0)=\xi_{0}.
+\]
+
+Единственная разрешимость линейной задачи (14) доказывается аналогично лемме 1.
+Согласно лемме 2 лагранжиан задачи $(OC)$ имеет вид
+
+\[
 \begin{aligned}
-& L\left(\theta, \varphi, u, p_{1}, p_{2}, q\right)=J_{\lambda}(\theta, u)+\int_{0}^{T}\left(\theta^{\prime}+a A \theta+b \kappa_{a}\left([\theta]^{4}-\varphi\right)-B r, p_{1}\right) d t \\
-&+\int_{0}^{T}\left(\alpha A \varphi+\kappa_{a}\left(\varphi-[\theta]^{4}\right)-B u, p_{2}\right) d t+\left(q, \theta(0)-\theta_{0}\right) .
+& L\left(\theta, \varphi, u, p_{1}, p_{2}, q\right)=J_{\lambda}(\theta, u)
++\int_{0}^{T}\left(\theta^{\prime} +a A \theta+b \kappa_{a}\left([\theta]^{4}-\varphi\right)
+-B r, p_{1}\right) d t \\
+&+\int_{0}^{T}\left(\alpha A \varphi+\kappa_{a}\left(\varphi-[\theta]^{4}\right)-B u,
+p_{2}\right) d t+\left(q, \theta(0)-\theta_{0}\right).
 \end{aligned}
-$$
+\]
 
-Here, $p=\left\{p_{1}, p_{2}\right\} \in L^{2}(0, T ; V) \times L^{2}(0, T ; V)$ Is the conjugate state, $q \in H$ is the Lagrange multiplier for the initial condition. If $\{\widehat{\theta}, \widehat{\varphi}, \widehat{u}\}$ is a solution of the problem (OC), then by virtue of the Lagrange principle [15, Ch. 2, Theorem 1.5] the variational equalities hold $\forall \zeta \in L^{2}(0, T ; V), v \in U$
+Здесь $p=\left\{p_{1}, p_{2}\right\} \in L^{2}(0, T; V) \times L^{2}(0, T; V) $ — сопряженное состояние,
+$q \in H$ — множитель Лагранжа для начального условия.
+Если $\{\widehat{\theta}, \widehat{\varphi}, \widehat{u}\}$ является решением задачи $(OC)$,
+то в силу принципа Лагранжа [15, гл\. 2, теорема 1.5]
+выполняются вариационные равенства $\forall \zeta \in L^{2}(0, T ; V), v \in U$
 
-$$
+\[
 \begin{gathered}
-\int_{0}^{T}\left(\left(B\left(\widehat{\theta}-\theta_{b}\right), \zeta\right)+\left(\zeta^{\prime}+a A \zeta+4 b \kappa_{a}|\widehat{\theta}|^{3} \zeta, p_{1}\right)-\kappa_{a}\left(4|\widehat{\theta}|^{3} \zeta, p_{2}\right)\right) d t+(q, \zeta(0))=0, \\
-\int_{0}^{T}\left(\left(\alpha A \zeta+\kappa_{a} \zeta, p_{2}\right)-b \kappa_{a}\left(\zeta, p_{1}\right)\right) d t=0, \int_{0}^{T}\left(\lambda(\widehat{u}, v)_{\Gamma}-\left(B v, p_{2}\right)\right) d t=0 .
+\int_{0}^{T}\left(\left(B\left(\widehat{\theta}-\theta_{b}\right),
+\zeta\right)+\left(\zeta^{\prime}
++a A \zeta+4 b \kappa_{a}|\widehat{\theta}|^{3} \zeta, p_{1}\right)
+-\kappa_{a}\left(4|\widehat{\theta}|^{3} \zeta, p_{2}\right)\right) d t+(q, \zeta(0))=0, \\
+\int_{0}^{T}\left(\left(\alpha A \zeta
++\kappa_{a} \zeta, p_{2}\right)-b \kappa_{a}\left(\zeta, p_{1}\right)\right) d t=0,
+\int_{0}^{T}\left(\lambda(\widehat{u}, v)_{\Gamma}-\left(B v, p_{2}\right)\right) d t=0.
 \end{gathered}
-$$
+\]
 
-Thus, from the obtained conditions, we derive the following result.
+Таким образом, из полученных условий получаем следующий результат.
 
-Theorem 2. Let the conditions (i),(ii) hold. If $\{\widehat{\theta}, \widehat{\varphi}, \widehat{u}\}$ is a solution of the problem $(O C)$, then there is a unique pair $\left\{p_{1}, p_{2}\right\} \in W \times W$ such that
+\textbf{Теорема 2.} Пусть выполнены условия (i), (ii).
+Если $\{\widehat{\theta}, \widehat{\varphi}, \widehat{u}\}$ — решение задачи $(OC)$,
+то существует единственная пара $\left\{p_ {1}, p_{2}\right\} \in W \times W$ такая, что
 
-$$
+\[
 \begin{aligned}
--p_{1}^{\prime}+a A p_{1}+4|\widehat{\theta}|^{3} \kappa_{a}\left(b p_{1}-p_{2}\right)=B\left(\theta_{b}-\widehat{\theta}\right), & p_{1}(T)=0, \\
+-p_{1}^{\prime}+a A p_{1}+4|\widehat{\theta}|^{3} \kappa_{a}\left(b p_{1}-p_{2}\right)=
+B\left(\theta_{b}-\widehat{\theta}\right), & p_{1}(T)=0, \\
 & \alpha A p_{2}+\kappa_{a}\left(p_{2}-b p_{1}\right)=0
 \end{aligned}
-$$
+\]
 
-and wherein $\lambda \widehat{u}=\left.p_{2}\right|_{\Sigma}$.
 
-\subsection{Approximation of a Problem with Boundary Conditions of Cauchy Type}
-Let us consider an initial-boundary value problem for the equations of complex heat transfer, in which there are no boundary conditions on the radiation intensity:
+и $\lambda \widehat{u}=\left.p_{2}\right|_{\Sigma}$.
 
-$$
-\frac{\partial \theta}{\partial t}-a \Delta \theta+b \kappa_{a}\left([\theta]^{4}-\varphi\right)=0, \quad-\alpha \Delta \varphi+\kappa_{a}\left(\varphi-[\theta]^{4}\right)=0, \quad(x, t) \in Q,
-$$
+\subsection{Аппроксимация задачи с граничными условиями типа Коши}\label{subsec:ch2/sec3/subsec5}
+Рассмотрим начально-краевую задачу для уравнений комплексного теплообмена, в которой отсутствуют
+граничные условия на интенсивность излучения:
 
-$$
-\theta=\theta_{b}, \quad \partial_{n} \theta=q_{b} \text { on } \Sigma,\left.\quad \theta\right|_{t=0}=\theta_{0} .
-$$
+\begin{gather*}
+    \frac{\partial \theta}{\partial t}-a \Delta \theta+b \kappa_{a}\left([\theta]^{4}
+-\varphi\right)=0,
+\quad-\alpha \Delta \varphi+\kappa_{a}\left(\varphi-[\theta]^{4}\right)=0, \quad(x, t) \in Q,\\
+    \theta=\theta_{b}, \quad \partial_{n} \theta=q_{b} \text { на } \Sigma,\left.\quad \theta\right|_{t=0}=\theta_{0}.\\
+\end{gather*}
 
-Existence and uniqueness of functions $\theta \in L^{2}\left(0, T ; H^{2}(\Omega)\right), \varphi, \Delta \varphi \in L^{2}(Q)$, satisfying (16), (17) for sufficiently smooth $\theta_{b}, q_{b}$ are proved in [12]. Let us show that solutions of the problem (OC) for $\lambda \rightarrow+0$ approximate the solution of the problem $(16),(17)$
 
-Theorem 3. Let the conditions (i),(ii) hold and there is a solution $\theta, \varphi \in$ $L^{2}\left(0, T ; H^{2}(\Omega)\right)$ of the problem (16), (17). If $\left\{\theta_{\lambda}, \varphi_{\lambda}, u_{\lambda}\right\}$ is a solution of the problem $(O C)$ for $\lambda>0$, then as $\lambda \rightarrow+0$
+Существование и единственность функций $\theta \in L^{2}\left(0, T; H^{2}(\Omega)\right),
+\varphi, \Delta \varphi \in L^{2}( Q)$, удовлетворяющие (16), (17) для достаточно гладких
+$\theta_{b}, q_{b}$, доказаны в [12].
+Покажем, что решения задачи $(OC)$ для $\lambda \rightarrow+0$ аппроксимируют решение задачи (16),(17)
 
-$$
+\textbf{Теорема 3.}
+Пусть выполняются условия (i), (ii) и существует решение
+$\theta, \varphi \in$ $L^{2}\left(0, T ; H^{2}(\Omega) \right)$ задачи (16), (17).
+Если $\left\{\theta_{\lambda}, \varphi_{\lambda}, u_{\lambda}\right\}$ — решение задачи $(OC)$
+при $\lambda>0$, то как $\lambda\rightarrow+0$
+
+\[
 \begin{gathered}
-\theta_{\lambda} \rightarrow \theta \text { weakly in } L^{2}(0, T ; V), \text { strongly in } L^{2}(Q), \\
-\varphi_{\lambda} \rightarrow \varphi \text { weakly in } L^{2}(0, T ; V)
+\theta_{\lambda} \rightarrow \theta \text { слабо в } L^{2}(0, T ; V), \text { сильно в } L^{2}(Q), \\
+\varphi_{\lambda} \rightarrow \varphi \text { слабо в } L^{2}(0, T ; V)
 \end{gathered}
-$$
+\]
 
-Proof. Let $\theta, \varphi \in L^{2}\left(0, T ; H^{2}(\Omega)\right)$ be a solution of the problem $(16),(17), u=$ $\alpha\left(\partial_{n} \varphi+\varphi\right) \in U$. Then
 
-$$
-\theta^{\prime}+a A \theta+b \kappa_{a}\left([\theta]^{4}-\varphi\right)=B r, \quad \theta(0)=\theta_{0}, \quad \alpha A \varphi+\kappa_{a}\left(\varphi-[\theta]^{4}\right)=B u
-$$
+\textit{Доказательство.}
+Пусть $\theta, \varphi \in L^{2}\left(0, T ; H^{2}(\Omega)\right)$ — решение задачи
+(16),(17), $u=\alpha\left(\partial_{n} \varphi+\varphi\right) \in U$.
+Тогда
 
-where $r:=a\left(\theta_{b}+q_{b}\right)$. Therefore, taking into account that $\left.\theta\right|_{\Gamma}=\theta_{b}$,
+\[
+\theta^{\prime}+a A \theta+b \kappa_{a}\left([\theta]^{4}-\varphi\right)=B r,
+\quad \theta(0)=\theta_{0}, \quad \alpha A \varphi+\kappa_{a}\left(\varphi-[\theta]^{4}\right)=B u
+\]
 
-$$
-J_{\lambda}\left(\theta_{\lambda}, u_{\lambda}\right)=\frac{1}{2}\left\|\theta_{\lambda}-\theta_{b}\right\|_{\Sigma}^{2}+\frac{\lambda}{2}\left\|u_{\lambda}\right\|_{\Sigma}^{2} \leq J_{\lambda}(\theta, u)=\frac{\lambda}{2}\|u\|_{\Sigma}^{2} .
-$$
 
-Thus,
+где $r\coloneqq a\left(\theta_{b}+q_{b}\right)$.
+Следовательно, принимая во внимание, что $\left.\theta\right|_{\Gamma}=\theta_{b}$,
 
-$$
-\left\|u_{\lambda}\right\|_{\Sigma}^{2} \leq C, \quad\left\|\theta_{\lambda}-\theta_{b}\right\|_{\Sigma}^{2} \rightarrow 0, \lambda \rightarrow+0 .
-$$
+\[
+J_{\lambda}\left(\theta_{\lambda},
+u_{\lambda}\right)=\frac{1}{2}\left\|\theta_{\lambda}-\theta_{b}\right\|_{\Sigma}^{2}
++\frac{\lambda}{2}\left\|u_{\lambda}\right\|_{\Sigma}^{2}
+\leq J_{\lambda}(\theta, u)=\frac{\lambda}{2}\|u\|_{\Sigma}^{2}.
+\]
 
-Hereinafter, $C>0$ does not depend on $\lambda$. The boundedness of the sequence $u_{\lambda}$ in the space $U$ implies, by Lemma 1 , the estimates
+Таким образом
 
-$$
+\[
+\left\|u_{\lambda}\right\|_{\Sigma}^{2} \leq C,
+\quad\left\|\theta_{\lambda}-\theta_{b}\right\|_{\Sigma}^{2} \rightarrow 0, \lambda \rightarrow+0.
+\]
+
+
+Здесь и далее $C>0$ не зависит от $\lambda$.
+Ограниченность последовательности $u_{\lambda}$ в пространстве $U$ влечет по лемме 1 оценки
+
+\[
 \begin{gathered}
-\left\|\theta_{\lambda}\right\|_{L^{2}(0, T ; V)} \leq C, \quad\left\|\theta_{\lambda}\right\|_{L^{\infty}\left(0, T ; L^{5}(\Omega)\right)} \leq C, \quad\left\|\theta_{\lambda}^{\prime}\right\|_{L^{2}\left(0, T ; V^{\prime}\right)} \leq C, \\
-\int_{0}^{T} \int_{\Omega}\left|\theta_{\lambda}\right|^{8} d x d t \leq C, \quad\left\|\varphi_{\lambda}\right\|_{L^{2}(0, T ; V)} \leq C .
+\left\|\theta_{\lambda}\right\|_{L^{2}(0, T ; V)} \leq C,
+\quad\left\|\theta_{\lambda}\right\|_{L^{\infty}\left(0, T ; L^{5}(\Omega)\right)} \leq C,
+\quad\left\|\theta_{\lambda}^{\prime}\right\|_{L^{2}\left(0, T ; V^{\prime}\right)} \leq C, \\
+\int_{0}^{T} \int_{\Omega}\left|\theta_{\lambda}\right|^{8} d x d t \leq C,
+\quad\left\|\varphi_{\lambda}\right\|_{L^{2}(0, T ; V)} \leq C.
 \end{gathered}
-$$
+\]
 
-Therefore, one can choose a sequence $\lambda \rightarrow+0$ such that
 
-$$
+Следовательно, можно выбрать последовательность $\lambda\rightarrow+0$ такую, что
+
+\[
 \begin{gathered}
-u_{\lambda} \rightarrow u_{*} \text { weakly in } U \\
-\theta_{\lambda} \rightarrow \theta_{*} \text { weakly in } L^{2}(0, T ; V) \text {, strongly in } L^{2}(Q), \\
-\varphi_{\lambda} \rightarrow \varphi_{*} \text { weakly in } L^{2}(0, T ; V)
+u_{\lambda} \rightarrow u_{*} \text { слабо в } U \\
+\theta_{\lambda} \rightarrow \theta_{*} \text { слабо в } L^{2}(0, T; V) \text { сильно в } L^{2}(Q), \\
+\varphi_{\lambda} \rightarrow \varphi_{*} \text { слабо в } L^{2}(0, T; V)
 \end{gathered}
-$$
+\]
 
-The obtained results on convergence allow, as in Theorem 1 , to pass to the limit as $\lambda \rightarrow+0$ in the equations for $\theta_{\lambda}, \varphi_{\lambda}, u_{\lambda}$ and then
 
-$\theta_{*}^{\prime}+a A \theta_{*}+b \kappa_{a}\left(\left[\theta_{*}\right]^{4}-\varphi_{*}\right)=B r, \quad \theta_{*}(0)=\theta_{0}, \quad \alpha A \varphi_{*}+\kappa_{a}\left(\varphi_{*}-\left[\theta_{*}\right]^{4}\right)=B u_{*}$. Wherein $\left.\theta_{*}\right|_{\Gamma}=\theta_{b}$. From the first equation in (18), taking into account that $r=a\left(\theta_{b}+q_{b}\right)$, we derive
+Полученные результаты о сходимости позволяют, как и в теореме 1,
+перейти к пределу при $\lambda \rightarrow+0$ в уравнениях для $\theta_{\lambda},
+\varphi_{\lambda}, u_{\lambda} $, а затем
 
-$$
-\frac{\partial \theta_{*}}{\partial t}-a \Delta \theta_{*}+b \kappa_{a}\left(\left[\theta_{*}\right]^{4}-\varphi_{*}\right)=0 \text { a.e. in } Q, \quad \theta_{*}=\theta_{b}, \quad \partial_{n} \theta=q_{b} \text { a.e. in } \Sigma \text {. }
-$$
+$\theta_{*}^{\prime}+a A \theta_{*}+b \kappa_{a}\left(\left[\theta_{*}\right]^{4}
+-\varphi_{*}\right)=B r,
+\quad \theta_{*}(0)=\theta_{0},
+\quad \alpha A \varphi_{*}+\kappa_{a}\left(\varphi_{*}
+-\left[\theta_{*}\right]^{4}\right)=B u_{*}$.
+Где $\left.\theta_{*}\right|_{\Gamma}=\theta_{b}$.
+Из первого уравнения в (18), учитывая, что $r=a\left(\theta_{b}+q_{b}\right)$, получаем
 
-From the second equation in (18) it follows that $-\alpha \Delta \varphi+\kappa_{a}\left(\varphi-[\theta]^{4}\right)=0$ almost everywhere in $Q$. Thus, the pair $\theta_{*}, \varphi_{*}$ is a solution of the problem (16), (17). Since the solution to this problem is unique [12], then $\theta_{*}=\theta, \varphi_{*}=\varphi$.
+\[
+\frac{\partial \theta_{*}}{\partial t}-a \Delta \theta_{*}
++b \kappa_{a}\left(\left[\theta_{*}\right]^{4}-\varphi_{*}\right)=0
+\text { почти всюду в } Q, \quad \theta_{*}=\theta_{b},
+\\quad \partial_{n} \theta=q_{b} \text { почти всюду в } \Sigma.
+\]
 
-\subsection{Numerical Algorithm and Examples}
-Let us present an algorithm for solving the control problem. Let
 
-$$
-\widetilde{J}_{\lambda}(u)=J_{\lambda}(\theta(u), u),
-$$
+Из второго уравнения в (18) следует, что
+$-\alpha \Delta \varphi+\kappa_{a}\left(\varphi-[\theta]^{4}\right)=0$ почти всюду в $Q$.
+Таким образом, пара $\theta_{*}, \varphi_{*}$ является решением задачи (16), (17).
+Поскольку решение этой задачи единственно [12], то $\theta_{*}=\theta, \varphi_{*}=\varphi$.
 
-where $\theta(u)$ is the component of solution to the problem (1)-(2) corresponding to the control $u \in U$. According to (15), the gradient of the functional $\widetilde{J}_{\lambda}(u)$ is defined as follows: $\widetilde{J}_{\lambda}^{\prime}(u)=\lambda u-p_{2}$. Here, $p_{2}$ is the corresponding component of the conjugate state of the system (15), where $\widehat{\theta}:=\theta(u)$.
+\subsection{Численный алгоритм и примеры}\label{subsec:ch2/sec3/subsec6}
+Приведем алгоритм решения задачи управления.
+Пусть
+\[
+           \widetilde{J}_{\lambda}(u)=J_{\lambda}(\theta(u), u),
+\]
+
+где $\theta(u)$ — компонента решения задачи (1)-(2), соответствующая управлению $u \in U$.
+Согласно (15) градиент функционала $\widetilde{J}_{\lambda}(u)$ определяется следующим образом:
+$\widetilde{J}_{\lambda}^{\prime}(u) = \lambda u-p_{2}$.
+Здесь $p_{2}$ — соответствующая компонента сопряженного состояния системы (15),
+где $\widehat{\theta}\coloneqq\theta(u)$.
 
 The proposed algorithm for solving the problem (OC) is as follows:
 
