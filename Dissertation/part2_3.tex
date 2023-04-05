@@ -3,7 +3,8 @@
 \subsection{Formulation of an Optimal Control Problem}\label{subsec:ch2/sec3/subsec1}
 квазистационарный радиационный и диффузионный теплообмен в ограниченной области
 $\Omega \subset \mathrm{R}^{3}$ с границей $\Gamma=\partial \Omega$ моделируется
-$P_{1}$-аппроксимацией для уравнения переноса излучения со следующей начально-краевой задачей [16, 23]:
+$P_{1}$-аппроксимацией для уравнения переноса излучения
+со следующей начально-краевой задачей [16, 23]:
 
 \[
 \begin{gathered}
@@ -17,7 +18,6 @@ a\left(\partial_{n} \theta+\theta\right)=r,
 \end{gathered}
 \]
 
-\includegraphics[max width=\textwidth, center]{2022_12_28_417a2ab16b2d49239661g-01}
 Здесь $\theta$ — нормированная температура, $\varphi$ — нормированная интенсивность излучения,
 усредненная по всем направлениям.
 Положительные параметры $a, b, \kappa_{a}$ и $\alpha$, описывающие свойства среды,
@@ -130,7 +130,8 @@ $[h]^{s} \coloneqq |h|^{s} \operatorname{sign} h, s>0, h \in \mathbf{R}$
 
 Для формулировки задачи оптимального управления определим оператор ограничения
 $F(\theta, \varphi, u): W \times L^{2}(0, T; V) \times U
-\rightarrow L^{2}\ left(0, T, V^{\prime}\right) \times L^{2}\left(0, T, V^{\prime}\right) \times H$ таким, что
+\rightarrow L^{2} \left(0, T, V^{\prime}\right)
+\times L^{2}\left(0, T, V^{\prime}\right) \times H$ таким, что
 
 \[
 F(\theta, \varphi, u)=\left\{\theta^{\prime}+a A
@@ -414,7 +415,7 @@ p_{2}\right) d t+\left(q, \theta(0)-\theta_{0}\right).
 Здесь $p=\left\{p_{1}, p_{2}\right\} \in L^{2}(0, T; V) \times L^{2}(0, T; V) $ — сопряженное состояние,
 $q \in H$ — множитель Лагранжа для начального условия.
 Если $\{\widehat{\theta}, \widehat{\varphi}, \widehat{u}\}$ является решением задачи $(OC)$,
-то в силу принципа Лагранжа [15, гл\. 2, теорема 1.5]
+то в силу принципа Лагранжа [15, гл. 2, теорема 1.5]
 выполняются вариационные равенства $\forall \zeta \in L^{2}(0, T ; V), v \in U$
 
 \[
@@ -596,7 +597,7 @@ The example considered below illustrates the performance of the proposed algorit
 An approximate solution to the problem (16), (17) with Cauchy data, presented in [12] (see Fig. 1), was obtained by solving a fourth-order parabolic problem for temperature.
 
 \begin{center}
-\includegraphics[max width=\textwidth]{2022_12_28_417a2ab16b2d49239661g-10}
+\includegraphics[width=\textwidth]{paper03.png}
 \end{center}
 
 Fig. 1. Temperature field obtained in the article [12].
@@ -604,7 +605,3 @@ Fig. 1. Temperature field obtained in the article [12].
 The solution stabilized after 120 seconds, but the calculations at each time step were quite expensive [12]. Fig. 2 shows the steady-state temperature field obtained by the method proposed in the current article.
 
 The presented example illustrates that the proposed algorithm successfully finds a numerical solution to the problem (16), (17) with the boundary conditions of the Cauchy type.
-
-\begin{center}
-\includegraphics[max width=\textwidth]{2022_12_28_417a2ab16b2d49239661g-11}
-\end{center}
