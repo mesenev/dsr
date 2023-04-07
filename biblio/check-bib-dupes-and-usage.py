@@ -4,7 +4,7 @@ import glob
 import os
 import re
 
-bibfile = "external.bib"
+bibfile = "grenkin.bib"
 authors = {}
 author_list = []
 pages = []
