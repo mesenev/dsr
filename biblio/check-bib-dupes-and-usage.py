@@ -97,6 +97,6 @@ for filename in files:
         all_text += myfile.read().replace('\n', '')
 
 print(len(all_text))
-for cite in cites:
-    if cite not in all_text:
-        print("Cite " + cite + " is not used")
+# for cite in cites:
+#     if cite not in all_text:
+#         print("Cite " + cite + " is not used")
