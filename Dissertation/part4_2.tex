@@ -1,4 +1,413 @@
 \section{Численные алгоритмы минимизации функционалов}\label{sec:ch4/sec2}
 Градиентный спуск и его модификации, стохастические методы.
-Алексеев использовал в~\cite{Alekseev2019Simulation}
-\subsection{Градиентный спуск}\label{subsec:ch4/sec2/subsec1}
+Приведём работу Алексеева~\cite{Alekseev2019Simulation}, где в которой
+задача управления решается методом роя частиц.
+
+\subsection{Градиентный спуск}\label{subsec:ch4/sec2/grad}
+
+\subsection{Стохастические методы}\label{subsec:ch4/sec2/stokhastic}
+
+\subsection{Метод Монте-Карло нахождения решения прямой задачи}
+\label{subsec:ch4/sec2/montekarlo}
+%TODO: rework it!
+Дадим описание вычислительного алгоритма, основанного на
+методе Монте-Карло, решения прямой задачи для векторного
+уравнения переноса.
+Для его обоснования докажем ряд
+вспомогательных утверждений, в итоге дающих представление задачи
+$(\ref{2-1})$, $(\ref{2-2})$ в виде ряда Неймана.
+
+Пусть  $\widetilde{\mu}(r)$ -- некоторая функция из $C_b (G_0)$,
+удовлетворяющая неравенству $\widetilde{\mu}(r) \geq \mu(r)$, $r
+\in G$. В силу леммы  \ref{lemma:l-5} будет справедливо следующее
+утверждение.
+
+\begin{lemma}
+    \label{lemma:1-9}%2
+    Функции, определенные формулами
+    \[
+        \widetilde{\tau}(r, \omega, t) = \int \limits_0^t \widetilde{\mu}
+        (r - t'\omega) dt', \quad \widetilde{\tau}(r, \omega) = \int
+        \limits_0^{d(r,-\omega)} \widetilde{\mu} (r - t\omega) dt,
+    \]
+    принадлежат \;соответственно \;пространствам \;$C_b (G_0 \times
+    \Omega \times [0, d(r,-\omega)])$ и $C_b (G_0 \times \Omega)$.
+\end{lemma}
+Определим интегральные операторы $\widetilde{A}: K \rightarrow K$,
+$S: K \rightarrow K \cap C^{(4)}(G_0 \times \Omega)$ и
+$\widetilde{S}: K \rightarrow K$, так что
+\[
+    (\widetilde{A}\varphi)(r,\omega) = \int \limits_0^{d(r,-\omega)}
+    \exp(-\widetilde{\tau}(r,\omega,t)) \varphi(r-t\omega, \omega) dt,
+\]
+\vskip0.1cm
+\[
+    (S\varphi)(r,\omega) = \mu_s(r)\int \limits_\Omega
+    P(r,\omega,\omega') \varphi(r, \omega') d\omega' ,
+\]
+\vskip0.1cm
+\[
+    (\widetilde{S}\varphi)(r,\omega) = \mu_s(r)\int \limits_\Omega
+    P(r,\omega,\omega') \varphi(r, \omega') d\omega' +
+    (\widetilde{\mu}(r)-\mu(r))\varphi(r, \omega).
+\]
+Пусть
+\[
+    \overline{\mu} = \sup_{r \in G}\widetilde{\mu}(r), \quad
+    \overline{\lambda} = \sup_{r \in G}\frac{\widetilde{\mu}(r) -
+    \mu(r) + \mu_s(r)}{\widetilde{\mu}(r)} .
+\]
+\vskip0.3cm
+\noindent Заметим, что для $f(r,\omega) \in K$
+\[
+    \| ((\widetilde{A}\widetilde{S})f(r,\omega))_1 \|  \leq
+\]
+\[
+    \sup_{(r,\omega) \in G_0 \times \Omega_0}  \Bigg| \int
+    \limits_0^{d(r,-\omega)} \exp(-\widetilde{\tau}(r,\omega,t))(
+    (Sf)_1(r-t\omega, \omega) +
+\]
+\[
+    (\widetilde{\mu}(r-t\omega) - \mu(r-t\omega)) f_1(r-t\omega,
+    \omega)) dt \Bigg| \leq
+\]
+\vskip0.1cm
+\[
+    \sup_{(r,\omega) \in G_0 \times \Omega_0} \Bigg| \int
+    \limits_0^{d(r,-\omega)} \exp(-\widetilde{\tau}(r,\omega,t))
+    \widetilde{\mu}(r-t\omega)\times
+\]
+\[
+    \times \Bigg( \frac{\widetilde{\mu}(r-t\omega) - \mu(r-t\omega) +
+    \mu_s(r-t\omega)}{\widetilde{\mu}(r-t\omega)} \Bigg) dt \Bigg| \|
+    f_1 \| \leq
+\]
+%\vskip0.1cm
+\begin{equation}
+    \label{2-39}
+    \overline{\lambda}\left(1 - e^{-\overline{\mu} d} \right)\| f_1\|
+    .
+\end{equation}
+
+%\vskip0.1cm
+Докажем следующее утверждение.
+
+\begin{lemma}
+    \label{lemma:1-10}%3
+    Функция $f$ является решением краевой задачи $(\ref{2-1})$,
+    $(\ref{2-2})$ тогда и только тогда, когда $f$ удовлетворяет
+    уравнению
+    \begin{equation}
+        \label{2-40}
+        f(r,\omega) = h(r - d(r, - \omega) \omega, \omega) \exp (-
+        \widetilde{\tau} (r, \omega)) + (\widetilde{A}J)(r,\omega) +
+        (\widetilde{A}\widetilde{S}f)(r,\omega)
+    \end{equation}
+    в пространстве $C_b^{(4)}(G_0 \times \Omega_0)$.
+\end{lemma}
+
+\begin{proof}[необходимость]
+%\emph{Необходимость}.
+Пусть функция $f(r,\omega)$ является решением прямой задачи, тогда
+$f(r,\omega) \in D(G_0 \times \Omega_0)$ и для любых точек
+$(r,\omega) \in G_0 \times \Omega_0$
+\begin{equation}
+    \label{2-41}
+    \widetilde{l}f(r - t \omega , \omega)  = F(r - t \omega, \omega),
+\end{equation}
+\[
+    \widetilde{l}f(r, \omega) = \omega \cdot \nabla_r f(r, \omega) +
+    \widetilde{\mu} (r) f(r,\omega), \quad F(r, \omega) =
+    (\widetilde{S}f)(r, \omega) + J(r, \omega)
+\]
+почти везде на множестве  $\{ r-t \omega  : t \in [0,d(r,-\omega)]
+\}$. Так как функция $f(r - t \omega, \omega)$ абсолютно
+непрерывна на множестве $\{ r - t \omega : t \in [0,d(r,-\omega)]
+\}$, то выражение $\widetilde{l}f(r - t \omega , \omega)$ является
+интегрируемой функцией по $t$ для любых $(r,\omega) \in G_0 \times
+\Omega_0$. Умножая равенство (\ref{2-41}) слева и справа на
+функцию $\exp(-\widetilde{\tau}(r,\omega,t))$ и интегрируя по $t
+\in [0,d(r,-\omega)]$, получаем
+\begin{multline}
+    \label{2-42}
+    \int \limits^{d(r,-\omega)}_{0} \exp (- \widetilde{\tau} (r,
+    \omega,t)) \widetilde{l}f(r - t \omega, \omega) dt = \\ \int
+    \limits^{d(r,-\omega)}_{0} \exp (- \widetilde{\tau} (r, \omega,t))
+    F(r - t \omega, \omega)dt .
+\end{multline}
+Так как функция $\widetilde{l}f(r, \omega) \in C_b^{(4)}(G_0
+\times \Omega_0)$, а функция $\widetilde{\tau}(r,\omega,t)$
+абсолютно непрерывна по переменной $t$, то к левой части равенства
+(\ref{2-42}) применима формула интегрирования по частям:
+
+\begin{multline}
+    \label{2-43}
+    \int \limits^{d(r,-\omega)}_{0} \exp (- \widetilde{\tau} (r,
+    \omega,t))\widetilde{l}f(r - t \omega, \omega) dt = f(r,\omega)
+    -\\
+    f(r - d(r,-\omega)\omega, \omega) \exp (-
+    \widetilde{\tau}(r,\omega)) - \int \limits^{d(r,-\omega)}_{0} \exp
+    (- \widetilde{\tau} (r, \omega,t))\times \\ \times \big(-
+    \widetilde{\mu} (r - t \omega) f(r - t \omega , \omega) +
+    \widetilde{\mu} (r - t \omega) f(r - t \omega, \omega)\big) dt .
+\end{multline}
+Учитывая граничное условие (\ref{2-2}), из (\ref{2-43}) получаем
+\begin{multline*}
+    \int \limits^{d(r,-\omega)}_{0} \exp (- \widetilde{\tau} (r,
+    \omega,t))F(r - t \omega, \omega) dt =\\ f(r,\omega) - h(r -
+    d(r,-\omega)\omega, \omega) \exp( - \widetilde{\tau} (r, \omega)).
+\end{multline*}
+Отсюда и из свойств интегральных операторов $\widetilde{A}$ и
+$\widetilde{S}$ непосредственно вытекает, что функция
+$f(r,\omega)$ из пространства $C_b^{(4)}(G_0 \times \Omega_0)$ для
+любых $(r,\omega) \in G_0 \times \Omega_0$ удовлетворяет уравнению
+(\ref{2-40}). Необходимость доказана.
+\end{proof}
+
+\begin{proof}[Достаточность]
+%\emph{Достаточность}.
+Пусть функция $f(r,\omega) \in D(G_0 \times
+\Omega_0)$ удовлетворяет уравнению (\ref{2-40}). Тогда для любых
+$(\xi,\omega) \in \Gamma^-$ из уравнения  (\ref{2-40}), учитывая,
+что $d(\xi + t \omega, - \omega) = t$, имеем
+\begin{multline}
+    \label{2-44}
+    f(\xi + t \omega, \omega) = \exp (- \widetilde{\tau}
+    (\xi,-\omega,t))\times \\ \left( h(\xi, \omega) + \int
+    \limits^{t}_{0} \exp ( \widetilde{\tau} (\xi,-\omega,t'))F(\xi + t
+    ' \omega, \omega) dt' \right).
+\end{multline}
+
+Так как неопределенный интеграл от интегрируемой по $t$ функции
+является абсолютно непрерывной функцией, а сумма и произведение
+абсолютно непрерывных функций есть также абсолютно непрерывная
+функция, то из (\ref{2-44}) заключаем, что функция
+$f(\xi + \omega t, \omega)$ абсолютно непрерывна на
+$\{\xi+ t \omega :t \in [0,d(\xi,\omega)] \}$ для любых $(\xi,\omega) \in \Gamma^-$.
+Непосредственно убеждаемся, что при $t = 0$ функция $f(\xi +
+\omega t, \omega)$ удовлетворяет краевому условию (\ref{2-2}).
+
+Далее, подействовав оператором $\widetilde{l}$ на $f(\xi +
+t\omega,\omega)$ и воспользовавшись равенством (\ref{2-44}),
+получим при почти всех $t \in [0,d(\xi,\omega)]$
+\begin{multline*}
+    \widetilde{l}f(\xi + t\omega,\omega) = - \widetilde{\mu} (\xi +
+    t\omega) \exp (- \widetilde{\tau}(\xi,-\omega,t)) \times \\
+    \left(h(\xi,\omega) + \int \limits^{t}_{0} \exp (\widetilde{\tau}
+    (\xi,-\omega,t')) F(\xi + t' \omega,\omega)dt' \right) +
+    \\
+    \widetilde{\mu} (\xi + \omega t) \exp (-\widetilde{\tau}
+    (\xi,-\omega,t)) \times \\ \left( h(\xi,\omega) + \int
+    \limits^{t}_{0} \exp (\widetilde{\tau} (\xi,-\omega,t'))F(\xi + t'
+    \omega,\omega) dt' \right) +
+    \\
+    \exp (-\widetilde{\tau} (\xi,-\omega,t)) \exp (\widetilde{\tau}
+    (\xi,-\omega,t))F(\xi + t\omega,\omega) = F(\xi + t\omega,\omega).
+\end{multline*}
+Таким образом, функция $f(r,\omega)$ из класса $D(G_0 \times
+\Omega_0)$, являющаяся решением уравнения (\ref{2-40}),
+удовлетворяет всем условиям в определении краевой задачи
+(\ref{2-1}), (\ref{2-2}). Лемма доказана.
+\end{proof}
+
+Обозначим
+\[
+    \widetilde{f}_0(r,\omega) = h(r - d(r, - \omega) \omega, \omega)
+    \exp (- \widetilde{\tau} (r, \omega)) +
+    (\widetilde{A}J)(r,\omega).
+\]
+Теперь докажем окончательное утверждение о корректности прямой
+задачи (\ref{2-1}), (\ref{2-2}).
+
+\begin{theorem}
+    \label{thm:1-6}%1
+    Пусть $\widetilde{h}(r,\omega) \in K, \, J(r,\omega) \in
+    C_b^{(4)}(G_0 \times \Omega) \cap K$ и справедливы условия
+    $(\ref{2-11})$, $(\ref{2-12})$, тогда в конусе $K$ решение задачи
+    $(\ref{2-1})$, $(\ref{2-2})$ существует, единственно и представимо
+    в виде ряда Неймана
+    \begin{equation}
+        \label{2-45}
+        f(r,\omega) = \widetilde{f}_0(r,\omega) + \sum
+        \limits_{n=1}^{\infty} (\widetilde{A}\widetilde{S})^n
+        \widetilde{f}_0(r,\omega),
+    \end{equation}
+    сходящегося в норме пространства $C^{(4)}_b(G_0 \times \Omega_0)$.
+\end{theorem}
+
+\begin{proof}
+По лемме \ref{lemma:1-10}
+достаточно доказать разрешимость уравнения (\ref{2-40}). Заметим,
+что конус $K$ является замкнутым подмножеством банахова
+пространства $C_b^{(4)}(G_0 \times \Omega_0)$, следовательно $K$
+--- полное пространство. Поэтому достаточно доказать, что оператор
+$\widetilde{A}\widetilde{S}$ переводит $K$ в $K$, функция
+$\widetilde{f}_0(r,\omega) \in K$ и $\|
+\widetilde{A}\widetilde{S}f \| < \| f \|$ для всех $f \in K$.
+
+Так как оператор $\widetilde{S}: K \rightarrow   K$ и оператор
+$\widetilde{A}: K \rightarrow K$, то $\widetilde{A}\widetilde{S}:
+K \rightarrow K$. Поскольку $ \widetilde{h}(r,\omega) \in K$,
+$\widetilde{\tau}(r,\omega) \in C_b(G_0 \times \Omega)$ и
+$J(r,\omega) \in  K \cap C_b^{(4)}(G_0 \times \Omega)$, то
+$\widetilde{f}_0(r, \omega) \in K$.
+
+Используя неравенство (\ref{2-39}),  для всех $f  \in K$ имеем
+\begin{multline*}
+    \| \widetilde{A}\widetilde{S}f \|_4 = \max \limits_{1 \leq i \leq
+    4} \|(\widetilde{A}\widetilde{S}f)_i\|=\|
+    (\widetilde{A}\widetilde{S}f)_1 \| \leq \\
+    \overline{\lambda}\left( 1 - e^{-\overline{\mu} d} \right) \| f_1
+    \| = \overline{\lambda}\left( 1 - e^{-\overline{\mu} d} \right) \|
+    f \|_4 .
+\end{multline*}
+И поскольку $\mu(r) \geq \mu_s(r)$, $r \in G$, то
+$\overline{\lambda} \leq 1$ и
+\[
+    \| \widetilde{A}\widetilde{S}f \|_4 \leq \overline{\lambda} \left(
+    1 - e^{-\overline{\mu} d} \right) \| f \|_4 < \| f \|_4.
+\]
+Следовательно, утверждение теоремы вытекает из принципа сжимающих
+отображений.
+\end{proof}
+
+Отметим, что в случае $\widetilde{\mu}(r) = \mu(r)$ обоснование
+корректности прямой задачи совпадает с аналогичными рассуждениями,
+проведенными в \S 3.1. Необходимость введения функции
+$\widetilde{\mu}(r)$ вызвана потребностью обоснования
+вычислительного алгоритма решения прямой задачи, рассмотренного
+далее.
+
+
+Опишем алгоритм вычисления вектор-функции $f$, основанный на
+методе Монте-Карло. Пусть для любых $r\in G $ выполняется
+неравенство $\mu(r)\leq \overline{\mu}$, где $\overline{\mu}$ --
+некоторая константа. Тогда, полагая $\widetilde{\mu}(r) =
+\overline{\mu}$, по теореме \ref{thm:1-6} получаем представление
+решения в виде равномерно сходящегося ряда  (\ref{2-45}). Добавку
+$(\overline{\mu}-\mu(r))\varphi(r,\omega)$ в выражении для
+интегрального оператора $\widetilde{S}$ можно трактовать как
+некоторое фиктивное рассеяние без изменения направления
+распространения фотона. Данный метод носит название метода
+максимального сечения и позволяет более просто разыгрывать длину
+свободного пробега частицы даже в областях со сложной структурой.
+Подобный подход дает неплохие результаты в случае, когда изменение
+коэффициента полного взаимодействия в среде невелико. Пусть $m$ --
+учитываемое нами число членов ряда Неймана, а $n$ -- число
+моделируемых траекторий, тогда приближенное значение функции
+$f(r,\omega)$ можно вычислить по формуле:
+\begin{equation}
+    \label{2-53}
+    f(r,\omega)\approx \overline{f}_n(r,\omega) = \frac{1}{n} \sum
+    \limits_{i=1}^{n} s_i(r,\omega),
+\end{equation}
+\[
+    s_i(r,\omega) = \widetilde{f_0}(r,\omega)+ \sum \limits_{j=1}^{m}
+    \prod \limits_{k=1}^{j} \frac{1-\exp(-\overline{\mu}
+    d(r^{i,k-1},-\omega^{i,k-1}))} {\overline{\mu}}\times
+\]
+\[
+    \times(\overline{\mu}-\mu(r^{i,k})+\mu_s(r^{i,k}))
+    Q(\omega^{i,k-1},\omega^{i,k})
+    \widetilde{f_0}(r^{i,j},\omega^{i,j}).
+\]
+
+
+Для генерации точек траекторий $r^{i,k}$ и направлений
+$\omega^{i,k}$, необходимых для реализации алгоритма, используем
+начальные значения: $r^{i,0} = r$, $\omega^{i,0} = \omega$.
+
+На каждом последующем шаге вычисление точки $r^{i,k}$
+осуществляется по формуле:
+\begin{equation}
+    \label{2-54}
+    r^{i,k}=r^{i,k-1}-\omega^{i,k-1} t_{i,k},
+\end{equation}
+где $t_{i,k}$ -- независимая реализация случайной величины,
+распределенной на $[0, d(r^{i,k-1}, -\omega^{i,k-1})]$ с
+плотностью
+\begin{equation}
+    \label{2-55}
+    \rho(t) = \frac{ \overline{\mu} \exp (-\overline{\mu} t )}{1-\exp
+        (\overline{\mu} d(r^{i,k-1},-\omega^{i,k-1}))}.
+\end{equation}
+Далее разыгрываем реализацию $\alpha_{i,k}$ равномерно
+распределенной на $[0,1]$ случайной величины. При
+\begin{equation}
+    \label{2-56}
+    \alpha_{i,k} \geq
+    \frac{\overline{\mu}-\mu(r^{i,k})}{\overline{\mu}-\mu(r^{i,k})+\mu_s(r^{i,k})}
+\end{equation}
+для определения величины $\omega^{i,k}$  и матрицы
+$Q(\omega^{i,k-1},\omega^{i,k})$ используем следующие расчетные
+формулы:
+\begin{equation}
+    \label{2-57}
+    \omega^{i,k}_1=\sqrt{1-\nu^{2}_{i,k}}\cos \gamma_{i,k},
+\end{equation}
+\begin{equation}
+    \label{2-58}
+    \omega^{i,k}_2=\sqrt{1-\nu^{2}_{i,k}}\sin \gamma_{i,k},
+\end{equation}
+\begin{equation}
+    \label{2-59}
+    \omega^{i,k}_3=\nu_{i,k},
+\end{equation}
+\begin{equation}
+    \label{2-60}
+    Q(\omega^{i,k-1},\omega^{i,k}) = 4\pi
+    P(\omega^{i,k-1},\omega^{i,k}),
+\end{equation}
+а при \[ \alpha_{i,k} <
+\frac{\overline{\mu}-\mu(r^{i,k})}{\overline{\mu}-\mu(r^{i,k})+\mu_s(r^{i,k})}
+\]
+следующие:
+\begin{equation}
+    \label{2-61}
+    \omega^{i,k} = \omega^{i,k-1}, \quad
+    Q(\omega^{i,k-1},\omega^{i,k}) = E.
+\end{equation}
+Здесь $\nu_{i,k}$, $\gamma_{i,k}$ есть независимые реализации
+равномерно распределенных на соответствующих промежутках $[-1,1]$
+и $[0,2\pi)$ случайных величин, а $E$ есть единичная матрица \;$4
+\times 4$.
+
+Таким образом, алгоритм нахождения решения прямой задачи выглядит
+следующим образом.
+
+0. Пусть $i=1$.
+
+1. Берем $i$-ую траекторию и полагаем $k=1$.
+
+2. Для $k$-ого звена в траектории разыгрываем длину свободного
+пробега $t_{i,k}$ с плотностью вероятности, задаваемой формулой
+(\ref{2-55}).
+
+3. Вычисляем координаты новой точки столкновения $r^{i,k}$ по
+формуле (\ref{2-54})
+
+4. Разыгрываем реализацию $\alpha_{i,k}$ равномерно распределенной
+на [0,1] случайной величины.
+
+5. Если выполняется условие (\ref{2-56}), то новое направление
+$\omega^{i,k}$ находится из \;(\ref{2-57})-(\ref{2-59}),\; а\,
+матрица\;\; $Q(\omega^{i,k-1},\omega^{i,k})$\;\; по\, формуле\;
+(\ref{2-60}).\; Если \;же условие не выполняется, то согласно
+(\ref{2-61}) направление не меняется, а в качестве матрицы
+$Q(\omega^{i,k-1},\omega^{i,k})$ берется единичная.
+
+6. Формируем слагаемые ряда Неймана и накапливаем сумму в
+(\ref{2-53}).
+
+
+7. Если учтены не все члены ряда Неймана (при $k<m$), то переходим
+к пункту 2, увеличивая $k$ на единицу.
+
+8. Если учтены не все траектории  (при $i<n$), то переходим к
+пункту 1, увеличивая переменную $i$ на единицу.
+
+Приведенный здесь алгоритм решения прямой задачи (\ref{2-1}),
+(\eqref{2-2}) был программно реализован и далее использовался для
+нахождения выходящего излучения, необходимого для решения задачи
+компьютерной томографии.
+

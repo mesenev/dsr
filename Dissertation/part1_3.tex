@@ -1,0 +1,523 @@
+\section{Стационарная модель сложного теплообмена}\label{sec:ch1/sec3}
+%TODO: rework it!!!
+
+\subsection{Постановка краевой задачи}\label{subsec:ch1/sec3/state}
+
+Стационарная нормализованная диффузионная модель, описывающая
+радиационный, кондуктивный и конвективный теплообмен в
+ограниченной области $G\subset \mathbb{R}^3$,
+имеет следующий вид~\cite{modest2013radiative}:
+
+\begin{equation}
+    \label{eq:1_3:4-1}
+    -a \Delta \theta + \textbf{v} \cdot \nabla \theta
+    + b \mu_a \theta^4 =  b \mu_a \varphi,
+\end{equation}
+
+\begin{equation}
+    \label{eq:1_3:4-2}
+    - \alpha \Delta \varphi + \mu_a \varphi = \mu_a \theta^4.
+\end{equation}
+
+Здесь $\theta$ -- нормализованная температура, $\varphi$ --
+нормализованная интенсивность излучения, усредненная по всем
+направлениям, $\textbf{v}$ -- заданное поле скоростей, $\mu_a$ --
+коэффициент поглощения.
+Постоянные $a$, $b$ и $\alpha$
+определяются следующим образом:
+\[
+    a=\frac{k}{\rho c_v},\quad b = \frac{4\sigma n^2 T_{\max}^3}{\rho c_v},
+    \quad \alpha=\frac{1}{3\mu - A \mu_s},
+\]
+где $k$ -- теплопроводность, $c_v$ -- удельная теплоемкость, $\rho$ --
+плотность, $\sigma$ -- постоянная Стефана-Больцмана, $n$ --
+показатель преломления, $T_{\max}$ -- максимальная температура в
+ненормализованной модели, $\mu = \mu_s + \mu_a$ -- коэффициент
+полного взаимодействия, $\mu_s$ -- коэффициент рассеяния.
+Коэффициент $A \in [-1, 1]$ описывает анизотропию рассеяния, случай
+$A=0$ соответствует изотропному рассеянию.
+
+Будем предполагать, что функции $\theta$ и $\varphi$, описывающие
+процесс сложного теплообмена, удовлетворяют следующим условиям на
+границе $\Gamma = \partial G$:
+\begin{equation}
+    \label{eq:1_3:4-3}
+    \theta|_{\Gamma} = \Theta_0,
+\end{equation}
+\begin{equation}
+    \label{eq:1_3:4-4}
+    \alpha \frac{\partial \varphi}{\partial \mathbf{n}} + \beta
+    (\varphi-\Theta_0^4)|_{\Gamma} = 0.
+\end{equation}
+Здесь через $\partial/\partial \mathbf{n}$ обозначаем производную
+в направлении внешней нормали.
+Неотрицательная функция
+$\Theta_{0}$, определенная на $\Gamma$,  и функция $\beta$,
+описывающая, в частности, отражающие свойства границы $\Gamma$,
+являются заданными.
+
+
+Основные результаты, представленные в данном параграфе, состоят в
+получении новых априорных оценок решения
+краевой задачи~\eqref{eq:1_3:4-1}--\eqref{eq:1_3:4-4},
+на основе которых доказана разрешимость
+задачи и выведены достаточные условия единственности решения.
+Кроме того, найдены условия на параметры модели, геометрию области
+$G$ и поле скоростей $\textbf{v}$, гарантирующие однозначную
+разрешимость в случае равномерного потока среды.
+Результаты
+теоретического анализа иллюстрируются примерами численного
+моделирования температурных полей в канале прямоугольной формы.
+
+\subsection{Слабое решение краевой задачи}\label{subsec:ch1/sec3/weak}
+
+Пусть $G$ -- липшицева ограниченная область, граница $\Gamma$
+которой состоит из конечного числа гладких
+кусков, а исходные данные удовлетворяют условиям: \\
+$(i) \;\;\;\; \textbf{v} \in H^1(G) \cap L^{\infty}(G), \quad
+\nabla \cdot \textbf{v} = 0;$ \\
+$(ii) \;\; \Theta_0 \in L^{\infty}(\Gamma), \; 0 \leq m \leq
+\Theta_0 \leq M; \; \exists \;\widetilde{\theta} \in H^1(G), \;
+\widetilde{\theta}|_{\Gamma} = \Theta_0, \; m \leq
+\widetilde{\theta} \leq M;$ \\
+$(iii) \; \beta \in L^{\infty}(\Gamma), \; \beta \geq \beta_0>0.$ \\
+
+Здесь и далее через $L^p$, $1 \leq p \leq \infty$, обозначаем
+пространство Лебега, а через $H^s$ -- пространство Соболева
+$W^s_2$.
+Через $(\cdot,\cdot)$ обозначаем скалярное произведение в $L^2(G)$,
+\[
+    (f,g) = \int_G f(r)g(r)dr, \quad \|f\|^2=(f,f).
+\]
+
+Кроме этого будем использовать пространство
+\[
+    H^1_0(G) = \{ \eta \in H^1(G): \; \eta|_{\Gamma}=0\}
+\]
+с нормой $\|\eta\|_{H^1_0(G)}=(\nabla \eta, \nabla \eta)^{1/2}$.
+
+\begin{definition}
+    Пара $\{\theta, \varphi\} \in H^1(G) \times H^1(G)$ называется
+    слабым решением задачи $(\ref{eq:1_3:4-1})$-$(\ref{eq:1_3:4-4})$, если
+    \begin{equation}
+        \label{eq:1_3:4-5}
+        a(\nabla\theta, \nabla\eta) + (\mathbf{v}\cdot\nabla\theta +
+        b\mu_a(\theta^4-\varphi), \eta) = 0 \quad \forall \eta \in
+        H^1_0(G),
+    \end{equation}
+    \begin{equation}
+        \label{eq:1_3:4-6}
+        \alpha (\nabla\varphi, \nabla \psi) + \mu_a(\varphi - \theta^4,
+        \psi)+ \int \limits_{\Gamma} \beta (\varphi-\Theta_0^4)\psi
+        d\Gamma = 0 \quad \forall \psi \in H^1(G)
+    \end{equation}
+    и при этом $\theta|_{\Gamma} = \Theta_0$.
+\end{definition}
+
+Отметим, что в силу вложения $H^1(G) \subset L^6(G)$ выражение
+$(\theta^4, \eta)$  имеет смысл для любой функции $\eta \in
+H^1(G)$.
+
+\begin{theorem}
+    \label{th:1_3:weakExist}
+    Пусть выполняются условия (i)-(iii).
+    Тогда существует слабое
+    решение задачи $(\ref{eq:1_3:4-1})$-$(\ref{eq:1_3:4-4})$, удовлетворяющее
+    условиям
+    \begin{equation}
+        \label{eq:1_3:4-7}
+        m \leq \theta \leq M, \quad m^4 \leq \varphi < M^4.
+    \end{equation}
+\end{theorem}
+Доказательство теоремы~\ref{th:1_3:weakExist} основано на построении
+операторного уравнения, которое определяет слабое решение
+задачи~\eqref{eq:1_3:4-1}--\eqref{eq:1_3:4-4},
+обосновании слабого принципа максимума и
+применении принципа Лере-Шаудера.
+
+
+%\subsection{Построение операторного уравнения}
+
+Рассмотрим пространство $V = H^1_0(G) \times H^1(G)$.
+Скалярное произведение в $V$ удобно выбрать следующим образом:
+\[
+    ((y,z)) = a(\nabla \zeta, \nabla \eta) + \alpha(\nabla \varphi,
+    \nabla \psi)+\int \limits_{\Gamma} \beta \varphi\psi d\Gamma,
+\]
+где $y = \{\zeta, \varphi\} \in V, z= \{\eta, \psi\} \in V.$
+Отметим, что норма пространства $V$, соответствующая выбранному
+скалярному произведению, эквивалентна норме пространства
+$H^1(G) \times H^1(G)$.
+Через $\widetilde{y}$ обозначим элемент пространства $V$ такой, что
+\[
+    ((\widetilde{y}, z)) = a(\nabla\widetilde{\theta}, \nabla
+    \eta)-\int \limits_{\Gamma} \beta \Theta_0^4\psi d\Gamma \quad
+    \forall z = \{\eta, \psi\} \in V,
+\]
+где $\widetilde{\theta}$ -- функция из условия $(ii)$.
+
+Определим нелинейный оператор $F: V \to V$, используя равенство
+\begin{equation}
+    \label{eq:1_3:4-8}
+    ((F(y),z))=(\textbf{v}\cdot\nabla\theta, \eta) + \mu_a b
+    \left(\theta^4-\varphi, \eta)+\mu_a(\varphi-\theta^4, \psi \right),
+\end{equation}
+справедливое для всех $y=\{\zeta, \varphi\}, z=\{\eta, \psi\} \in V$.
+Здесь $\theta = \widetilde{\theta} + \zeta$.
+
+Из определения скалярного произведения в пространстве $V$ и
+соотношения~\eqref{eq:1_3:4-8} следует утверждение.
+
+\begin{lemma}
+    \label{lm:1_3:weak}
+    Пара $\{\theta, \varphi\} \in H^1(G) \times H^1(G)$ является
+    слабым решением задачи $(\ref{eq:1_3:4-1})$-$(\ref{eq:1_3:4-4})$, если и только
+    если элемент $y=\{\theta-\widetilde{\theta}, \varphi\} \in V$
+    удовлетворяет в пространстве $V$ уравнению
+    \begin{equation}
+        \label{eq:1_3:4-9}
+        y + \widetilde{y} + F(y) = 0.
+    \end{equation}
+\end{lemma}
+
+\subsection{Разрешимость краевой задачи}\label{subsec:ch1/sec3/solvability}
+
+Для доказательства разрешимости уравнения~\eqref{eq:1_3:4-9}
+предварительно рассмотрим в пространстве $V$ уравнение
+\begin{equation}
+    \label{eq:1_3:4-10}
+    y + \widetilde{y} + F_M(y) = 0.
+\end{equation}
+Здесь оператор $F_M: V \to V$ определяется равенством
+\[
+    ((F_M(y),z))=(\textbf{v}\cdot\nabla\theta, \eta) + \mu_a b
+    (|\theta|\theta^3-g(\varphi),
+    \eta)+\mu_a(\varphi-|\theta|\theta^3, \psi)
+\]
+для всех $y=\{\zeta, \varphi\}, z=\{\eta, \psi\} \in V$, где
+$\theta = \widetilde{\theta}+ \zeta$,
+\[
+    g(t) = \left\{
+    \begin{array}{lll}
+        m^4, & \text{ при } \quad t < 0,           \\
+        t,   & \text{ при } \quad t \in [0, M^4], \\
+        M^4, & \text{ при } \quad t > M^4.
+    \end{array}
+    \right.
+\]
+Отметим, что если $y=\{\zeta, \varphi\}$ есть решение~\eqref{eq:1_3:4-10},
+удовлетворяющее условиям $m\leq \theta\leq M$,
+$m^4 \leq \varphi \leq M^4$,
+то $y$ является решением уравнения~\eqref{eq:1_3:4-9},
+и поэтому пара $\{\theta, \varphi \}$ будет слабым
+решением задачи~\eqref{eq:1_3:4-1}--\eqref{eq:1_3:4-4}.
+
+\begin{lemma}
+    \label{lemma:4-2}
+    Оператор $F_M: V \to V$ вполне непрерывен.
+\end{lemma}
+
+\begin{proof}
+    Пусть $y_1=\{\zeta_1, \varphi_1\}
+    \in V$, $y_2=\{\zeta_2, \varphi_2\} \in V$,
+    $\|\zeta_{1,2}\|_{H^1(G)} \leq \chi$, $\zeta = \zeta_1 - \zeta_2$,
+    $\varphi = \varphi_1 - \varphi_2$, $\theta_{1,2} =
+    \widetilde{\theta} + \zeta_{1,2}$, $z = \{\eta, \psi\} \in V$.
+    Оценим разность
+    \begin{gather*}
+        ((F_M(y_1)-F_M(y_2), z)) = (\textbf{v}\cdot\nabla\zeta, \eta) +
+        \mu_a
+        b(|\theta_1|\theta_1^3-|\theta_2|\theta_2^3+g(\varphi_2)-g(\varphi_1),
+        \eta)+\\
+        \mu_a(\varphi+|\theta_2|\theta_2^3-|\theta_1|\theta_1^3, \psi)
+        \leq \|\textbf{v}\|_{L^{\infty}(G)} \|\nabla\zeta\| \|\eta\| +\\
+        2\mu_a b\left(\|\theta_1\|^3_{L^6(G)} +
+        \|\theta_2\|^3_{L^6(G)}\right) \|\zeta\|_{L^4(G)}
+        \|\eta\|_{L^4(G)} + \mu_a
+        b\|\varphi\|\|\eta\|+\mu_a\|\varphi\|\|\psi\|+\\
+    \end{gather*}
+    \begin{equation}
+        \label{eq:1_3:4-11}
+        2\mu_a
+        \left(\|\theta_1\|^3_{L^6(G)}
+        + \|\theta_2\|^3_{L^6(G)}\right)\|\zeta\|_{L^4(G)}\|\psi\|_{L^4(G)}.
+    \end{equation}
+    Обозначим $h=F_M(y_1)-F_M(y_2)=\{h_1, h_2\} \in V$, и в
+    неравенстве (\ref{eq:1_3:4-11}) положим $z=h$.
+    Учтем непрерывность
+    операторов вложения $H^1(G)$ в $L^s(G)$, $1 \leq s \leq 6$.
+    Отметим, что указанные операторы компактны, если $1 \leq s < 6$.
+    Тогда
+    \begin{equation}
+        \label{eq:1_3:4-12}
+        \|h\|^2_V \leq C \left( \|\zeta\|\|\nabla h_1\| +
+        \|\zeta\|_{L^4(G)}\|h\|_V\right).
+    \end{equation}
+    Здесь через $C>0$ обозначена постоянная, зависящая только от $a$,
+    $b$, $\alpha$, $\beta$, $\chi$, $\|\textbf{v}\|_{L^{\infty}(G)}$ и
+    норм соответствующих операторов вложения.
+    Следствием оценки~\eqref{eq:1_3:4-12} является
+    непрерывность оператора $F_M$, а также, в
+    силу компактности вложения $H^1(G)$ в $L^2(G)$ и $L^4(G)$,
+    компактность оператора $F_M$.
+    Лемма доказана.
+\end{proof}
+
+Рассмотрим далее операторное уравнение с параметром
+$\lambda \in (0,1]$:
+\begin{equation}
+    \label{eq:1_3:4-13}
+    y_{\lambda} + \widetilde{y} + \lambda F_M(y_{\lambda}) = 0,
+\end{equation}
+для решения которого получим априорные оценки, равномерные по $\lambda$.
+
+\begin{lemma}
+    \label{lemma:4-3}
+    Пусть $y_{\lambda}=\{\zeta_{\lambda}, \varphi_{\lambda}\} \in V$
+    удовлетворяют $(\ref{eq:1_3:4-13})$, $\lambda \in (0,1]$.
+    Тогда для
+    функций $\theta_{\lambda} = \widetilde{\theta} + \zeta_{\lambda}
+    \in H^1(G)$, $\varphi_{\lambda} \in H^1(G)$ справедливы оценки
+    \begin{equation}
+        \label{eq:1_3:4-14}
+        m \leq \theta_{\lambda}(r) \leq M, \quad m^4 \leq
+        \varphi_{\lambda}(r) \leq M^4, \quad r \in G.
+    \end{equation}
+\end{lemma}
+
+\begin{proof}
+    Умножим (\ref{eq:1_3:4-13}) скалярно в
+    $V$ на элемент $z=\{\eta_{\lambda}, 0\} \in V$, где
+    $\eta_{\lambda} = \max(\theta_{\lambda}-M, 0) \in H^1_0(G)$.
+    Тогда
+    \[
+        a(\nabla\theta_{\lambda}, \nabla \eta_{\lambda}) +
+        \lambda(\textbf{v}\cdot \nabla\theta_{\lambda}, \eta_{\lambda}) +
+        \lambda\mu_a
+        b(|\theta_{\lambda}|\theta_{\lambda}^3-g(\varphi_{\lambda}),
+        \eta_{\lambda})=0.
+    \]
+    Учтем, что
+    \begin{gather*}
+    (\nabla\theta_{\lambda}, \nabla \eta_{\lambda})
+        =
+        \|\nabla\eta_{\lambda}\|^2, \quad (\textbf{v}\cdot
+        \nabla\theta_{\lambda}, \eta_{\lambda})=(\textbf{v}\cdot
+        \nabla\eta_{\lambda}, \eta_{\lambda})=\frac{1}{2}(\textbf{v},
+        \nabla(\eta_{\lambda}^2))=0,\\
+        (|\theta_{\lambda}|\theta_{\lambda}^3-g(\varphi_{\lambda}),
+        \eta_{\lambda}) = \int \limits_{\theta_{\lambda}>M}
+        (|\theta_{\lambda}|\theta_{\lambda}^3-g(\varphi_{\lambda}))(\theta_{\lambda}-M)dr
+        \geq 0.\\
+    \end{gather*}
+    Поэтому $\eta_{\lambda}=0$ и соответственно $\theta_{\lambda} \leq
+    M$ в области $G$.
+
+
+    Далее, умножая~\eqref{eq:1_3:4-13} скалярно в $V$ на
+    $z=\{0,\psi_{\lambda}\}$, где $\psi_{\lambda} = \max
+    (\varphi_{\lambda}-M^4,0)$, получаем
+    \[
+        \alpha \|\nabla\psi_{\lambda}\|^2 + \lambda\mu_a \int
+        \limits_{\varphi_{\lambda}>M^4}(\varphi_{\lambda}-|\theta_{\lambda}|\theta_{\lambda}^3)
+        \psi_{\lambda}dr + \int \limits_{\Gamma}\beta
+        (\varphi_{\lambda}-\Theta_0^4)\psi_{\lambda}d\Gamma =0.
+    \]
+    Из неотрицательности каждого слагаемого следует, что
+    $\psi_{\lambda}=0$ и соответственно $\varphi_{\lambda} \leq M^4$ в
+    области $G$.
+
+    Аналогичным образом, умножая~\eqref{eq:1_3:4-13} скалярно в $V$ сначала
+    на $z=\{\min(\theta_{\lambda}-m, 0), 0\} \in V$, затем на
+    $z=\{0,\min(\varphi_{\lambda}-m^4,0)\} \in V$, приходим к
+    неравенствам: $\theta_{\lambda} \geq m$, $\varphi_{\lambda} \geq
+    m^4$.
+\end{proof}
+
+
+Полученные оценки позволяют доказать равномерную по $\lambda \in
+(0,1]$ ограниченность решений уравнения~\eqref{eq:1_3:4-13} в
+пространстве $V$.
+Действительно, умножая~\eqref{eq:1_3:4-13} скалярно в
+$V$ на $y_{\lambda} = \{\zeta_{\lambda}, \varphi_{\lambda}\} \in V$
+и учитывая~\eqref{eq:1_3:4-14}, получаем
+\begin{equation}
+    \label{eq:1_3:4-15}
+    \|y_{\lambda}\|^2_V + ((\widetilde{y}, y_{\lambda})) + \lambda
+    (\textbf{v}\cdot \nabla\theta_{\lambda}, \zeta_{\lambda}) +
+    \lambda\mu_a b(\theta_{\lambda}^4-\varphi_{\lambda},
+    \theta_{\lambda}-\widetilde{\theta}) +\lambda \mu_a
+    (\varphi_{\lambda}-\theta_{\lambda}^4, \varphi_{\lambda}) = 0.
+\end{equation}
+Заметим, что
+\begin{gather*}
+    |(\textbf{v} \cdot \nabla\theta_{\lambda}, \zeta_{\lambda})|=
+    |(\textbf{v} \cdot \nabla\zeta_{\lambda}, \theta_{\lambda})| \leq
+    \|\textbf{v}\|_{L^{\infty}(G)} M \|\nabla\zeta_{\lambda}\| \leq \\
+    \leq
+    \frac{M}{\sqrt{a}}\|\textbf{v}\|_{L^{\infty}(G)}\|y_{\lambda}\|_V
+    \leq \frac{M^2}{a}\|\textbf{v}\|^2_{L^{\infty}(G)}
+    + \frac{1}{4}\|y_{\lambda}\|^2_V.
+\end{gather*}
+С учетом~\eqref{eq:1_3:4-14} из~\eqref{eq:1_3:4-15} следует оценка
+\[
+    \|y_{\lambda}\|^2_V \leq \frac{1}{2} \|y_{\lambda}\|^2 +
+    \frac{1}{2} \|\widetilde{y}\|^2_V +
+    \frac{M^2}{a}\|\textbf{v}\|^2_{L^{\infty}(G)} +
+    \frac{1}{4}\|y_{\lambda}\|^2_V + \mu_a b M^5 mes G + \mu_a M^8 mes
+    G.
+\]
+Таким образом,
+\begin{equation}
+    \label{eq:1_3:4-16}
+    \|y_{\lambda}\|^2_V \leq C,
+\end{equation}
+где
+\[
+    C= 2 \|\widetilde{y}\|^2_V +
+    \frac{4M^2}{a}\|\textbf{v}\|^2_{L^{\infty}(G)} + 4 \mu_a M^5 mes
+    G(b+M^3).
+\]
+Здесь через $mes G$ обозначен объем $G$.
+Поскольку оператор $F_M:
+V \to V$ вполне непрерывен, оценка~\eqref{eq:1_3:4-16} гарантирует по
+теореме Лере-Шаудера разрешимость уравнения (\ref{eq:1_3:4-10}). На
+основании леммы~\ref{lemma:4-3}, если $y=\{\zeta, \varphi\}$ --
+решение~\eqref{eq:1_3:4-10}, то $m \leq \theta \leq M$,
+$m^4 \leq \varphi \leq M^4$, где $\theta = \widetilde{\theta} + \zeta$.
+Поэтому
+$F_M(y) = F(y)$ и в силу леммы~\ref{lm:1_3:weak} пара
+$\{\theta, \varphi\}$ является слабым решением задачи
+(\ref{eq:1_3:4-1})-(\ref{eq:1_3:4-4}), что доказывает теорему~\ref{th:1_3:weakExist}
+
+\subsection{Достаточные условия единственности решения}\label{subsec:ch1/sec3/uniqueness}
+
+Получим условия, гарантирующие однозначную разрешимость задачи
+(\ref{eq:1_3:4-1})--(\ref{eq:1_3:4-4}) в классе функций из $H^1(G)$,
+удовлетворяющих ограничениям (\ref{eq:1_3:4-7}). Пусть  $\{\theta_1,
+\varphi_1\}$ и $\{\theta_2, \varphi_2\}$ -- слабые решения задачи
+(\ref{eq:1_3:4-1})--(\ref{eq:1_3:4-4}) такие, что $m \leq \theta_{1,2} \leq M$ в
+области $G$.
+Положим $\theta = \theta_1 - \theta_2$, $\varphi = \varphi_1 - \varphi_2$.
+Из определения слабого решения вытекают равенства
+\begin{equation}
+    \label{eq:1_3:4-17}
+    a(\nabla\theta, \nabla\eta) + (\textbf{v}\cdot\nabla\theta +
+    b\mu_a(f\theta-\varphi), \eta) = 0 \quad \forall \eta \in
+    H^1_0(G),
+\end{equation}
+\begin{equation}
+    \label{eq:1_3:4-18}
+    \alpha (\nabla\varphi, \nabla \psi) + \mu_a(\varphi - f\theta,
+    \psi)+ \int \limits_{\Gamma} \beta \varphi\psi d\Gamma \quad
+    \forall \psi \in H^1(G).
+\end{equation}
+Здесь $f=(\theta_1+\theta_2)(\theta_1^2+\theta_2^2)$.
+
+Положим $\eta=\theta$, $\psi=\varphi$ в (\ref{eq:1_3:4-17}), (\ref{eq:1_3:4-18})
+и учтем, что  $(\textbf{v}\cdot\nabla\theta, \theta)=0$ и $4m^3
+\leq f \leq 4M^3$, тогда
+\[
+    \|\nabla\theta\|^2 \geq \gamma_1 \|\theta\|^2, \quad \alpha
+    \|\nabla\varphi\|^2 + \int \limits_{\Gamma} \beta\varphi^2 d\Gamma
+    \geq \gamma_2\|\varphi\|^2,
+\]
+где
+\begin{gather*}
+    \gamma_1 = \inf\{\|\nabla\zeta\|^2: \zeta \in H^1_0(G), \|\zeta\| = 1\},\\
+    \gamma_2 = \inf\{\alpha\|\nabla\psi\|^2
+    + \int \limits_{\Gamma}\beta\psi^2 d\Gamma: \psi \in H^1(G), \|\psi\| = 1\}.
+\end{gather*}
+Отсюда следуют неравенства
+\begin{equation}
+    \label{eq:1_3:4-19}
+    (a\gamma_1+4m^3\mu_a b)\|\theta\| \leq \mu_a b \|\varphi\|, \quad
+    (\gamma_2+\mu_a)\|\varphi\| \leq  4M^3\mu_a\|\theta\|.
+\end{equation}
+Таким образом, если выполняется условие
+\begin{equation}
+    \label{eq:1_3:4-20}
+    4M^3\mu_a^2 b < (a\gamma_1 + 4m^3\mu_a b) (\gamma_2 + \mu_a),
+\end{equation}
+то из (\ref{eq:1_3:4-19}) следует, что $\theta=0$, $\varphi=0$.
+
+\begin{theorem}
+    \label{thm:4-2}
+    Пусть выполняются условия $($i$)$-$($iii$)$ и условие
+    $(\ref{eq:1_3:4-20})$.
+    Тогда задача $(\ref{eq:1_3:4-1})$-$(\ref{eq:1_3:4-4})$
+    однозначно разрешима в классе слабых решений, удовлетворяющих
+    $(\ref{eq:1_3:4-7})$.
+\end{theorem}
+
+Приведем теперь пример условий единственности решения задачи
+сложного теплообмена, учитывающих скорость движения среды в канале
+длиной $L$, поперечное сечение которого является квадратом со
+стороной $d$.
+В этом случае
+\begin{equation}
+    \label{eq:1_3:4-21}
+    G= \{r=(x_1, x_2, x_3): \; 0 < x_1 < L, \; 0 < x_{2,3} < d \}.
+\end{equation}
+Пусть среда движется с постоянной скоростью $\textbf{v} = (v, 0,
+0)$.
+В равенствах (\ref{eq:1_3:4-17}) и (\ref{eq:1_3:4-18}), определяющих
+разности $\theta$ и $\varphi$ двух возможных решений, полагаем
+\begin{gather*}
+    \theta = (\gamma- e^{-sx_1})q_1, \quad \eta = (\gamma-
+    e^{-sx_1})^{-1}q_1,\\
+    \varphi = (\gamma- e^{-sx_1})q_2, \quad \psi = (\gamma-
+    e^{-sx_1})^{-1}q_2.\\
+\end{gather*}
+Здесь $\gamma > 1$, $s > 0$.
+Тогда
+\begin{gather*}
+    a\|\nabla q_1\|^2 + \int \limits_G \left(\frac{vs}{\gamma
+    e^{sx_1}-1} - \frac{as^2}{(\gamma e^{sx_1}-1)^2} + b\mu_a
+    f\right)q_1^2 dr + b\mu_a(q_1, q_2)=0,\\
+    \alpha\|\nabla q_2\|^2 + \int \limits_G \left(\mu_a - \frac{\alpha
+    s^2}{(\gamma e^{sx_1}-1)^2}\right)q_2^2 dr + \int \limits_{\Gamma}
+    \beta q_2^2 d\Gamma - (f q_1, q_2)=0.\\
+\end{gather*}
+Таким образом, аналогично тому, как выводилась оценка~\eqref{eq:1_3:4-19}, получаем
+\begin{gather*}
+    \left(a\gamma_1+4m^3\mu_a b + \frac{vs}{\gamma e^{sL}-1} -
+    \frac{as^2}{(\gamma-1)^2}\right)\|q_1\| \leq b\mu_a\|q_2\|,\\
+    \left(\gamma_2+\mu_a - \frac{\alpha
+    s^2}{(\gamma-1)^2}\right)\|q_2\| \leq 4M^3\mu_a\|q_1\|.\\
+\end{gather*}
+Положим здесь, например, $s=1/L$,
+$\gamma=1+s\sqrt{2\alpha/\mu_a}$.
+Тогда
+\begin{gather*}
+    \left(a\gamma_1+4m^3\mu_a b +
+    \frac{v}{L(e-1)+e\sqrt{2\alpha/\mu_a}} -
+    \frac{a\mu_a}{2\alpha}\right)\|q_1\| \leq b\mu_a\|q_2\|,\\
+    \left(\gamma_2+ \frac{\mu_a}{2}\right)\|q_2\| \leq
+    4M^3\mu_a\|q_1\|.\\
+\end{gather*}
+Следовательно, условие
+\begin{equation}
+    \label{eq:1_3:4-22}
+    4M^3\mu_a^2 b < \left(a\gamma_1 + 4m^3\mu_a b +
+    \frac{v}{L(e-1)+e\sqrt{2\alpha/\mu_a}}-
+    \frac{a\mu_a}{2\alpha}\right)\left(\gamma_2+\frac{\mu_a}{2}\right)
+\end{equation}
+обеспечивает единственность в классе ограниченных решений.
+Для
+данной геометрии канала нетрудно вычислить, что
+\[
+    \gamma_1 = \pi^2\left(\frac{2}{d^2} + \frac{1}{L^2}\right), \quad
+    \gamma_2 \geq
+    \left(2L\max\left(\frac{1}{\beta_0},\frac{2L}{\alpha}\right)\right)^{-1}.
+\]
+
+
+Таким образом, выполнение условия единственности~\eqref{eq:1_3:4-22}
+можно обеспечить как за счет малости размеров канала ($d$ или $L$),
+так и за счет выбора достаточно большой скорости движения среды $v$.
+
+
+В следующем разделе приводятся результаты численного моделирования
+сложного теплообмена с параметрами задачи, удовлетворяющими
+условию~\eqref{eq:1_3:4-22}.

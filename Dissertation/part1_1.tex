@@ -1,0 +1,399 @@
+\section{Уравнение переноса теплового излучения}\label{sec:ch1/sec1}
+Уравнение переноса излучения описывает поле интенсивности излучения
+при взаимодействии теплового излучения с поглощающей,
+излучающей и рассеивающей средой
+(radiatively participating medium).
+Будем предполагать, что среда имеет постоянный показатель
+преломления $n$, является не поляризующей,
+находится в состоянии покоя (по сравнению со скоростью света) и в локальном
+термодинамическом равновесии~\cite[280]{modest2013radiative}.
+
+
+Спектральной интенсивностью излучения $I_\nu (x \omega, t)$ $[\text{Вт}/(м^2 \cdot \text{стер} \cdot \text{Гц})]$
+называется количество энергии излучения, проходящего через единичную
+площадку, перпендикулярную направлению распространения $\omega$, внутри единичного телесного угла,
+осью которого является направление $\omega$, в единичном
+интервале частот, включающем частоту $\nu$, и в единицу времени.
+Считаем, что направления излучения $\omega$ связаны с точками единичной
+сферы $S = \{\omega \in R^3: \| \omega\| = 1\}$.
+
+
+Рассмотрим пучок излучения интенсивностью $I_\nu (x \omega, t)$, распространяющегося в поглощающей,
+излучающей и рассеивающей среде в заданном направлении.
+Энергия излучения будет уменьшаться вследствие поглощения
+излучения веществом и отклонения части его от первоначальной траектории в
+результате рассеяния во всех направлениях, но одновременно она будет возрастать
+вследствие испускания излучения веществом.
+
+
+Обозначим через $\kappa_{a\nu}$[$\text{м}^{-1}$] спектральный коэффициент поглощения,
+равный доле падающего излучения, поглощенной веществом на единице длины
+пути распространения излучения.
+Приращение интенсивности излучения за счет поглощения равно
+$(dI_\nu)_\text{погл} = -\kappa_{a\nu} I_\nu ds$, где $ds$ — элемент пути.
+Отметим, что $1/\kappa_{a_\nu}$ есть средняя длина свободного пробега фотона до его поглощения
+веществом~\cite[281]{modest2013radiative}.
+
+
+Для получения выражения для испускания излучения элементом объема
+часто используется предположение о локальном термодинамическом равновесии.
+Оно означает, что любой малый элемент объема среды находится в
+локальном термодинамическом равновесии, вследствие чего состояние любой
+точки может быть охарактеризовано локальной температурой $T(x)$.
+Это предположение законно, когда столкновения атомов в веществе происходят столь
+часто, что это приводит к локальному термодинамическому равновесию в каждой точке $x$ среды.
+В этом случае испускание излучения элементом объема
+можно описать с помощью функции Планка~\cite[36]{Ozisik1976}
+Приращение интенсивности излучения за счет испускания равно
+$(dI_\nu)_\text{исп}  = j_\nu ds$  $j_\nu$ -- коэффициент испускания.
+В локальном термодинамическом равновесии справедлива формула~\cite[36]{Ozisik1976}
+~\cite[282]{modest2013radiative}. $j_\nu = \kappa_{a\nu} I_{b\nu}$, где
+$I_{b\nu}$ — интенсивность излучения абсолютно черного тела.
+
+
+Абсолютно черным называется тело, которое поглощает все падающее
+со всех направлений излучение любой частоты без отражения, пропускания и
+рассеяния.
+Из закона Кирхгофа следует, что абсолютно черное тело также излучает
+максимальное количество энергии при данной
+температуре~\cite[25]{Ozisik1976}\cite[5]{modest2013radiative}.
+Интенсивность излучения абсолютно черного тела при температуре $T$ равна
+
+\[
+    I_{b\nu}(T) = \frac{2h \nu^3 n^2}{c^2_0(e^{h\nu/kT} - 1)},
+\]
+
+где $h$ -- постоянная Планка, $k$ - постоянная Больцмана, $c_0$ -- скорость света в вакууме,
+$T$ -- абсолютная температура, $n$ -- показатель преломления.
+Интегральная интенсивность излучения абсолютно черного тела $I_b(T)$
+вычисляется по формуле [68, с.\ 28], [67, с.\ 10]
+\[
+    I_b(T) = \int^{\infty}_0 I_{b\nu}(T) d\nu = \frac{n^2 \sigma T^4}{\pi},
+\]
+где $\sigma$ -- постоянная Стефана-Больцмана.
+
+
+Рассеяние излучения учитывается так же, как поглощение, с той разницей,
+что рассеянная энергия просто перенаправляется и возникает в приращении
+интенсивности излучения в другом направлении.
+Различают когерентное и некогерентное рассеяние.
+Рассеяние называется когерентным, если рассеянное излучение имеет ту же самую частоту,
+что и падающее излучение, и некогерентным, если частота рассеянного
+излучения отличается от частоты падающего излучения.
+В дальнейшем мы будем рассматривать только когерентное рассеяние.
+Обозначим через $\kappa_{s\nu}$ [$\text{м}^{-1}$] спектральный коэффициент рассеяния, равный
+доле падающего излучения, рассеянной веществом во всех направлениях на
+единице длины пути распространения излучения.
+Тогда приращение интенсивности излучения за счет «рассеяния вне» равно
+$(dI_{nu})_\text{расс.вне} = - \kappa_{s\nu}I_{nuds}$.
+Для описания ``рассеяния в`` вводится неотрицательная фазовая функция рассеяния
+$P_{nu} = (\omega, \omega')$ такая, что $\frac{1}{4\pi}\int_S P_{nu} (\omega, \omega')d\omega = 1$.
+Величина $\frac{1}{4\pi}\int_S P_{nu} (\omega, \omega')d\omega$
+определяет вероятность того, что излучение частоты $\nu$,
+падающее в направлении $\omega'$,
+будет рассеяно в пределах элементарного телесного угла $d\omega$ в направлении $\omega$.
+Случай $P_\nu \equiv 1$ соответствует изотропному рассеянию.
+Тогда для того, чтобы получить приращение интенсивности излучения за счет «рассеяния в», нужно
+проинтегрировать $I_\nu(\omega')P_\nu(\omega,\omega')/4\pi$ по всем входящим направлениям
+$\omega'$ ~\cite[283]{modest2013radiative}:
+$(dI_\nu)_\text{расс.в} = ds \frac{\kappa_{s\nu}}{4\pi}\int_S I_\nu(\omega')P_{nu(\omega,\omega')d\omega'}$.
+Учитывая приращения интенсивности излучения с учетом поглощения,
+испускания и рассеяния, получим
+искомое уравнение переноса излучения~\cite[272]{Ozisik1976} ~\cite[284]{modest2013radiative}:
+\begin{equation}
+    \label{eq:1_1:1}
+    \begin{aligned}
+        &\frac{1}{c} \frac{\partial I_v(x, \omega, t)}
+        {\partial t}+\omega \cdot \nabla_x I_v(x, \omega, t)+\kappa_v I_v(x, \omega, t)=\\
+        &=\mathrm{\kappa}_{a v} I_{b v}(T(x, t))+\frac{\mathrm{K}_{s v}}{4 \pi}
+        \int_S I_v\left(x, \omega^{\prime}, t\right)
+        P_v\left(\omega, \omega^{\prime}\right) d \omega^{\prime}.
+    \end{aligned}
+\end{equation}
+Здесь $\kappa_{nu} = \kappa_{a\nu} + \kappa_{s\nu}$ -- полный
+спектральный коэффициент взаимодействия,
+$c$ -- скорость света в среде.
+
+
+Далее получим граничные условия для уравнения переноса излучения.
+Будем считать, что граница области непрозрачна, испускает излучение диффузно
+и отражает излучение диффузно и зеркально.
+Степенью черноты поверхности $\varepsilon \nu(x)$ называется отношение количества энергии,
+испускаемого данной поверхностью, к количеству энергии, испускаемому абсолютно черным телом при
+той же температуре.
+При диффузном испускании излучения степень черноты не зависит от направления и определяется формулой
+$\varepsilon_\nu(x) = \frac{I_{\nu,\text{исп}}(x)}{I_{b\nu}(T(x))}$, где
+$I_{\nu,\text{исп}}(x)$ -- интенсивность излучения, испускаемого
+поверхностью при температуре $T(x)$~\cite[53]{Ozisik1976}
+
+При диффузном поглощении степень черноты равняется
+поглотительной способности, которая равна доле
+поглощенного излучения~\cite[66]{modest2013radiative}.
+Также введем коэффициенты зеркального и диффузного отражения
+$\rho^s_\nu(x), \rho^d_\nu(x)$ как части зеркально и диффузно отраженного излучения соответственно.
+Отметим, что в случае непрозрачной поверхности $\varepsilon_\nu + \rho^s_\nu + \rho^d_{nu = 1}$.
+Граничное условие имеет вид~\cite[289]{modest2013radiative}\cite{Kovtanyuk2014a}.
+\begin{equation}
+    \label{eq:1_1:2}
+    \begin{aligned}
+        &I_v(x, \omega, t)=\varepsilon_v(x) I_{b v}(T(x, t))
+        +\rho_v^s(x) I_v\left(x, \omega_R, t\right)+ \\
+        &\quad+\frac{\rho_v^d(x)}{\pi} \int_{\omega^{\prime}
+        \cdot \mathbf{n}>0} I_v\left(x, \omega^{\prime},
+        t\right) \omega^{\prime} \cdot \mathbf{n} d \omega^{\prime},
+        \omega \cdot \mathbf{n} < 0,
+    \end{aligned}
+\end{equation}
+где $\mathbf{n}$ -- вектор внешней нормали к границе области,
+$\omega$ -- входящее направление,
+$\omega_R$ -- направление отражения, определяемое из соотношения
+$\omega + (-\omega_R) = 2 \cos \theta = \omega \cdot \mathbf{n}$
+косинус угла между
+вектором нормали и направлением падающего излучения.
+Таким образом, $\omega_R = \omega -2(\omega \cdot \mathbf{n})\mathbf{n}$.
+
+
+Поле температуры описывается уравнением теплопроводности~\cite[297]{modest2013radiative}:
+\[
+    \rho c_p \frac{\partial T(x, t)}{\partial t} - k \Delta T(x, t)+\rho c_p
+    \mathbf{v}(x, t) \cdot \nabla T(x, t)=-\operatorname{div} \mathbf{q}_r(x, t),
+\]
+
+где $T[K]$ -- температура, $\mathbf{v}$ [м/с] поле скоростей, $k$ [Вт/м $\cdot К$]
+-- коэффициент теплопроводности, $c_p$ [Дж/(кг$\cdot K$)] --
+удельная теплоёмкость при постоянном
+давлении, $\rho$ [кг/$\text{м}^3$] -- плотность,
+$\mathbf{q}_r$ -- вектор плотности потока излучения, определяемый формулой [67, с.\ 292]
+$\mathbf{q}_r(x, t) = \int^\infty_0\int_S I_\nu(x,\omega,t)\omega d\omega d\nu$.
+Дивергенция вектора плотности потока излучения $\operatorname{div} \mathbf{q}_r$
+характеризует изменение в единицу времени энергии излучения,
+заключенной в единице объема среды, по всему спектру частот вследствие испускания
+излучения во всё сферическое пространство и поглощения падающего
+из него излучения ~\cite[274]{Ozisik1976}.
+Для нахождения $\operatorname{div} \mathbf{q}_{r}$ проинтегрируем
+уравнение~\eqref{eq:1_1:1} по $\boldsymbol{\omega} \in S$, получим
+\[
+    \begin{gathered}
+        \frac{1}{c} \frac{\partial}{\partial t}
+        \int_{S} I_{v}(x, \boldsymbol{\omega}, t) d
+        \boldsymbol{\omega}+\operatorname{div}
+        \int_{S} I_{v}(x, \boldsymbol{\omega}, t) \boldsymbol{\omega} d
+        \boldsymbol{\omega}+\kappa_{v}
+        \int_{S} I_{v}(x, \boldsymbol{\omega}, t) d \boldsymbol{\omega}= \\
+        = 4 \pi \kappa_{a v} I_{b v}(T(x, t))+\frac{\kappa_{s v}}{4 \pi} \int_{S}
+        \int_{S} I_{v}\left(x, \boldsymbol{\omega}^{\prime},
+        t\right) P_{v}\left(\boldsymbol{\omega},
+        \boldsymbol{\omega}^{\prime}\right) d
+        \boldsymbol{\omega}^{\prime} d \boldsymbol{\omega}.
+    \end{gathered}
+\]
+
+
+Поменяем порядок интегрирования во втором слагаемом в правой части:
+\[
+    \begin{gathered}
+        \int_{S} \int_{S} I_{v}\left(x, \omega^{\prime}, t\right) P_{v}
+        \&\left(\boldsymbol{\omega},
+        \boldsymbol{\omega}^{\prime}\right)
+        d \boldsymbol{\omega}^{\prime} d \boldsymbol{\omega} = \\
+        \int_{S} I_{v}\left(x, \boldsymbol{\omega}^{\prime}, t\right)
+        \int_{S} P_{v}\left(\boldsymbol{\omega},
+        \omega^{\prime}\right) d \boldsymbol{\omega}
+        d \boldsymbol{\omega}^{\prime} = \\
+        4 \pi \int_{S} I_{v}\left(x,
+        \boldsymbol{\omega}^{\prime}, t\right) d \boldsymbol{\omega}^{\prime}.
+    \end{gathered}
+\]
+
+
+Обозначим через $G_{v}(x, t)=\int_{S} I_{v}(x, \omega, t) d \omega$
+пространственную плотность падающего излучения.
+Тогда
+\[
+    \frac{1}{c} \frac{\partial G_{v}(x, t)}{\partial t}
+    +\operatorname{div} \int_{S} I_{v}(x, \boldsymbol{\omega}, t)
+    \boldsymbol{\omega} d \omega+\mathrm{\kappa}_{v} G_{v}(x, t)=4 \pi
+    \mathrm{\kappa}_{a v} I_{b v}(T(x, t))+\mathrm{\kappa}_{s v} G_{v}(x, t),
+\]
+отсюда
+\[
+    \begin{gathered}
+        \operatorname{div} \int_{S} I_{v}(x, \omega, t) \omega \boldsymbol{\omega} d
+        \boldsymbol{\omega}=4 \pi \mathrm{\kappa}_{a v} I_{b v}(T(x, t))-\mathrm{\kappa}_{a v}
+        G_{v}(x, t)-\frac{1}{c} \frac{\partial G_{v}(x, t)}{\partial t}, \\
+        \operatorname{div} \mathbf{q}_{r}(x, t)=\int_{0}^{\infty} \mathrm{\kappa}_{a v}
+        \left(4 \pi I_{b v}(T(x, t))-G_{v}(x, t)\right) d v-\frac{1}{c}
+        \frac{\partial}{\partial t} \int_{0}^{\infty} G_{v}(x, t) d v.
+    \end{gathered}
+\]
+Таким образом, уравнение теплопроводности принимает вид
+\[
+    \begin{aligned}
+        &\rho c_{p} \frac{\partial T(x, t)}{\partial t}
+        -k \Delta T(x, t)+\rho c_{p} \mathbf{v}(x, t) \cdot \nabla T(x, t)= \\
+        &=-\int_{0}^{\infty} \int_{S} \kappa_{a v}
+        \left(I_{b v}(T(x, t))-I_{v}(x, \omega, t)\right) d \omega d v
+        +\frac{1}{c} \frac{\partial}{\partial t}
+        \int_{0}^{\infty} \int_{S} I_{v}(x, \omega, t) d \omega d v.
+    \end{aligned}
+\]
+
+Получим граничные условия для уравнения теплопроводности из закона Ньютона-Рихмана.
+Согласно этому закону, плотность теплового потока пропорциональна разности температур
+поверхности тела $T$ и окружающей среды $T_{b}$ : $q=h\left(T-T_{b}\right)$.
+Здесь $h\left[\right.$ Вт $\left./\left(\mathrm{м}^{2} \cdot \mathrm{K}\right)\right]$ - коэффициент
+теплоотдачи, характеризующий интенсивность теплообмена между поверхностью тела и окружающей средой.
+Численно он равен количеству тепла, отдаваемому (воспринимаемому) единицей поверхности в единицу времени
+при разности температур между поверхностью и средой в $1 \mathrm{~K}[70]$.
+Отметим, что непосредственно
+на поверхности контакта тела с окружающей средой $T=T_{b}$,
+однако мы считаем, что температура $T$ на
+границе поверхности - это температура за пределами пограничного слоя [71].
+Рассматривая граничное условие для уравнения переноса излучения (1.2),
+будем считать, что поверхностное излучение происходит из пограничного слоя,
+поэтому в качестве аргумента функции $I_{b v}(T)$ будем использовать $T_{b}$.
+По закону сохранения энергии количество тепла, отводимое с единицы поверхности
+вследствие теплоотдачи, должно равняться теплу, подводимому к единице поверхности
+вследствие теплопроводности из внутренних объемов тела, тогда
+$h\left(T-T_{b}\right)=\mathbf{q} \cdot \mathbf{n} =
+-k \nabla T \cdot \mathbf{n}=-k \frac{\partial T}{\partial n}$.
+Таким образом, граничное условие имеет вид:
+
+\[
+    k \frac{\partial T(x, t)}{\partial n}+h(x)\left(T(x, t)-T_{b}(x, t)\right)=0.
+\]
+
+Следует отметить, что условия третьего рода для температуры
+обычно ставятся на твердой стенке,
+где $\mathbf{v} \cdot \mathbf{n} = 0$.
+В данном случае постановка условий третьего рода на всей границе и, в частности,
+на участке втекания моделирует процесс теплообмена при
+малых значениях нормальной компоненты скорости.
+
+В дальнейшем мы будем рассматривать случай «серой» среды,
+когда $\kappa_{a v}$ и $\mathrm{K}_{s v}$ не зависят от частоты $v$,
+так что $\mathrm{K}_{a v}=\mathrm{K}_{a}, \mathrm{~K}_{s v}=\mathrm{K}_{s}$.
+Граница области также предполагается «серой».
+В этом случае уравнения и граничные условия принимают вид~\cite{Kovtanyuk2014a}:
+
+\begin{equation}
+    \label{eq:1_1:3}
+    \begin{aligned}
+        & \frac{1}{c} \frac{\partial I(x, \boldsymbol{\omega}, t)}{\partial t}
+        +\boldsymbol{\omega} \cdot \nabla_{x} I(x, \boldsymbol{\omega}, t)
+        +\kappa I(x, \boldsymbol{\omega}, t)= \\
+        & =\frac{\kappa_{s}}{4 \pi} \int_{S} P
+        \left(\omega, \omega^{\prime}\right) I
+        \left(x, \omega^{\prime}, t\right) d \omega^{\prime}
+        +\kappa_{a} \frac{\sigma n^{2} T^{4}(x, t)}{\pi}
+    \end{aligned}
+\end{equation}
+
+\begin{equation}
+    \label{eq:1_1:4}
+    \begin{aligned}
+        & \rho c_{p} \frac{\partial T(x, t)}{\partial t}
+        -k \Delta T(x, t)+\rho c_{p} \mathbf{v}(x, t) \cdot \nabla T(x, t)= \\
+        & =-\mathrm{\kappa}_{a}\left(4 \sigma n^{2} T^{4}(x, t)-
+        \int_{S} I(x, \boldsymbol{\omega}, t) d \boldsymbol{\omega}\right)
+        +\frac{1}{c} \frac{\partial}{\partial t}
+        \int_{S} I(x, \boldsymbol{\omega}, t) d \boldsymbol{\omega},
+    \end{aligned}
+\end{equation}
+
+\begin{equation}
+    \label{eq:1_1:5}
+    \begin{aligned}
+        &I(x, \boldsymbol{\omega}, t)=\varepsilon(x)
+        \frac{\sigma n^{2}}{\pi} T_{b}^{4}(x, t)+\rho^{s}(x) I
+        \left(x, \boldsymbol{\omega}_{R}, t\right)+ \\
+        & +\frac{\rho^{d}(x)}{\pi} \int_{\omega^{\prime}
+        \cdot \mathbf{n}>0} I\left(x, \omega^{\prime}, t\right) \omega^{\prime}
+        \cdot \mathbf{n} d \omega^{\prime}, \omega \cdot \mathbf{n}<0,
+    \end{aligned}
+\end{equation}
+\begin{equation}
+    \label{eq:1_1:6}
+    \begin{aligned}
+        & k \frac{\partial T(x, t)}{\partial n}
+        +h(x)\left(T(x, t)-T_{b}(x, t)\right) = 0. \\
+        & \text { Здесь } I=\int_{0}^{\infty} I_{v} d v.
+    \end{aligned}
+\end{equation}
+
+Поставим также начальные условия:
+\begin{equation}
+    \label{eq:1_1:7}
+    I(x, \boldsymbol{\omega}, 0)=I_{0}(x, \boldsymbol{\omega}), \quad T(x, 0)=T_{0}(x).
+\end{equation}
+Соотношения~\eqref{eq:1_1:3}--\eqref{eq:1_1:7} представляют собой модель сложного
+теплообмена с полным уравнением переноса излучения.
+
+
+Перейдем к безразмерным величинам.
+Обозначим
+\begin{equation}
+    \label{eq:1_1:8}
+    I(x, \omega, t)=\left(\frac{\sigma n^{2}}{\pi}
+    T_{\max }^{4}\right) I^{*}(x, \boldsymbol{\omega}, t),
+    \quad T(x, t)=T_{\max } \theta(x, t),
+\end{equation}
+Здесь $I^{*}-$ нормализованная интенсивность излучения,
+$\theta-$ нормализованная температура, $T_{\max }$ - максимальная температура
+в ненормализованной модели.
+Подставив~\eqref{eq:1_1:8} в уравнения~\eqref{eq:1_1:3}\eqref{eq:1_1:4}, получим
+
+\begin{equation}
+    \label{eq:1_1:9}
+    \begin{aligned}
+        &\frac{1}{c} \frac{\partial I^{*}(x, \omega, t)}{\partial t}
+        +\omega \cdot \nabla_{x} I^{*}(x, \omega, t) +\kappa I^{*}(x, \omega, t)=\\
+        &= \frac{\kappa_{s}}{4 \pi} \int_{S} P\left(\omega, \omega^{\prime}\right) I^{*}
+        \left(x, \omega^{\prime}, t\right) d \omega^{\prime}+\kappa_{a} \theta^{4}(x, t),
+    \end{aligned}
+\end{equation}
+\begin{equation}
+    \label{eq:1_1:10}
+    \begin{aligned}
+        &\frac{\partial \theta(x, t)}{\partial t}
+        -a \Delta \theta(x, t)+\mathbf{v}(x, t) \cdot \nabla \theta(x, t)=\\
+        &=-b \kappa_{a}\left(\theta^{4}(x, t)-\frac{1}{4 \pi}
+        \int_{S} I^{*}(x, \omega, t) d \omega\right)
+        +\frac{b}{4 \pi c} \frac{\partial}{\partial t}
+        \int_{S} I^{*}(x, \omega, t) d \boldsymbol{\omega},
+    \end{aligned}
+\end{equation}
+
+где $a=\frac{k}{\rho c_{p}}, b=\frac{4 \sigma n^{2} T_{\max }^{3}}{\rho c_{p}}$.
+Подставляя~\eqref{eq:1_1:8} в граничные условия~\eqref{eq:1_1:5}--\eqref{eq:1_1:6}
+и полагая $T_{b}=T_{\max } \theta_{b}$, получим
+
+\begin{equation}
+    \label{eq:1_1:11}
+    \begin{aligned}
+        & I^{*}(x, \boldsymbol{\omega}, t) =
+        \varepsilon(x) \theta_{b}^{4}(x, t)
+        +\rho^{s}(x) I^{*}\left(x, \omega_{R}, t\right)+ \\
+        & +\frac{\rho^{d}(x)}{\pi} \int_{\omega^{\prime} \cdot \mathbf{n}>0} I^{*}
+        \left(x, \omega^{\prime}, t\right) \omega^{\prime}
+        \cdot \mathbf{n} d \omega^{\prime}, \omega \cdot \mathbf{n}<0,
+    \end{aligned}
+\end{equation}
+\begin{equation}
+    \label{eq:1_1:12}
+    a \frac{\partial \theta(x, t)}{\partial n}+\beta(x)\left(\theta(x, t)
+    -\theta_{b}(x, t)\right)=0,
+\end{equation}
+где $\beta=\frac{h}{\rho c_{p}}$.
+
+
+Аналогично получаем начальные условия:
+\begin{equation}
+    \label{eq:1_1:13}
+    I^{*}(x, \boldsymbol{\omega}, 0)=I_{0}^{*}(x, \boldsymbol{\omega}),
+    \quad \theta(x, 0)=\theta_{0}(x),
+\end{equation}
+
+где $I_{0}^{*}(x, \boldsymbol{\omega})=\left(\frac{\sigma n^{2}}{\pi}
+T_{\max }^{4}\right)^{-1} I_{0}(x, \boldsymbol{\omega}),
+\quad \theta_{0}(x)=\frac{T_{0}(x)}{T_{\max }}$.
