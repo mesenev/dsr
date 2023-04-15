@@ -81,8 +81,9 @@ $b=0.025[\text{см}/\text{с}]$, $\kappa_a=1[\text{см}^{-1}]$, $\alpha = 0.(3
 отклонения $\partial_n\theta_\lambda$ от $q_b$ на грани куба в плоскости $z=l$,
 где $\partial_n\theta_\lambda=\partial\theta_\lambda/\partial z$,
 а также динамика функционала качества, определяющего норму
-разности $\|\theta_\lambda -\theta_b\|^2_\Gamma$.
-На остальных гранях куба значения относительного отклонения имеют тот же порядок малости.
+разности $\|\theta_\lambda -\theta_b\|^2_\Gamma$ на рисунке~\ref{fig:quality_1}.
+На остальных гранях куба значения относительного
+отклонения имеют тот же порядок малости.
 
 \begin{figure}[h!]
     \centering
@@ -134,6 +135,62 @@ $\widehat{\theta} = (x_1-0.5)^2 - 0.5x_2+0.75$.
 Представленные численные примеры иллюстрируют, что предложенный алгоритм успешно справляется
 с нахождением численного решения задачи~\eqref{eq:2_2:eq1}--\eqref{eq:2_2:bc2}.
 
+
+\textbf{Пример 3.}
+Положим в условии~\eqref{eq:2_2:bc1}
+$r=0.8 \cos (x)+0.1,\; u=\hat{u}=y$.
+Далее рассчитываем состояние $\theta$ и $\varphi$ как решение
+задачи~\eqref{eq:2_2:eq1}--\eqref{eq:2_2:bc2}
+и в качестве $\theta_{b}$ выбираем граничные значения функции $\theta$ на Г.
+Применяя предложенный алгоритм с начальным приближением $u_{0}=0.1$,
+находим приближенное решение задачи $(C)$.
+Квадрат разницы тестового и найденного решения представлен на рисунке~\ref{fig:4_4:dvmg-1a},
+а также динамика функционала качества рисунке~\ref{fig:4_4:dvmg-1b}.
+\begin{figure}[h!]
+    \centering
+    \subfloat[$\left(\hat{u}-u_{100}\right)^{2}$]
+    { \label{fig:4_4:dvmg-1a} \includegraphics[width=.49\textwidth]{jvm-2020/dvmg/1a} }
+    \subfloat[Изменение функционала в зависимости от числа итераций]
+    { \label{fig:4_4:dvmg-1b} \includegraphics[width=.49\linewidth]{jvm-2020/dvmg/1b} }
+    \caption{Результаты третьего эксперимента}
+\end{figure}
+
+
+\textbf{Пример 4.}
+Зададим функции $\theta_{b}, q_{b}$ в краевом условии~\eqref{eq:2_2:bc2}
+следующим образом:
+
+\[
+    \theta_{b}=0.1 z+0.3, \quad q_{b}=
+    \begin{cases}
+        0.11, & \text { если } z=1, \\
+        0, & \text { если } 0<z<1, \\
+        -0.15, & \text { если } z=0.
+    \end{cases}
+\]
+
+
+В данном примере оптимальное управление $u$ в качестве тестового не задается.
+На рисунках~\ref{fig:4_4:dvmg-2a}~\ref{fig:4_4:dvmg-2b} представлен результат работы алгоритма.
+\begin{figure}[h!]
+    \centering
+    \subfloat[Оптимальное управление]
+    { \label{fig:4_4:dvmg-2a} \includegraphics[width=.49\textwidth]{jvm-2020/dvmg/1a} }
+    \subfloat[Изменение функционала в зависимости от числа итераций]
+    { \label{fig:4_4:dvmg-2b} \includegraphics[width=.49\linewidth]{jvm-2020/dvmg/1b} }
+\end{figure}
+
+
+Компоненты состояния, соответствующие найденному управлению, представлены на
+рисунках~\ref{fig:4_4:dvmg-3a}\ref{fig:4_4:dvmg-3b}.
+
+\begin{figure}[h!]
+    \centering
+    \subfloat[Температура $\theta$]
+        { \label{fig:4_4:dvmg-3a} \includegraphics[width=.49\textwidth]{jvm-2020/dvmg/3a} }
+    \subfloat[Излучение $\varphi$]
+        { \label{fig:4_4:dvmg-3b} \includegraphics[width=.49\linewidth]{jvm-2020/dvmg/3b} }
+\end{figure}
 
 %jvm-mesenev-chebotarev
 \subsection{
@@ -215,23 +272,25 @@ $\alpha = 0.(3)[\text{см}]$.
     \subfloat[$\theta|_{z=1} $]
     {
         \label{fig:1_theta}
-        \includegraphics[width=.5\linewidth]{jvm-2022/1_theta}
+        \includegraphics[width=.4\linewidth]{jvm-2022/1_theta}
     }
     \subfloat[$\phi|_{z=1} $]
     {
         \label{fig:1_phi}
-        \includegraphics[width=.5\linewidth]{jvm-2022/1_phi}
+        \includegraphics[width=.4\linewidth]{jvm-2022/1_phi}
     }
     \caption{Результаты первого эксперимента}
-    \label{fig:1}
+    \label{fig:4_4:1}
 \end{figure}
 
-На фиг.~\ref{fig:1_theta},~\ref{fig:1_phi} представлены полученные решения $\theta$ и $\phi$.
+На фиг.~\ref{fig:1_theta},~\ref{fig:1_phi} представлены
+полученные решения $\theta$ и $\phi$.
 Начальное значение функционала качества равно $~0.025$ и
 через сотню итераций становится равным $~5.e-05$.
 
 \textbf{Пример 2.}
-Рассмотрим двумерный случай: имеется квадрат $S = \{(x, y), 0 \leq x,y,z \leq 1~\text{см.}\}$ с
+Рассмотрим двумерный случай: имеется квадрат
+$S = \{(x, y), 0 \leq x,y,z \leq 1~\text{см.}\}$ с
 круговой полостью $R$ с центром $b_0 =\{0.5, 0.5\}$
 $R = \{r, \| r - b_0 \| \leq 0.15~\text{см.} \}$.
 Рассматриваемая область $\Omega = S \setminus R$.
@@ -273,4 +332,3 @@ $\Gamma \equiv \partial \Omega = \partial C \cup \partial B$ при чём
 что предложенный алгоритм успешно справляется
 с нахождением численного решения задачи~\eqref{eq:2_4:eq1}--\eqref{eq:2_4:bc2}.
 
-%! Suppress = LineBreak
