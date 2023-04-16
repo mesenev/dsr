@@ -11,17 +11,18 @@ $P_{1}$-аппроксимацией для уравнения переноса 
 \begin{equation}
     \label{eq:2_3:1}
     \begin{split}
-        & a \frac{\partial \theta}{\partial t}-a \Delta \theta
-        + b \kappa_{a}\left(|\theta| \theta^{3}-\varphi\right)=0, \\
-        &-\alpha \Delta \varphi+\kappa_{a}\left(\varphi-|\theta| \theta^{3}\right)=0,
-        \quad x \in \Omega, \quad 0<t<T;
+        & a \frac{\partial \theta}{\partial t} - a \Delta \theta
+        + b \kappa_{a} \left(|\theta| \theta^{3}-\varphi\right) = 0,\\
+        & - \alpha \Delta \varphi
+        + \kappa_{a} \left(\varphi-|\theta| \theta^{3}\right) = 0,
+        \quad x \in \Omega, \quad 0 < t < T;
     \end{split}
 \end{equation}
 \begin{align}
-    a\left(\partial_{n} \theta+\theta\right)=r,
-    &\quad \alpha\left(\partial_{n} \varphi
-    + \varphi\right)=u \text { на } \Gamma;  \label{eq:2_3:2}\\
-    &\left.\theta\right|_{t=0}=\theta_{0}. \label{eq:2_3:3}
+    a \left(\partial_{n} \theta+\theta\right)=r,
+    & \quad \alpha\left(\partial_{n} \varphi
+    + \varphi\right) = u \text { на } \Gamma;  \label{eq:2_3:2}\\
+    & \left.\theta\right|_{t=0} = \theta_{0}. \label{eq:2_3:3}
 \end{align}
 
 Здесь $\theta$ — нормированная температура,
@@ -59,7 +60,8 @@ $\left\{\theta_{\lambda}, \varphi_{\lambda}, u_{\lambda}\right\}$ такую, ч
 Вместо них задаются граничные температура и внешний поток,
 \begin{equation}
     \label{eq:2_3:5}
-    \left.\theta\right|_{\Gamma}=\theta_{b},\left.\quad \partial_{n} \theta\right|_{\Gamma}=q_{b}.
+    \left.\theta\right|_{\Gamma}=\theta_{b},
+    \left.\quad \partial_{n} \theta\right|_{\Gamma}=q_{b}.
 \end{equation}
 
 Основные результаты главы заключаются в получении априорных
@@ -80,10 +82,13 @@ $\left\{\theta_{\lambda}, \varphi_{\lambda}, u_{\lambda}\right\}$
 что $\Omega \subset \mathrm{R}^{3}$ — ограниченная строго липшицева область,
 граница которой $\Gamma$ состоит из конечного числа гладких кусков.
 Через $L^{s}, 1 \leq s \leq$ $\infty$
-обозначается пространство Лебега, а через $H^{s}$ пространство Соболева $W_{2}^{s}$.
+обозначается пространство Лебега, а через $H^{s}$
+пространство Соболева $W_{2}^{s}$.
 Пусть $H=$ $L^{2}(\Omega), V=H^{1}(\Omega)$.
-Через $V^{\prime}$ обозначим двойственное к $V$ пространство, а через $L^{s}(0, T; X)$
-пространство Лебега функций из $L^{s}$, определенных на $(0, T)$ со значениями в пространстве $X$.
+Через $V^{\prime}$ обозначим двойственное к $V$ пространство,
+а через $L^{s}(0, T; X)$
+пространство Лебега функций из $L^{s}$, определенных
+на $(0, T)$ со значениями в пространстве $X$.
 Пространство $H$ отождествляется с пространством
 $H^{\prime}$ так, что $V \subset H=H^{\prime} \subset V^{\prime}$.
 Обозначим через $\|\cdot\|$ стандартную норму в $H$, а через $(f, v)$
@@ -104,14 +109,17 @@ $H^{\prime}$ так, что $V \subset H=H^{\prime} \subset V^{\prime}$.
 
 Будем считать, что \\
 (i) $a, b, \alpha, \kappa_{a}, \lambda=$ Const $>0$, \\
-(ii) $\theta_{b}, q_{b} \in U, r=a\left(\theta_{b}+q_{b}\right) \in L^{5}(\Sigma) \theta_{0} \in L^{5}(\Omega)$.
+(ii) $\theta_{b}, q_{b} \in U, r=a\left(\theta_{b}+q_{b}\right)
+\in L^{5}(\Sigma) \theta_{0} \in L^{5}(\Omega)$.
 
 
 Определим операторы $A: V \rightarrow V^{\prime}, B: U \rightarrow V^{\prime}$,
-используя следующие равенства, справедливые для любых $y, z \in V, w \in L^{2}(\Gamma)$:
+используя следующие равенства, справедливые для любых
+$y, z \in V, w \in L^{2}(\Gamma)$:
 
 \[
-    (A y, z)=(\nabla y, \nabla z)+\int_{\Gamma} y z d \Gamma, \quad(B w, z)=\int_{\Gamma} w z d \Gamma.
+    (A y, z)=(\nabla y, \nabla z)+\int_{\Gamma} y z d \Gamma,
+    \quad(B w, z)=\int_{\Gamma} w z d \Gamma.
 \]
 
 Билинейная форма $(A y, z)$ определяет скалярное произведение в пространстве $V$,
@@ -133,8 +141,8 @@ $[h]^{s} \coloneqq |h|^{s} \operatorname{sign} h, s>0, h \in \mathbf{R}$
 
 
 \begin{definition}
-    Пара $\theta \in W, \varphi \in L^{2}(0, T ; V)$ называется слабым решением задачи (1)-(3), если
-
+    Пара $\theta \in W, \varphi \in L^{2}(0, T ; V)$ называется слабым
+    решением задачи~\eqref{eq:2_3:1}--\eqref{eq:2_3:3}, если
     \begin{equation}
         \label{eq:2_3:6}
         \theta^{\prime}+a A \theta+b \kappa_{a}\left([\theta]^{4}-\varphi\right)=B r,
@@ -151,24 +159,30 @@ $F(\theta, \varphi, u): W \times L^{2}(0, T; V) \times U
 \[
     F(\theta, \varphi, u)=\left\{\theta^{\prime}+a A
     \theta+b \kappa_{a}\left([\theta]^{4}-\varphi\right)-B r,
-    \alpha A \varphi+\kappa_{a}\left(\varphi-[\theta]^{4}\right)-B u, \theta(0)-\theta_{0}\right\}.
+    \alpha A \varphi+\kappa_{a}\left(\varphi-[\theta]^{4}\right)-B u,
+    \theta(0)-\theta_{0}\right\}.
 \]
 
 Таким образом задача $(\mathbf{OC})$ заключается в отыскании тройки
 $\{\theta, \varphi, u\} \in W \times L^{2}(0, T ; V) \times U$ такой, что
 
 \[
-    J_{\lambda}(\theta, u) \equiv \frac{1}{2}\left\|\theta-\theta_{b}\right\|_{\Sigma}^{2}+
-    \frac{\lambda}{2}\|u\|_{\Sigma}^{2} \rightarrow \inf , \quad F(\theta, \varphi, u)=0.
+    J_{\lambda}(\theta, u) \equiv \frac{1}{2}\left\|\theta-
+    \theta_{b}\right\|_{\Sigma}^{2}+
+    \frac{\lambda}{2}\|u\|_{\Sigma}^{2}
+    \rightarrow \inf, \quad F(\theta, \varphi, u)=0.
 \]
 
-\subsection{Разрешимость задачи $(\mathbf{OC})$}\label{subsec:ch2/sec3/subsec3}
-Докажем сначала однозначную разрешимость задачи (1)-(3).
+\subsection{Разрешимость задачи $(\mathbf{OC})$}
+\label{subsec:ch2/sec3/subsec3}
+Докажем сначала однозначную разрешимость
+задачи~\eqref{eq:2_3:1}--\eqref{eq:2_3:3}.
 
 \begin{lemma}
     \label{lm:2_3:1}
     Пусть выполняются условия (i), (ii), $u \in U$.
-    Тогда существует единственное слабое решение задачи (1)-(3) и, кроме того,
+    Тогда существует единственное слабое решение
+    задачи~\eqref{eq:2_3:1}--\eqref{eq:2_3:3} и, кроме того,
 
     \[
         \psi=[\theta]^{5 / 2} \in L^{\infty}(0, T; H) \cap L^{2}(0, T ; V),
@@ -177,7 +191,7 @@ $\{\theta, \varphi, u\} \in W \times L^{2}(0, T ; V) \times U$ такой, чт�
 \end{lemma}
 
 \begin{proof}
-    Выразим $\varphi$ из последнего уравнения (6) и подставим его в первое.
+    Выразим $\varphi$ из последнего уравнения~\eqref{eq:2_3:6} и подставим его в первое.
     В результате получаем следующую задачу Коши для уравнения с операторными коэффициентами:
 
     \begin{equation}
@@ -211,7 +225,7 @@ $\{\theta, \varphi, u\} \in W \times L^{2}(0, T ; V) \times U$ такой, чт�
         b \kappa_{a}\|\theta\|_{L^{5}(\Omega)}^{5}=[B r, \theta] + [f, \theta].
     \end{equation}
 
-    Из равенства (8) следует оценка
+    Из равенства ~\eqref{eq:2_3:8} следует оценка
 
     \begin{equation}
         \label{eq:2_3:9}
@@ -651,108 +665,3 @@ $\forall \zeta \in L^{2}(0, T ; V), v \in U$
     Поскольку решение этой задачи единственно~\cite{Chebotarev2019Problem},
     то $\theta_{*}=\theta, \varphi_{*}=\varphi$.
 \end{proof}
-
-\subsection{Численный алгоритм и примеры}
-\label{subsec:ch2/sec3/}
-Приведем алгоритм решения задачи управления.
-Пусть
-\[
-    \widetilde{J}_{\lambda}(u)=J_{\lambda}(\theta(u), u),
-\]
-
-где $\theta(u)$ — компонента решения задачи~\eqref{eq:2_3:1}(1)-\eqref{eq:2_3:2},
-соответствующая управлению $u \in U$.
-Согласно~\eqref{eq:2_3:15} градиент функционала
-$\widetilde{J}_{\lambda}(u)$ определяется
-следующим образом: $\widetilde{J}_{\lambda}^{\prime}(u) = \lambda u-p_{2}$.
-Здесь $p_{2}$ — соответствующая компонента сопряженного
-состояния системы\eqref{eq:2_3:15}, где $\widehat{\theta}\coloneqq\theta(u)$.
-
-The proposed algorithm for solving the problem (OC) is as follows:
-
-Gradient descent algorithm
-
-1: Choosing the value of the gradient step $\varepsilon$,
-
-2: Choosing the number of iterations $N$,
-
-3: Choosing an initial approximation for the control $u_{0} \in U$,
-
-4: for $k \leftarrow 0,1,2, \ldots, N$ do:
-
-5: $\quad$ For a given $u_{k}$, calculate the state
-$y_{k}=\left\{\theta_{k}, \varphi_{k}\right\}$, a solution of
-the problem~\eqref{eq:2_3:1}--\eqref{eq:2_3:3}.
-
-6: $\quad$ We calculate the value of the quality
-functional $J_{\lambda}\left(\theta_{k}, u_{k}\right)$.
-
-7: From equations (15), we calculate the conjugate
-state $p_{k}=\left\{p_{1 k}, p_{2 k}\right\}$,
-where $\widehat{\theta} \coloneqq \theta_{k}, \widehat{u} \coloneqq u_{k}$.
-
-8: $\quad$ We recalculate the control
-$u_{k+1}=u_{k}-\varepsilon\left(\lambda u_{k}-p_{2}\right)$
-
-The parameter $\varepsilon$ is chosen empirically so that the
-value of $\varepsilon\left(\lambda u_{k}-p_{2}\right)$ is a
-significant correction for $u_{k+1}$.
-The number of iterations $N$ is chosen sufficient to
-satisfy the condition $J_{\lambda}\left(\theta_{k}, u_{k}\right)
--J_{\lambda}\left(\theta_{k+1}, u_{k+1}\right)<\delta$, where $\delta>0$
-determines the accuracy of the calculations.
-
-The example considered below illustrates the performance of the proposed
-algorithm for small, which is important, values of the regularization
-parameter $\lambda \leq 10^{-12}$.
-Note that for the numerical solution of a direct problem with a given control,
-the simple iteration method was used to linearize the problem and solve
-it by the finite element method.
-Solving a conjugate system that is linear
-at a given temperature is straightforward.
-For numerical simulation, we used the solver FEniCS [1,21].
-Let us compare the work of the proposed
-algorithm with the results of the article [12].
-The problem is considered in the domain $\Omega \times(-L, L)$,
-where $\Omega=$ $\left\{x=\left(x_{1}, x_{2}\right): 0<x_{1,2}<d\right\}$
-and for large $L$ reduces to a two-dimensional problem for the computational
-domain $\Omega$.
-The following values of the problem parameters were chosen:
-$d=1(\mathrm{~m}), a=0.9210^{-4}\left(\mathrm{~m}^{2} / \mathrm{s}\right),
-b=0.19(\mathrm{~m} / \mathrm{s})$, $\alpha=0.0333(\mathrm{~m})
-\quad \kappa_{a}=1\left(\mathrm{~m}^{-1}\right)$.
-The parameters correspond to air at normal atmospheric pressure
-and temperature $400^{\circ} \mathrm{C}$.
-The function $\theta_{b}, q_{b}$ for the boundary condition (5)
-are set as follows: $\theta_{b}=\left.\widehat{\theta}\right|_{\Gamma},
-q_{b}=\left.\partial_{n} \widehat{\theta}\right|_{\Gamma}$,
-where $\widehat{\theta}=$ $\left(x_{1}-0.5\right)^{2}-0.5 x_{2}+0.75$.
-
-An approximate solution to the
-problem~\eqref{eq:2_3:16},\eqref{eq:2_3:17} with Cauchy data,
-presented in~\cite{Chebotarev2019Problem} (see Fig.\ 1),
-was obtained by solving a fourth-order parabolic problem for temperature.
-
-\begin{figure}[h]
-    \label{fig:2_3:1}
-    \includegraphics[width=\textwidth]{paper03/1}
-    \caption{Temperature field obtained in the article~\cite{Chebotarev2019Problem}}
-\end{figure}
-
-The solution stabilized after 120 seconds, but
-the calculations at each time step were
-quite expensive~\cite{Chebotarev2019Problem}.
-
-
-\begin{figure}[h]
-    \label{fig:2_3:2}
-    \includegraphics[width=\textwidth]{paper03/2}
-    \caption{}
-\end{figure}
-Fig.\ 2 shows the steady-state temperature field obtained by
-the method proposed in the current article.
-
-The presented example illustrates that the proposed
-algorithm successfully finds a numerical solution to the
-problem~\eqref{eq:2_3:16},\eqref{eq:2_3:17} with the boundary
-conditions of the Cauchy type.

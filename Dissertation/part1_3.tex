@@ -1,7 +1,8 @@
 \section{Стационарная модель сложного теплообмена}\label{sec:ch1/sec3}
 %TODO: rework it!!!
 
-\subsection{Постановка краевой задачи}\label{subsec:ch1/sec3/state}
+\subsection{Постановка краевой задачи}
+\label{subsec:ch1/sec3/state}
 
 Стационарная нормализованная диффузионная модель, описывающая
 радиационный, кондуктивный и конвективный теплообмен в
@@ -170,7 +171,8 @@ $H^1(G) \times H^1(G)$.
 \begin{lemma}
     \label{lm:1_3:weak}
     Пара $\{\theta, \varphi\} \in H^1(G) \times H^1(G)$ является
-    слабым решением задачи $(\ref{eq:1_3:4-1})$-$(\ref{eq:1_3:4-4})$, если и только
+    слабым решением задачи
+    $(\ref{eq:1_3:4-1})$-$(\ref{eq:1_3:4-4})$, если и только
     если элемент $y=\{\theta-\widetilde{\theta}, \varphi\} \in V$
     удовлетворяет в пространстве $V$ уравнению
     \begin{equation}
@@ -179,7 +181,8 @@ $H^1(G) \times H^1(G)$.
     \end{equation}
 \end{lemma}
 
-\subsection{Разрешимость краевой задачи}\label{subsec:ch1/sec3/solvability}
+\subsection{Разрешимость краевой задачи}
+\label{subsec:ch1/sec3/solvability}
 
 Для доказательства разрешимости уравнения~\eqref{eq:1_3:4-9}
 предварительно рассмотрим в пространстве $V$ уравнение
@@ -189,16 +192,16 @@ $H^1(G) \times H^1(G)$.
 \end{equation}
 Здесь оператор $F_M: V \to V$ определяется равенством
 \[
-    ((F_M(y),z))=(\textbf{v}\cdot\nabla\theta, \eta) + \mu_a b
-    (|\theta|\theta^3-g(\varphi),
-    \eta)+\mu_a(\varphi-|\theta|\theta^3, \psi)
+    ((F_M(y),z)) = (\textbf{v}\cdot\nabla\theta, \eta)
+    + \mu_a b (|\theta|\theta^3-g(\varphi), \eta)
+    + \mu_a(\varphi-|\theta|\theta^3, \psi)
 \]
 для всех $y=\{\zeta, \varphi\}, z=\{\eta, \psi\} \in V$, где
 $\theta = \widetilde{\theta}+ \zeta$,
 \[
     g(t) = \left\{
     \begin{array}{lll}
-        m^4, & \text{ при } \quad t < 0,           \\
+        m^4, & \text{ при } \quad t < 0, \\
         t,   & \text{ при } \quad t \in [0, M^4], \\
         M^4, & \text{ при } \quad t > M^4.
     \end{array}
@@ -226,8 +229,8 @@ $m^4 \leq \varphi \leq M^4$,
     \begin{gather*}
         ((F_M(y_1)-F_M(y_2), z)) = (\textbf{v}\cdot\nabla\zeta, \eta) +
         \mu_a
-        b(|\theta_1|\theta_1^3-|\theta_2|\theta_2^3+g(\varphi_2)-g(\varphi_1),
-        \eta)+\\
+        b(|\theta_1|\theta_1^3-|\theta_2|\theta_2^3
+        +g(\varphi_2)-g(\varphi_1), \eta)+\\
         \mu_a(\varphi+|\theta_2|\theta_2^3-|\theta_1|\theta_1^3, \psi)
         \leq \|\textbf{v}\|_{L^{\infty}(G)} \|\nabla\zeta\| \|\eta\| +\\
         2\mu_a b\left(\|\theta_1\|^3_{L^6(G)} +
@@ -306,7 +309,8 @@ $\lambda \in (0,1]$:
         \nabla(\eta_{\lambda}^2))=0,\\
         (|\theta_{\lambda}|\theta_{\lambda}^3-g(\varphi_{\lambda}),
         \eta_{\lambda}) = \int \limits_{\theta_{\lambda}>M}
-        (|\theta_{\lambda}|\theta_{\lambda}^3-g(\varphi_{\lambda}))(\theta_{\lambda}-M)dr
+        (|\theta_{\lambda}|\theta_{\lambda}^3
+        - g(\varphi_{\lambda}))(\theta_{\lambda}-M)dr
         \geq 0.\\
     \end{gather*}
     Поэтому $\eta_{\lambda}=0$ и соответственно $\theta_{\lambda} \leq
@@ -387,9 +391,11 @@ $m^4 \leq \varphi \leq M^4$, где $\theta = \widetilde{\theta} + \zeta$.
 Поэтому
 $F_M(y) = F(y)$ и в силу леммы~\ref{lm:1_3:weak} пара
 $\{\theta, \varphi\}$ является слабым решением задачи
-(\ref{eq:1_3:4-1})-(\ref{eq:1_3:4-4}), что доказывает теорему~\ref{th:1_3:weakExist}
+(\ref{eq:1_3:4-1})-(\ref{eq:1_3:4-4}),
+что доказывает теорему~\ref{th:1_3:weakExist}
 
-\subsection{Достаточные условия единственности решения}\label{subsec:ch1/sec3/uniqueness}
+\subsection{Достаточные условия единственности решения}
+\label{subsec:ch1/sec3/uniqueness}
 
 Получим условия, гарантирующие однозначную разрешимость задачи
 (\ref{eq:1_3:4-1})--(\ref{eq:1_3:4-4}) в классе функций из $H^1(G)$,
@@ -423,9 +429,11 @@ $\{\theta, \varphi\}$ является слабым решением задач�
 \]
 где
 \begin{gather*}
-    \gamma_1 = \inf\{\|\nabla\zeta\|^2: \zeta \in H^1_0(G), \|\zeta\| = 1\},\\
+    \gamma_1 = \inf\{\|\nabla\zeta\|^2:
+    \zeta \in H^1_0(G), \|\zeta\| = 1\},\\
     \gamma_2 = \inf\{\alpha\|\nabla\psi\|^2
-    + \int \limits_{\Gamma}\beta\psi^2 d\Gamma: \psi \in H^1(G), \|\psi\| = 1\}.
+    + \int \limits_{\Gamma}\beta\psi^2 d\Gamma:
+    \psi \in H^1(G), \|\psi\| = 1\}.
 \end{gather*}
 Отсюда следуют неравенства
 \begin{equation}
@@ -478,7 +486,8 @@ $\{\theta, \varphi\}$ является слабым решением задач�
     s^2}{(\gamma e^{sx_1}-1)^2}\right)q_2^2 dr + \int \limits_{\Gamma}
     \beta q_2^2 d\Gamma - (f q_1, q_2)=0.\\
 \end{gather*}
-Таким образом, аналогично тому, как выводилась оценка~\eqref{eq:1_3:4-19}, получаем
+Таким образом, аналогично тому,
+как выводилась оценка~\eqref{eq:1_3:4-19}, получаем
 \begin{gather*}
     \left(a\gamma_1+4m^3\mu_a b + \frac{vs}{\gamma e^{sL}-1} -
     \frac{as^2}{(\gamma-1)^2}\right)\|q_1\| \leq b\mu_a\|q_2\|,\\
