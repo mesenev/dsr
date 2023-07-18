@@ -269,18 +269,18 @@ $\mathcal{V}$, $\mathcal{V}'$ определяются формулами
 
 \begin{theorem}[Лебег]
     \label{th:lebeg}~\cite[321]{Kolmogorov2004}
-    Пусть $G \subset \mathbb{R}^N$, $f_n \to f$ п.в. в $G$,
+    Пусть $\Omega \subset \mathbb{R}^N$, $f_n \to f$ п.в. в $G$,
     $\forall n : |f_n(x)| \leq \varphi(x)$ п.в. в $G$,
-    где $\varphi \in L^1(G)$.
-    Тогда $f \in L^1(G)$, $\int_{G} f_n(x) \, dx \to \int_{G} f(x) \, dx$.
+    где $\varphi \in L^1(\Omega)$.
+    Тогда $f \in L^1(\Omega)$, $\int_{\Omega} f_n(x) \, dx \to \int_{\Omega} f(x) \, dx$.
 \end{theorem}
 
 \begin{theorem}[Леви]
     \label{th:levi}~\cite[322]{Kolmogorov2004}
-    Пусть $G \subset \mathbb{R}^N$, последовательность $f_n \in L^1(G)$
-    не убывает и $\forall n : \int_{G} f_n(x) \, dx \leq K$.
-    Тогда $f_n \to f$ п.в. в $G$, где $f \in L^1(G)$,
-    $\int_{G} f_n(x) \, dx \to \int_{G} f(x) \, dx$.
+    Пусть $\Omega \subset \mathbb{R}^N$, последовательность $f_n \in L^1(\Omega)$
+    не убывает и $\forall n : \int_{\Omega} f_n(x) \, dx \leq K$.
+    Тогда $f_n \to f$ п.в. в $G$, где $f \in L^1(\Omega)$,
+    $\int_{\Omega} f_n(x) \, dx \to \int_{\Omega} f(x) \, dx$.
 \end{theorem}
 
 \begin{lemma}
@@ -314,8 +314,8 @@ $\mathcal{V}$, $\mathcal{V}'$ определяются формулами
     Пусть $f(t), t \in \mathbb{R}$ - липшицева функция,
     производная которой существует всюду, за исключением,
     быть может, множества $\left\{a_{1}, \ldots, a_{M}\right\}$,
-    $u \in H^{1}(G)$, $G \subset \mathbb{R}^{N}$.
-    Тогда $f(u) \in H^{1}(G)$,
+    $u \in H^{1}(\Omega)$, $G \subset \mathbb{R}^{N}$.
+    Тогда $f(u) \in H^{1}(\Omega)$,
     $\frac{\partial f(u)}{\partial x_{i}} = f^{\prime}(u)
     \frac{\partial u}{\partial x_{i}}$,
     где обе части этого равенства считаются равными нулю,
