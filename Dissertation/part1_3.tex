@@ -1,166 +1,588 @@
-\section{Стационарная модель сложного теплообмена}\label{sec:ch1/sec3}
+\section{Математический аппарат моделирования сложного теплообмена}
+\label{sec:ch1/sec6}
+Предполагается, что $\Omega \subset \mathbb{R}^3$ — ограниченная
+область с липшицевой границей $\Gamma$~\cite[с.~232]{Zeidler1986},
+$Q = \Omega \times (0, T)$, $\Sigma = \Gamma \times (0, T)$.
+Вектор внешней нормали к границе области обозначается через $\mathbf{n}$.
 
-\subsection{Постановка краевой задачи}
-\label{subsec:ch1/sec3/state}
+Введем следующие обозначения: $|\Omega|$ — объем области $\Omega$,
+$|\Gamma|$ — площадь границы $\Gamma$, $\mu(E)$ — мера множества $E$;
+$L^p(\Omega)$, $L^p(\Gamma)$, $1 \le p \le \infty$ — пространства Лебега;
+$H^s(\Omega)$ — пространство Соболева $W^{2s}(\Omega)$,
+$H^1_0(\Omega) = \{v \in H^1(\Omega) : v|_\Gamma = 0\}$,
+$C^\infty_0(\Omega)$ — пространство функций класса $C^\infty$
+с компактным носителем в $\Omega$; аналогично определяются пространства
+вектор-функций $L^p_s(\Omega)$, $H^s(\Omega)$, $H^1_0(\Omega)$,
+$C^\infty_0(\Omega)$; $L^p(0, T; X)$ — пространство Лебега функций
+со значениями в банаховом пространстве $X$, $C([0, T]; X)$ — пространство
+функций, непрерывных на $[0, T]$, со значениями в $X$, $X'$ — пространство,
+сопряженное с пространством $X$.
 
-Стационарная нормализованная диффузионная модель, описывающая
-радиационный, кондуктивный и конвективный теплообмен в
-ограниченной области $\Omega \subset \mathbb{R}^3$,
-имеет следующий вид~\cite{modest2013radiative}:
+Если $y \in L^p(0, T; X)$, то обозначаем $y' = \frac{dy}{dt}$.
 
-\begin{equation}
-    \label{eq:1_3:4-1}
-    -a \Delta \theta + \textbf{v} \cdot \nabla \theta
-    + b \mu_a \theta^4 =  b \kappa_a \varphi,
-\end{equation}
+Обозначим $H = L^2(\Omega)$, $V = H^1(\Omega)$.
+Пространство $H$ отождествляем с пространством $H'$,
+так что $V \subset H = H' \subset V'$.
+Через $\| \cdot \|$ будем обозначать норму в $H$,
+а через $(f, v)$ — значение функционала $f \in V'$ на элементе
+$v \in V$, совпадающее со скалярным произведением в $H$,
+если $f \in H$.
+Определим пространство $\mathcal{W} = \{ y \in L^2(0, T; V):
+y' \in L^2(0, T, V') \}$.
 
-\begin{equation}
-    \label{eq:1_3:4-2}
-    - \alpha \Delta \varphi + \kappa_a \varphi = \kappa_a \theta^4.
-\end{equation}
-
-Здесь $\theta$ -- нормализованная температура, $\varphi$ --
-нормализованная интенсивность излучения, усредненная по всем
-направлениям, $\textbf{v}$ -- заданное поле скоростей, $\kappa_a$ --
-коэффициент поглощения.
-Постоянные $a$, $b$ и $\alpha$
-определяются следующим образом:
-\[
-    a=\frac{k}{\rho c_v},\quad b = \frac{4\sigma n^2 T_{\max}^3}{\rho c_v},
-    \quad \alpha=\frac{1}{3\kappa - A \kappa_s},
-\]
-где $k$ -- теплопроводность, $c_v$ -- удельная теплоемкость, $\rho$ --
-плотность, $\sigma$ -- постоянная Стефана-Больцмана, $n$ --
-показатель преломления, $T_{\max}$ -- максимальная температура в
-ненормализованной модели, $\kappa = \kappa_s + \kappa_a$ -- коэффициент
-полного взаимодействия, $\kappa_s$ -- коэффициент рассеяния.
-Коэффициент $A \in [-1, 1]$ описывает анизотропию рассеяния, случай
-$A=0$ соответствует изотропному рассеянию.
-
-Будем предполагать, что функции $\theta$ и $\varphi$, описывающие
-процесс сложного теплообмена, удовлетворяют следующим условиям на
-границе $\Gamma = \partial G$:
-\begin{equation}
-    \label{eq:1_3:4-3}
-    a \frac{\partial \theta}{\partial n}
-    +\left.\beta\left(\theta-\theta_{b}\right)\right|_{\Gamma}=0,
-\end{equation}
-\begin{equation}
-    \label{eq:1_3:4-4}
-    \alpha \frac{\partial \varphi}{\partial \mathbf{n}} + \beta
-    (\varphi-\theta_0^4)|_{\Gamma} = 0.
-\end{equation}
-Здесь через $\partial/\partial \mathbf{n}$ обозначаем производную
-в направлении внешней нормали.
-Неотрицательная функция
-$\theta_{0}$, определенная на $\Gamma$,  и функция $\beta$,
-описывающая, в частности, отражающие свойства границы $\Gamma$,
-являются заданными.
-
-\subsection{Слабое решение краевой задачи}\label{subsec:ch1/sec3/weak}
-% Далее CNSNS_2014
-Пусть $\Omega$ -- липшицева ограниченная область, граница $\Gamma$
-которой состоит из конечного числа гладких
-кусков, а исходные данные удовлетворяют условиям: \\
-(i) $\mathbf{v} \in H^{1}(\Omega) \cap L^{\infty}(\Omega), \quad \nabla \cdot \mathbf{v}=0$; \\
-(ii) $\theta_{0}, \beta, \gamma \in L^{\infty}(\Gamma),
-0 \leqslant \Theta_{0} \leqslant M,
-\beta \geqslant \beta_{0}>0, \gamma \geqslant \gamma_{0}>0$; \\
-(iii) $\gamma+(\mathbf{v} \cdot \mathbf{n}) \geqslant c_{0}>0$ на части границы,
-где $(\mathbf{v} \cdot \mathbf{n})<0.$ \\
-
-Здесь $M, \beta_{0}, \gamma_{0}$, и $c_{0}$ неотрицательные константы.
-
-Через $L^p$, $1 \leq p \leq \infty$, обозначаем
-пространство Лебега, а через $H^s$ -- пространство Соболева $W^s_2$.
-Через $(\cdot,\cdot)$ обозначаем скалярное произведение в $L^2(\Omega)$,
-\[
-    (f,g) = \int_\Omega f(r)g(r)dr, \quad \|f\|^2=(f,f).
-\]
+Скалярное произведение в $H$ и нормы в $H$,
+$V$, $V'$ определяются формулами
+\begin{align*}
+(f, g)
+    &= \int_\Omega f(x)g(x) dx, \| f \|^2 = (f, f), \\
+    \| f \|^2_{V} &= \| f \|^2 + \| \nabla f \|^2, \\
+    \| f \|_{V'} &= \sup \{ (f, v):
+    v \in V, \|v\|_{V} = 1 \}.
+\end{align*}
 
 
-\begin{definition}
-    Пара $\{\theta, \varphi\} \in H^1(\Omega) \times H^1(\Omega)$ называется
-    слабым решением задачи $(\ref{eq:1_3:4-1})$-$(\ref{eq:1_3:4-4})$, если
-    \begin{equation}
-        \label{eq:1_3:4-5}
-        \begin{aligned}
-            &a(\nabla \theta, \nabla \eta) + \left(\mathbf{v} \cdot \nabla \theta
-            + b \kappa_{a}\left(|\theta| \theta^{3} - \varphi\right), \eta\right) \\
-            &+ \int_{\Gamma} \gamma\left(\theta - \theta_{0}\right) \eta d \Gamma=0,
-            \quad \eta \in H^{1}(\Omega),
-        \end{aligned}
-    \end{equation}
-    \begin{equation}
-        \label{eq:1_3:4-6}
-        \alpha(\nabla \varphi, \nabla \psi)+\kappa_{a}\left(\varphi-|\theta| \theta^{3},
-        \psi\right)+\int_{\Gamma} \beta\left(\varphi-\theta_{0}^{4}\right) \psi d \Gamma=0,
-        \quad \psi \in H^{1}(\Omega).
-    \end{equation}
-\end{definition}
+\begin{lemma}[неравенство Гёльдера]
+    \label{lemma:hoelder}~\cite[с.~35]{Zeidler1990b}
+    Пусть $p, q \in [1, \infty]$, $\frac{1}{p} + \frac{1}{q} = 1$.
+    Тогда для любых $u \in L^p(\Omega)$, $v \in L^q(\Omega)$
+    выполнено неравенство:
+    \[
+        \left| \int_\Omega uv \, dx \right|
+        \le \|u\|_{L^p(\Omega)} \|v\|_{L^q(\Omega)}.
+    \]
+\end{lemma}
 
-Отметим, что в силу вложения $H^1(\Omega) \subset L^6(\Omega)$ выражение
-$(\theta^4, \eta)$  имеет смысл для любой функции $\eta \in H^1(\Omega)$.
-
-\begin{theorem}
-    \label{th:1_3:weakExist}
-    Пусть выполняются условия (i)-(iii).
-    Тогда существует слабое
-    решение задачи $(\ref{eq:1_3:4-1})$-$(\ref{eq:1_3:4-4})$, удовлетворяющее
-    условиям
-    \begin{equation}
-        \label{eq:1_3:4-7}
-        m \leq \theta \leq M, \quad m^4 \leq \varphi < M^4.
-    \end{equation}
-\end{theorem}
-Доказательство теоремы~\ref{th:1_3:weakExist} основано на построении
-операторного уравнения, которое определяет слабое решение
-задачи~\eqref{eq:1_3:4-1}--\eqref{eq:1_3:4-4},
-обосновании слабого принципа максимума и
-применении принципа Лере-Шаудера.
-
-
-%\subsection{Построение операторного уравнения}
-
-Рассмотрим пространство $V = H^1_0(\Omega) \times H^1(\Omega)$.
-Скалярное произведение в $V$ удобно выбрать следующим образом:
-\[
-    ((y,z)) = a(\nabla \zeta, \nabla \eta) + \alpha(\nabla \varphi,
-    \nabla \psi)+\int \limits_{\Gamma} \beta \varphi\psi d\Gamma,
-\]
-где $y = \{\zeta, \varphi\} \in V, z= \{\eta, \psi\} \in V.$
-Отметим, что норма пространства $V$, соответствующая выбранному
-скалярному произведению, эквивалентна норме пространства
-$H^1(\Omega) \times H^1(\Omega)$.
-Через $\widetilde{y}$ обозначим элемент пространства $V$ такой, что
-\[
-    ((\widetilde{y}, z)) = a(\nabla\widetilde{\theta}, \nabla
-    \eta)-\int \limits_{\Gamma} \beta \theta_0^4\psi d\Gamma \quad
-    \forall z = \{\eta, \psi\} \in V,
-\]
-где $\widetilde{\theta}$ -- функция из условия $(ii)$.
-
-Определим нелинейный оператор $F: V \to V$, используя равенство
-\begin{equation}
-    \label{eq:1_3:4-8}
-    ((F(y),z))=(\textbf{v}\cdot\nabla\theta, \eta) + \kappa_a b
-    \left(\theta^4-\varphi, \eta)+\kappa_a(\varphi-\theta^4, \psi \right),
-\end{equation}
-справедливое для всех $y=\{\zeta, \varphi\}, z=\{\eta, \psi\} \in V$.
-Здесь $\theta = \widetilde{\theta} + \zeta$.
-
-Из определения скалярного произведения в пространстве $V$ и
-соотношения~\eqref{eq:1_3:4-8} следует утверждение
+\begin{lemma}[неравенство Юнга]
+    \label{lemma:young}~\cite[с.~38]{Zeidler1990a}
+    Пусть $p, q > 1$, $\frac{1}{p} + \frac{1}{q} = 1$.
+    Тогда для любых $a, b \ge 0$, $\epsilon > 0$
+    справедливо неравенство:
+    \[
+        ab \le \frac{\epsilon^p a^p}{p} + \frac{b^q}{q\epsilon}.
+    \]
+\end{lemma}
 
 \begin{lemma}
-    \label{lm:1_3:weak}
-    Пара $\{\theta, \varphi\} \in H^1(\Omega) \times H^1(\Omega)$ является
-    слабым решением задачи
-    $(\ref{eq:1_3:4-1})$-$(\ref{eq:1_3:4-4})$, если и только
-    если элемент $y=\{\theta-\widetilde{\theta}, \varphi\} \in V$
-    удовлетворяет в пространстве $V$ уравнению
-    \begin{equation}
-        \label{eq:1_3:4-9}
-        y + \widetilde{y} + F(y) = 0.
-    \end{equation}
+    \label{lemma:reflexive}~\cite[с.~254]{Zeidler1990a}
+    Всякое гильбертово пространство рефлексивно.
 \end{lemma}
+
+\begin{lemma}
+    \label{lemma:reflexive_weak}~\cite[с.~255]{Zeidler1990a}
+    Пусть $X$ — рефлексивное банахово пространство.
+    Если последовательность $x_n \in X$ ограничена,
+    то в ней существует слабо сходящаяся подпоследовательность.
+\end{lemma}
+
+\begin{lemma}
+    \label{lemma:separable_star_weak}~\cite[260]{Zeidler1990a}
+    Пусть $X$ — сепарабельное банахово пространство.
+    Если последовательность $f_n \in X'$ ограничена,
+    то в ней существует *-слабо сходящаяся подпоследовательность.
+\end{lemma}
+
+\begin{lemma}
+    \label{lemma:weak_limit}~\cite[258]{Zeidler1990a}
+    Пусть $X$ — банахово пространство.
+    Если $x_n \in X$, $x_n \rightharpoonup x$ слабо в $X$,
+    то последовательность $x_n$ ограничена и
+    $\|x\| \le \lim\limits_{n \to \infty} \|x_n\|$.
+\end{lemma}
+
+\begin{lemma}
+    \label{lemma:convex_closed}~\cite[47]{Troeltzsch2010}
+    Пусть $U$ — выпуклое, замкнутое множество в банаховом пространстве
+    $X$, $x_n \in U$, $x_n \rightharpoonup x$ слабо в $X$.
+    Тогда $x \in U$.
+\end{lemma}
+
+\begin{definition}
+    \label{def:compact_set}~\cite[с.~48]{Lusternik1982}
+    Множество $M$ банахова пространства $X$ называется компактным,
+    если из всякого бесконечного подмножества множества $M$ можно
+    выделить подпоследовательность,
+    сходящуюся к некоторой точке этого множества.
+    Множество называется относительно компактным,
+    если его замыкание компактно.
+\end{definition}
+
+\begin{definition}
+    \label{def:compact_operator}~\cite[с.~190]{Lusternik1982}
+    Пусть $X, Y$ — банаховы пространства.
+    Оператор $A : M \subset X \to Y$ называется компактным,
+    если он переводит всякое ограниченное подмножество множества
+    $M$ в относительно компактное множество пространства $Y$.
+    Если, кроме того, оператор $A$ непрерывен,
+    то он называется вполне непрерывным.
+\end{definition}
+
+\begin{theorem}[Принцип Шаудера]
+    \label{thm:schauder}~\cite[с.~193]{Lusternik1982}
+    Пусть $X$ — банахово пространство, $M \subset X$ — выпуклое
+    замкнутое множество, $A : M \to M$ — вполне непрерывный оператор.
+    Тогда оператор $A$ имеет неподвижную точку $x \in M$, т.е. $Ax = x$.
+\end{theorem}
+
+\begin{lemma}
+    \label{lem:embedding}~\cite[с.~365]{Zeidler1990a}
+    Пусть $X, Y, Z$ — банаховы пространства и $X \subset Y \subset Z$,
+    причем вложение $X \subset Y$ компактно,
+    а вложение $Y \subset Z$ непрерывно.
+    Тогда для любого $\varepsilon > 0$ существует постоянная
+    $C_\varepsilon > 0$ такая, что
+    $\|u\|_Y \leq \varepsilon \|u\|_X
+    + C_\varepsilon \|u\|_Z \ \forall u \in X$.
+\end{lemma}
+
+\begin{theorem}
+    \label{thm:compactness}~\cite[теорема 3]{Simon1986}
+    Пусть $F$ — ограниченное множество в $L^2(0, T; V)$, и
+    \[
+        \int_0^{T-h} \|f(t+h) - f(t)\|^2 dt \to 0
+    \]
+    при $h \to 0$ равномерно относительно $f \in F$.
+    Тогда $F$ относительно компактно в $L^2(0, T; H)$.
+\end{theorem}
+
+\begin{theorem}[Гильберт, Шмидт]
+    \label{thm:hilbert-schmidt}~\cite[с. 263]{Kolmogorov2004}
+    Пусть $A$ — линейный, самосопряженный, компактный оператор
+    в гильбертовом пространстве $X$.
+    Тогда множество собственных элементов оператора $A$ образует
+    ортогональный базис в $X$.
+\end{theorem}
+
+\begin{theorem}[Лакс, Мильграм]
+    \label{thm:lax-milgram}~\cite[с. 40]{Oben1977}
+    Пусть $X$ — гильбертово пространство,
+    $B : X \times X \to \mathbb{R}$ — непрерывная билинейная форма,
+    $B(x, x) \geq C\|x\|^2_X$, $C > 0$.
+    Тогда для любого $f \in X'$ задача
+    $B(x, z) = (f, z) \quad \forall z \in X$
+    имеет единственное решение $x \in X$.
+\end{theorem}
+
+\begin{definition}
+    \label{def:weakly_semicontinuous}~\cite[с. 47]{Troeltzsch2010}
+    Пусть $X$ — банахово пространство.
+    Функционал $J : X \to \mathbb{R}$ называется слабо полунепрерывным
+    снизу, если для любой последовательности $x_n \in X$ такой,
+    что $x_n \rightharpoonup x$ слабо, выполняется неравенство
+    $J(x) \leq \lim_{n \to \infty} J(x_n)$.
+\end{definition}
+
+\begin{lemma}
+    \label{lem:weakly_semicontinuous_functional}~\cite[с. 47]{Troeltzsch2010}
+    Пусть $X$ — банахово пространство.
+    Если функционал $J : X \to \mathbb{R}$ непрерывный и выпуклый,
+    то он слабо полунепрерывен снизу.
+\end{lemma}
+
+\begin{corollary}
+    \label{cor:weakly_semicontinuous_norm}
+    Пусть $X$ — банахово пространство, $a \in X$.
+    Тогда функционал $J : X \to \mathbb{R}$, $J(x) = \|x - a\|^2_X$
+    слабо полунепрерывен снизу.
+\end{corollary}
+
+\begin{lemma}
+    \label{lem:embedding_Lp_Ls}~\cite[с. 37]{Zeidler1990a}
+    Вложение $L^p(\Omega) \subset L^s(\Omega)$ непрерывно при
+    $1 \leq s \leq p \leq \infty$.
+\end{lemma}
+
+\begin{lemma}
+    \label{lem:Lp_separability_reflexivity}~\cite[с. 1020]{Zeidler1990b}
+    Пространство $L^p(\Omega)$ сепарабельно при $1 \leq p < \infty$
+    и рефлексивно при $1 < p < \infty$.
+\end{lemma}
+
+\begin{lemma}
+    \label{lem:convergence_max_function}
+    Пусть $f_k \to f$ в $L^p(\Omega)$, $1 \leq p < \infty$.
+    Тогда $g_k \to g$ в $L^p(\Omega)$,
+    где $g_k = \max\{f_k, 0\}$, $g = \max\{f, 0\}$.
+\end{lemma}
+
+\begin{proof}
+    Так как $|g_k - g| \leq |f_k - f|$, то
+    \begin{equation*}
+        \|g_k - g\|_{L^p(\Omega)} =
+        \int_{\Omega} |g_k - g|^p \mathrm{d}x
+        \leq \int_{\Omega} |f_k - f|^p \mathrm{d}x =
+        \|f_k - f\|_{L^p(\Omega)} \to 0.
+    \end{equation*}
+\end{proof}
+
+\begin{lemma}
+    \label{lem:convergence_positive_functions}
+    Пусть $f_k \to f$ в $L^p(\Omega)$, $1 \leq p < \infty$,
+    $f_k \geq 0$ почти всюду в $\Omega$.
+    Тогда $f \geq 0$ почти всюду в $\Omega$.
+\end{lemma}
+
+\begin{proof}
+    По лемме~\ref{lem:convergence_max_function} получаем,
+    что $f_k = \max\{f_k, 0\} \to \max\{f, 0\}$ в $L^p(\Omega)$.
+    Следовательно, $f = \max\{f, 0\}$,
+    поэтому $f \geq 0$ почти всюду в $\Omega$.
+\end{proof}
+
+\begin{lemma}
+    \label{lem:convergence_power_functions}
+    Пусть $f_k, f \geq 0$, $f_k \to f$ в $L^p(\Omega)$, $1 < p < \infty$.
+    Тогда $f_k^s \to f^s$ в $L^1(\Omega)$, если $1 < s < p$.
+\end{lemma}
+
+\begin{proof}
+    По формуле Лагранжа
+    \[
+        |f_k^s - f^s| \leq s \xi^{s-1} |f_k - f|
+        \leq s(f_k^{s-1} + f^{s-1}) |f_k - f|,
+    \]
+    где $\xi(x)$ находится между $f_k(x)$ и $f(x)$.
+    Применяя неравенство Гёльдера с показателями
+    $p, q = \frac{p}{p-1}$, получаем, что
+    \begin{equation}
+        \label{eq:1_7:23}
+        \begin{split}
+            \|f_k^s - f^s\|_{L^1(\Omega)} =
+            &\int_{\Omega} |f_k^s - f^s| \, dx
+            \leq s \int_{\Omega} (f_k^{s-1} + f^{s-1}) |f_k - f| \, dx \\
+            &\leq \|f_k - f\|_{L^p(\Omega)} \left( \|f_k^{s-1}\|_{L^q(\Omega)}
+            + \|f^{s-1}\|_{L^q(\Omega)} \right).
+        \end{split}
+    \end{equation}
+
+    Применяя неравенство Гёльдера с показателями $\frac{p-1}{p-s}$
+    и $\frac{p-1}{s-1}$, получаем, что
+    \[
+        \|f_k^{s-1}\|_{L^q(\Omega)} = \left(\int_{\Omega} f_k^{(s-1)p}\,
+        dx\right)^{\frac{1}{p}} \leq |\Omega|^{\frac{p-s}{p}}
+        \left(\int_{\Omega} f_k^p\, dx\right)^{\frac{s-1}{p}} =
+        |\Omega|^{\frac{s}{p}-1} \|f_k\|_{L^p(\Omega)}^{s-1}.
+    \]
+
+    Следовательно, второй сомножитель в\eqref{eq:1_7:23} ограничен,
+    поэтому $\|f_k^s - f^s\|_{L^1(\Omega)} \to 0$.
+\end{proof}
+
+\begin{theorem}[Лебег]
+    \label{th:lebeg}~\cite[321]{Kolmogorov2004}
+    Пусть $\Omega \subset \mathbb{R}^N$, $f_n \to f$ п.в. в $\Omega$,
+    $\forall n : |f_n(x)| \leq \varphi(x)$ п.в. в $\Omega$,
+    где $\varphi \in L^1(\Omega)$.
+    Тогда $f \in L^1(\Omega)$, $\int_{\Omega} f_n(x) \, dx \to \int_{\Omega} f(x) \, dx$.
+\end{theorem}
+
+\begin{theorem}[Леви]
+    \label{th:levi}~\cite[322]{Kolmogorov2004}
+    Пусть $\Omega \subset \mathbb{R}^N$, последовательность $f_n \in L^1(\Omega)$
+    не убывает и $\forall n : \int_{\Omega} f_n(x) \, dx \leq K$.
+    Тогда $f_n \to f$ п.в. в $G$, где $f \in L^1(\Omega)$,
+    $\int_{\Omega} f_n(x) \, dx \to \int_{\Omega} f(x) \, dx$.
+\end{theorem}
+
+\begin{lemma}
+    \label{lm:1_7:15}\cite[47]{Ziemer1989}
+    Пусть $u \in H^{1}(\Omega)$, $\nabla u = 0$ n.в. в $\Omega$.
+    Тогда $u = \text{const}\, \theta \Omega$.
+\end{lemma}
+
+\begin{lemma}
+    \label{lm:1_7:16}\cite[47]{Kinderlehrer1983}
+    Пусть $u \in H^{1}(\Omega)$, $u^{+} = \max \{u, 0\}$,
+    $u^{-} = \min \{u, 0\}$.
+    Тогда $u^{+}, u^{-} \in H^{1}(\Omega)$ и
+    \[
+        \nabla u^{+} =
+        \begin{cases}
+            \nabla u, & \text{если } u > 0, \\
+            0, & \text{если } u \leq 0,
+        \end{cases}
+        \qquad
+        \nabla u^{-} =
+        \begin{cases}
+            \nabla u, & \text{если } u < 0, \\
+            0, & \text{если } u \geq 0.
+        \end{cases}
+    \]
+\end{lemma}
+
+\begin{lemma}
+    \label{lm:1_7:lipshitz}\cite[50]{Kinderlehrer1983}
+    Пусть $f(t), t \in \mathbb{R}$ - липшицева функция,
+    производная которой существует всюду, за исключением,
+    быть может, множества $\left\{a_{1}, \ldots, a_{M}\right\}$,
+    $u \in H^{1}(\Omega)$, $G \subset \mathbb{R}^{N}$.
+    Тогда $f(u) \in H^{1}(\Omega)$,
+    $\frac{\partial f(u)}{\partial x_{i}} = f^{\prime}(u)
+    \frac{\partial u}{\partial x_{i}}$,
+    где обе части этого равенства считаются равными нулю,
+    когда $x \in \bigcup_{j=1}^{M}\left\{y: u(y)=a_{j}\right\}$.
+\end{lemma}
+
+\begin{lemma}
+    \label{lm:1_7:embedding}\cite[1026]{Zeidler1990b}
+    Вложение $H^{1}(\Omega) \subset L^{p}(\Omega)$ непрерывно
+    при $1 \leq p \leq 6$ и компактно при $1 \leq p<6$.
+\end{lemma}
+
+%TODO: refactor further (limit reached)
+
+\begin{lemma}
+    \label{lm:1_7:19}\cite[239]{Zeidler1990a}
+    Оператор следа $\gamma: H^{1}(\Omega) \rightarrow L^{2}(\Gamma)$ непрерывен.
+\end{lemma}
+
+\begin{lemma}
+    \label{lm:1_7:20}\cite[4]{girault1979finite}
+    Образ оператора следа $\gamma: H^{1}(\Omega) \rightarrow L^{2}(\Gamma)$
+    -- плотное подпространство пространства $L^{2}(\Gamma)$.
+\end{lemma}
+
+\begin{lemma}
+    \label{lm:1_7:21}\cite{berninger2009non}
+    Пусть $f(t), t \in \mathbb{R}$ - липшицева функция.
+    Для любой функции $u \in H^{1}(\Omega)$ справедливо равенство
+    $f(\gamma(u))=\gamma(f(u))$, где
+    $\gamma: H^{1}(\Omega) \rightarrow L^{2}(\Gamma)$ - оператор следа.
+\end{lemma}
+
+\begin{lemma}
+    \label{lm:1_7:22}
+    Пусть $u \in H^{1}(\Omega), u \geq 0$ n.в. в $\Omega$.
+    Тогда $\left.u\right|_{\Gamma} \geq 0$ п.в. на $\Gamma$.
+\end{lemma}
+
+\begin{proof}
+    Применим лемму~\ref{lm:1_7:21} для функции $f(t)=\max \{t, 0\}$:
+
+    \[
+        \max \left\{\left.u\right|_{\Gamma},
+        0\right\}=\left.\max \{u, 0\}\right|_{\Gamma}=\left.u\right|_{\Gamma}
+    \]
+
+
+    Следовательно, $\left.u\right|_{\Gamma} \geq 0$ п.в. на $\Gamma$.
+\end{proof}
+
+\begin{lemma}
+    \label{lm:1_7:23}\cite[41]{grisvard1985elliptic}
+    Для любого $\varepsilon>0$ существует постоянная $C_{\varepsilon}>0$ такая,
+    что для любой функции $u \in H^{1}(\Omega)$ выполняется неравенство
+
+    \[
+        \|u\|_{L^{2}(\Gamma)}^{2} \leq \varepsilon\|\nabla u\|^{2}
+        +C_{\varepsilon}\|u\|^{2}.
+    \]
+
+\end{lemma}
+
+\begin{lemma}[Гронуолл]
+    \label{lm:1_7:24}\cite[191]{Gaevskii1978}
+    Пусть $f:[0, T] \rightarrow \mathbb{R}$ -- непрерывная функция $b \geq 0$.
+    Если
+    \[
+        f(t) \leq a+b \int_{0}^{t} f(\tau) d \tau \quad \forall t \in[0, T]
+    \]
+    $m o f(t) \leq a e^{b t} \forall t \in[0, T]$
+\end{lemma}
+
+\begin{lemma}
+    \label{lm:1_7:25}
+    Оператор $A: V \rightarrow V^{\prime}$, определяемый формулой
+    $(A u, v)=$ $a(\nabla u, \nabla v)+\int_{\Gamma} b u v d \Gamma$,
+    где $a>0, b \in L^{\infty}(\Gamma), b \geq b_{0}>0, b_{0}=$
+    const, непрерывен.
+\end{lemma}
+
+\begin{proof}
+    \[
+        \begin{array}{r}
+            \|A u\|_{V^{\prime}}=\sup _{\|v\|_{V}=1}(A u, v)
+            \leq \sup _{\|v\|_{V}=1}\left(a\|\nabla u\|\|\nabla v\|
+            +\|b\|_{L^{\infty}(\Gamma)}\|u\|_{L^{2}(\Gamma)}\|v\|_{L^{2}(\Gamma)}\right) \leq \\
+            \leq a\|u\|_{V}+\|b\|_{L^{\infty}(\Gamma)} C_{1}^{2}\|u\|_{V}=C\|u\|_{V},
+        \end{array}
+    \]
+    где $C_{1}$ - норма оператора следа
+    $\gamma: H^{1}(\Omega) \rightarrow L^{2}(\Gamma)$.
+\end{proof}
+
+\begin{lemma}
+    \label{lm:1_7:26}
+    Пусть $\mathbf{v} \in L^{\infty} \left(0, T; \mathbf{H}^{1}(\Omega)\right)$,
+    оператор $B(t): V \rightarrow V^{\prime}$ oпpeделяется формулой
+    $(B(t) u, v)=(\mathbf{v} \cdot \nabla u, v)$.
+    Тогда $\exists C>0:|(B(t) u, w)|
+    \leq$ $C\|u\|_{V}\|w\|_{V} \forall u, w \in V, t \in(0, T)$.
+\end{lemma}
+
+\begin{proof}
+    Применяя неравенство Гёльдера с показателями 4, 2, 4, получаем, что
+    \[
+        \begin{aligned}
+            & |(B(t) u, w)|=|(\mathbf{v} \cdot \nabla u, w)|
+            \leq\|\mathbf{v}(t)\|_{\mathbf{L}^{4}(\Omega)}
+            \|\nabla u\|\|w\|_{L^{4}(\Omega)} \leq \\
+            & \leq C_{1}^{2}\|\mathbf{v}\|_{L^{\infty}\left(0, T; \mathbf{H}^{1}
+            (\Omega)\right)}\|u\|_{V}\|w\|_{V}
+        \end{aligned}
+    \]
+    где $C_{1}-$ норма оператора вложения $H^{1}(\Omega) \subset L^{4}(\Omega)$
+\end{proof}
+
+\begin{lemma}
+    \label{lm:1_7:27}\cite[238]{Zeidler1990a}
+    Функционал $f(v)=(A v, v)^{1 / 2}$,
+    где $A$ -- оператор из леммы 1.25,
+    определяет норму в пространстве $V$,
+    эквивалентную стандартной норме в $V$.
+\end{lemma}
+
+\begin{lemma}
+    \label{lm:1_7:28}~\cite[411]{Zeidler1990a}
+    Если $X$ - рефлексивное и сепарабельное банахово пространство,
+    то $L^{p}(0, T ; X), 1<p<\infty$ -- рефлексивное
+    и сепарабельное банахово пространство.
+\end{lemma}
+
+\begin{lemma}
+    \label{lm:1_7:29}\cite[449]{Zeidler1990a}
+    Если $X$ - рефлексивное и сепарабельное банахово пространство,
+    то $L^{1}(0, T ; X)$ - сепарабельное банахово пространство.
+\end{lemma}
+
+\begin{lemma}
+    \label{lm:1_7:30}
+    Пусть $f: \mathbb{R} \rightarrow \mathbb{R},\left|f\left(x_{1}\right)
+    -f\left(x_{2}\right)\right| \leq C\left|x_{1}-x_{2}\right|$.
+    Тогда отображение $y \mapsto f(y)$ непрерывно
+    отображает пространство $C([0, T] ; H)$ в себя.
+\end{lemma}
+
+\begin{proof}
+    Пусть $y \in C([0, T] ; H)$.
+    Тогда $z=f(y) \in C([0, T] ; H)$,
+    так как $\left\|z\left(t_{1}\right)-z\left(t_{2}\right)\right\|
+    \leq C\left\|y\left(t_{1}\right)-y\left(t_{2}\right)\right\|$.
+    Поскольку $\left\|z_{1}(t)-z_{2}(t)\right\|
+    \leq C \| y\left(t_{1}\right)-$ $y\left(t_{2}\right) \|, \mathrm{TO}$
+
+    \[
+        \begin{array}{r}
+            \left\|z_{1}-z_{2}\right\|_{C([0, T] ; H)}=
+            \max _{t \in[0, T]}\left\|z_{1}(t)
+            -z_{2}(t)\right\| \leq C \max _{t \in[0, T]}\left\|y_{1}(t)
+            -y_{2}(t)\right\| = \\
+            =C\left\|y_{1}-y_{2}\right\|_{C([0, T] ; H)}.
+        \end{array}
+    \]
+    Лемма доказана.
+\end{proof}
+
+\begin{lemma}
+    \label{lm:1_7:31}\cite[423]{Zeidler1990a}
+    Для любой функции и $\in W$ справедлива формуЛа
+    \[
+        \|u(t)\|^{2}-\|u(0)\|^{2}=2 \int_{0}^{t}\left(u^{\prime}(\tau),
+        u(\tau)\right) d \tau, \quad 0 \leq t \leq T
+    \]
+\end{lemma}
+
+\begin{lemma}
+    \label{lm:1_7:32}
+    Для любой функции и $\in W$ справедливо равенство
+    \[
+        \frac{d\|u(t)\|^{2}}{d t}=2\left(u^{\prime}(t),
+        u(t)\right) \quad \text { n.8. нa }(0, T)
+    \]
+\end{lemma}
+
+\begin{proof}
+    Продифференцируем (1.24) по $t$ согласно~\cite[356]{Kolmogorov2004}
+\end{proof}
+
+\begin{lemma}
+    \label{lm:1_7:33}
+    Пусть $y \in W, k \geq 0$.
+    Тогда $z_{1}=\max \{y-k, 0\} \in L^{2}(0, T ; V)
+    \cap$ $C([0, T] ; H), z_{2}=
+    \min \{y+k, 0\} \in L^{2}(0, T ; V) \cap C([0, T] ; H)$
+    и справедливы равенства
+    \[
+        2 \int_{0}^{t}\left(y^{\prime}(\tau), z_{k}(\tau)\right) d \tau=
+        \left\|z_{k}(t)\right\|^{2}
+        -\left\|z_{k}(0)\right\|^{2}, \quad 0 \leq t \leq T, \quad k=1,2
+    \]
+\end{lemma}
+
+\begin{proof}
+    Пространство $H^{1}(Q)$ плотно в $W$~\cite[423]{Zeidler1990a} поэтому
+    существует последовательность $y_{j} \in H^{1}(Q), y_{j} \rightarrow y$ в $W$.
+    В силу непрерывности вложения $W \subset C([0, T] ; H)$
+    имеем $y_{j} \rightarrow y$ в $C([0, T] ; H)$.
+
+    Положим $z_{1 j}=\max \left\{y_{j}-k, 0\right\}$.
+    Отображение $y \mapsto \max \{y-k, 0\}$ непрерывно отображает
+    пространство $C([0, T] ; H)$ в себя (лемма 1.30$)$, поэтому
+    $z_{1 j} \rightarrow z_{1}$ в $C([0, T] ; H)$.
+
+    Поскольку $\left\|z_{1 j}(t)\right\| \leq\left\|y_{j}(t)\right\|$
+    и $\left\|\nabla z_{1 j}(t)\right\| \leq\left\|\nabla y_{j}(t)\right\|$,
+    то $\left\|z_{1 j}(t)\right\|_{V} \leq$ $\left\|y_{j}(t)\right\|_{V}$,
+    следовательно, последовательность $z_{1 j}$ ограничена в $L^{2}(0, T ; V)$,
+    поэтому в ней существует подпоследовательность
+    $z_{1 j} \rightarrow z_{1}$ слабо в $L^{2}(0, T ; V)$.
+
+    По лемме 1.16 получаем, что
+
+    \[
+        z_{1 j}^{\prime}=
+        \left\{\begin{array}{l}
+                   y_{j}^{\prime}, \quad \text { если }
+                   y_{j}>k\left(z_{1 j}>0\right), \\
+                   0, \quad \text { если }
+                   y_{j} \leq k\left(z_{1 j}=0\right).
+        \end{array}\right.
+    \]
+    Рассмотрим интеграл
+
+    \[
+        \begin{aligned}
+            & 2 \int_{0}^{t}\left(y_{j}^{\prime}, z_{1 j}\right) d \tau=
+            2 \int_{0}^{t}\left(z_{1 j}^{\prime}, z_{1 j}\right) d \tau=
+            \int_{\Omega} \int_{0}^{t}
+            \frac{d\left(z_{1 j}^{2}\right)}{d t} d \tau d x= \\
+            &=\left\|z_{1 j}(t)\right\|^{2}-\left\|z_{1 j}(0)\right\|^{2}.
+        \end{aligned}
+    \]
+    Перейдем к пределу в (1.25) при $j \rightarrow \infty$.
+    Примем во внимание, что $y_{j}^{\prime} \rightarrow y^{\prime}$
+    сильно в $L^{2}\left(0, T ; V^{\prime}\right)$ и
+    $z_{1 j} \rightarrow z_{1}$ слабо в $L^{2}(0, T ; V)$,
+    а также $z_{1 j} \rightarrow z_{1}$ в $C([0, T] ; H)$,
+    поэтому $\left\|z_{1 j}(t)\right\| \rightarrow\left\|z_{1}(t)\right\|, t \in[0, T]$.
+    Таким образом, получаем утверждение леммы для $z_{1}$.
+    Утверждение для $z_{2}$ доказывается аналогично.
+\end{proof}
+
+\begin{theorem}
+    \label{th:1_7:7}\cite[426]{Zeidler1990a}
+    Пусть $A(t): V \rightarrow V^{\prime}$ -- линейный оператор,
+    $\forall u, v \in V$ функция $t \mapsto(A(t) u, v)$
+    измерима на $(0, T), \exists C, c>0, d \geq 0:
+    \forall u, v \in$ $V, t \in(0, T):|(A(t) u, v)|
+    \leq C\|u\|_{V}\|v\|_{V},(A(t) u, u)
+    \geq c\|u\|_{V}^{2}-d\|u\|_{H}^{2},
+    f \in$ $L^{2}\left(0, T ; V^{\prime}\right), u_{0} \in H$.
+    Тогда задача
+    \[
+        \begin{gathered}
+            u^{\prime}(t)+A(t) u(t)=f(t) \quad \text { n.в. на }(0, T),\\
+            u(0)=u_{0}, \quad u \in W
+        \end{gathered}
+    \]
+    имеет единственное решение.
+\end{theorem}

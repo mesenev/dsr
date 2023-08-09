@@ -84,147 +84,148 @@ $\mathbf{q}_{r}-$ аппроксимация плотности потока и�
             =\frac{2 \pi}{3} \mathbf{a} \cdot \mathbf{b},
         \end{gathered}
     \]
-    где $a, b$ -- любые векторы.
+    где $\mathbf{a}, b$ -- любые векторы.
 \end{lemma}
-\begin{proof}
-    Первое равенство вытекает из определения поверхностного интеграла
-    и представляет собой выражение для площади
-    поверхности единичной сферы.
+\begin{proof} Доказательство является простым упражнением.\end{proof}
+%\begin{proof}
+%    Первое равенство вытекает из определения поверхностного интеграла
+%    и представляет собой выражение для площади
+%    поверхности единичной сферы.
+%
+%
+%    Для вычисления остальных интегралов воспользуемся
+%    формулой перехода от поверхностного интеграла
+%    к двойному
+%    \begin{equation}
+%        \label{eq:1_2:16}
+%        \int_{S} f(\omega) d \omega=\int_{D} f
+%        \left(\omega_{1}(u, v), \omega_{2}(u, v),
+%        \omega_{3}(u, v)\right)\left|\boldsymbol{\omega}_{u}
+%        \times \boldsymbol{\omega}_{v}\right| d u d v,
+%    \end{equation}
+%
+%    где $D=\left\{(u, v): 0 \leqslant u \leqslant 2 \pi,-\frac{\pi}{2}
+%    \leqslant v \leqslant \frac{\pi}{2}\right\},
+%    \omega_{1}(u, v)=\cos u \cos v, \omega_{2}(u, v)=$ $\sin u \cos v,
+%    \omega_{3}(u, v)=\sin v,\left|\omega_{u}
+%    \times \omega_{v}\right| d u d v=\cos v d u d v-$ элемент площади поверхности единичной сферы.
+%    Тогда для вычисления остальных интегралов воспользуемся
+%    формулой перехода от поверхностного интеграла
+%    к двойному:
+%    \[
+%        \int_{S} f(\omega) d \omega=\int_{D} f\left(\omega_{1}(u, v), \omega_{2}(u, v),
+%        \omega_{3}(u, v)\right)\left|\boldsymbol{\omega}_{u} \times \boldsymbol{\omega}_{v}\right| d u d v
+%    \]
+%    где $D=\left\{(u, v): 0 \leqslant u \leqslant 2 \pi,-\frac{\pi}{2} \leqslant v \leqslant
+%    \frac{\pi}{2}\right\}, \omega_{1}(u, v)=\cos u \cos v, \omega_{2}(u, v)=$ $\sin u \cos v,
+%    \omega_{3}(u, v)=\sin v,\left|\omega_{u} \times \omega_{v}\right| d u d v=\cos v d u d v$
+%    -- элемент площади поверхности единичной сферы.
+%    Тогда
+%    \[
+%        \int_{S} f(\omega) d \omega=\int_{D} f\left(\omega_{1}(u, v), \omega_{2}(u, v),
+%        \omega_{3}(u, v)\right)\left|\boldsymbol{\omega}_{u}
+%        \times \boldsymbol{\omega}_{v}\right| d u d v.
+%    \]
+%
+%    Для вычисления второго интеграла положим
+%    $f(\boldsymbol{\omega})=\mathbf{a}
+%    \cdot \boldsymbol{\omega}=\sum_{i=1}^{3} a_{i} \boldsymbol{\omega}_{i}$,
+%
+%    \[
+%        \begin{aligned}
+%            & \int_{S} \mathbf{a} \cdot \boldsymbol{\omega} d \boldsymbol{\omega}=
+%            \int_{-\pi / 2}^{\pi / 2}
+%            \int_{0}^{2 \pi}\left(a_{1} \cos u \cos v+
+%            a_{2} \sin u \cos v+a_{3} \sin v\right) \cos v d u d v=0. \\
+%            & \text { получим } \\
+%            & \text { В третьем интеграле положим }
+%            f(\boldsymbol{\omega})=(\mathbf{a} \cdot \boldsymbol{\omega})(\mathbf{b}
+%            \cdot \boldsymbol{\omega})=\sum_{i, j=1}^{3} a_{i} b_{j}
+%            \boldsymbol{\omega}_{i} \boldsymbol{\omega}_{j} \text {, } \\
+%            & \int_{S}(\mathbf{a} \cdot \boldsymbol{\omega})(\mathbf{b}
+%            \cdot \boldsymbol{w}) d \boldsymbol{w}= \\
+%            & =\int_{-\pi / 2}^{\pi / 2} \int_{0}^{2 \pi}
+%            \mathbf{a}^{T}\left(\begin{array}{ccc}
+%                                    \cos ^{2} u \cos ^{2} v & \sin u \cos u \cos ^{2} v
+%                                    & \cos u \sin v \cos v \\\sin u \cos u \cos ^{2} v
+%                                    & \sin ^{2} u \cos ^{2} v
+%                                    & \sin u \sin v \cos v \\\cos u \sin v \cos v
+%                                    & \sin u \sin v \cos v & \sin ^{2} v
+%            \end{array}\right) \mathbf{b} \cos v d u d v= \\
+%            & =\int_{-\pi / 2}^{\pi / 2} \mathbf{a}^{T}\left(
+%            \begin{array}{ccc}
+%                \pi \cos ^{2} v & 0 & 0 \\0 & \pi \cos ^{2} v & 0 \\0 & 0 & 2 \pi \sin ^{2} v
+%            \end{array}\right) \mathbf{b} \cos v d v=\frac{4 \pi}{3} \mathbf{a} \cdot \mathbf{b}
+%        \end{aligned}
+%    \]
+%    здесь $\mathbf{a}, \mathbf{b}$ - векторы-столбцы.
+%
+%
+%    Равенства во второй строке получаются из доказанных равенств:
+%    \[
+%        \begin{gathered}
+%            \int_{S} \omega d \boldsymbol{\omega}=\sum_{i=1}^{3} \mathbf{e}_{i}
+%            \int_{S}\left(\boldsymbol{\omega}
+%            \cdot \mathbf{e}_{i}\right) d \boldsymbol{\omega}=0, \\
+%            \int_{S}(\mathbf{a} \cdot \boldsymbol{\omega}) \omega d
+%            \boldsymbol{\omega}=\sum_{i=1}^{3} \mathbf{e}_{i}
+%            \int_{S}(\mathbf{a} \cdot \boldsymbol{\omega})\left(\boldsymbol{\omega}
+%            \cdot \mathbf{e}_{i}\right) d
+%            \boldsymbol{\omega}=\frac{4 \pi}{3} \sum_{i=1}^{3}\left(\mathbf{a}
+%            \cdot \mathbf{e}_{i}\right)
+%            \mathbf{e}_{i}=\frac{4 \pi}{3} \mathbf{a}.
+%        \end{gathered}
+%    \]
+%
+%
+%    Для доказательства первого равенства в третьей строке введем систему
+%    координат так, чтобы ось $O z$ была сонаправлена с вектором а.
+%    Воспользуемся формулой~\eqref{eq:1_2:16}, в которой вместо $S$ следует
+%    взять верхнюю полусферу, $D=$ $\left\{(u, v): 0 \leqslant u
+%    \leqslant 2 \pi, 0 \leqslant v \leqslant \frac{\pi}{2}\right\}$.
+%    Заметим, что $f(\omega)=\mathbf{a} \cdot \boldsymbol{\omega}=|\mathbf{a}| \sin v$.
+%
+%    Таким образом,
+%    \[
+%        \int_{\omega \cdot \mathbf{a}>0} \mathbf{a} \cdot \omega d \omega=|\mathbf{a}|
+%        \int_{0}^{\pi / 2} \int_{0}^{2 \pi} \sin v \cos v d u d v =
+%        2 \pi \int_{0}^{\pi / 2} \sin v \cos v d v=\pi.
+%    \]
+%    Для доказательства второго равенства в третьей строке заметим, что
+%    \[
+%        \begin{gathered}
+%            \int_{S}(\mathbf{a} \cdot \boldsymbol{\omega})(\mathbf{b}
+%            \cdot \boldsymbol{\omega}) d
+%            \boldsymbol{\omega}=\int_{\boldsymbol{\omega} \cdot
+%            \mathbf{a}>0}(\mathbf{a} \cdot \boldsymbol{\omega})(\mathbf{b}
+%            \cdot \mathbf{\omega}) d
+%            \boldsymbol{\omega}+
+%            \int_{\boldsymbol{\omega} \cdot \mathbf{a}<0}(\mathbf{a}
+%            \cdot \boldsymbol{\omega})(\mathbf{b}
+%            \cdot \boldsymbol{\omega}) d \boldsymbol{\omega}, \\
+%            \int_{\omega \cdot \mathbf{a}>0}(\mathbf{a}
+%            \cdot \boldsymbol{\omega})(\mathbf{b}
+%            \cdot \boldsymbol{\omega}) d
+%            \boldsymbol{\omega}=\int_{\boldsymbol{\omega}
+%            \cdot \mathbf{a}<0}(\mathbf{a}
+%            \cdot \boldsymbol{\omega})(\mathbf{b}
+%            \cdot \boldsymbol{\omega}) d \boldsymbol{\omega},
+%        \end{gathered}
+%    \]
+%    следовательно,
+%    $
+%    \int_{\boldsymbol{\omega} \cdot \mathbf{a}>0}(\mathbf{a}
+%    \cdot \boldsymbol{\omega})(\mathbf{b}
+%    \cdot \boldsymbol{\omega}) d \boldsymbol{\omega}=
+%    \frac{1}{2} \int_{S}(\mathbf{a}
+%    \cdot \boldsymbol{\omega})(\mathbf{b}
+%    \cdot \boldsymbol{\omega}) d \boldsymbol{\omega}=
+%    \frac{2 \pi}{3} \mathbf{a} \cdot \mathbf{b}.
+%    $
+%    Лемма доказана.
+%\end{proof}
 
-
-    Для вычисления остальных интегралов воспользуемся
-    формулой перехода от поверхностного интеграла
-    к двойному
-    \begin{equation}
-        \label{eq:1_2:16}
-        \int_{S} f(\omega) d \omega=\int_{D} f
-        \left(\omega_{1}(u, v), \omega_{2}(u, v),
-        \omega_{3}(u, v)\right)\left|\boldsymbol{\omega}_{u}
-        \times \boldsymbol{\omega}_{v}\right| d u d v,
-    \end{equation}
-
-    где $D=\left\{(u, v): 0 \leqslant u \leqslant 2 \pi,-\frac{\pi}{2}
-    \leqslant v \leqslant \frac{\pi}{2}\right\},
-    \omega_{1}(u, v)=\cos u \cos v, \omega_{2}(u, v)=$ $\sin u \cos v,
-    \omega_{3}(u, v)=\sin v,\left|\omega_{u}
-    \times \omega_{v}\right| d u d v=\cos v d u d v-$ элемент площади поверхности единичной сферы.
-    Тогда для вычисления остальных интегралов воспользуемся
-    формулой перехода от поверхностного интеграла
-    к двойному:
-    \[
-        \int_{S} f(\omega) d \omega=\int_{D} f\left(\omega_{1}(u, v), \omega_{2}(u, v),
-        \omega_{3}(u, v)\right)\left|\boldsymbol{\omega}_{u} \times \boldsymbol{\omega}_{v}\right| d u d v
-    \]
-    где $D=\left\{(u, v): 0 \leqslant u \leqslant 2 \pi,-\frac{\pi}{2} \leqslant v \leqslant
-    \frac{\pi}{2}\right\}, \omega_{1}(u, v)=\cos u \cos v, \omega_{2}(u, v)=$ $\sin u \cos v,
-    \omega_{3}(u, v)=\sin v,\left|\omega_{u} \times \omega_{v}\right| d u d v=\cos v d u d v$
-    -- элемент площади поверхности единичной сферы.
-    Тогда
-    \[
-        \int_{S} f(\omega) d \omega=\int_{D} f\left(\omega_{1}(u, v), \omega_{2}(u, v),
-        \omega_{3}(u, v)\right)\left|\boldsymbol{\omega}_{u}
-        \times \boldsymbol{\omega}_{v}\right| d u d v.
-    \]
-
-    Для вычисления второго интеграла положим
-    $f(\boldsymbol{\omega})=\mathbf{a}
-    \cdot \boldsymbol{\omega}=\sum_{i=1}^{3} a_{i} \boldsymbol{\omega}_{i}$,
-
-    \[
-        \begin{aligned}
-            & \int_{S} \mathbf{a} \cdot \boldsymbol{\omega} d \boldsymbol{\omega}=
-            \int_{-\pi / 2}^{\pi / 2}
-            \int_{0}^{2 \pi}\left(a_{1} \cos u \cos v+
-            a_{2} \sin u \cos v+a_{3} \sin v\right) \cos v d u d v=0. \\
-            & \text { получим } \\
-            & \text { В третьем интеграле положим }
-            f(\boldsymbol{\omega})=(\mathbf{a} \cdot \boldsymbol{\omega})(\mathbf{b}
-            \cdot \boldsymbol{\omega})=\sum_{i, j=1}^{3} a_{i} b_{j}
-            \boldsymbol{\omega}_{i} \boldsymbol{\omega}_{j} \text {, } \\
-            & \int_{S}(\mathbf{a} \cdot \boldsymbol{\omega})(\mathbf{b}
-            \cdot \boldsymbol{w}) d \boldsymbol{w}= \\
-            & =\int_{-\pi / 2}^{\pi / 2} \int_{0}^{2 \pi}
-            \mathbf{a}^{T}\left(\begin{array}{ccc}
-                                    \cos ^{2} u \cos ^{2} v & \sin u \cos u \cos ^{2} v
-                                    & \cos u \sin v \cos v \\\sin u \cos u \cos ^{2} v
-                                    & \sin ^{2} u \cos ^{2} v
-                                    & \sin u \sin v \cos v \\\cos u \sin v \cos v
-                                    & \sin u \sin v \cos v & \sin ^{2} v
-            \end{array}\right) \mathbf{b} \cos v d u d v= \\
-            & =\int_{-\pi / 2}^{\pi / 2} \mathbf{a}^{T}\left(
-            \begin{array}{ccc}
-                \pi \cos ^{2} v & 0 & 0 \\0 & \pi \cos ^{2} v & 0 \\0 & 0 & 2 \pi \sin ^{2} v
-            \end{array}\right) \mathbf{b} \cos v d v=\frac{4 \pi}{3} \mathbf{a} \cdot \mathbf{b}
-        \end{aligned}
-    \]
-    здесь $\mathbf{a}, \mathbf{b}$ - векторы-столбцы.
-
-
-    Равенства во второй строке получаются из доказанных равенств:
-    \[
-        \begin{gathered}
-            \int_{S} \omega d \boldsymbol{\omega}=\sum_{i=1}^{3} \mathbf{e}_{i}
-            \int_{S}\left(\boldsymbol{\omega}
-            \cdot \mathbf{e}_{i}\right) d \boldsymbol{\omega}=0, \\
-            \int_{S}(\mathbf{a} \cdot \boldsymbol{\omega}) \omega d
-            \boldsymbol{\omega}=\sum_{i=1}^{3} \mathbf{e}_{i}
-            \int_{S}(\mathbf{a} \cdot \boldsymbol{\omega})\left(\boldsymbol{\omega}
-            \cdot \mathbf{e}_{i}\right) d
-            \boldsymbol{\omega}=\frac{4 \pi}{3} \sum_{i=1}^{3}\left(\mathbf{a}
-            \cdot \mathbf{e}_{i}\right)
-            \mathbf{e}_{i}=\frac{4 \pi}{3} \mathbf{a}.
-        \end{gathered}
-    \]
-
-
-    Для доказательства первого равенства в третьей строке введем систему
-    координат так, чтобы ось $O z$ была сонаправлена с вектором а.
-    Воспользуемся формулой~\eqref{eq:1_2:16}, в которой вместо $S$ следует
-    взять верхнюю полусферу, $D=$ $\left\{(u, v): 0 \leqslant u
-    \leqslant 2 \pi, 0 \leqslant v \leqslant \frac{\pi}{2}\right\}$.
-    Заметим, что $f(\omega)=\mathbf{a} \cdot \boldsymbol{\omega}=|\mathbf{a}| \sin v$.
-
-    Таким образом,
-    \[
-        \int_{\omega \cdot \mathbf{a}>0} \mathbf{a} \cdot \omega d \omega=|\mathbf{a}|
-        \int_{0}^{\pi / 2} \int_{0}^{2 \pi} \sin v \cos v d u d v =
-        2 \pi \int_{0}^{\pi / 2} \sin v \cos v d v=\pi.
-    \]
-    Для доказательства второго равенства в третьей строке заметим, что
-    \[
-        \begin{gathered}
-            \int_{S}(\mathbf{a} \cdot \boldsymbol{\omega})(\mathbf{b}
-            \cdot \boldsymbol{\omega}) d
-            \boldsymbol{\omega}=\int_{\boldsymbol{\omega} \cdot
-            \mathbf{a}>0}(\mathbf{a} \cdot \boldsymbol{\omega})(\mathbf{b}
-            \cdot \mathbf{\omega}) d
-            \boldsymbol{\omega}+
-            \int_{\boldsymbol{\omega} \cdot \mathbf{a}<0}(\mathbf{a}
-            \cdot \boldsymbol{\omega})(\mathbf{b}
-            \cdot \boldsymbol{\omega}) d \boldsymbol{\omega}, \\
-            \int_{\omega \cdot \mathbf{a}>0}(\mathbf{a}
-            \cdot \boldsymbol{\omega})(\mathbf{b}
-            \cdot \boldsymbol{\omega}) d
-            \boldsymbol{\omega}=\int_{\boldsymbol{\omega}
-            \cdot \mathbf{a}<0}(\mathbf{a}
-            \cdot \boldsymbol{\omega})(\mathbf{b}
-            \cdot \boldsymbol{\omega}) d \boldsymbol{\omega},
-        \end{gathered}
-    \]
-    следовательно,
-    $
-    \int_{\boldsymbol{\omega} \cdot \mathbf{a}>0}(\mathbf{a}
-    \cdot \boldsymbol{\omega})(\mathbf{b}
-    \cdot \boldsymbol{\omega}) d \boldsymbol{\omega}=
-    \frac{1}{2} \int_{S}(\mathbf{a}
-    \cdot \boldsymbol{\omega})(\mathbf{b}
-    \cdot \boldsymbol{\omega}) d \boldsymbol{\omega}=
-    \frac{2 \pi}{3} \mathbf{a} \cdot \mathbf{b}.
-    $
-    Лемма доказана.
-\end{proof}
-
-Подставляя~\eqref{eq:1_2:14}\eqref{eq:1_2:15} в~\eqref{eq:1_1:9}, получаем
+Подставляя~\eqref{eq:1_2:14},\eqref{eq:1_2:15} в~\eqref{eq:1_1:9}, получаем
 \begin{gather*}
     \frac{1}{c}\left(\frac{\partial \varphi(x, t)}{\partial t}
     + \boldsymbol{\omega} \cdot \frac{\partial \Phi(x, t)}{\partial t}\right)
@@ -440,7 +441,7 @@ $\frac{\partial \Phi}{\partial t}$ в уравнении~\eqref{eq:1_2:19}.
     \label{eq:1_2:26}
     \theta(x, 0)=\theta_{0}(x), \quad \varphi(x, 0)=\varphi_{0}(x).
 \end{equation}
-Соотношения~\eqref{eq:1_2:21}\eqref{eq:1_2:23}\eqref{eq:1_2:24}--\eqref{eq:1_2:26}
+Соотношения~\eqref{eq:1_2:21},\eqref{eq:1_2:23}--\eqref{eq:1_2:26}
 образуют диффузионную модель сложного теплообмена.
 
 \FloatBarrier
