@@ -1,10 +1,11 @@
 \section{Квазирешение граничной обратной задачи}\label{sec:ch2/sec1}
+%dvmg668
 
 \subsection{Постановка обратной задачи}\label{subsec:ch2/sec1/subsec1}
 
 Нормализованная стационарная модель, описывающая процесс радиационного теплопереноса в
-области $\Omega \subset \mathbb{R}^3$ с липшицевой границей $\Gamma$
-(см~\cite{Pinnau2007}), имеет следующий вид:
+области $\Omega \subset \mathbb{R}^3$ с липшицевой границей $\Gamma$ согласно
+\eqref{eq:1_4:4-1},\eqref{eq:1_4:4-2}, имеет следующий вид:
 \begin{equation}
     \label{eq:2_1:initial}
     \begin{aligned}
@@ -69,32 +70,32 @@ $\Gamma \coloneqq \partial \Omega =\overline{\Gamma}_0 \cup \overline{\Gamma}_1 
     J(\theta) = \frac{1}{2} \int_{\Gamma_2} (\theta - \theta_0)^2 d\Gamma
 \end{equation}
 на решениях краевой задачи~\eqref{eq:2_1:initial}--\eqref{eq:2_1:control_bounds}.
-Решение задачи~\eqref{eq:2_1:initial}--\eqref{eq:2_1:control_bounds},~\eqref{eq:2_1:quality}
-называется квазирешением задачи~\eqref{eq:2_1:initial}--\eqref{eq:2_1:theta_gamma}
 
 \subsection{Формализация задачи нахождения квазирешения}\label{subsec:ch2/sec1/subsec2}
 
 
-Будем предполагать что исходные данные удовлетворяют следующему условию:
+Будем предполагать что исходные данные удовлетворяют условию
 
-(i) $\beta\in L^\infty(\Gamma);\; \gamma \in L^\infty(\Gamma_0\cup\Gamma_2);\; u_1, u_2 \in L^\infty(\Gamma_1);
-\; 0 < \beta_0 \le \beta;\;  0 < \gamma_0 \le \gamma; \; \beta_0,\gamma_0=Const,\;\;\\ 0 \le u_1 \le u_2;$
+$\text{(i)}\;    \beta\in L^\infty(\Gamma); \gamma \in L^\infty(\Gamma_0\cup\Gamma_2);$
+$u_1, u_2 \in L^\infty(\Gamma_1);$
+$0 < \beta_0 \le \beta; 0 < \gamma_0 \le \gamma;$$\beta_0,\gamma_0=Const,$
+$0 \le u_1 \le u_2.$
 
-Пусть $H = L^2(\Omega), V = W^1_2(\Omega), Y = V \times V $.
-Пространство $H$ отождествляем с сопряжённым пространством $H'$ так, что $V \subset H = H' \subset V'$.
+Пусть $H = L^2(\Omega), V = H^1(\Omega), Y = V \times V $.
+Пространство $H$ отождествляем с сопряжённым пространством $H'$ так,
+что $V \subset H = H' \subset V'$.
 Определим $(f,v)$ как значение функционала $f \in V'$ на элементе $v \in V$,
 совпадающее со скалярным произведением в $H$, если $f\in H, \|f\|^2 = (f,f)$.
 Пространство $U = L^2(\Gamma_1)$ является пространством управлений;
 $U_{ad} = \{u \in U, u_1 \le u \le u_2 \}$ --- множество допустимых управлений.
 
-Пусть $v$ произвольный элемент множества $H^1(\Omega)$.
-
-
+Пусть $v$ произвольный элемент множества $V$.
 Определим операторы:
 \begin{gather*}
     A_{1,2}\colon V \to V', \;\; F \colon V \times U \to V', \; f \in V', \; g \in V'.\\
     (A_1\theta,v) = a( \nabla \theta, \nabla v ) + \int_\Gamma \beta \theta v d\Gamma, \;
-    (A_2 \varphi, v) = \alpha (\nabla \varphi,\nabla v) + \int_{\Gamma_0 \cup \Gamma_2} \gamma \varphi v d\Gamma,\\
+    (A_2 \varphi, v) = \alpha (\nabla \varphi,\nabla v) + \int_{\Gamma_0 \cup \Gamma_2}
+    \gamma \varphi v d\Gamma,\\
     (f,v) = \int_\Gamma \beta \theta_b v d\Gamma, \; \;
     (g,v) = \int_{\Gamma_0 \cup \Gamma_2} \gamma \theta_b^4 v d\Gamma,\\
     (F(\varphi, u), v) = \int_{\Gamma_1} u (\varphi - \theta^4_b)v d\Gamma.\\
@@ -110,7 +111,7 @@ $U_{ad} = \{u \in U, u_1 \le u \le u_2 \}$ --- множество допусти
 
 Задача нахождения квазирешения состоит в минимизации функционала $J(\theta)$,
 определённом на компоненте $\theta$ решения системы~\eqref{eq:2_1:weakOperational}.
-Таким образом
+Таким образом получаем следующую задачу на экстремум
 \begin{equation}
     \label{eq:2_1:minimizationOperational}
     J(\theta) \to \inf, \; \{\theta, \varphi\}
@@ -124,26 +125,28 @@ $U_{ad} = \{u \in U, u_1 \le u \le u_2 \}$ --- множество допусти
 
 \subsection{Анализ экстремальной задачи}\label{subsec:ch2/sec1/subsec3}
 
-
 Для доказательства разрешимости задачи~\eqref{eq:2_1:minimizationOperational}
-нам необходимо также установить некоторые свойства
-решения задачи~\eqref{eq:2_1:initial},~\eqref{eq:2_1:initial-boundary}.
+установим некоторые свойства решения
+задачи~\eqref{eq:2_1:initial},~\eqref{eq:2_1:initial-boundary}.
 
-\textbf{Лемма 1.}
-Пусть выполняется условие (i).
-Тогда для каждого $ u \in U_{ad} $ существует единственное слабое решение
-$\{\theta, \varphi \}$ для задачи~\eqref{eq:2_1:initial},\eqref{eq:2_1:initial-boundary}
-и справедливы оценки:
-\begin{equation}
-    \label{eq:2_1:lemma_1}
-    M_1 \le \theta \le M_2, \; M_1^4 \le \varphi \le M_2^4,
-\end{equation}
-\begin{equation}
-    \label{eq:2_1:lemma_2}
-    \| \nabla \varphi \|^2 \le C.
-\end{equation}
-Здесь $M_1 = \text{ess inf } \theta_b, M_2 = \text{ess sup } \theta_b$, и константа $C > 0$ зависит
-только от \\ $a, b, \alpha, \kappa_a, \beta, \gamma, \|u\|_{L^\infty(\Gamma)}$ и области $\Omega$.
+\begin{lemma}[\cite{Kovtanyuk2015}]
+    Пусть выполняется условие (i).
+    Тогда для каждого $ u \in U_{ad} $ существует единственное слабое решение
+    $\{\theta, \varphi \}$ для задачи~\eqref{eq:2_1:initial},\eqref{eq:2_1:initial-boundary}
+    и справедливы оценки:
+    \begin{equation}
+        \label{eq:2_1:lemma_1}
+        M_1 \le \theta \le M_2, \; M_1^4 \le \varphi \le M_2^4,
+    \end{equation}
+    \begin{equation}
+        \label{eq:2_1:lemma_2}
+        \| \nabla \varphi \|^2 \le C.
+    \end{equation}
+    Здесь $M_1 = \text{ess inf } \theta_b, M_2 = \text{ess sup } \theta_b$,
+    и константа $C > 0$ зависит только от \\
+    $a, b, \alpha, \kappa_a, \beta, \gamma,
+    \|u\|_{L^\infty(\Gamma)}$ и области $\Omega$.
+\end{lemma}
 
 На основе оценок~\eqref{eq:2_1:lemma_1} и~\eqref{eq:2_1:lemma_2}
 аналогично~\cite{Kovtanyuk2014TheoreticalAnalysis}
@@ -169,9 +172,9 @@ $\{\theta, \varphi \}$ для задачи~\eqref{eq:2_1:initial},\eqref{eq:2_1:
         \label{eq:2_1:lemma_proof_1}
         J(\theta + h) = J(\theta) + J'(\theta)\langle h \rangle
         + r(\theta, h) \; \forall h \in V, \; \text{ где } \;
-        J'(\theta)\langle h \rangle = \int_{\Gamma_2} (\theta - \theta_0)h d\Gamma,
+        J'(\theta)\langle h \rangle = \int_{\Gamma_2} (\theta - \theta_0)h d\Gamma
     \end{equation}
-    где для остаточного члена $r(\theta,h)$ справедливо соотношение:
+    и для остаточного члена $r(\theta,h)$ справедливо соотношение:
     \begin{equation}
         \label{eq:2_1:lemma_proof_2}
         \frac{|r(\theta,h)|}{\|h\|_V} \rightarrow 0
@@ -210,12 +213,13 @@ $\{\theta, \varphi \}$ для задачи~\eqref{eq:2_1:initial},\eqref{eq:2_1:
     \end{equation}
     \begin{equation}
         \label{eq:2_1:therorem_2_eq2}
-        A_2 p_2 + \kappa_a (p_2-b p_1) = g_c(( p_2, \hat{u}),v),
-        \;\; g_c(( p_2, \hat{u}),v) = -\int_{\Gamma_1} \hat{u} p_2 v\Gamma,
+        A_2 p_2 + \kappa_a (p_2-b p_1) = g_c(p_2, \hat{u}),
+        \;(g_c(p_2, \hat{u}), v) = -\int_{\Gamma_1} \hat{u} p_2 v d\Gamma,
     \end{equation}
     \begin{equation}
         \label{eq:2_1:therorem_2_eq3}
-        \int_{\Gamma_1} p_2 (\hat{\varphi} - \theta_b^4)(u-w) \leq 0 \quad \forall w \in U_{ad}.
+        \int_{\Gamma_1} p_2 (\hat{\varphi} - \theta_b^4)(u-w) d\Gamma
+        \leq 0 \quad \forall w \in U_{ad}.
     \end{equation}
 \end{theorem}
 
@@ -228,35 +232,43 @@ $\{\theta, \varphi \}$ для задачи~\eqref{eq:2_1:initial},\eqref{eq:2_1:
         H(y,u) =\{A_1 \theta + b \kappa_a (| \theta | \theta^3 - \varphi ) - f,
         A_2 \varphi + \kappa_a (\varphi - |\theta|\theta^3) + F(\varphi, u) - g \}.\\
     \end{gather*}
-    Заметим, что для всех $u \in U_{ad}$, отображение $y \to J(\theta) $ и $y \to H(y,u)$ непрерывно
+    Заметим, что для всех $u \in U_{ad}$, отображение
+    $y \to J(\theta) $ и $y \to H(y,u)$ непрерывно
     дифференцируемо в окрестности $\mathcal{O}(\hat{y})$ точки $\hat{y}$.
     Непрерывная дифференцируемость членов в $H$ следует из непрерывной дифференцируемости
-    функции $t \in \mathbb{R} \to | t | t^3$, а также из непрерывности вложения  $V \subset L^6(\Omega)$.
+    функции $t \in \mathbb{R} \to | t | t^3$,
+    а также из непрерывности вложения  $V \subset L^6(\Omega)$.
     В дополнение, отображение $u \to H(y,u)$ непрерывно из $U \to Y'$ и афинно.
-    В~\cite{Kovtanyuk2014TheoreticalAnalysis} показано, что $\text{Im}H_y'(\hat{y}, \hat{u}) = Y$,
+    В~\cite{Kovtanyuk2014TheoreticalAnalysis} показано,
+    что $\text{Im}H_y'(\hat{y}, \hat{u}) = Y$,
     что влечёт невырожденность условий оптимальности.
 
-    Рассмотрим функцию Лагранжа $L(y,u,p) = J(\theta) + (H(y,u),p),$ где $y,p \in Y,\, u \in U_{ad}$.
+    Рассмотрим функцию Лагранжа
+    $L(y,u,p) = J(\theta) + (H(y,u),p),$ где $y,p \in Y,\, u \in U_{ad}$.
     Согласно принципу Лагранжа~\cite[Гл.2, Теорема 1.5]{11}
     существует пара $p = \{p_1,p_2\} \in Y$ такая, что
     \begin{equation}
         \label{eq:2_1:th2_proof_1}
-        (L_\theta,\zeta) =\int_{\Gamma_2}(\hat\theta -\theta_0) \zeta d\Gamma
+        (L'_\theta,\zeta) =\int_{\Gamma_2}(\hat\theta -\theta_0) \zeta d\Gamma
         + (A_1 \zeta + 4b\kappa_a |\hat\theta|^3 \zeta,p_1)
         - 4\kappa_a(|\hat\theta|^3 \zeta,p_2) = 0 \; \forall \zeta \in V,
     \end{equation}
     \begin{equation}
         \label{eq:2_1:th2_proof_2}
-        (L_\varphi, \zeta) = (A_2 \zeta + \kappa_a \zeta, p_2)
-        - b \kappa_a(\zeta,p_1) +\int_{\Gamma_1} \hat u \zeta p_2 = 0 \; \forall \zeta \in V,
+        (L'_\varphi, \zeta) = (A_2 \zeta + \kappa_a \zeta, p_2)
+        - b \kappa_a(\zeta,p_1)
+        + \int_{\Gamma_1} \hat u \zeta p_2 d\Gamma = 0 \; \forall \zeta \in V,
     \end{equation}
     \begin{equation}
         \label{eq:2_1:th2_proof_3}
-        (L_u,\tau) = \int_{\Gamma_1} \tau (\varphi - \theta^4_b) p_2 d\Gamma  \leq 0,
+        (L'_u,\tau) = \int_{\Gamma_1} \tau (\varphi - \theta^4_b) p_2 d\Gamma  \leq 0,
         \; \tau \coloneqq \hat u - w \; \forall w \in U_{ad}.
     \end{equation}
     Сопряжённые уравнения~\eqref{eq:2_1:therorem_2_eq1},\eqref{eq:2_1:therorem_2_eq2}
     являются прямым следствием
     вариационных равенств~\eqref{eq:2_1:th2_proof_1} и~\eqref{eq:2_1:th2_proof_2}.
 \end{proof}
+
+\textbf{Замечание.} Численный алгоритм, основанный на полученной системе
+оптимальности представлен в~\ref{subsec:ch4/sec3/boundary}.
 \FloatBarrier
