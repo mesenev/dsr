@@ -43,38 +43,26 @@ $f$ и $g$ описывают вклад источников тепла и из
 Предположим, что $\Omega$ — липшицева ограниченная область,
 $\Gamma=\partial \Omega, Q=\Omega \times(0, T), \Sigma=\Gamma \times(0, T)$.
 
-
-Обозначим через $L^{p}, 1 \leq p \leq \infty$ пространство Лебега, через $H^{1}$
-пространство Соболева $W_{2}^{1}$ и через $L^ {p}(0, T ; X)$ пространство Лебега
-функций из $L^{p}$, определенных на $(0, T)$,
-со значениями в банаховом пространстве $X$.
-Пусть $H=L^{2}(\Omega), V=H^{1}(\Omega)$, а пространство $V^{\prime}$ двойственно к $V$.
-Тогда мы отождествим $H$ с его двойственным пространством $H^{\prime}$ таким,
-что $V \subset H=H^{\prime} \subset V^{\prime}$, и обозначим через $\|\cdot \|$ норму в $H$,
-а через $(h, v)$ значение функционала $h \in V^{\prime}$ на элементе $v \in V$,
-совпадающее со скалярным произведением в $ H$, если $h \in H$.
-
-
 Будем далее предполагать, что исходные данные удовлетворяют следующим условиям:
 
-(i) $\alpha, \beta, \sigma \in L^{\infty}(\Omega), b=r \beta, r=$ Const $>0;
+$(i)\;\alpha, \beta, \sigma \in L^{\infty}(\Omega), b=r \beta,\; r= \text{const} >0;\;
 \alpha \geq \alpha_{0}, \beta \geq \beta_{0},
-\sigma \geq \sigma_{0}, \alpha_{0}, \beta_{0}, \sigma_{0}=$ Const $>0$.
+\sigma \geq \sigma_{0}, \alpha_{0}, \beta_{0},\; \sigma_{0}=\text{const}>0$.
 
-(ii) $0<k_{0} \leq k(s) \leq k_{1},\left|k^{\prime}(s)\right| \leq k_{2}, s \in \mathbb{R},
-\quad k_{j}=$ Const.
+$(ii)\;0<k_{0} \leq k(s) \leq k_{1},\left|k^{\prime}(s)\right| \leq k_{2},\; s \in \mathbb{R},
+\quad k_{j} = \text{const}.$
 
-(iii) $0 \leq \theta_{b} \in L^{\infty}(\Sigma), 0 \leq \theta_{i n} \in L^{\infty}(\Omega);
+$(iii)\; 0 \leq \theta_{b} \in L^{\infty}(\Sigma),\; 0 \leq \theta_{i n} \in L^{\infty}(\Omega);
 \gamma_{0} \leq \gamma \in L^{\infty}(\Gamma),
-p_{0} \leq p \in L^{\infty}(\Gamma), \gamma_{0}, p_{0}=$ Const $>0$.
+p_{0} \leq p \in L^{\infty}(\Gamma),\; \gamma_{0}, p_{0}= \text{const} >0$.
 
-(iv) $0 \leq f, g \in L^{\infty}(Q)$.
+$(iv)\; 0 \leq f,\; g \in L^{\infty}(Q).$
 
 Пусть
-\[
-    W=\left\{y \in L^{2}(0, T ; V): \sigma y^{\prime}=\sigma d y / d t
-    \in L^{2}\left(0, T, V^{\prime}\right)\right\}
-\]
+$
+W=\left\{y \in L^{2}(0, T ; V): \sigma y^{\prime}=\sigma d y / d t
+\in L^{2}\left(0, T, V^{\prime}\right)\right\}.
+$
 
 Определим операторы $A_{1}: V \rightarrow V_{0}^{\prime}$ и $A_{2}: V \rightarrow V^{\prime}$ такие,
 что для всех $\theta, \varphi v$ справедливы следующие равенства:
@@ -88,33 +76,31 @@ p_{0} \leq p \in L^{\infty}(\Gamma), \gamma_{0}, p_{0}=$ Const $>0$.
     \end{gathered}
 \]
 где
-\[
-    h(s)=\int_{0}^{s} k(r) d r
-\]
+\[ h(s)=\int_{0}^{s} k(r) d r. \]
 
 \begin{definition}
-Пара $\theta \in W, \varphi \in L^{2}(0, T ; V)$ называется слабым решением
-задачи~\eqref{eq:3_1:1}--\eqref{eq:3_1:3}, если
-\begin{gather}
-    \sigma \theta^{\prime}+A_{1}(\theta)
-    +b\left([\theta]^{4}-\varphi\right)=f_{b}+f
-    \quad \text { a. e. on }(0, T),
-    \quad \theta(0)=\theta_{i n}, \label{eq:3_1:4}\\
-    A_{2} \varphi+\beta\left(\varphi-[\theta]^{4}\right)=
-    g_{b}+g \quad \text { a. e. on }(0, T). \label{eq:3_1:5}
-\end{gather}
-
+    Пара $\theta \in W, \varphi \in L^{2}(0, T ; V)$ называется слабым решением
+    задачи~\eqref{eq:3_1:1}--\eqref{eq:3_1:3}, если
+    \begin{gather}
+        \sigma \theta^{\prime}+A_{1}(\theta)
+        +b\left([\theta]^{4}-\varphi\right)=f_{b}+f
+        \quad \text { п. в. на }(0, T),
+        \quad \theta(0)=\theta_{i n}, \label{eq:3_1:4}\\
+        A_{2} \varphi+\beta\left(\varphi-[\theta]^{4}\right)=
+        g_{b}+g \quad \text { п. в. на }(0, T). \label{eq:3_1:5}
+    \end{gather}
 \end{definition}
+
 Здесь, $f_{b}, g_{b} \in L^{2}\left(0, T ; V^{\prime}\right)$ и
 
 \[
     \left(f_{b}, v\right)=\int_{\Gamma} p \theta_{b} v d \Gamma,
-    \quad\left(g_{b}, v\right)=\int_{\Gamma} \gamma \theta_{b}^{4} v d \Gamma \quad \forall v \in V
+    \quad\left(g_{b}, v\right)=\int_{\Gamma} \gamma \theta_{b}^{4} v d \Gamma \quad \forall v \in V.
 \]
 
 \begin{remark}
-Так как $\theta \in W$, то $\theta \in C([0, T] ; V)$.
-Следовательно, начальное условие имеет смысл.
+    Так как $\theta \in W$, то $\theta \in C([0, T] ; V)$.
+    Следовательно, начальное условие имеет смысл.
 \end{remark}
 
 \subsection{Итерационный метод}
@@ -122,33 +108,24 @@ p_{0} \leq p \in L^{\infty}(\Gamma), \gamma_{0}, p_{0}=$ Const $>0$.
 Определим операторы
 $F_{1}: L^{\infty}(\Omega) \rightarrow V$ и $F_{2}: L^{\infty}(Q) \times L^{2}(0, T ;V) \rightarrow W$
 следующим образом.
-
-
 Пусть $\varphi=F_{1}(\theta)$, если
 
 \begin{equation}
     \label{eq:3_1:6}
-    A_{2} \varphi+\beta\left(\varphi-[\theta]^{4}\right)=g_{b}+g
+    A_{2} \varphi+\beta\left(\varphi-[\theta]^{4}\right)=g_{b}+g,
 \end{equation}
 и $\theta=F_{2}(\zeta, \varphi)$ если
-
 \begin{equation}
     \label{eq:3_1:7}
     \sigma \theta^{\prime}+A(\zeta, \theta)+b\left([\theta]^{4}-\varphi\right)=f_{b}
-    +f \quad \text { a. e. on }(0, T), \quad \theta(0)=\theta_{i n}.
+    +f \quad \text { п. в. на }(0, T), \quad \theta(0)=\theta_{i n}.
 \end{equation}
-
-
 Здесь
-
 \[
     (A(\zeta, \theta), v)=(k(\zeta) \nabla \theta, \nabla v)
     +\int_{\Gamma} p \theta v d \Gamma \quad \forall v \in V
 \]
-
-
 Пусть $w(t)=M_{0}+M_{1} t, t \in[0, T]$, где
-
 \[
     \begin{gathered}
         M_{0}=\max \left\{\left\|\theta_{b}\right\|_{L^{\infty}(\Sigma)},
@@ -158,213 +135,196 @@ $F_{1}: L^{\infty}(\Omega) \rightarrow V$ и $F_{2}: L^{\infty}(Q) \times L^{2}(
     \end{gathered}
 \]
 
-
-
 \begin{lemma}
     \label{lm:3_1:1}
-Пусть выполнены условия (i) - (iv), $0 \leq \theta \leq w(t), \varphi=F_{1}(\theta)$.
-В таком случае
-\begin{equation}
-    \label{eq:3_1:8}
-    0 \leq \varphi \leq w^{4}(t)+M_{2}
-\end{equation}
+    Пусть выполнены условия $(i) - (iv)$, $0 \leq \theta \leq w(t), \varphi=F_{1}(\theta)$.
+    В таком случае
+    \begin{equation}
+        \label{eq:3_1:8}
+        0 \leq \varphi \leq w^{4}(t)+M_{2}
+    \end{equation}
 \end{lemma}
 \begin{proof}
-Умножая~\eqref{eq:3_1:6} в смысле внутреннего произведения $H$ на
-$\psi=\max \left\{\varphi-M_{2}-w^{4}, 0\right\} \in$ $L^{2}(0, T ; V)$, получаем
+    Умножая~\eqref{eq:3_1:6} в смысле внутреннего произведения $H$ на
+    $\psi=\max \left\{\varphi-M_{2}-w^{4}, 0\right\} \in$ $L^{2}(0, T ; V)$, получаем
+    \[
+        \left(A_{2} \varphi-g_{b}, \psi\right)+\left(\beta\left(\varphi-M_{2}-[\theta]^{4}\right),
+        \psi\right)=\left(g-\beta M_{2}, \psi\right) \leq 0.
+    \]
+    Заметим, что с учетом ограничений на $\theta$ выполняются следующие неравенства:
+    \[
+        \begin{gathered}
+            \left(A_{2} \varphi-g_{b}, \psi\right)=(\alpha \nabla \psi, \nabla \psi)+
+            \int_{\Gamma} \gamma\left(\varphi-\theta_{b}^{4}\right) d \Gamma
+            \geq (\alpha \nabla \psi, \nabla \psi) \\
+            \left(\beta\left(\varphi-M_{2}-[\theta]^{4}\right), \psi\right)=
+            (\beta \psi, \psi)+\left(\beta\left(w^{4}-[\theta]^{4}\right), \psi\right)
+            \geq(\beta \psi, \psi).
+        \end{gathered}
+    \]
+    Таким образом, $\psi=0$ и $\varphi \leq w^{4}+M_{2}$.
 
-\[
-    \left(A_{2} \varphi-g_{b}, \psi\right)+\left(\beta\left(\varphi-M_{2}-[\theta]^{4}\right),
-    \psi\right)=\left(g-\beta M_{2}, \psi\right) \leq 0.
-\]
-
-
-Заметим, что с учетом ограничений на $\theta$ выполняются следующие неравенства:
-
-\[
-    \begin{gathered}
-        \left(A_{2} \varphi-g_{b}, \psi\right)=(\alpha \nabla \psi, \nabla \psi)+
-        \int_{\Gamma} \gamma\left(\varphi-\theta_{b}^{4}\right) d \Gamma
-        \geq (\alpha \nabla \psi, \nabla \psi) \\
-        \left(\beta\left(\varphi-M_{2}-[\theta]^{4}\right), \psi\right)=
-        (\beta \psi, \psi)+\left(\beta\left(w^{4}-[\theta]^{4}\right), \psi\right)
-        \geq(\beta \psi, \psi).
-    \end{gathered}
-\]
-
-
-Таким образом, $\psi=0$ и $\varphi \leq w^{4}+M_{2}$.
-
-Далее, умножая~\eqref{eq:3_1:6} в смысле скалярного произведения $H$
-на $\xi=\min \{\varphi, 0\} \in$ $L^{2}(0, T ; V) $ аналогично получаем,
-что $\xi=0$.
-Таким образом, $\varphi\geq 0$.
+    Далее, умножая~\eqref{eq:3_1:6} в смысле скалярного произведения $H$
+    на $\xi=\min \{\varphi, 0\} \in$ $L^{2}(0, T ; V) $ аналогично получаем,
+    что $\xi=0$.
+    Таким образом, $\varphi\geq 0$.
 \end{proof}
+
 \begin{lemma}
     \label{lm:3_1:2}
-Пусть выполняются условия (i)-(iv), $0 \leq \varphi \leq w^{4}(t)+M_{2},
+    Пусть выполняются условия $(i)-(iv)$, $0 \leq \varphi \leq w^{4}(t)+M_{2},
     \theta=F_{2}(\zeta, \varphi), \zeta \in L^{\infty}(Q)$.
-Тогда $0 \leq \theta \leq w(t)$.
+    Тогда $0 \leq \theta \leq w(t)$.
 \end{lemma}
+
 \begin{proof}
-Пусть $\widehat{\theta}=\theta-w$.
-Перепишем уравнение~\eqref{eq:3_1:7} следующим образом
-\begin{equation}
-    \label{eq:3_1:9}
-    \sigma \widehat{\theta}^{\prime}+A(\zeta, \theta)
-    -f_{b}+b\left([\widehat{\theta}+w]^{4}-
-    \left(\varphi-M_{2}\right)\right)=f-\sigma M_{1}+b M_{2} \leq 0.
-\end{equation}
+    Пусть $\widehat{\theta}=\theta-w$.
+    Перепишем уравнение~\eqref{eq:3_1:7} следующим образом
+    \begin{equation}
+        \label{eq:3_1:9}
+        \sigma \widehat{\theta}^{\prime}+A(\zeta, \theta)-f_{b} +b\left([\widehat{\theta}
+        +w]^{4}-\left(\varphi-M_{2}\right)\right)=f-\sigma M_{1}+b M_{2} \leq 0.
+    \end{equation}
 
-Умножая~\eqref{eq:3_1:9} в смысле скалярного
-произведения $H$ на $\eta=\max \{\widehat{\theta}, 0\} \in W$.
-Заметим, что значение правой части неположительно, а также
+    Умножая~\eqref{eq:3_1:9} в смысле скалярного
+    произведения $H$ на $\eta=\max \{\widehat{\theta}, 0\} \in W$.
 
-\[
-    \begin{gathered}
-        \left(\sigma \widehat{\theta}^{\prime}, \eta\right)=
-        \left(\sigma \eta^{\prime}, \eta\right)=\frac{d}{2 d t}(\sigma \eta, \eta) \\
-        \left(A(\zeta, \theta)-f_{b}, \eta\right)=(k(\zeta) \nabla \eta, \nabla \eta)
-        + \int_{\Gamma} p\left(\widehat{\theta}+w-\theta_{b}\right) \eta d \Gamma \geq 0 \\
-        \left([\widehat{\theta}+w]^{4}-w^{4}\right) \max
-        \{\widehat{\theta}, 0\} \geq 0, \quad\left(w^{4}
-        + M_{2} - \varphi\right) \eta \geq 0.
-    \end{gathered}
-\]
+    Заметим, что значение правой части неположительно, а также
+    \[
+        \begin{gathered}
+            \left(\sigma \widehat{\theta}^{\prime}, \eta\right)=
+            \left(\sigma \eta^{\prime}, \eta\right)=\frac{d}{2 d t}(\sigma \eta, \eta) \\
+            \left(A(\zeta, \theta)-f_{b}, \eta\right)=(k(\zeta) \nabla \eta, \nabla \eta)
+            + \int_{\Gamma} p\left(\widehat{\theta}+w-\theta_{b}\right) \eta d \Gamma \geq 0 \\
+            \left([\widehat{\theta}+w]^{4}-w^{4}\right) \max
+            \{\widehat{\theta}, 0\} \geq 0, \quad\left(w^{4}
+            + M_{2} - \varphi\right) \eta \geq 0.
+        \end{gathered}
+    \]
+    Тогда
+    \[ \frac{d}{d t}(\sigma \eta, \eta) \leq 0,\left.\quad \eta\right|_{t=0}=0 \]
+    Таким образом, $\eta=0, \widehat{\theta} \leq 0, \theta \leq w$.
+    Аналогично, умножая~\eqref{eq:3_1:9} в смысле скалярного произведения
+    $H$ на $\eta=\min \{\theta, 0\} \in W$, получаем, что $\eta=0,\, \theta \geq 0$.
 
-
-Тогда
-
-\[
-    \frac{d}{d t}(\sigma \eta, \eta) \leq 0,\left.\quad \eta\right|_{t=0}=0
-\]
-
-Таким образом, $\eta=0, \widehat{\theta} \leq 0, \theta \leq w$.
-Аналогично, умножая (9) в смысле скалярного произведения
-$H$ на $\eta=\min \{\theta, 0\} \in W$, получаем, что $\eta=0, \quad \theta \geq 0$.
-
-Пусть $\theta_{0}=\theta_{i n}, \quad \varphi_{0}=F_{1}\left(\theta_{0}\right)$.
-Определим рекурсивно последовательности
-$\theta_{m} \in W, \varphi_{m} \in L^{2}(0, T ; V)$ таким образом, что
-
-\begin{equation}
-    \label{eq:3_1:10}
-    \theta_{m}=F_{2}\left(\theta_{m-1}, \varphi_{m-1}\right),
-    \quad \varphi_{m}=F_{1}\left(\theta_{m}\right), \quad m=1,2, \ldots
-\end{equation}
+    Пусть $\theta_{0}=\theta_{i n}, \quad \varphi_{0}=F_{1}\left(\theta_{0}\right)$.
+    Определим рекурсивно последовательности
+    $\theta_{m} \in W, \varphi_{m} \in L^{2}(0, T ; V)$ таким образом, что
+    \begin{equation}
+        \label{eq:3_1:10}
+        \theta_{m}=F_{2}\left(\theta_{m-1}, \varphi_{m-1}\right),
+        \quad \varphi_{m}=F_{1}\left(\theta_{m}\right), \quad m=1,2, \ldots
+    \end{equation}
 
 
-Из лемм 1 и 2 следуют оценки
-
-\begin{equation}
-    \label{eq:3_1:11}
-    0 \leq \varphi_{m} \leq w^{4}(t)+M_{2},
-    \quad 0 \leq \theta_{m} \leq w(t), \quad m=1,2, \ldots
-\end{equation}
+    Из лемм~\ref{lm:3_1:1} и~\ref{lm:3_1:2} следуют оценки
+    \begin{equation}
+        \label{eq:3_1:11}
+        0 \leq \varphi_{m} \leq w^{4}(t)+M_{2},
+        \quad 0 \leq \theta_{m} \leq w(t), \quad m=1,2, \ldots
+    \end{equation}
     Лемма доказана.
 \end{proof}
 \begin{lemma}
     \label{lm:3_1:3}
-Пусть выполнены условия (i) — (iv).
-Тогда существует константа $C > 0$, не зависящая от $m$, такая, что
-
-
-\begin{gather}
-    \left\|\varphi_{m}\right\|_{L^{2}(0, T ; V)} \leq C,
-    \quad\left\|\theta_{m}\right\|_{L^{2}(0, T ; V)} \leq C, \label{eq:3_1:12}\\
-    \int_{0}^{T-\delta}\left\|\theta_{m}(s+\delta)
-    -\theta_{m}(s)\right\|^{2} d s \leq C \delta.\label{eq:3_1:13}
-\end{gather}
+    Пусть выполнены условия $(i)-(iv)$.
+    Тогда существует константа $C > 0$, не зависящая от $m$, такая, что
+    \begin{gather}
+        \left\|\varphi_{m}\right\|_{L^{2}(0, T ; V)} \leq C,
+        \quad\left\|\theta_{m}\right\|_{L^{2}(0, T ; V)} \leq C, \label{eq:3_1:12}\\
+        \int_{0}^{T-\delta}\left\|\theta_{m}(s+\delta)
+        -\theta_{m}(s)\right\|^{2} d s \leq C \delta.\label{eq:3_1:13}
+    \end{gather}
 \end{lemma}
 
 \begin{proof}
-Из определения последовательностей $\varphi_{m}, \theta_{m}$ следуют равенства
-
-    \begin{gather}
+    Из определения последовательностей $\varphi_{m}, \theta_{m}$ следуют равенства
+    \begin{equation}
+        \label{eq:3_1:14}
         A_{2} \varphi_{m}+\beta\left(\varphi_{m}
-        -\left[\theta_{m}\right]^{4}\right)=g_{b}+g. \label{eq:3_1:14}\\
-        \sigma \theta_{m}^{\prime}+A\left(\theta_{m-1},
-        \theta_{m}\right)+b\left(\left[\theta_{m}\right]^{4}-\varphi_{m-1}\right)=f_{b}+f
-        \quad \text { a. e. on }(0, T), \quad \theta_{m}(0)=\theta_{i n}.\label{eq:3_1:15}
-    \end{gather}
+        -\left[\theta_{m}\right]^{4}\right)=g_{b}+g.
+    \end{equation}
+    \begin{equation}
+        \label{eq:3_1:15}
+        \begin{gathered}
+            \sigma \theta_{m}^{\prime}+A\left(\theta_{m-1},
+            \theta_{m}\right)+b\left(\left[\theta_{m}\right]^{4}-\varphi_{m-1}\right)=f_{b}+f
+            \text { п. в. в }(0, T), \\ \theta_{m}(0)=\theta_{i n}.
+        \end{gathered}
+    \end{equation}
+    Оценки~\eqref{eq:3_1:12} выводятся стандартным образом
+    из уравнений~\eqref{eq:3_1:14} и~\eqref{eq:3_1:15}
+    и с учетом~\eqref{eq:3_1:11}, т.е. ограниченности
+    последовательностей в $L^{\infty}(Q)$.
 
+    Получим оценку, гарантирующую компактность последовательности
+    $\theta_{m}$ в $L^{2}(Q)$.
+    Перепишем~\eqref{eq:3_1:15} как
 
-Оценки~\eqref{eq:3_1:12} выводятся стандартным образом
-из уравнений~\eqref{eq:3_1:14} и~\eqref{eq:3_1:15}
-и с учетом~\eqref{eq:3_1:11}, т.е. ограниченности
-последовательностей в $L^{\infty}(Q)$.
+    \begin{equation}
+        \label{eq:3_1:16}
+        \sigma \theta_{m}^{\prime}=\chi_{m}
+        \text { a.e. on }(0, T), \quad \theta_{m}(0)=\theta_{i n},
+    \end{equation}
+    где
+    \[
+        -\chi_{m}=A\left(\theta_{m-1},
+        \theta_{m}\right)+b\left(\left[\theta_{m}\right]^{4}
+        -\varphi_{m-1}\right)-f_{b}-f.
+    \]
+    Отметим, что с учетом полученных оценок последовательность
+    $\chi_{m}$ ограничена в $L^{2}\left(0, T ; V^{\prime}\right)$.
+    Умножим~\eqref{eq:3_1:16} в смысле скалярного произведения произведения
+    $H$ на $\theta_{m}(t)-\theta_{m}(s)$
+    и проинтегрируем по $t$ на интервале $(s, s+\delta)$ и
+    над $s$ на $(0, T-\delta)$, предполагая, что $\delta>0$ достаточно мало.
+    В результате получим
+    \[
+        \frac{1}{2} \int_{0}^{T-\delta}\left\|\sqrt{\sigma}\left(\theta_{m}(s+\delta)
+        - \theta_{m}(s)\right)\right\|^{2} d s
+        = \int_{0}^{T-\delta} \int_{s}^{s+\delta} c_{m}(t, s) d t d s
+    \]
+    где
+    \[
+        c_{m}(t, s)=\left(\chi_{m}(t), \theta_{m}(t)-\theta_{m}(s)\right)
+        \leq\left\|\chi_{m}(t)\right\|_{V^{\prime}}^{2}
+        +\frac{1}{2}\left\|\theta_{m}(t)\right\|_{V}^{2}
+        +\frac{1}{2}\left\|\theta_{m}(s)\right\|_{V}^{2}.
+    \]
 
-Получим оценку, гарантирующую компактность последовательности
-$\theta_{m}$ в $L^{2}(Q)$.
-Перепишем~\eqref{eq:3_1:15} как
+    Для оценки интегралов от слагаемых, зависящих от $t$,
+    достаточно изменить порядок интегрирования.
+    Используя ограниченность последовательностей
+    $\theta_{m}$ в $L^{2}(0, T ; V)$ и $\chi_{m}$ в $L^{2}\left(0, T ; V^{\prime}\right)$,
+    получаем оценку равностепенной непрерывности~\eqref{eq:3_1:13}.
 
-\begin{equation}
-    \label{eq:3_1:16}
-    \sigma \theta_{m}^{\prime}=\chi_{m}
-    \text { a.e. on }(0, T), \quad \theta_{m}(0)=\theta_{i n}
-\end{equation}
-где
-\[
-    -\chi_{m}=A\left(\theta_{m-1},
-    \theta_{m}\right)+b\left(\left[\theta_{m}\right]^{4}
-    -\varphi_{m-1}\right)-f_{b}-f.
-\]
-Отметим, что с учетом полученных оценок последовательность
-$\chi_{m}$ ограничена в $L^{2}\left(0, T ; V^{\prime}\right)$.
-Умножим~\eqref{eq:3_1:16} в смысле скалярного произведения произведения
-$H$ на $\theta_{m}(t)-\theta_{m}(s)$
-и проинтегрируем по $t$ на интервале $(s, s+\delta)$ и
-над $s$ на $(0, T-\delta)$, предполагая, что $\delta>0$ достаточно мало.
-В результате получим
-\[
-    \frac{1}{2} \int_{0}^{T-\delta}\left\|\sqrt{\sigma}\left(\theta_{m}(s+\delta)
-    - \theta_{m}(s)\right)\right\|^{2} d s
-    = \int_{0}^{T-\delta} \int_{s}^{s+\delta} c_{m}(t, s) d t d s
-\]
-где
-
-\[
-    c_{m}(t, s)=\left(\chi_{m}(t), \theta_{m}(t)-\theta_{m}(s)\right)
-    \leq\left\|\chi_{m}(t)\right\|_{V^{\prime}}^{2}
-    +\frac{1}{2}\left\|\theta_{m}(t)\right\|_{V}^{2}
-    +\frac{1}{2}\left\|\theta_{m}(s)\right\|_{V}^{2}.
-\]
-
-Для оценки интегралов от слагаемых, зависящих от $t$,
-достаточно изменить порядок интегрирования.
-Используя ограниченность последовательностей
-$\theta_{m}$ в $L^{2}(0, T ; V)$ и $\chi_{m}$ в $L^{2}\left(0, T ; V^{\prime}\right)$,
-получаем оценку равностепенной непрерывности (13).
-
-Полученные оценки~\eqref{eq:3_1:12},\eqref{eq:3_1:13}
-позволяют утверждать,
-переходя при необходимости к подпоследовательностям,
-что существуют функции $\theta_{*}, \varphi_{*}$ такие, что
-
-\begin{equation}
-    \label{eq:3_1:17}
-    \begin{aligned}
-        \theta_{m} \rightarrow \widehat{\theta}
-        \text { слабо в } L^{2}(0, T ; V),
-        \text { сильно в } L^{2}(0, T ; H), \\
-        \varphi_{m} \rightarrow \widehat{\varphi}
-        \text { слабо в } L^{2}(0, T ; V).
-    \end{aligned}
-\end{equation}
-
-Сходимости~\eqref{eq:3_1:17} достаточно, для перехода к пределу
-при $m \rightarrow \infty$
-в равенствах~\eqref{eq:3_1:14},~\eqref{eq:3_1:15}
-и доказательства, что предельные функции $\widehat{\theta},
-\widehat{\varphi } \in L^{2}(0, T ; V)$ таковы,
-что $\sigma \widehat{\theta}^{\prime} \in L^{2}\left(0, T ; V^{ \prime}\right)$
-и для них выполняются равенства~\eqref{eq:3_1:4}~\eqref{eq:3_1:5}.
+    Полученные оценки~\eqref{eq:3_1:12},\eqref{eq:3_1:13}
+    позволяют утверждать,
+    переходя при необходимости к подпоследовательностям,
+    что существуют функции $\theta_{*}, \varphi_{*}$ такие, что
+    \begin{equation}
+        \label{eq:3_1:17}
+        \begin{aligned}
+            \theta_{m} \rightarrow \widehat{\theta}
+            \text { слабо в } L^{2}(0, T ; V),
+            \text { сильно в } L^{2}(0, T ; H), \\
+            \varphi_{m} \rightarrow \widehat{\varphi}
+            \text { слабо в } L^{2}(0, T ; V).
+        \end{aligned}
+    \end{equation}
+    Сходимости~\eqref{eq:3_1:17} достаточно, для перехода к пределу
+    при $m \rightarrow \infty$
+    в равенствах~\eqref{eq:3_1:14},~\eqref{eq:3_1:15}
+    и доказательства, что предельные функции $\widehat{\theta},
+    \widehat{\varphi } \in L^{2}(0, T ; V)$ таковы,
+    что $\sigma \widehat{\theta}^{\prime} \in L^{2}\left(0, T ; V^{ \prime}\right)$
+    и для них выполняются равенства~\eqref{eq:3_1:4}~\eqref{eq:3_1:5}.
 \end{proof}
 
 \begin{theorem}
     \label{th:3_1:1}
-Пусть выполнены условия (i)-(iv).
-Тогда задача~\eqref{eq:3_1:1}~\eqref{eq:3_1:3} имеет хотя бы одно решение.
+    Пусть выполнены условия $(i)-(iv)$.
+    Тогда задача~\eqref{eq:3_1:1}~\eqref{eq:3_1:3} имеет хотя бы одно решение.
 \end{theorem}
 
 \subsection{Теорема единственности и сходимость итерационного метода}
@@ -374,129 +334,122 @@ $\theta_{m}$ в $L^{2}(0, T ; V)$ и $\chi_{m}$ в $L^{2}\left(0, T ; V^{\prime}
 
 \begin{theorem}
     \label{th:3_1:2}
-Пусть выполнены условия (i)–(iv).
-Если $\theta_{*}, \varphi_{*}$ — решение
-задачи~\eqref{eq:3_1:1}--\eqref{eq:3_1:3} такое,
-что $\theta_{*}, \nabla \theta_{*} \in L^{\infty }(Q)$,
-то других ограниченных решений этой задачи нет.
+    Пусть выполнены условия $(i)-(iv)$.
+    Если $\theta_{*}, \varphi_{*}$ — решение
+    задачи~\eqref{eq:3_1:1}--\eqref{eq:3_1:3} такое,
+    что $\theta_{*}, \nabla \theta_{*} \in L^{\infty }(Q)$,
+    то других ограниченных решений этой задачи нет.
 \end{theorem}
 
 \begin{proof}
-Пусть $\theta_{1}, \varphi_{1}$ -- другое решение
-задачи~\eqref{eq:3_1:1}--\eqref{eq:3_1:3},
-$\theta=\theta_{1}-\theta_{*}, \varphi=\varphi_{ 1}-\varphi_{*}$.
-В таком случае
+    Пусть $\theta_{1}, \varphi_{1}$ -- другое решение
+    задачи~\eqref{eq:3_1:1}--\eqref{eq:3_1:3},
+    $\theta=\theta_{1}-\theta_{*}, \varphi=\varphi_{ 1}-\varphi_{*}$.
+    В таком случае
+    \begin{equation}
+        \label{eq:3_1:18}
+        \begin{gathered}
+            \sigma \theta^{\prime}+A_{1}\left(\theta_{1}\right)
+            -A_{1}\left(\theta_{*}\right)+b\left(\left[\theta_{1}\right]^{4}-
+            \left[\theta_{*}\right]^{4}-\varphi\right)=0
+            \text { п. в. в }(0, T), \theta(0)=0.
+        \end{gathered}
+    \end{equation}
+    \begin{equation}
+        \label{eq:3_1:19}
+        A_{2} \varphi+\beta\left(\varphi-\left(\left[\theta_{1}\right]^{4}
+        -\left[\theta_{*}\right]^{4}\right)\right)=0
+        \text { п. в. в }(0, T).
+    \end{equation}
 
-\begin{gather}
-    \sigma \theta^{\prime}+A_{1}\left(\theta_{1}\right)
-    -A_{1}\left(\theta_{*}\right)+b\left(\left[\theta_{1}\right]^{4}-
-    \left[\theta_{*}\right]^{4}-\varphi\right)=0
-    \quad \text { a. e. on }(0, T), \quad \theta(0)=0. \label{eq:3_1:18} \\
-    A_{2} \varphi+\beta\left(\varphi-\left(\left[\theta_{1}\right]^{4}
-    -\left[\theta_{*}\right]^{4}\right)\right)=0
-    \quad \text { a. e. on }(0, T). \label{eq:3_1:19}
-\end{gather}
-
-
-
-Умножим~\eqref{eq:3_1:18} в смысле скалярного произведения
-$H$ на $\theta$ и проинтегрируем по времени.
-Как результат
-\begin{gather*}
-    \frac{1}{2}\|\sqrt{\sigma} \theta\|^{2}+
-    \int_{0}^{t}\left(\left(k\left(\theta_{1}\right) \nabla \theta,
-    \nabla \theta\right)+\int_{\Gamma} p \theta^{2}(s) d \Gamma\right) d s=\\
-    -\int_{0}^{t}\left(b\left(\left[\theta_{1}\right]^{4}-
-    \left[\theta_{*}\right]^{4}-\varphi\right),
-    \theta\right) d s-\int_{0}^{t}\left(\left(k\left(\theta_{1}\right)
-    -k\left(\theta_{*}\right)\right)
-    \nabla \theta_{*}, \nabla \theta\right) d s.\\
-\end{gather*}
-
-Пусть $\left|\theta_{1}\right| \leq M,\left|\theta_{*}\right| \leq M$.
-С учетом ограничения на функцию $k$ получаем неравенство
-
-\begin{equation}
-    \label{eq:3_1:20}
-    \begin{aligned}
-        \frac{\sigma_{0}}{2}\|\theta\|^{2}+k_{0}
-        & \int_{0}^{t}\|\nabla \theta\|^{2} d s \leq \\
-        & \int_{0}^{t}\left(4 M \max b\|\theta\|^{2}
-        +\|\varphi\|\|\theta\|\right) d s
-        +k_{2}\left\|\nabla \theta_{*}\right\|_{L^{\infty}(Q)}
-        \int_{0}^{t}\|\theta\|\|\nabla \theta\| d s.
-    \end{aligned}
-\end{equation}
-
-
-Принимая во внимание, что
-$\|\theta\|\|\nabla \theta\| \leq \varepsilon\|\nabla \theta\|^{2}+
-\frac{1}{4 \varepsilon}\|\theta\|^{2}$
-и предполагая
-\[
-    \varepsilon=\frac{k_{0}}{k_{2}\left\|\nabla \theta_{*}\right\|_{L^{\infty}(Q)}}
-\]
-
-
-из~\eqref{eq:3_1:20} получаем
-
-\begin{equation}
-    \label{eq:3_1:21}
-    \frac{\sigma_{0}}{2}\|\theta\|^{2} \leq \int_{0}^{t}
-    \left(4 M \max b\|\theta\|^{2}+\|\varphi\|\|\theta\|\right) d s
-    +\frac{1}{4 \varepsilon} k_{2}\left\|\nabla \theta_{*}\right\|_{L^{\infty}(Q)}
-    \int_{0}^{t}\|\theta\|^{2} d s.
-\end{equation}
+    Умножим~\eqref{eq:3_1:18} в смысле скалярного произведения
+    $H$ на $\theta$ и проинтегрируем по времени.
+    Как результат
+    \begin{gather*}
+        \frac{1}{2}\|\sqrt{\sigma} \theta\|^{2}+
+        \int_{0}^{t}\left(\left(k\left(\theta_{1}\right) \nabla \theta,
+        \nabla \theta\right)+\int_{\Gamma} p \theta^{2}(s) d \Gamma\right) d s=\\
+        -\int_{0}^{t}\left(b\left(\left[\theta_{1}\right]^{4}-
+        \left[\theta_{*}\right]^{4}-\varphi\right),
+        \theta\right) d s-\int_{0}^{t}\left(\left(k\left(\theta_{1}\right)
+        -k\left(\theta_{*}\right)\right)
+        \nabla \theta_{*}, \nabla \theta\right) d s.\\
+    \end{gather*}
+    Пусть $\left|\theta_{1}\right| \leq M,\left|\theta_{*}\right| \leq M$.
+    С учетом ограничения на функцию $k$ получаем неравенство
+    \begin{equation}
+        \label{eq:3_1:20}
+        \begin{aligned}
+            \frac{\sigma_{0}}{2}\|\theta\|^{2}+k_{0}
+            & \int_{0}^{t}\|\nabla \theta\|^{2} d s \leq \\
+            & \int_{0}^{t}\left(4 M \max b\|\theta\|^{2}
+            +\|\varphi\|\|\theta\|\right) d s
+            +k_{2}\left\|\nabla \theta_{*}\right\|_{L^{\infty}(Q)}
+            \int_{0}^{t}\|\theta\|\|\nabla \theta\| d s.
+        \end{aligned}
+    \end{equation}
+    Принимая во внимание, что
+    $\|\theta\|\|\nabla \theta\| \leq \varepsilon\|\nabla \theta\|^{2}+
+    \frac{1}{4 \varepsilon}\|\theta\|^{2}$
+    и предполагая
+    \[
+        \varepsilon=\frac{k_{0}}{k_{2}\left\|\nabla \theta_{*}\right\|_{L^{\infty}(Q)}}
+    \]
 
 
-Умножьте (19) на $\varphi$ в смысле скалярного произведения $H$.
-Как результат
+    из~\eqref{eq:3_1:20} получаем
 
-\[
-    \left(A_{2} \varphi, \varphi\right)+(\beta \varphi, \varphi)=
-    \left(\beta\left(\left[\theta_{1}\right]^{4}-
-    \left[\theta_{2}\right]^{4}\right), \varphi\right)
-    \leq 4 \max \beta M^{3}\|\theta\|\|\varphi\|.
-\]
+    \begin{equation}
+        \label{eq:3_1:21}
+        \frac{\sigma_{0}}{2}\|\theta\|^{2} \leq \int_{0}^{t}
+        \left(4 M \max b\|\theta\|^{2}+\|\varphi\|\|\theta\|\right) d s
+        +\frac{1}{4 \varepsilon} k_{2}\left\|\nabla \theta_{*}\right\|_{L^{\infty}(Q)}
+        \int_{0}^{t}\|\theta\|^{2} d s.
+    \end{equation}
+Умножим~\eqref{eq:3_1:19} на $\varphi$ в смысле скалярного произведения $H$.
+В результате получим
+    \[
+        \left(A_{2} \varphi, \varphi\right)+(\beta \varphi, \varphi)=
+        \left(\beta\left(\left[\theta_{1}\right]^{4}-
+        \left[\theta_{2}\right]^{4}\right), \varphi\right)
+        \leq 4 \max \beta M^{3}\|\theta\|\|\varphi\|.
+    \]
 
 
-Следовательно, $\|\varphi\| \leq 4 \beta_{0}^{-1} \max \beta M^{3}\|\theta\|$.
-Тогда из (21) и неравенства Гронуолла следует, что $\theta=0, \theta_{1}$
-совпадает с $\theta_{*}$ и, соответственно, $\varphi_{1}$ совпадает с $\varphi_{*}$.
+    Следовательно, $\|\varphi\| \leq 4 \beta_{0}^{-1} \max \beta M^{3}\|\theta\|$.
+    Из~\eqref{eq:3_1:21} и неравенства Гронуолла следует, что $\theta=0, \theta_{1}$
+    совпадает с $\theta_{*}$ и, соответственно, $\varphi_{1}$ совпадает с $\varphi_{*}$.
 \end{proof}
-
-
 
 \begin{theorem}
     \label{th:3_1:3}
-Пусть выполнены условия (i)-(iv).
-Если $\theta_{*}, \varphi_{*}$ — решение задачи~\eqref{eq:3_1:1}--\eqref{eq:3_1:3}
+    Пусть выполнены условия $(i)-(iv)$.
+    Если $\theta_{*}, \varphi_{*}$ — решение задачи~\eqref{eq:3_1:1}--\eqref{eq:3_1:3}
     такое, что $\theta_{*}, \nabla \theta_{*} \in L^{\infty }(Q)$,
-то для последовательностей (10) имеют место следующие сходимости:
-
-\[
-    \theta_{m} \rightarrow \theta_{*} \text { in } L^{2}(0, T ; V),
-    \quad \varphi_{m} \rightarrow \varphi_{*} \text { in } L^{2}(0, T ; V).
-\]
+    то для последовательностей~\eqref{eq:3_1:10} справедливо следующее:
+    \[
+        \theta_{m} \rightarrow \theta_{*} \text { in } L^{2}(0, T ; V),
+        \quad \varphi_{m} \rightarrow \varphi_{*} \text { in } L^{2}(0, T ; V).
+    \]
 \end{theorem}
 
 \begin{proof}
 
-Сначала покажем, что $\theta_{m} \rightarrow \theta_{*}$ в $L^{2}(0, T ; H)$.
-Предполагая противное, заключаем, что существуют $\varepsilon_{0}>0$
-и подпоследовательность $\theta_{m^{\prime}}$ такие, что
-$\left\|\theta_{m^{\prime}} -\theta_{*}\right\|_{L^{2}(0, T ; H)}
-\geq \varepsilon_{0}$.
-Оценки~\eqref{eq:3_1:12}~\eqref{eq:3_1:13} позволяют утверждать,
-переходя при необходимости к подпоследовательностям,
-что справедливы результаты сходимости~\eqref{eq:3_1:17},
-где $\widehat{\theta}, \widehat{\varphi}$
-также является решением задачи ~\eqref{eq:3_1:1}--\eqref{eq:3_1:3}.
-Следовательно, $\left\|\widehat{\theta}-\theta_{*}\right\|_{L^{2}(0, T ; H)}
-\geq \varepsilon_{0}$, что противоречит теореме~\ref{th:3_1:2} о единственности решения.
-Из уравнений~\eqref{eq:3_1:14} и~\eqref{eq:3_1:15} с учетом~\eqref{eq:3_1:11},
-т.е. ограниченности последовательностей в $L^{\infty}(Q)$,
-а также доказанной сходимости $\theta_{m}$ в $L^{2}(0, T; H)$
-следует сходимость $\theta_{m} \rightarrow \theta_{*}, \varphi_{m}
-\rightarrow \varphi_{*}$ в $L^ {2}(0, Т; V)$.
+    Сначала покажем, что $\theta_{m} \rightarrow \theta_{*}$ в $L^{2}(0, T ; H)$.
+    Предполагая противное, заключаем, что существуют $\varepsilon_{0}>0$
+    и подпоследовательность $\theta_{m^{\prime}}$ такая, что
+    $\left\|\theta_{m^{\prime}} -\theta_{*}\right\|_{L^{2}(0, T ; H)}
+    \geq \varepsilon_{0}$.
+    Оценки~\eqref{eq:3_1:12}~\eqref{eq:3_1:13} позволяют утверждать,
+    переходя при необходимости к подпоследовательностям,
+    что справедливы результаты сходимости~\eqref{eq:3_1:17},
+    где пара $\widehat{\theta}, \widehat{\varphi}$
+    также является решением задачи ~\eqref{eq:3_1:1}--\eqref{eq:3_1:3}.
+    Следовательно, $\left\|\widehat{\theta}-\theta_{*}\right\|_{L^{2}(0, T ; H)}
+    \geq \varepsilon_{0}$, что противоречит теореме~\ref{th:3_1:2} о единственности решения.
+    Из уравнений~\eqref{eq:3_1:14} и~\eqref{eq:3_1:15} с учетом~\eqref{eq:3_1:11},
+    т.е. ограниченности последовательностей в $L^{\infty}(Q)$,
+    а также доказанной сходимости $\theta_{m}$ в $L^{2}(0, T; H)$
+    следует сходимость $\theta_{m} \rightarrow \theta_{*}, \varphi_{m}
+    \rightarrow \varphi_{*}$ в $L^ {2}(0, T; V)$.
 \end{proof}
