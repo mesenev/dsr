@@ -6,18 +6,12 @@
 Рассмотрим следующую систему полулинейных эллиптических уравнений, которая
 моделирует радиационный и диффузионный (сложный) теплообмен в
 ограниченной липшицевой области $\Omega\subset \mathbb{R}^3$ с границей
-$\Gamma=\partial\Omega$ ~\cite{Pinnau2007}-\cite{Kovtanyuk2014a}.
+$\Gamma=\partial\Omega$ ~\cite{Pinnau2007, Kovtanyuk2014a}.
 \begin{equation}
     \label{eq:2_4:eq1}
     - a\Delta\theta + b\kappa_a(|\theta|\theta^3- \varphi)=0,   \quad
     -\alpha \Delta \varphi + \kappa_a(\varphi-|\theta|\theta^3)=0,\; x\in\Omega.
 \end{equation}
-Через $\theta$ -- температура,  $\varphi$ -- усредненная по всем
-направлениям интенсивность теплового излучения.
-Положительные параметры
-$a$, $b$, $\kappa_a$ и $\alpha$, описывающие
-свойства среды, являются заданными~\cite{Kovtanyuk2014a}.
-
 
 Пусть граница области состоит из двух участков,
 $\Gamma \coloneqq \partial \Omega =\overline{\Gamma}_1 \cup \overline{\Gamma}_2$,
@@ -27,6 +21,7 @@ $\Gamma \coloneqq \partial \Omega =\overline{\Gamma}_1 \cup \overline{\Gamma}_2$
     \label{eq:2_4:bc1}
     a\partial_n\theta = q_b, \quad x\in \Gamma.
 \end{equation}
+
 Для задания краевого условия для интенсивности излучения
 требуется знать функцию $\gamma$, описывающую отражающие свойства границы~\cite{JVM-14}.
 В случае, если эта функция неизвестна на части границы $\Gamma_2$,
@@ -35,16 +30,12 @@ $\Gamma \coloneqq \partial \Omega =\overline{\Gamma}_1 \cup \overline{\Gamma}_2$
 $\varphi$, задается температурное поле $\theta_b$,
 \begin{equation}
     \label{eq:2_4:bc2}
-    \alpha\partial_n\varphi + \gamma (\varphi - \theta_b ^4 ) = 0,\;\;
+    \alpha\partial_n\varphi + \gamma (\varphi - \theta_b ^4 ) = 0,\;
     \theta=\theta_b\quad x\in \Gamma_1.
 \end{equation}
 Здесь через $\partial_n$ обозначаем производную в направлении
 внешней нормали $\mathbf n$.
 
-В данной работе предлагается оптимизационный метод решения
-задачи~\eqref{eq:2_4:eq1}-\eqref{eq:2_4:bc2},
-который заключается в рассмотрении задачи граничного оптимального
-управления для эквивалентной системы эллиптических уравнений.
 Для постановки задачи управления введем новую неизвестную функцию
 $\psi= a\theta + \alpha b \varphi$.
 Складывая первое уравнение в~\eqref{eq:2_4:eq1} со вторым, умноженным на $b$,
@@ -68,34 +59,23 @@ $\psi= a\theta + \alpha b \varphi$.
 Сформулируем задачу оптимального управления, которая аппроксимирует
 задачу~\eqref{eq:2_4:eq2},\eqref{eq:2_4:bc3}.
 Задача состоит в отыскании тройки $\{\theta_\lambda,\psi_\lambda,u_\lambda\}$ такой, что
-\begin{equation}
+\begin{gather}
     \label{eq:2_4:cost}
-    \begin{split}
-        J_\lambda(\theta, u) =
-        \frac{1}{2} \int \limits_{\Gamma_1} (\theta - \theta_b)^2 d \Gamma
-        + \frac{\lambda}{2}\int\limits_{\Gamma_2} u^2 d\Gamma \rightarrow \inf, \\
-        - a \Delta \theta + g (\theta) = \frac{\kappa}{\alpha}\psi, \quad
-        \Delta \psi = 0, \; x \in \Omega, \\
-        a \partial_n \theta + s \theta = q_b + s \theta_b,
-        \; \alpha \partial_n \psi + \gamma \psi = r,
-        \text{ на } \Gamma_1,\;\; a \partial_n \theta = q_b,\;
-        \alpha \partial_n \psi = u \text{ на } \Gamma_2.
-    \end{split}
-\end{equation}
+    J_\lambda(\theta, u) =
+    \frac{1}{2} \int \limits_{\Gamma_1} (\theta - \theta_b)^2 d \Gamma
+    + \frac{\lambda}{2}\int\limits_{\Gamma_2} u^2 d\Gamma \rightarrow \inf, \\
+    - a \Delta \theta + g (\theta) = \frac{\kappa}{\alpha}\psi, \quad
+    \Delta \psi = 0, \; x \in \Omega, \\
+    a \partial_n \theta + s \theta = q_b + s \theta_b,
+    \; \alpha \partial_n \psi + \gamma \psi = r
+    \text{ на } \Gamma_1,\\
+    a \partial_n \theta = q_b, \;
+    \alpha \partial_n \psi = u \text{ на } \Gamma_2.
+\end{gather}
 Здесь $\lambda, s > 0$ -- регуляризирующие параметры.
-
-
-Нелинейные модели сложного теплообмена в рамках $P_1$ приближения для
-уравнения переноса теплового излучения достаточно полно изучены.
-В работах~\cite{Pinnau2007}-\cite{Mesenev22} представлены постановки
-и анализ различных краевых, обратных и экстремальных задач для таких моделей.
-Интересные результаты анализа краевых задач сложного теплообмена,
-без использования $P_1$ приближения, получены в~\cite{Amosov16}-\cite{Amosov20-1}.
 
 \subsection{Разрешимость задачи оптимального управления}
 \label{subsec:ch2/sec4/solvability}
-
-
 Рассмотрим пространства $H = L^2(\Omega), \; V = H^1(\Omega)=W^1_2(\Omega)$, $V'$
 -- пространство, сопряженное с $V$.
 Пространство $H$ отождествляем с пространством $H'$ так, что $V \subset H = H' \subset V'$.
@@ -107,9 +87,10 @@ $(f,v)$ -- значение функционала $f\in V'$ на элемент
 
 Будем предполагать, что исходные данные удовлетворяют условиям:
 
-(i) $\;\; a,b,\alpha,\kappa_a, \lambda, s ={\textrm Const}> 0 ,$
+$(l) \; a,b,\alpha,\kappa_a, \lambda, s ={\textrm Const}> 0 ,$
 
-(ii) $\;\,0<\gamma_0\leq \gamma\in L^\infty(\Gamma_1),\,\theta_b, r \in L^2(\Gamma_1),\;\; q_b\in L^2(\Gamma).$
+$(ll) \; 0<\gamma_0\leq \gamma \in L^\infty(\Gamma_1),
+\; \theta_b, r \in L^2(\Gamma_1),\; q_b\in L^2(\Gamma).$
 
 
 Определим операторы $A_{1,2}\colon V \to V'$, $B_1\colon L^2(\Gamma_1)\to V'$,
@@ -125,6 +106,7 @@ $h,w\in U$:
     (B_1 f, v) = \int\limits_{\Gamma_1}fv d\Gamma,\;\;
     (B_2 h, w) = \int\limits_{\Gamma_2}hw d\Gamma.
 \end{gather*}
+
 Заметим, что билинейная форма $(A_1 y,z)$ определяет скалярное произведение
 в пространстве $V$ и норма $\|z\|_V=\sqrt{(A_1 z,z)}$ эквивалентна
 стандартной норме $V$.
@@ -152,10 +134,9 @@ $A_{1,2}^{-1}:\,V'\mapsto V$.
 Для формализации задачи оптимального управления определим оператор
 ограничений $F(\theta, \psi, u) : V \times V \times U \rightarrow V' \times V'$,
 \[
-    F(\theta, \psi, u) = \{A_1\theta + g(\theta) - \frac{\kappa_a}{\alpha}\psi - f_1,\;
-    A_2 \psi - f_2 - B_2 u, \}.
+    F(\theta, \psi, u) = \left\{A_1\theta + g(\theta) - \frac{\kappa_a}{\alpha}\psi - f_1,\;
+    A_2 \psi - f_2 - B_2 u \right\}.
 \]
-
 
 \textbf{Задача $(P_\lambda)$.} Найти тройку
 $\{\theta_\lambda, \psi_\lambda, u_\lambda \} \in V \times V \times U$
@@ -169,13 +150,13 @@ $\{\theta_\lambda, \psi_\lambda, u_\lambda \} \in V \times V \times U$
 
 \begin{lemma}
     \label{lm:2_4:1}
-    Пусть выполняются условия (i),(ii), $u\in U$.
+    Пусть выполняются условия $(l), (ll), u \in U$.
     Тогда существует единственное решение системы~\eqref{eq:2_4:cs} и при этом
     \begin{equation}
         \label{eq:2_4:e1}
         \begin{aligned}
             \|\theta\|_V \leq
-            \frac{K_0^2\kappa_a}{\alpha}\|\psi\|_V+\|f_1\|_{V'}, \\
+            \frac{K_0^2\kappa_a}{\alpha}\|\psi\|_V+\|f_1\|_{V'}, \,
             \|\psi\|_V\leq \|A_2^{-1}\| \left(\|f_2\|_{V'}+K_2\|u\|_U\right).
         \end{aligned}
     \end{equation}
@@ -205,7 +186,7 @@ $\{\theta_\lambda, \psi_\lambda, u_\lambda \} \in V \times V \times U$
 
 \begin{theorem}
     \label{th:2_4:1}
-    При выполнении условий (i),(ii) существует решение задачи $(P_\lambda)$.
+    При выполнении условий $(l), (ll)$ существует решение задачи $(P_\lambda)$.
 \end{theorem}
 
 \begin{proof}
@@ -221,7 +202,7 @@ $\{\theta_\lambda, \psi_\lambda, u_\lambda \} \in V \times V \times U$
         + f_1,\;\;\; A_2\psi_m = f_2 + B_2 u_m.
     \end{equation}
     Из ограниченности последовательности $u_m$ в
-    пространстве $U$ следуют, на основании леммы 1, оценки
+    пространстве $U$ следуют, на основании леммы~\ref{lm:2_4:1}, оценки
     \[
         \|\theta_m\|_V \leq C,\;\;
         \|\psi_m\|_V \leq C,\;\;\|\theta_m\|_{L^6(\Omega)} \leq C.
@@ -233,9 +214,8 @@ $\{\theta_\lambda, \psi_\lambda, u_\lambda \} \in V \times V \times U$
     \begin{equation}
         \label{eq:2_4:l}
         u_m \rightarrow \hat{u} \text{  слабо в } U, \;\;
-        \theta_m, \psi_m \rightarrow \hat{\theta}, \hat{\psi} \text{
-            слабо в } V, \text{
-            сильно в } L^4(\Omega).
+        \theta_m, \psi_m \rightarrow \hat{\theta}, \hat{\psi} \text{ слабо в } V,
+        \text{ сильно в } L^4(\Omega).
     \end{equation}
     Заметим также, что $\forall v \in V$ имеем
     \begin{equation}
@@ -250,7 +230,7 @@ $\{\theta_\lambda, \psi_\lambda, u_\lambda \} \in V \times V \times U$
     \begin{equation}
         \label{eq:2_4:w1}
         A_1 \hat{\theta} + g(\hat{\theta}) =
-        \frac{\kappa_a}{\alpha}\hat{\psi}+f_1,\;\;\; A_2\hat{\psi}=f_2+B_2\hat{u}.
+        \frac{\kappa_a}{\alpha}\hat{\psi}+f_1,\, A_2\hat{\psi}=f_2+B_2\hat{u}.
     \end{equation}
     Поскольку целевой функционал слабо полунепрерывен снизу, то
     $j_\lambda \leq J_\lambda(\hat{\theta}, \hat{u})
@@ -263,7 +243,7 @@ $\{\theta_\lambda, \psi_\lambda, u_\lambda \} \in V \times V \times U$
 \label{subsec:ch2/sec4/optimality}
 
 Воспользуемся принципом Лагранжа для
-гладко-выпуклых экстремальных задач~\cite{10},\cite{11}.
+гладко-выпуклых экстремальных задач~\cite{11,10}.
 Невырожденность условий оптимальности гарантируется условием, что образ
 производной оператора ограничений $F(y, u)$, где $y=\{\theta, \psi\} \in V\times V$,
 совпадает с пространством $V' \times V'$.
@@ -285,14 +265,14 @@ $\{\theta_\lambda, \psi_\lambda, u_\lambda \} \in V \times V \times U$
     L (\theta, \psi, u, p_1, p_2) = J_\lambda(\theta, u)
     + \left( A_1 \theta + g (\theta)
     - \frac{\kappa_a}{\alpha}\psi - f_1, p_1 \right)
-    + (A_2 \psi - f_2 - B_2 u, p_2),
+    + (A_2 \psi - f_2 - B_2 u, p_2).
 \]
-где $p=\{p_1,p_2\}\in V\times V$ -- сопряженное состояние.
+Здесь $p=\{p_1,p_2\} \in V \times V$ -- сопряженное состояние.
 
 Пусть $\{\hat{\theta}, \hat{\varphi}, \hat{u} \}$ -- решение задачи $(P_\lambda)$.
 Вычислив производные Гато функции Лагранжа по $\theta,\,\psi$ и $u$, получаем
-в силу принципа Лагранжа~\cite[Теорема 1.5]{10} следующие равенства
-$\forall v\in V,\, w\in U$
+в силу принципа Лагранжа~\cite[Гл. 2, теорема 1.5]{10} следующие равенства
+$\forall v\in V,\, w \in U$
 \begin{equation}
     \label{eq:2_4:oc1}
     (B_1(\hat{\theta} -\theta_b), v) + (A_1 v + g'(\hat{\theta})v, p_1)=0,\;
@@ -309,7 +289,7 @@ $\forall v\in V,\, w\in U$
 для оптимальной тройки дают систему оптимальности задачи $(P_\lambda)$.
 
 \begin{theorem}
-    Пусть выполняются условия (i),(ii).
+    Пусть выполняются условия $(l), (ll)$.
     Если $\{\hat{\theta}, \hat{\psi}, \hat{u}\}$ -- решение
     задачи $(P_\lambda)$, то существует единственная пара
     $\{p_1, p_2 \} \in V\times V$ такая, что
@@ -321,14 +301,15 @@ $\forall v\in V,\, w\in U$
     \end{equation}
 \end{theorem}
 
-\textbf{Замечание.}
-Если рассмотреть приведенный целевой функционал
-$\tilde J_\lambda(u)=J_\lambda(\theta(u), u)$, где $\theta(u)$ компонента
-решения задачи~\eqref{eq:2_4:cs}, соответствующая управлению $u\in U$,
-то градиент функционала $\tilde J_\lambda(u)$ равен
-$ \tilde J'_\lambda (u) = \lambda u - p_2$.
-Здесь $p_2$ -- компонента решения сопряженной системы~\eqref{eq:2_4:as},
-где $\hat{\theta}\coloneqq\theta(u)$.
+\begin{remark}
+    Если рассмотреть приведенный целевой функционал
+    $\tilde J_\lambda(u)=J_\lambda(\theta(u), u)$, где $\theta(u)$ компонента
+    решения задачи~\eqref{eq:2_4:cs} соответствующая управлению $u\in U$,
+    то градиент функционала $\tilde J_\lambda(u)$ равен
+    $ \tilde J'_\lambda (u) = \lambda u - p_2$.
+    Здесь $p_2$ -- компонента решения сопряженной системы~\eqref{eq:2_4:as},
+    где $\hat{\theta}\coloneqq\theta(u)$.
+\end{remark}
 
 \subsection{Аппроксимация решения обратной задачи}
 \label{subsec:ch2/sec4/approximation}
@@ -359,77 +340,74 @@ $q=a\partial_n\varphi|_{\Gamma_2}\in L^2(\Gamma_2)$, то
 и при этом $\theta|_{\Gamma_1}=\theta_b$.
 
 \begin{theorem}
-    Пусть выполняются условия (i), (ii) и существует решение
+    Пусть выполняются условия $(l), (ll)$ и существует решение
     задачи~\eqref{eq:2_4:eq1}-\eqref{eq:2_4:bc2},
     удовлетворяющее равенствам~\eqref{eq:2_4:ip1},~\eqref{eq:2_4:ip2},
-Если $\{\theta_\lambda,\psi_\lambda,u_\lambda\}$ -- решение
-задачи $(P_\lambda)$ для $\lambda>0$, то существует последовательность
+    Если $\{\theta_\lambda,\psi_\lambda,u_\lambda\}$ -- решение
+    задачи $(P_\lambda)$ для $\lambda>0$, то существует последовательность
     $\lambda\to +0$
     такая, что
-\[
-    \theta_\lambda\rightarrow\theta_*, \;\;
-    \frac{1}{\alpha b}(\psi_\lambda-a\theta_\lambda)\rightarrow\varphi_*
-    \text{ \textit{ слабо в} }V,\text{ \textit{ сильно в} }H,
-\]
-где $\theta_*,\varphi_*$ -- решение задачи~\eqref{eq:2_4:eq1}-\eqref{eq:2_4:bc2}.
+    \[
+        \theta_\lambda\rightarrow\theta_*, \;\;
+        \frac{1}{\alpha b}(\psi_\lambda-a\theta_\lambda)\rightarrow\varphi_*
+        \text{ \textit{ слабо в} }V,\text{ \textit{ сильно в} }H,
+    \]
+    где $\theta_*,\varphi_*$ -- решение задачи~\eqref{eq:2_4:eq1}-\eqref{eq:2_4:bc2}.
 \end{theorem}
 
 
 \begin{proof}
-Умножим равенство~\eqref{eq:2_4:ip1} на $\alpha$,~\eqref{eq:2_4:ip2}
-на $\alpha b$ и сложим равенства.
-Тогда, полагая $\psi=a\theta+\alpha b\varphi$,
-$u = \alpha b q + \alpha q_b|_{\Gamma_2}$, получаем
-\[
-    \alpha(\nabla\psi,\nabla v) + \int\limits_{\Gamma_1}\gamma\psi vd\Gamma =
-    \int\limits_{\Gamma_1}r v d\Gamma + \int\limits_{\Gamma_2}u vd\Gamma.
-\]
-Здесь $r=\alpha b \gamma \theta_b^4+ \alpha q_b + a \gamma \theta_b$.
-Поэтому $A_2 \psi = f_2 + B_2 u$.
+    Умножим равенство~\eqref{eq:2_4:ip1} на $\alpha$,~\eqref{eq:2_4:ip2}
+    на $\alpha b$ и сложим равенства.
+    Тогда, полагая $\psi=a\theta+\alpha b\varphi$,
+    $u = \alpha b q + \alpha q_b|_{\Gamma_2}$, получаем
+    \[
+        \alpha(\nabla\psi,\nabla v) + \int\limits_{\Gamma_1}\gamma\psi vd\Gamma =
+        \int\limits_{\Gamma_1}r v d\Gamma + \int\limits_{\Gamma_2}u vd\Gamma.
+    \]
+    Здесь $r=\alpha b \gamma \theta_b^4+ \alpha q_b + a \gamma \theta_b$.
+    Поэтому $A_2 \psi = f_2 + B_2 u$.
 
-Из~\eqref{eq:2_4:ip1}, с учетом условия $\theta|_{\Gamma_1} = \theta_b$
-выводим равенство $A_1\theta + g(\theta) = \frac{\kappa_a}{\alpha} \psi + f_1$.
-Таким образом, тройка $\{\theta, \psi, u\} \in V \times V \times U$
-является допустимой для задачи $(P_\lambda)$ и следовательно
-\[
-    J_\lambda(\theta_\lambda, u_\lambda) =
-    \frac{1}{2}\|\theta_\lambda -\theta_b\|^2_{L^2(\Gamma_1)}
-    + \frac{\lambda}{2}\|u_\lambda\|^2_U
-    \leq J_\lambda(\theta, u) = \frac{\lambda}{2}\|u\|^2_U.
-\]
-Тогда
-\[
-    \|u_\lambda\|^2_U\leq \|u\|^2_U, \;
-    \|\theta_\lambda -\theta_b\|^2_{L^2(\Gamma_1)} \to 0,\;
-    \lambda\to +0.
-\]
-Из ограниченности последовательности $u_\lambda$ в пространстве $U$ следуют, на основании
-леммы 1, оценки
-\[
-    \|\theta_\lambda\|_V \leq C,\;\;
-    \|\psi_\lambda\|_V \leq C,
-\]
-где постоянная $C > 0$ не зависит от $\lambda$.
-Поэтому можно выбрать последовательность $\lambda \to + 0$ такую, что
-\begin{equation}
-    \label{eq:2_4:ll}
-    \begin{split}
-        u_\lambda \rightarrow u_* \text{ \textit{  слабо в} } U, \;\;
-        \theta_\lambda, \psi_\lambda \rightarrow \theta_*,\psi_* \text{
-            \textit{ слабо в} } V, \text{
-            \textit{ сильно в} } H,L^4(\Omega),\\
-        \theta_\lambda|_{\Gamma_1}\rightarrow
-        \theta_*|_{\Gamma_1} \text{ \textit{ сильно в } }L^2(\Gamma_1).
-    \end{split}
-\end{equation}
-Результаты~\eqref{eq:2_4:ll} позволяют перейти к пределу при
-$\lambda \to + 0$ в уравнениях для
-$\theta_\lambda, \psi_\lambda, u_\lambda$ и тогда
-\begin{equation}
-    \label{eq:cc}
-    A_1 \theta_* + g(\theta_*) = \frac{\kappa_a}{\alpha} \psi_* + f_1, \quad
-    A_2\psi_*  = f_2 + B_2 u_*, \quad \theta_*|_{\Gamma_1} = \theta_b.
-\end{equation}
-Полагая $\varphi_*= \frac{1}{\alpha b}(\psi_*-a\theta_*$, заключаем, что
-пара $\theta_*,\varphi_*$ -- решение задачи~\eqref{eq:2_4:eq1}-\eqref{eq:2_4:bc2}.
+    Из~\eqref{eq:2_4:ip1}, с учетом условия $\theta|_{\Gamma_1} = \theta_b$
+    выводим равенство $A_1\theta + g(\theta) = \frac{\kappa_a}{\alpha} \psi + f_1$.
+    Таким образом, тройка $\{\theta, \psi, u\} \in V \times V \times U$
+    является допустимой для задачи $(P_\lambda)$ и следовательно
+    \[
+        J_\lambda(\theta_\lambda, u_\lambda) =
+        \frac{1}{2}\|\theta_\lambda -\theta_b\|^2_{L^2(\Gamma_1)}
+        + \frac{\lambda}{2}\|u_\lambda\|^2_U
+        \leq J_\lambda(\theta, u) = \frac{\lambda}{2}\|u\|^2_U.
+    \]
+    Тогда
+    \[
+        \|u_\lambda\|^2_U\leq \|u\|^2_U, \;
+        \|\theta_\lambda -\theta_b\|^2_{L^2(\Gamma_1)} \to 0,\;
+        \lambda\to +0.
+    \]
+    Из ограниченности последовательности $u_\lambda$ в пространстве $U$ следуют, на основании
+    леммы~\ref{lm:2_4:1}, оценки
+    \[ \|\theta_\lambda\|_V \leq C,\; \|\psi_\lambda\|_V \leq C, \]
+    где постоянная $C > 0$ не зависит от $\lambda$.
+    Поэтому можно выбрать последовательность $\lambda \to + 0$ такую, что
+    \begin{equation}
+        \label{eq:2_4:ll}
+        \begin{aligned}
+            u_\lambda \rightarrow u_* \text{ \textit{  слабо в} } U, \;\;
+            &\theta_\lambda, \psi_\lambda \rightarrow \theta_*,\psi_* \text{
+                \textit{ слабо в} } V, \text{
+                \textit{ сильно в} } H,L^4(\Omega),\\
+            &\theta_\lambda|_{\Gamma_1}\rightarrow
+            \theta_*|_{\Gamma_1} \text{ \textit{ сильно в } }L^2(\Gamma_1).
+        \end{aligned}
+    \end{equation}
+    Результаты~\eqref{eq:2_4:ll} позволяют перейти к пределу при
+    $\lambda \to + 0$ в уравнениях для
+    $\theta_\lambda, \psi_\lambda, u_\lambda$ и тогда
+    \begin{equation}
+        \label{eq:cc}
+        A_1 \theta_* + g(\theta_*) = \frac{\kappa_a}{\alpha} \psi_* + f_1, \quad
+        A_2 \psi_* = f_2 + B_2 u_*, \quad \theta_*|_{\Gamma_1} = \theta_b.
+    \end{equation}
+    Полагая $\varphi_*= \frac{1}{\alpha b}(\psi_*-a\theta_*)$, заключаем, что
+    пара $\theta_*,\varphi_*$ -- решение задачи~\eqref{eq:2_4:eq1}-\eqref{eq:2_4:bc2}.
 \end{proof}

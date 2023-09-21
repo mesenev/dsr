@@ -95,7 +95,7 @@ $p$-интегрируемых по $(0, T)$ (соответственно, не
 \]
 Соответствующая норма эквивалентна стандартной норме пространства $V$.
 
-\textbf{Определение 1.} Пусть $u_{1,2} \in L^{2}(0, T)$.
+\begin{definition} Пусть $u_{1,2} \in L^{2}(0, T)$.
 Пара $\theta, \varphi \in L^{2}(0, T ; V)$ слабое решение задачи (1), (2) если
 $\sigma \theta^{\prime} \in L^{2}\left(0, T ; V^{\prime}\right)$ и
 \[
@@ -107,11 +107,14 @@ $\sigma \theta^{\prime} \in L^{2}\left(0, T ; V^{\prime}\right)$ и
     \theta^{\prime}=d \theta / d t, \quad g \in L^{\infty}\left(0, T ; V^{\prime}\right),
     \quad(g, v)=\int_{\Gamma} \gamma \theta_{b} v d \Gamma
 \]
+\end{definition}
 
-\textbf{Замечание.} Так как $(\sigma \theta)^{\prime}=\sigma \theta^{\prime}+\theta
+\begin{remark}
+Так как $(\sigma \theta)^{\prime}=\sigma \theta^{\prime}+\theta
 \partial \sigma / \partial t \in L^{2}\left(0, T ; V^{\prime}\right)$ and $\sigma
 \theta \in L^{2}(0, T ; V)$, then $\sigma \theta \in$ $C([0, T] ; H)$,
 и поэтому начальные условия имеют физические основания.
+\end{remark}
 
 Из леммы Лакса-Мильграма следует, что для любой функции $g \in H$ существует единственное
 решение уравнения $B\varphi= g$.
@@ -138,7 +141,7 @@ $\sigma \theta^{\prime} \in L^{2}\left(0, T ; V^{\prime}\right)$ и
 
 \textit{Лемма 1.}
 Пусть условия (i) - (iv) выполняются и $u \in L^{2}\left(0, T ; V^{\prime}\right)$.
-Тогда есть решение проблемы
+Тогда есть решение задачи
 \[
     \sigma \theta^{\prime}+A(\theta)=g+u, \quad \theta(0)=\theta_{0},
 \]
@@ -191,7 +194,7 @@ $U_{a d}$ так, что $J\left(\theta_{m}\right) \rightarrow j=\inf J$, где
 \textbf{Theorem 1.}
 Пусть условия (i)-(iv) выполняются,
 $\theta_{0} \leq \theta_{*}$ a.e. в $\Omega, \theta_{b} \leq \theta_{*}$ a.e. в $\Sigma$.
-Тогда решение проблемы (CP) существует.
+Тогда решение задачи (CP) существует.
 
 \subsection{Метод штрафных функций}\label{subsec:ch3:sec3:subsec4}
 Рассмотрим следующую задачу оптимального управления с параметром $\varepsilon>0$,
@@ -216,11 +219,11 @@ Problem $\left(\mathrm{CP}_{\varepsilon}\right)$
 Оценки, представленные в лемме 1, позволяют, аналогично
 доказательству теоремы 1, доказать разрешимость задачи со штрафом.
 \textbf{Теорема 2.} Пусть выполняются условия (i)-(iv).
-Тогда существует решение проблемы $\left(C P_{\varepsilon}\right)$.
+Тогда существует решение задачи $\left(C P_{\varepsilon}\right)$.
 
 Рассмотрим аппроксимативные свойства решений задачи со штрафом.
-Пусть $\left\{\theta_{\varepsilon}, u_{\varepsilon}\right\}$ будет решением проблемы
-$\left(\mathrm{CP}_{\varepsilon}\right)$ и $\{\theta, u\}$ будет решением проблемы(CP).
+Пусть $\left\{\theta_{\varepsilon}, u_{\varepsilon}\right\}$ будет решением задачи
+$\left(\mathrm{CP}_{\varepsilon}\right)$ и $\{\theta, u\}$ будет решением задачи(CP).
 Тогда,
 \[
     \sigma \theta_{\varepsilon}^{\prime}+A\left(\theta_{\varepsilon}\right)=g+u_{\varepsilon},
@@ -251,19 +254,19 @@ $L^{2}(0, T ; H), \theta_{\varepsilon} \rightarrow \widehat{\theta}$ слабо 
 Результатов сходимости достаточно, чтобы перейти к пределу как $\varepsilon \rightarrow+0$
 в системе состояний (6) и доказать, что предельная пара
 $\{\widehat{\theta}, \widehat{u}\} \in$ $L^{2}(0, T ; V) \times U_{a d}$
-является приемлемым для проблемы(CP).
+является приемлемым для задачи(CP).
 Поскольку функционал $J$ является слабо полунепрерывным снизу, то есть
 \[
     j \leq J(\widehat{\theta}) \leq \liminf J\left(\theta_{\varepsilon}\right) \leq J(\theta)=j=\inf J
 \]
-Тогда пара $\{\widehat{\theta}, \widehat{u}\}$ это решение проблемы $(\mathrm{CP})$.
+Тогда пара $\{\widehat{\theta}, \widehat{u}\}$ это решение задачи $(\mathrm{CP})$.
 \textbf{Теорема 3.} Пусть выполняются условия (i)-(iv),
 $\theta_{0} \leq \theta_{*}$ a.e. в $\Omega, \theta_{b} \leq \theta_{*}$ a.e.
 в
 $\Sigma$.
-If $\left\{\theta_{\varepsilon}, u_{\varepsilon}\right\}$  решения проблемы
+If $\left\{\theta_{\varepsilon}, u_{\varepsilon}\right\}$  решения задачи
 $\left(C P_{\varepsilon}\right)$ for $\varepsilon>0$, тогда существует последовательность вида
 $\varepsilon \rightarrow+0$ $u_{\varepsilon} \rightarrow \widehat{u}$ слабо в
 $L^{2}(0, T ; H), \quad \theta_{\varepsilon} \rightarrow \widehat{\theta}$
 слабо в $L^{2}(0, T ; V)$,
-сильно в $L^{2}(0, T ; H)$, where $\{\widehat{\theta}, \widehat{u}\}$ есть решение проблемы (CP).
+сильно в $L^{2}(0, T ; H)$, where $\{\widehat{\theta}, \widehat{u}\}$ есть решение задачи (CP).

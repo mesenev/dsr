@@ -4,8 +4,8 @@
 \subsection{Постановка обратной задачи}\label{subsec:ch2/sec1/subsec1}
 
 Нормализованная стационарная модель, описывающая процесс радиационного теплопереноса в
-области $\Omega \subset \mathbb{R}^3$ с липшицевой границей $\Gamma$ согласно
-\eqref{eq:1_4:4-1},\eqref{eq:1_4:4-2}, имеет следующий вид:
+области $\Omega \subset \mathbb{R}^3$ с липшицевой границей $\Gamma$
+согласно~\eqref{eq:1_4:4-1},\eqref{eq:1_4:4-2}, имеет следующий вид:
 \begin{equation}
     \label{eq:2_1:initial}
     \begin{aligned}
@@ -52,7 +52,8 @@ $\Gamma \coloneqq \partial \Omega =\overline{\Gamma}_0 \cup \overline{\Gamma}_1 
 где $u_1$ и $u_2$ -- заданные ограниченные функции.
 
 
-Обратная задача состоит в нахождении функций $u(x), x \in  \Gamma_1, \; \theta(x), \varphi(x), x \in \Omega $
+Обратная задача состоит в нахождении функций
+\[ u(x), x \in  \Gamma_1, \; \theta(x), \varphi(x), x \in \Omega \]
 удовлетворяющих условиям~\eqref{eq:2_1:initial}--\eqref{eq:2_1:control_bounds},
 а также дополнительному условию на участке границы $\Gamma_2$:
 \begin{equation}
@@ -245,7 +246,7 @@ $U_{ad} = \{u \in U, u_1 \le u \le u_2 \}$ --- множество допусти
 
     Рассмотрим функцию Лагранжа
     $L(y,u,p) = J(\theta) + (H(y,u),p),$ где $y,p \in Y,\, u \in U_{ad}$.
-    Согласно принципу Лагранжа~\cite[Гл.2, Теорема 1.5]{11}
+    Согласно принципу Лагранжа~\cite[Гл.2, теорема 1.5]{11}
     существует пара $p = \{p_1,p_2\} \in Y$ такая, что
     \begin{equation}
         \label{eq:2_1:th2_proof_1}
@@ -269,6 +270,6 @@ $U_{ad} = \{u \in U, u_1 \le u \le u_2 \}$ --- множество допусти
     вариационных равенств~\eqref{eq:2_1:th2_proof_1} и~\eqref{eq:2_1:th2_proof_2}.
 \end{proof}
 
-\textbf{Замечание.} Численный алгоритм, основанный на полученной системе
+Численный алгоритм, основанный на полученной системе
 оптимальности представлен в~\ref{subsec:ch4/sec3/boundary}.
 \FloatBarrier
