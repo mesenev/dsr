@@ -25,8 +25,6 @@
     \quad \theta|_{t=0}=\theta_{i n}. \label{eq:3_1:3}
 \end{gather}
 
-
-
 Здесь $\theta$ — нормированная температура, $\varphi$ — нормированная интенсивность излучения,
 усредненная по всем направлениям.
 Нормирующими множителями для получения из
@@ -38,8 +36,6 @@ $\theta$ и $\varphi$ абсолютной температуры и средн�
 и теплофизические свойства среды~\cite{Chebotarev2017}, $\sigma(x, t)$ - произведение
 удельной теплоемкости на объем плотность, $k(\theta)$ — коэффициент теплопроводности,
 $f$ и $g$ описывают вклад источников тепла и излучения соответственно.
-Символом $\partial_{n}$ обозначена производная по направлению внешней
-нормали $\mathbf{n}$ к границе $\Gamma$.
 Предположим, что $\Omega$ — липшицева ограниченная область,
 $\Gamma=\partial \Omega, Q=\Omega \times(0, T), \Sigma=\Gamma \times(0, T)$.
 
@@ -66,7 +62,6 @@ $
 
 Определим операторы $A_{1}: V \rightarrow V_{0}^{\prime}$ и $A_{2}: V \rightarrow V^{\prime}$ такие,
 что для всех $\theta, \varphi v$ справедливы следующие равенства:
-
 \[
     \begin{gathered}
         \left(A_{1}(\theta), v\right)=(k(\theta) \nabla \theta, \nabla v)
@@ -75,8 +70,7 @@ $
         +\int_{\Gamma} \gamma \varphi v d \Gamma,
     \end{gathered}
 \]
-где
-\[ h(s)=\int_{0}^{s} k(r) d r. \]
+где $h(s)=\int_{0}^{s} k(r) d r$.
 
 \begin{definition}
     Пара $\theta \in W, \varphi \in L^{2}(0, T ; V)$ называется слабым решением
@@ -141,7 +135,7 @@ $F_{1}: L^{\infty}(\Omega) \rightarrow V$ и $F_{2}: L^{\infty}(Q) \times L^{2}(
     В таком случае
     \begin{equation}
         \label{eq:3_1:8}
-        0 \leq \varphi \leq w^{4}(t)+M_{2}
+        0 \leq \varphi \leq w^{4}(t)+M_{2}.
     \end{equation}
 \end{lemma}
 \begin{proof}
@@ -156,7 +150,7 @@ $F_{1}: L^{\infty}(\Omega) \rightarrow V$ и $F_{2}: L^{\infty}(Q) \times L^{2}(
         \begin{gathered}
             \left(A_{2} \varphi-g_{b}, \psi\right)=(\alpha \nabla \psi, \nabla \psi)+
             \int_{\Gamma} \gamma\left(\varphi-\theta_{b}^{4}\right) d \Gamma
-            \geq (\alpha \nabla \psi, \nabla \psi) \\
+            \geq (\alpha \nabla \psi, \nabla \psi), \\
             \left(\beta\left(\varphi-M_{2}-[\theta]^{4}\right), \psi\right)=
             (\beta \psi, \psi)+\left(\beta\left(w^{4}-[\theta]^{4}\right), \psi\right)
             \geq(\beta \psi, \psi).
@@ -193,16 +187,16 @@ $F_{1}: L^{\infty}(\Omega) \rightarrow V$ и $F_{2}: L^{\infty}(Q) \times L^{2}(
     \[
         \begin{gathered}
             \left(\sigma \widehat{\theta}^{\prime}, \eta\right)=
-            \left(\sigma \eta^{\prime}, \eta\right)=\frac{d}{2 d t}(\sigma \eta, \eta) \\
+            \left(\sigma \eta^{\prime}, \eta\right)=\frac{d}{2 d t}(\sigma \eta, \eta), \\
             \left(A(\zeta, \theta)-f_{b}, \eta\right)=(k(\zeta) \nabla \eta, \nabla \eta)
-            + \int_{\Gamma} p\left(\widehat{\theta}+w-\theta_{b}\right) \eta d \Gamma \geq 0 \\
+            + \int_{\Gamma} p\left(\widehat{\theta}+w-\theta_{b}\right) \eta d \Gamma \geq 0, \\
             \left([\widehat{\theta}+w]^{4}-w^{4}\right) \max
             \{\widehat{\theta}, 0\} \geq 0, \quad\left(w^{4}
             + M_{2} - \varphi\right) \eta \geq 0.
         \end{gathered}
     \]
     Тогда
-    \[ \frac{d}{d t}(\sigma \eta, \eta) \leq 0,\left.\quad \eta\right|_{t=0}=0 \]
+    \[ \frac{d}{d t}(\sigma \eta, \eta) \leq 0,\left.\quad \eta\right|_{t=0}=0. \]
     Таким образом, $\eta=0, \widehat{\theta} \leq 0, \theta \leq w$.
     Аналогично, умножая~\eqref{eq:3_1:9} в смысле скалярного произведения
     $H$ на $\eta=\min \{\theta, 0\} \in W$, получаем, что $\eta=0,\, \theta \geq 0$.
@@ -264,7 +258,7 @@ $F_{1}: L^{\infty}(\Omega) \rightarrow V$ и $F_{2}: L^{\infty}(Q) \times L^{2}(
     \begin{equation}
         \label{eq:3_1:16}
         \sigma \theta_{m}^{\prime}=\chi_{m}
-        \text { a.e. on }(0, T), \quad \theta_{m}(0)=\theta_{i n},
+        \text { п. в. в }(0, T), \quad \theta_{m}(0)=\theta_{i n},
     \end{equation}
     где
     \[
@@ -330,7 +324,7 @@ $F_{1}: L^{\infty}(\Omega) \rightarrow V$ и $F_{2}: L^{\infty}(Q) \times L^{2}(
 \subsection{Теорема единственности и сходимость итерационного метода}
 \label{subsec:ch3/sec1/uniqeness_convergense}
 Покажем, что в классе функций с ограниченным градиентом температуры решение единственно.
-Это позволяет доказать сходимость итерационной процедуры.
+Это позволяет доказать сходимость итерационного алгоритма.
 
 \begin{theorem}
     \label{th:3_1:2}
