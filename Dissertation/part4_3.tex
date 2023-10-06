@@ -117,7 +117,20 @@ $\Gamma_2$ выберем в качестве $\theta_0$.
 задачи~\eqref{eq:2_1:initial}--\eqref{eq:2_1:theta_gamma}.
 Эффективность алгоритма, а также значение $u_0$ в первом и
 втором случаях иллюстрируются рис.~\ref{fig:4_3:control}.
-На рис.~\ref{fig:4_3:cost} показана динамика функционала качества по итерациям.
+На рисунке~\ref{fig:4_3:cost} показана динамика функционала качества по итерациям.
+\begin{figure}[ht]
+    \begin{minipage}[b][][b]{0.49\linewidth}
+        \centering
+        \includegraphics[width=1\linewidth]{dvmg368/3} \\ а) Первый эксперимент
+    \end{minipage}
+    \hfill
+    \begin{minipage}[b][][b]{0.49\linewidth}
+        \centering
+        \includegraphics[width=1\linewidth]{dvmg368/4} \\ б) Второй эксперимент
+    \end{minipage}
+    \caption{Значение функционала качества}
+    \label{fig:4_3:cost}
+\end{figure}
 
 \begin{remark}
     В предложенных примерах потребовалось
@@ -130,38 +143,22 @@ $\Gamma_2$ выберем в качестве $\theta_0$.
 \end{remark}
 
 \begin{figure}[ht]
-    \begin{minipage}[b][][b]{0.49\linewidth}\centering
+    \begin{minipage}[b][][b]{0.49\linewidth}
+        \centering
         \includegraphics[width=1\linewidth]{dvmg368/1} \\ а) Первый эксперимент
     \end{minipage}
     \hfill
-    \begin{minipage}[b][][b]{0.49\linewidth}\centering
+    \begin{minipage}[b][][b]{0.49\linewidth}
+        \centering
         \includegraphics[width=1\linewidth]{dvmg368/2} \\ б) Второй эксперимент
     \end{minipage}
     \caption{Тестовая функция $u$, начальная $u_0$, найденная функция $u_{end}.$}
     \label{fig:4_3:control}
 \end{figure}
 
-
-\begin{figure}[]
-    \centering
-    \subfloat[Первый эксперимент]
-    {
-        \label{fig:4_3:exp1}
-        \includegraphics[width=.51\linewidth]{dvmg368/3}
-    }
-    \subfloat[Второй эксперимент]
-    {
-        \label{fig:4_3:exp2}
-        \includegraphics[width=.51\linewidth]{dvmg368/4}
-    }
-    \caption{Динамика функции $\hat{J}(u)$ по итерациям.}
-    \label{fig:4_3:cost}
-\end{figure}
-
-%paper03
-
 \subsection{Решение квазистационарной задачи}
 \label{subsec:ch4/sec3/quasistationary}
+%paper03
 Приведем алгоритм решения задачи управления.
 Пусть
 \[
@@ -244,27 +241,26 @@ q_{b}=\left.\partial_{n} \widehat{\theta}\right|_{\Gamma}$,
 
 Приближенное решение задачи~\eqref{eq:2_3:16},\eqref{eq:2_3:17}
 с данными Коши, представленными в~\cite{Chebotarev2019Problem}
-(рисунок 1), было получено путем решения четвертого порядка
+(рисунок~\ref{fig:2_3:1}), было получено путем решения четвертого порядка
 параболической задачи для температуры.
 
-\begin{figure}[h]
+\begin{figure}[ht]
     \label{fig:2_3:1}
-    \includegraphics[width=\textwidth]{paper03/1}
-    \caption{Поле температуры, полученное в
-    статье~\cite{Chebotarev2019Problem}}
+    \centerfloat{ \includegraphics[scale=0.5]{paper03/1} }
+    \caption{Поле температуры, полученное в статье~\cite{Chebotarev2019Problem}}
 \end{figure}
-
 Решение стабилизировалось через 120 секунд, но
 вычисления на каждом временном шаге были
 довольно затратными~\cite{Chebotarev2019Problem}.
 
-\begin{figure}[h]
+
+\begin{figure}[ht]
     \label{fig:2_3:2}
-    \includegraphics[width=\textwidth]{paper03/2}
+    \centerfloat{\includegraphics[scale=0.5]{paper03/2}}
     \caption{}
 \end{figure}
-На рисунке 2 показано стационарное поле температуры,
-полученное с помощью метода, предложенного в данной статье.
+На рисунке~\ref{fig:2_3:2} показано стационарное поле температуры,
+полученное с помощью метода, предложенного в данной работе.
 
 Представленный пример иллюстрирует, что предложенный
 алгоритм успешно находит численное решение
@@ -284,13 +280,10 @@ q_{b}=\left.\partial_{n} \widehat{\theta}\right|_{\Gamma}$,
 угловой симметрии схематически изображена на рисунке 1
 (линейные размеры указаны в миллиметрах).
 
-\begin{figure}[h!]
-    \label{fig:4_3:123}
-    \centering
-    { \includegraphics[width=\textwidth]{6_cheb/1} }
-    \caption{}
+\begin{figure}[ht]
+    \centerfloat{\includegraphics[scale=0.5]{6_cheb/1}}
+    \caption{Область вычисления}\label{fig:4_3:3}
 \end{figure}
-Рисунок 1: Вычислительная область.
 
 Для нахождения решения начально-краевой
 задачи~\eqref{eq:3_1:1}--\eqref{eq:3_1:3}
@@ -411,26 +404,36 @@ $(2.5,10)$ и $(3.5,10)$, довольно безопасна (смотри Ри
 \begin{center}
     \includegraphics[width=\textwidth]{6_cheb/2}
 \end{center}
-Рисунок 2: Температурные профили в точке $(1.5,10)$ для мощности лазера
+
+\begin{figure}[ht]
+    \label{fig:4_3:4}
+    \centerfloat{\includegraphics[scale=0.5]{6_cheb/2}}
+    \caption{}
+\end{figure}
+На рисунке~\ref{fig:4_3:4} отображены температурные профили
+в точке $(1.5,10)$ для мощности лазера
 $10 \mathrm{~Вт}$ и для разных длин волн: $810 \mathrm{~нм}$ (черный),
 $1064 \mathrm{~нм}$ (красный), $1470 \mathrm{~нм}$
 (зеленый) и $1950 \mathrm{~нм}$ (синий).
 
-\begin{center}
-    \includegraphics[width=\textwidth]{6_cheb/3}
-\end{center}
-
-Рисунок 3: Температурные профили в точке $(1.5,10)$ для разных
+\begin{figure}[ht]
+    \label{fig:4_3:5}
+    \centerfloat{\includegraphics[scale=0.5]{6_cheb/3}}
+    \caption{}
+\end{figure}
+На рисунке~\ref{fig:4_3:5} отображены температурные профили в точке $(1.5,10)$ для разных
 длин волн и мощности лазера: $810 \mathrm{~нм}$, $P=10 \mathrm{~Вт}$
 (черный); $1064 \mathrm{~нм}, P=11 \mathrm{~Вт}$ (красный);
 $1470 \mathrm{~нм}, P=7.5 \mathrm{~Вт}$ (зеленый);
 $1950 \mathrm{~нм}, P=6 \mathrm{~Вт}$ (синий).
 
-\begin{center}
-    \includegraphics[width=\textwidth]{6_cheb/4}
-\end{center}
 
-Рисунок 4: Температурные профили в точках $(1.5,10)$ (сплошной),
+\begin{figure}[ht]
+    \label{fig:4_3:6}
+    \centerfloat{\includegraphics[scale=0.5]{6_cheb/4}}
+    \caption{}
+\end{figure}
+На рисунке~\ref{fig:4_3:6} отображены температурные профили в точках $(1.5,10)$ (сплошной),
 $(2.5,10)$ (пунктирный) и $(3.5,10)$ (точка-тире).
 Длина волны составляет $810 \mathrm{~нм},\left(P_{\varphi},
 P_{\theta}\right)=(7 \mathrm{~Вт}, 3 \mathrm{~Вт})$
