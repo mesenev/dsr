@@ -74,25 +74,32 @@ $b=0.025[\text{см}/\text{с}]$, $\kappa_a=1[\text{см}^{-1}]$, $\alpha = 0.(3
 Значения нормальной производной $\partial_n\theta$ на $\Gamma$
 должны соответствовать значениям $q_b=r/a-\theta_b$.
 Применяя предложенный алгоритм с начальным приближением $u_0 = 0.1$,
-находим приближенное решение $\{\theta_\lambda, \varphi_\lambda, u_\lambda\}$ задачи (CP).
+находим приближенное решение $\{\theta_\lambda, \varphi_\lambda, u_\lambda\}$ задачи $CP$.
 Для демонстрации того, что алгоритм находит приближенное решение задачи с данными
 Коши для температуры, важно сравнить значения $\partial_n\theta_\lambda$ на $\Gamma$ с $q_b.$
 
-На рисунке~\ref{fig:img_test_1_iso} представлен модуль относительного
+На рисунке~\ref{fig:4_4:0}а представлен модуль относительного
 отклонения $\partial_n\theta_\lambda$ от $q_b$ на грани куба в плоскости $z=l$,
 где $\partial_n\theta_\lambda=\partial\theta_\lambda/\partial z$,
 а также динамика функционала качества, определяющего норму
-разности $\|\theta_\lambda -\theta_b\|^2_\Gamma$ на рисунке~\ref{fig:quality_1}.
+разности $\|\theta_\lambda -\theta_b\|^2_\Gamma$ на рисунке~\ref{fig:4_4:0}б.
 На остальных гранях куба значения относительного
 отклонения имеют тот же порядок малости.
 
-\begin{figure}[h!]
-    \centering
-    \subfloat[$|\partial_n\theta_\lambda-q_b|/|q_b|$]
-    {\label{fig:img_test_1_iso} \includegraphics[width=.49\linewidth]{jvm-2020/exp1/theta_n_diff_iso}}
-    \subfloat[Изменение функционала качества по итерациям]
-    {\label{fig:quality_1} \includegraphics[width=.49\linewidth]{jvm-2020/exp1/quality}}
-    \caption{Результаты первого эксперимента}
+\begin{figure}[ht]
+    \begin{minipage}[b][][b]{0.49\linewidth}
+        \centering
+        \includegraphics[width=1\linewidth]{jvm-2020/exp1/theta_n_diff_iso}
+        \\ а) $|\partial_n\theta_\lambda-q_b|/|q_b|$
+    \end{minipage}
+    \hfill
+    \begin{minipage}[b][][b]{0.49\linewidth}
+        \centering
+        \includegraphics[width=1\linewidth]{jvm-2020/exp1/quality}
+        \\ б) Результаты первого эксперимента
+    \end{minipage}
+    \caption{Значение функционала качества}
+    \label{fig:4_4:0}
 \end{figure}
 
 \textbf{Пример 2.}
@@ -118,20 +125,27 @@ $\widehat{\theta} = (x_1-0.5)^2 - 0.5x_2+0.75$.
 Решение стабилизировалось через 120 секунд, но вычисления на каждом временном
 шаге потребовали довольно значительных затрат~\cite{Chebotarev2019Problem}.
 
-На рис.~\ref{fig:theta_auto_2} представлено температурное поле, полученное
+На рис.~\ref{fig:4_4:1}а представлено температурное поле, полученное
 предложенным в данной статье методом, достаточно
 точно совпадающее с результатом в~\cite{Chebotarev2019Problem}.
 Величина $\|\partial_n\theta_\lambda-q_b\|_{L^2(\Gamma)}/\|q_b\|_{L^2(\Gamma)}$ равна $~0.000567$.
 Значение функционала качества, определяющего норму разности $\|\theta_\lambda -\theta_b\|^2_\Gamma$,
-равно $~0.000255$ и стабилизируется после 10 итераций~\ref{fig:quality_2}.
+равно $~0.000255$ и стабилизируется после 10 итераций~\ref{fig:4_4:1}б.
 
-\begin{figure}[h!]
-    \centering
-    \subfloat[Полученное решение $\theta$]
-        { \label{fig:theta_auto_2} \includegraphics[width=.49\linewidth]{jvm-2020/exp2/theta_auto} }
-    \subfloat[Изменение функционала качества]
-    { \label{fig:quality_2} \includegraphics[width=.49\linewidth]{jvm-2020/exp2/quality} }
+\begin{figure}[ht]
+    \begin{minipage}[b][][b]{0.49\linewidth}
+        \centering
+        \includegraphics[width=1\linewidth]{jvm-2020/exp2/theta_auto}
+        \\ а) Полученное решение $\theta$
+    \end{minipage}
+    \hfill
+    \begin{minipage}[b][][b]{0.49\linewidth}
+        \centering
+        \includegraphics[width=1\linewidth]{jvm-2020/exp2/quality}
+        \\ б) Изменение функционала качества
+    \end{minipage}
     \caption{Результаты второго эксперимента}
+    \label{fig:4_4:1}
 \end{figure}
 
 Представленные численные примеры иллюстрируют, что предложенный алгоритм успешно справляется
