@@ -160,15 +160,23 @@ $r=0.8 \cos (x)+0.1,\; u=\hat{u}=y$.
 и в качестве $\theta_{b}$ выбираем граничные значения функции $\theta$ на Г.
 Применяя предложенный алгоритм с начальным приближением $u_{0}=0.1$,
 находим приближенное решение задачи $(C)$.
-Квадрат разницы тестового и найденного решения представлен на рисунке~\ref{fig:4_4:dvmg-1a},
-а также динамика функционала качества рисунке~\ref{fig:4_4:dvmg-1b}.
-\begin{figure}[h!]
-    \centering
-    \subfloat[$\left(\hat{u}-u_{100}\right)^{2}$]
-    { \label{fig:4_4:dvmg-1a} \includegraphics[width=.49\textwidth]{jvm-2020/dvmg/1a} }
-    \subfloat[Изменение функционала в зависимости от числа итераций]
-    { \label{fig:4_4:dvmg-1b} \includegraphics[width=.49\linewidth]{jvm-2020/dvmg/1b} }
+Квадрат разницы тестового и найденного решения представлен на рисунке~\ref{fig:4_4:2}а,
+а также динамика функционала качества рисунке~\ref{fig:4_4:2}б.
+
+\begin{figure}[ht]
+    \begin{minipage}[b][][b]{0.49\linewidth}
+        \centering
+        \includegraphics[width=1\linewidth]{jvm-2020/dvmg/1a}
+        \\ а) $\left(\hat{u}-u_{100}\right)^{2}$
+    \end{minipage}
+    \hfill
+    \begin{minipage}[b][][b]{0.49\linewidth}
+        \centering
+        \includegraphics[width=1\linewidth]{jvm-2020/dvmg/1b}
+        \\ б) Изменение функционала в зависимости от числа итераций
+    \end{minipage}
     \caption{Результаты третьего эксперимента}
+    \label{fig:4_4:2}
 \end{figure}
 
 
@@ -187,25 +195,42 @@ $r=0.8 \cos (x)+0.1,\; u=\hat{u}=y$.
 
 
 В данном примере оптимальное управление $u$ в качестве тестового не задается.
-На рисунках~\ref{fig:4_4:dvmg-2a}~\ref{fig:4_4:dvmg-2b} представлен результат работы алгоритма.
-\begin{figure}[h!]
-    \centering
-    \subfloat[Оптимальное управление]
-    { \label{fig:4_4:dvmg-2a} \includegraphics[width=.49\textwidth]{jvm-2020/dvmg/1a} }
-    \subfloat[Изменение функционала в зависимости от числа итераций]
-    { \label{fig:4_4:dvmg-2b} \includegraphics[width=.49\linewidth]{jvm-2020/dvmg/1b} }
+На рисунках~\ref{fig:4_4:3}а,\ref{fig:4_4:3}б представлен результат работы алгоритма.
+
+\begin{figure}[ht]
+    \begin{minipage}[b][][b]{0.49\linewidth}
+        \centering
+        \includegraphics[width=1\linewidth]{jvm-2020/dvmg/2a}
+        \\ а) Оптимальное управление
+    \end{minipage}
+    \hfill
+    \begin{minipage}[b][][b]{0.49\linewidth}
+        \centering
+        \includegraphics[width=1\linewidth]{jvm-2020/dvmg/2b}
+        \\ б) Изменение функционала в зависимости от числа итераций
+    \end{minipage}
+    \caption{Результаты третьего эксперимента}
+    \label{fig:4_4:3}
 \end{figure}
 
-
 Компоненты состояния, соответствующие найденному управлению, представлены на
-рисунках~\ref{fig:4_4:dvmg-3a}\ref{fig:4_4:dvmg-3b}.
+рисунках~\ref{fig:4_4:4}а,\ref{fig:4_4:4}б.
 
-\begin{figure}[h!]
-    \centering
-    \subfloat[Температура $\theta$]
-        { \label{fig:4_4:dvmg-3a} \includegraphics[width=.49\textwidth]{jvm-2020/dvmg/3a} }
-    \subfloat[Излучение $\varphi$]
-        { \label{fig:4_4:dvmg-3b} \includegraphics[width=.49\linewidth]{jvm-2020/dvmg/3b} }
+
+\begin{figure}[ht]
+    \begin{minipage}[b][][b]{0.49\linewidth}
+        \centering
+        \includegraphics[width=1\linewidth]{jvm-2020/dvmg/3a}
+        \\ а) Температура $\theta$
+    \end{minipage}
+    \hfill
+    \begin{minipage}[b][][b]{0.49\linewidth}
+        \centering
+        \includegraphics[width=1\linewidth]{jvm-2020/dvmg/3b}
+        \\ б) Излучение $\varphi$
+    \end{minipage}
+    \caption{Результаты третьего эксперимента}
+    \label{fig:4_4:4}
 \end{figure}
 
 \subsection{
@@ -283,23 +308,23 @@ $\alpha = 0.(3)[\text{см}]$.
 на все границе, а также начальное управление $u_0 = 0$.
 Используя предложенный алгоритм решим задачу оптимального управления.
 
-\begin{figure}[h!]
-    \centering
-    \subfloat[$\theta|_{z=1} $]
-    {
-        \label{fig:1_theta}
-        \includegraphics[width=.4\linewidth]{jvm-2022/1_theta}
-    }
-    \subfloat[$\phi|_{z=1} $]
-    {
-        \label{fig:1_phi}
-        \includegraphics[width=.4\linewidth]{jvm-2022/1_phi}
-    }
+\begin{figure}[ht]
+    \begin{minipage}[b][][b]{0.49\linewidth}
+        \centering
+        \includegraphics[width=1\linewidth]{jvm-2022/1_theta}
+        \\ а) $\theta|_{z=1}$
+    \end{minipage}
+    \hfill
+    \begin{minipage}[b][][b]{0.49\linewidth}
+        \centering
+        \includegraphics[width=1\linewidth]{jvm-2022/1_phi}
+        \\ б) $\phi|_{z=1}$
+    \end{minipage}
     \caption{Результаты первого эксперимента}
-    \label{fig:4_4:1}
+    \label{fig:4_4:5}
 \end{figure}
 
-На фиг.~\ref{fig:1_theta},~\ref{fig:1_phi} представлены
+На фиг.~\ref{fig:4_4:5}а,~\ref{fig:4_4:5}б представлены
 полученные решения $\theta$ и $\phi$.
 Начальное значение функционала качества равно $~0.025$ и
 через сотню итераций становится равным $~5.e-05$.
@@ -325,24 +350,25 @@ $\Gamma \equiv \partial \Omega = \partial C \cup \partial B$ при чём
         -0.2, & \text{если } x \in \Gamma_2.
     \end{cases}
 \end{gather*}
-\begin{figure}[h!]
-    \centering
-    \subfloat[$\theta$]
-    {
-        \label{fig:2_theta}
-        \includegraphics[width=.5\linewidth]{jvm-2022/2_theta}
-    }
-    \subfloat[$\phi$]
-    {
-        \label{fig:2_phi}
-        \includegraphics[width=.5\linewidth]{jvm-2022/2_phi}
-    }
+
+\begin{figure}[ht]
+    \begin{minipage}[b][][b]{0.49\linewidth}
+        \centering
+        \includegraphics[width=1\linewidth]{jvm-2022/2_theta}
+        \\ а) $\theta$
+    \end{minipage}
+    \hfill
+    \begin{minipage}[b][][b]{0.49\linewidth}
+        \centering
+        \includegraphics[width=1\linewidth]{jvm-2022/2_phi}
+        \\ б) $\phi$
+    \end{minipage}
     \caption{Результаты второго эксперимента}
-    \label{fig:2}
+    \label{fig:4_4:6}
 \end{figure}
 Начальное значение функционала качества $~0.045$.
 После тридцати итераций $~6.2-05$.
-Полученное состояние представлено рисунками ~\ref{fig:2_theta},\ref{fig:2_phi}.
+Полученное состояние представлено рисунками ~\ref{fig:4_4:6}а,\ref{fig:4_4:6}б.
 
 
 Представленные численные примеры демонстрируют,
