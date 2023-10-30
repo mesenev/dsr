@@ -7,44 +7,44 @@
 %
 %\subsection{Введение}\label{subsec:ch3:sec3:subsec1}
 %
-%В настоящей работе рассматривается задача оптимального управления для модели
-%внутривенной лазерной абляции в ограниченной трехмерной области
-%$\Omega$ с отражающей границей $\Gamma=\partial\Omega$.
-%Проблема состоит в том, чтобы свести к минимуму функционал
-%\[
-%    J(\theta)=\int_{G_{d}}\left(\left.\theta\right|_{t=T}
-%    -\theta_{d}\right)^{2} d x \rightarrow \inf
-%\]
-%на решениях начально-краевой задачи
-%\[
-%    \begin{gathered}
-%        \sigma \partial \theta / \partial t-\operatorname{div}(k(\theta) \nabla \theta)
-%        -\beta \varphi=u_{1} \chi,
-%        \quad-\operatorname{div}(\alpha \nabla \varphi)+\beta \varphi=
-%        u_{2} \chi, \quad x \in \Omega, \quad 0<t<T, \\
-%        k(\theta) \partial_{n} \theta+\left.\gamma
-%        \left(\theta-\theta_{b}\right)\right|_{\Gamma}=0,
-%        \quad \alpha \partial_{n} \varphi +
-%        \left.0.5 \varphi\right|_{\Gamma}=0,\left.\quad \theta\right|_{t=0}=\theta_{0}.
-%    \end{gathered}
-%\]
-%В этом случае устанавливаются следующие ограничения:
-%\[
-%    u_{1,2} \geq 0, \quad u_{1}+u_{2} \leq P,\left.\quad \theta\right|_{G_{b}}
-%     \leq \theta_{*}.
-%\]
-%Здесь $\theta$ - температура, $\varphi$ - интенсивность излучения, усредненная по всем направлениям,
-%$\alpha$ - коэффициент диффузии оптического излучения, $\mu_{a}$ - коэффициент поглощения,
-%$k(\theta)$ - коэффициент теплопроводности, $\sigma(x, t)$ произведение удельной теплоемкости
-%и объемной плотности, $u_{1}$ описывает мощность источника, затрачиваемую
-%на нагрев наконечника волокна, $u_{2}$ - мощность источника, затрачиваемая на излучение,
-%$\chi$ равно характеристической функции части среды, в которой расположен наконечник волокна,
-%деленной на объем наконечника волокна.
-%Функции $\theta_{b}, \theta_{0}$ определяют граничное и начальное распределения температуры.
-%Мы обозначим через $\partial_{n}$ производную в направлении внешней нормали $\mathbf{n}$ к границе $\Gamma$.
-%Требуется обеспечить близость распределения температуры к желаемому температурному полю $\theta_{d}$
-%в конечный момент времени $t=T$ в поддомене $G_{d}$, при этом температура в поддомене $G_{b}$
-%не превышает постоянного критического значения значение $\theta_{*}$.
+Рассмотрим задачу оптимального управления моделирующую процесс
+внутривенной лазерной абляции в ограниченной трехмерной области
+$\Omega$ с отражающей границей $\Gamma=\partial\Omega$.
+
+Задача заключается в минимизации функционала
+\[
+    J(\theta)=\int_{G_{d}}\left(\left.\theta\right|_{t=T}
+    -\theta_{d}\right)^{2} d x \rightarrow \inf
+\]
+на решениях начально-краевой задачи
+\[
+    \begin{gathered}
+        \sigma \partial \theta / \partial t-\operatorname{div}(k(\theta) \nabla \theta)
+        -\beta \varphi=u_{1} \chi, \\
+        \quad-\operatorname{div}(\alpha \nabla \varphi)+\beta \varphi= u_{2} \chi, \\
+        k(\theta) \partial_{n} \theta+\left.\gamma
+        \left(\theta-\theta_{b}\right)\right|_{\Gamma}=0,
+        \quad \alpha \partial_{n} \varphi +
+        \left.0.5 \varphi\right|_{\Gamma}=0,\left.\quad \theta\right|_{t=0}=\theta_{0}.
+%        \quad x \in \Omega, \quad 0<t<T, \\
+    \end{gathered}
+\]
+Также будем учитывать следующие ограничения:
+\[
+    u_{1,2} \geq 0, \quad u_{1}+u_{2} \leq P,\left.\quad \theta\right|_{G_{b}} \leq \theta_{*}.
+\]
+Здесь $\theta$ - температура, $\varphi$ - интенсивность излучения, усредненная по всем направлениям,
+$\alpha$ - коэффициент диффузии оптического излучения, $\mu_{a}$ - коэффициент поглощения,
+$k(\theta)$ - коэффициент теплопроводности, $\sigma(x, t)$ произведение удельной теплоемкости
+и объемной плотности, $u_{1}$ описывает мощность источника, затрачиваемую
+на нагрев наконечника волокна, $u_{2}$ - мощность источника, затрачиваемая на излучение,
+$\chi$ равно характеристической функции части среды, в которой расположен наконечник волокна,
+деленной на объем наконечника волокна.
+Функции $\theta_{b}, \theta_{0}$ определяют граничное и начальное распределения температуры.
+
+Требуется обеспечить близость распределения температуры к желаемому температурному полю $\theta_{d}$
+в конечный момент времени $t=T$ в подобласти $G_{d}$, при этом температура в подобласти $G_{b}$
+не превышает постоянного критического значения значение $\theta_{*}$.
 
 \subsection{Формализация задачи оптимального управления}\label{subsec:ch3:sec3:subsec2}
 
@@ -70,8 +70,8 @@ $\Gamma =\partial \Omega, Q =\Omega \times(0, T)$, $\Sigma=\Gamma \times(0, T)$.
 \begin{remark}
     Так как $(\sigma \theta)^{\prime}=\sigma \theta^{\prime}+\theta
     \partial \sigma / \partial t \in L^{2}\left(0, T ; V^{\prime}\right)$ and $\sigma
-    \theta \in L^{2}(0, T ; V)$, then $\sigma \theta \in$ $C([0, T] ; H)$,
-    и поэтому начальные условия имеют физические основания.
+    \theta \in L^{2}(0, T ; V)$, тогда $\sigma \theta \in$ $C([0, T] ; H)$,
+    и поэтому начальные условия имеют смысл.
 \end{remark}
 
 Из леммы Лакса-Мильграма следует, что для любой функции $g \in H$ существует единственное
@@ -97,7 +97,8 @@ $\Gamma =\partial \Omega, Q =\Omega \times(0, T)$, $\Sigma=\Gamma \times(0, T)$.
     \]
 \end{definition}
 
-\subsection{Предварительные результаты}\label{subsec:ch3:sec3:subsec3}
+\subsection{Предварительные результаты}
+\label{subsec:ch3:sec3:subsec3}
 
 \begin{lemma}[\cite{kovtanyuk2021mathematical}]
     \label{lm:3_3:1}
@@ -113,8 +114,7 @@ $\Gamma =\partial \Omega, Q =\Omega \times(0, T)$, $\Sigma=\Gamma \times(0, T)$.
         \leq C\left(\left\|\theta_{0}\right\|^{2}+\|g+u\|_{L^{2}
         \left(0, T; V^{\prime}\right)}^{2}\right),
     \]
-
-    где $C>0$ не зависит от $\theta_{0}, g$, и $u$.
+где $C>0$ не зависит от $\theta_{0}, g$, и $u$.
 \end{lemma}
 
 \begin{lemma}
