@@ -17,18 +17,20 @@ $\Omega$ с отражающей границей $\Gamma=\partial\Omega$.
     -\theta_{d}\right)^{2} d x \rightarrow \inf
 \]
 на решениях начально-краевой задачи
-\[
-    \begin{gathered}
-        \sigma \partial \theta / \partial t-\operatorname{div}(k(\theta) \nabla \theta)
-        -\beta \varphi=u_{1} \chi, \\
-        \quad-\operatorname{div}(\alpha \nabla \varphi)+\beta \varphi= u_{2} \chi, \\
-        k(\theta) \partial_{n} \theta+\left.\gamma
-        \left(\theta-\theta_{b}\right)\right|_{\Gamma}=0,
-        \quad \alpha \partial_{n} \varphi +
-        \left.0.5 \varphi\right|_{\Gamma}=0,\left.\quad \theta\right|_{t=0}=\theta_{0}.
+\begin{gather}
+    \label{eq:3_3:1}
+    \sigma \partial \theta / \partial t-\operatorname{div}(k(\theta) \nabla \theta)
+    -\beta \varphi=u_{1} \chi, \\
+    \quad-\operatorname{div}(\alpha \nabla \varphi)+\beta \varphi= u_{2} \chi,
+\end{gather}
+\begin{gather}
+    \label{eq:3_3:2}
+    k(\theta) \partial_{n} \theta+\left.\gamma
+    \left(\theta-\theta_{b}\right)\right|_{\Gamma}=0,
+    \quad \alpha \partial_{n} \varphi +
+    \left.0.5 \varphi\right|_{\Gamma}=0,\left.\quad \theta\right|_{t=0}=\theta_{0}.
 %        \quad x \in \Omega, \quad 0<t<T, \\
-    \end{gathered}
-\]
+\end{gather}
 Также будем учитывать следующие ограничения:
 \[
     u_{1,2} \geq 0, \quad u_{1}+u_{2} \leq P,\left.\quad \theta\right|_{G_{b}} \leq \theta_{*}.
@@ -53,7 +55,7 @@ $\Gamma =\partial \Omega, Q =\Omega \times(0, T)$, $\Sigma=\Gamma \times(0, T)$.
 
 \begin{definition}
     Пусть $u_{1,2} \in L^{2}(0, T)$.
-    Пара $\theta, \varphi \in L^{2}(0, T ; V)$ слабое решение задачи~\eqref{eq:3_2:1},~\eqref{eq:3_2:2} если
+    Пара $\theta, \varphi \in L^{2}(0, T ; V)$ слабое решение задачи~\eqref{eq:3_3:1}-\eqref{eq:3_3:2} если
     $\sigma \theta^{\prime} \in L^{2}\left(0, T ; V^{\prime}\right)$ и
     \begin{equation}
         \label{eq:3_3:3}
@@ -80,22 +82,20 @@ $\Gamma =\partial \Omega, Q =\Omega \times(0, T)$, $\Sigma=\Gamma \times(0, T)$.
 Следовательно, мы можем исключить интенсивность излучения $\varphi=u_{2} B^{-1} \chi$
 и сформулировать задачу оптимального управления следующим образом.
 
-\begin{definition}
-    [Задача $CP$]
-    \[
-        \begin{gathered}
-            J(\theta)=\int_{G_{d}}\left(\left.\theta\right|_{t=T}
-            - \theta_{d}\right)^{2} d x \rightarrow \inf,
-            \quad \sigma \theta^{\prime}+A(\theta)=g+u, \quad \theta(0)=\theta_{0}, \\
-            \left.\theta\right|_{G_{b}} \leq \theta_{*}, \quad u \in U_{a d}.
-        \end{gathered}
-    \]
-    Здесь
-    \[
-        U_{a d}=\left\{u=u_{1} \chi+u_{2} \beta B^{-1} \chi: u_{1,2} \in L^{2}(0, T), u_{1,2}
-        \geq 0, u_{1}+u_{2} \leq P\right\}
-    \]
-\end{definition}
+Задача $CPP$
+\[
+    \begin{gathered}
+        J(\theta)=\int_{G_{d}}\left(\left.\theta\right|_{t=T}
+        - \theta_{d}\right)^{2} d x \rightarrow \inf,
+        \quad \sigma \theta^{\prime}+A(\theta)=g+u, \quad \theta(0)=\theta_{0}, \\
+        \left.\theta\right|_{G_{b}} \leq \theta_{*}, \quad u \in U_{a d}.
+    \end{gathered}
+\]
+Здесь
+\[
+    U_{a d}=\left\{u=u_{1} \chi+u_{2} \beta B^{-1} \chi: u_{1,2} \in L^{2}(0, T), u_{1,2}
+    \geq 0, u_{1}+u_{2} \leq P\right\}
+\]
 
 \subsection{Предварительные результаты}
 \label{subsec:ch3:sec3:subsec3}
@@ -114,7 +114,7 @@ $\Gamma =\partial \Omega, Q =\Omega \times(0, T)$, $\Sigma=\Gamma \times(0, T)$.
         \leq C\left(\left\|\theta_{0}\right\|^{2}+\|g+u\|_{L^{2}
         \left(0, T; V^{\prime}\right)}^{2}\right),
     \]
-где $C>0$ не зависит от $\theta_{0}, g$, и $u$.
+    где $C>0$ не зависит от $\theta_{0}, g$, $u$.
 \end{lemma}
 
 \begin{lemma}
@@ -148,8 +148,8 @@ $\Gamma =\partial \Omega, Q =\Omega \times(0, T)$, $\Sigma=\Gamma \times(0, T)$.
     $\theta \leq \theta_{*}$ в $\Omega \times(0, T)$
 \end{proof}
 
-Леммы~\ref{lm:3_3:1} и~\ref{lm:3_3:2} подразумевают
-непустое множество допустимых пар задачи $CP$
+Леммы~\ref{lm:3_3:1} и~\ref{lm:3_3:2} влекут
+непустоту множества допустимых пар задачи $CPP$
 и ограниченность минимизирующей последовательности допустимых пар
 $\left\{\theta_{m}, u_{m}\right\} \in L^{2}(0, T ; V) \times$
 $U_{a d}$ так, что $J\left(\theta_{m}\right) \rightarrow j=\inf J$, где
@@ -159,21 +159,21 @@ $U_{a d}$ так, что $J\left(\theta_{m}\right) \rightarrow j=\inf J$, где
     \quad \theta_{m}(0)=\theta_{0},\left.\quad \theta_{m}\right|_{G_{b}} \leq \theta_{*}.
 \end{equation}
 
-Аналогично~\ref{th:3_2:1}, переходя к пределу в системе~\eqref{eq:3_3:5},
-можно установить разрешимость задачи $CP$\@.
+Аналогично разделу~\ref{th:3_2:1}, переходя к пределу в системе~\eqref{eq:3_3:5},
+можно установить разрешимость задачи $CPP$\@.
 
 \begin{theorem}
     \label{th:3_3:1}
     Пусть условия $(c1)$-$(c4)$ выполняются,
     $\theta_{0} \leq \theta_{*}$ п.в. в $\Omega, \theta_{b} \leq \theta_{*}$ п.в. в $\Sigma$.
-    Тогда решение задачи $CP$ существует.
+    Тогда решение задачи $CPP$ существует.
 \end{theorem}
 
 \subsection{Метод штрафных функций}\label{subsec:ch3:sec3:subsec4}
 Рассмотрим следующую задачу оптимального управления с параметром $\varepsilon>0$,
-решения которой аппроксимируют решение задачи $CP$ как $\varepsilon \rightarrow+0$.
+решения которой аппроксимируют решение задачи $CPP$ как $\varepsilon \rightarrow+0$.
 \begin{definition}
-    [Задача $CP_{\varepsilon}$]
+[Задача $CPP_{\varepsilon}$]
     \[
         \begin{gathered}
             J_{\varepsilon}(\theta)=\int_{G_{d}}
@@ -197,12 +197,12 @@ $U_{a d}$ так, что $J\left(\theta_{m}\right) \rightarrow j=\inf J$, где
 \begin{theorem}
     \label{th:3_3:2}
     Пусть выполняются условия $(c1)$-$(c4)$.
-    Тогда существует решение задачи $CP_{\varepsilon}$.
+    Тогда существует решение задачи $CPP_{\varepsilon}$.
 \end{theorem}
 
 Рассмотрим аппроксимирующие свойства решений задачи со штрафом.
 Пусть $\left\{\theta_{\varepsilon}, u_{\varepsilon}\right\}$ будет решением задачи
-$\left(\mathrm{CP}_{\varepsilon}\right)$ и $\{\theta, u\}$ будет решением задачи $CP$.
+$\left(\mathrm{CPP}_{\varepsilon}\right)$ и $\{\theta, u\}$ будет решением задачи $CPP$.
 Тогда,
 \begin{equation}
     \label{eq:3_3:6}
@@ -235,21 +235,21 @@ $L^{2}(0, T ; H), \theta_{\varepsilon} \rightarrow \widehat{\theta}$ слабо 
 Результатов о сходимости достаточно, чтобы перейти к пределу как $\varepsilon \rightarrow+0$
 в системе состояний~\eqref{eq:3_3:6} и доказать, что предельная пара
 $\{\widehat{\theta}, \widehat{u}\} \in$ $L^{2}(0, T ; V) \times U_{a d}$
-является приемлемым для задачи $CP$.
+является приемлемым для задачи $CPP$.
 Поскольку функционал $J$ является слабо полунепрерывным снизу, то есть
 \[
     j \leq J(\widehat{\theta}) \leq \liminf J\left(\theta_{\varepsilon}\right) \leq J(\theta)=j=\inf J
 \]
-Тогда пара $\{\widehat{\theta}, \widehat{u}\}$ это решение задачи $CP$.
+Тогда пара $\{\widehat{\theta}, \widehat{u}\}$ это решение задачи $CPP$.
 \begin{theorem}
     Пусть выполняются условия $(c1)$-$(c4)$,
     $\theta_{0} \leq \theta_{*}$ п.в. в $\Omega, \theta_{b} \leq \theta_{*}$ п.в. в
     $\Sigma$.
-    If $\left\{\theta_{\varepsilon}, u_{\varepsilon}\right\}$ решения задачи
-    $\left(C P_{\varepsilon}\right)$ for $\varepsilon>0$, тогда существует последовательность вида
+    Если $\left\{\theta_{\varepsilon}, u_{\varepsilon}\right\}$ решения задачи
+    $\left(C P_{\varepsilon}\right)$ для $\varepsilon>0$, тогда существует последовательность вида
     $\varepsilon \rightarrow+0$ $u_{\varepsilon} \rightarrow \widehat{u}$ слабо в
     $L^{2}(0, T ; H), \quad \theta_{\varepsilon} \rightarrow \widehat{\theta}$
     слабо в $L^{2}(0, T ; V)$,
     сильно в $L^{2}(0, T ; H)$, где
-    $\{\widehat{\theta}, \widehat{u}\}$ есть решение задачи $CP$.
+    $\{\widehat{\theta}, \widehat{u}\}$ есть решение задачи $CPP$.
 \end{theorem}
