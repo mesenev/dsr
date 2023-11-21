@@ -105,8 +105,7 @@ $b=0.025[\text{см}/\text{с}]$, $\kappa_a=1[\text{см}^{-1}]$, $\alpha = 0.(3
 \end{figure}
 
 \textbf{Пример 2.}
-Сравним работу предложенного алгоритма с результатами статьи~\cite{Chebotarev2019Problem},
-где соавтором был один из авторов данной работы.
+Сравним работу предложенного алгоритма с результатами статьи~\cite{Chebotarev2019Problem}.
 Задача рассматривается в области $\Omega \times (-L,L)$,
 где $\Omega = \{ x = (x_1,x_2) \colon 0 < x_{1,2} < d\}$
 и при больших $L$ сводится к двумерной задаче с вычислительной областью $\Omega$.
@@ -240,6 +239,23 @@ $r=0.8 \cos (x)+0.1,\; u=\hat{u}=y$.
     Коши для температуры на части границы
 }\label{subsec:ch4/sec4/subsec2}
     %jvm-mesenev-chebotarev
+
+Задача оптимального управления сформулированная в разделе~\ref{subsec:ch2/sec4/state}
+заключается в отыскании тройки $\{\theta_\lambda,\psi_\lambda,u_\lambda\}$ такой, что
+\begin{gather*}
+    J_\lambda(\theta, u) =
+    \frac{1}{2} \int \limits_{\Gamma_1} (\theta - \theta_b)^2 d \Gamma
+    + \frac{\lambda}{2}\int\limits_{\Gamma_2} u^2 d\Gamma \rightarrow \inf, \\
+    - a \Delta \theta + g (\theta) = \frac{\kappa}{\alpha}\psi, \quad
+    \Delta \psi = 0, \; x \in \Omega, \\
+    a \partial_n \theta + s \theta = q_b + s \theta_b,
+    \; \alpha \partial_n \psi + \gamma \psi = r
+    \text{ на } \Gamma_1,\\
+    a \partial_n \theta = q_b, \;
+    \alpha \partial_n \psi = u \text{ на } \Gamma_2,
+\end{gather*}
+где $\lambda, s > 0$ -- регуляризирующие параметры.
+
 
 Представим итерационный алгоритм решения задачи оптимального управления.
 Пусть $\tilde J_\lambda(u)=J_\lambda(\theta(u), u)$,
