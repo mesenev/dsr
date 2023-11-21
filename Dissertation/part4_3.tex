@@ -1,15 +1,20 @@
-\section{Алгоритмы решения граничных обратных задач. Примеры.}\label{sec:ch4/sec3}
+\section{Алгоритмы решения граничных обратных задач}\label{sec:ch4/sec3}
 
 %dvmg368
 
-\subsection{Решение граничной обратной задачи}
+\subsection{Алгоритм нахождения квазирешения обратной задачи}
 \label{subsec:ch4/sec3/boundary}
+
+Задача нахождения квазирешения обратной
+задачи~\eqref{eq:2_1:initial}--\eqref{eq:2_1:theta_gamma}.
+заключается в минимизации функционала~\eqref{eq:2_1:quality}
+на решениях начально-краевой задачи~\eqref{eq:2_1:initial}--\eqref{eq:2_1:initial-boundary}.
+
 
 Пусть функционал $J(\theta)$ удовлетворяет условиям,
 указанным в \autoref{subsec:ch2/sec1/subsec3}.
 Для удобства введём переобозначение
 $\hat{J}(u)\coloneqq J(\theta(u)), \hat{J}:L^2(\Gamma_1) \to \mathbb{R}$.
-
 Здесь $\theta(u)$ -- температурное поле
 задачи~\eqref{eq:2_1:initial}--\eqref{eq:2_1:initial-boundary}
 отвечающее управлению $u \in L^2(\Gamma_1)$.
@@ -19,7 +24,6 @@ $\hat{J}(u)\coloneqq J(\theta(u)), \hat{J}:L^2(\Gamma_1) \to \mathbb{R}$.
 \[
     \hat{J}'(u)= (\varphi(u) -\theta_b^4)p_2,
 \]
-
 где $\varphi(u)$ есть интенсивность излучения,
 $p_2$ -- соответствующая переменная сопряжённой системы.
 
@@ -76,7 +80,10 @@ $J\left(\theta_{N-1}\right)-J\left(\theta_{N}\right)<10^{-15}$.
         u_2, & \text{если } v \ge u_2.
     \end{cases}
 \]
-Приведём далее примеры расчётов для двумерного случая.
+
+
+\textit{Примеры расчётов для двумерного случая.}
+
 Положим $\Omega = \{(x,y), 0 \leq x,y \leq 1\}$, $l = 1$ см.
 Граница $\partial\Omega$ состоит из участков:
 \[
@@ -157,9 +164,18 @@ $\Gamma_2$ выберем в качестве $\theta_0$.
     \label{fig:4_3:control}
 \end{figure}
 
-\subsection{Решение квазистационарной задачи}
+\subsection{Алгоритм решения задачи оптимального управления для квазистационарной модели}
 \label{subsec:ch4/sec3/quasistationary}
 %paper03
+Задача оптимального управления, поставленная в главе~\ref{sec:ch2/sec3}
+для стационарной модели имеет вид:
+\begin{equation*}
+    J_{\lambda}(\theta, u)=\frac{1}{2} \int_{0}^{T}
+    \int_{\Gamma}\left(\theta-\theta_{b}\right)^{2} d \Gamma d t+\frac{\lambda}{2}
+    \int_{0}^{T} \int_{\Gamma} u^{2} d \Gamma d t \rightarrow \inf
+\end{equation*}
+на решениях задачи~\eqref{eq:2_3:1}--\eqref{eq:2_3:3}.
+
 Приведем алгоритм решения задачи управления.
 Пусть
 \[
@@ -273,7 +289,7 @@ q_{b}=\left.\partial_{n} \widehat{\theta}\right|_{\Gamma}$,
 
 %6_cheb
 
-\subsection{Решение квазилинейной модели}
+\subsection{Численное решение квазилинейной начально-краевой задачи моделирующей ВВЛА}
 \label{subsec:ch4/sec3/quasilinear}
 Перенос тепла и излучения будет рассматриваться в среде,
 состоящей из четырех частей, которые интерпретируются как кровь,
@@ -452,7 +468,7 @@ P_{\theta}\right)=(7 \mathrm{~Вт}, 3 \mathrm{~Вт})$
 
 %Chebotarev_2 nd, Chebotarev_Park_Mesenev_Kovtanyuk_21
 
-\subsection{Метод штрафов для задачи с фазовыми ограничениям}
+\subsection{Метод штрафов для задачи с фазовыми ограничениями}
 \label{subsec:ch4/sec3/subsec5}
 
 
@@ -511,24 +527,24 @@ $u_{1}$ и $u_{2}$ не зависят от времени.
 u_{1,2} \geq 0, u_{1}+u_{2} \leq P\right\}$.
 Функции $\theta_{1}, \theta_{2}$ и $\theta_{3}$
 вычисляются заранее как решения следующих линейных
-начально-краевых задач для $x \in \Omega, t \in(0, Т)$ :
+начально-краевых задач для $x \in \Omega, t \in(0, T)$:
 
 
 \[
     \begin{aligned}
         &\sigma \partial \theta_{1} / \partial t-\operatorname{div}\left(k(\widehat{\theta})
-        \nabla \theta_{1}\right)=\chi, \\
-        &\left.\theta_{1}\right|_{\Gamma}=0, \quad \theta_{1}(x, 0)=0 \\
+        \nabla \theta_{1}\right)=\chi, &
+        \left.\theta_{1}\right|_{\Gamma}=0, \quad \theta_{1}(x, 0)=0, \\
         &\sigma \partial \theta_{2} / \partial t-\operatorname{div}\left(k(\widehat{\theta})
-        \nabla \theta_{2}\right)=\beta B^{-1} \chi, \\
-        &\left.\theta_{2}\right|_{\Gamma}=0, \quad \theta_{2}(x, 0)=0 \\
+        \nabla \theta_{2}\right)=\beta B^{-1} \chi, &
+        \left.\theta_{2}\right|_{\Gamma}=0, \quad \theta_{2}(x, 0)=0, \\
         &\sigma \partial \theta_{3} / \partial t-\operatorname{div}\left(k(\widehat{\theta})
-        \nabla \theta_{3}\right)=0 \\
-        &\left.\theta_{3}\right|_{\Gamma}=0, \quad \theta_{3}(x, 0)=\theta_{0}.
+        \nabla \theta_{3}\right)=0, &
+        \left.\theta_{3}\right|_{\Gamma}=0, \quad \theta_{3}(x, 0)=\theta_{0}.
     \end{aligned}
 \]
 
-При проведении численных экспериментов использовалась модельная область
+При проведении численных экспериментов использовалась область,
 аналогичная рассматриваемой в разделе~\ref{subsec:ch4/sec3/quasilinear}
 (рисунок~\ref{fig:4_3:3}).
 Толщина карбонизированного слоя равна $0,2 \mathrm{~мм}$,
