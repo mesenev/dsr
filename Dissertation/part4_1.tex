@@ -63,7 +63,7 @@
 \]
 
 Монотонная сходимость метода Ньютона является важным свойством,
-которое позволяет обеспечить стабильность итерационного процесса
+которое позволяет обеспечить устойчивость итерационного процесса
 и успешное решение эллиптических уравнений
 с монотонным и выпуклым нелинейным слагаемым.
 В литературе было проведено множество исследований, направленных
@@ -76,35 +76,39 @@
 хорошими свойствами сходимости и может быть применен для решения
 сложных задач оптимального управления в моделях сложного теплообмена.
 
-\subsection{Квазистационарные и квазилинейные модели}
-\label{subsec:ch4/sec1/quasi}
-
-\textbf{Квазистационарная модель} радиационного и диффузионного теплообмена в ограниченной области
-$\Omega \subset \mathbb{R}^{3}$ с границей $\Gamma=\partial \Omega$ в разделе~\ref{sec:ch2/sec3} представлена следующим образом
-
-\begin{align*}
-    & \frac{\partial \theta}{\partial t} - a \Delta \theta
-    + b \kappa_{a} \left(|\theta| \theta^{3}-\varphi\right) = 0,\\
-    & - \alpha \Delta \varphi
-    + \kappa_{a} \left(\varphi-|\theta| \theta^{3}\right) = 0, \\
-    \quad x \in \Omega, \quad 0 < t < T;
-    a \left(\partial_{n} \theta+\theta\right)=r, \\
-    \quad \alpha\left(\partial_{n} \varphi
-    + \varphi\right) = u \text { на } \Gamma;
-    \left.\theta\right|_{t=0} = \theta_{0}.
-\end{align*}
-
-
-
-\textbf{Квазистационарная модель} радиационного и диффузионного теплообмена в ограниченной области
-$\Omega \subset \mathbb{R}^{3}$ с границей $\Gamma=\partial \Omega$ в разделе~\ref{sec:ch3:sec3}
-\begin{gather*}
-    \sigma \partial \theta / \partial t-\operatorname{div}(k(\theta) \nabla \theta)
-    -\beta \varphi=u_{1} \chi, \\
-    \quad-\operatorname{div}(\alpha \nabla \varphi)+\beta \varphi= u_{2} \chi, \\
-    k(\theta) \partial_{n} \theta+\left.\gamma
-    \left(\theta-\theta_{b}\right)\right|_{\Gamma}=0,
-    \quad \alpha \partial_{n} \varphi +
-    \left.0.5 \varphi\right|_{\Gamma}=0,\left.\quad \theta\right|_{t=0}=\theta_{0}.
+%\subsection{Квазистационарные и квазилинейные модели}
+%\label{subsec:ch4/sec1/quasi}
+%
+%\textbf{Квазистационарная модель} радиационного и диффузионного теплообмена в ограниченной области
+%$\Omega \subset \mathbb{R}^{3}$ с границей $\Gamma=\partial \Omega$ в разделе~\ref{sec:ch2/sec3} представлена следующим образом
+%
+%\begin{align*}
+%    & \frac{\partial \theta}{\partial t} - a \Delta \theta
+%    + b \kappa_{a} \left(|\theta| \theta^{3}-\varphi\right) = 0,\\
+%    & - \alpha \Delta \varphi
+%    + \kappa_{a} \left(\varphi-|\theta| \theta^{3}\right) = 0, \\
+%    \quad x \in \Omega, \quad 0 < t < T;
+%    a \left(\partial_{n} \theta+\theta\right)=r, \\
+%    \quad \alpha\left(\partial_{n} \varphi
+%    + \varphi\right) = u \text { на } \Gamma;
+%    \left.\theta\right|_{t=0} = \theta_{0}.
+%\end{align*}
+%
+%
+%
+%Квазистационарная модель радиационного и диффузионного теплообмена в ограниченной области
+%$\Omega \subset \mathbb{R}^{3}$ с границей $\Gamma=\partial \Omega$ в разделе~\ref{sec:ch3:sec3}
+%\begin{gather*}
+%    \sigma \partial \theta / \partial t-\operatorname{div}(k(\theta) \nabla \theta)
+%    -\beta \varphi=u_{1} \chi, \\
+%    \quad-\operatorname{div}(\alpha \nabla \varphi)+\beta \varphi= u_{2} \chi, \\
+%    k(\theta) \partial_{n} \theta+\left.\gamma
+%    \left(\theta-\theta_{b}\right)\right|_{\Gamma}=0,
+%    \quad \alpha \partial_{n} \varphi +
+%    \left.0.5 \varphi\right|_{\Gamma}=0,\left.\quad \theta\right|_{t=0}=\theta_{0}.
 %        \quad x \in \Omega, \quad 0<t<T, \\
-\end{gather*}
+%\end{gather*}
+%
+
+
+%TODO: АЛГОРТИМ РЕШЕНИЯ КРАЕВОЙ ЗАДАЧИ, ПРОИЛЛЮСТРИРОВАТЬ ДВУМЯ ПРИМЕРАМИ В РОТ И ЗА ЩЕКУ.
