@@ -80,7 +80,8 @@
 %\label{subsec:ch4/sec1/quasi}
 %
 %\textbf{Квазистационарная модель} радиационного и диффузионного теплообмена в ограниченной области
-%$\Omega \subset \mathbb{R}^{3}$ с границей $\Gamma=\partial \Omega$ в разделе~\ref{sec:ch2/sec3} представлена следующим образом
+%$\Omega \subset \mathbb{R}^{3}$ с границей $\Gamma=\partial \Omega$
+%в разделе~\ref{sec:ch2/sec3} представлена следующим образом
 %
 %\begin{align*}
 %    & \frac{\partial \theta}{\partial t} - a \Delta \theta
@@ -111,4 +112,101 @@
 %
 
 
-%TODO: АЛГОРТИМ РЕШЕНИЯ КРАЕВОЙ ЗАДАЧИ, ПРОИЛЛЮСТРИРОВАТЬ ДВУМЯ ПРИМЕРАМИ В РОТ И ЗА ЩЕКУ.
+\subsection{Решение краевой задачи}
+\label{subsec:ch4/sec1/boundary}
+
+Рассмотрим стационарную модель,
+представленную в разделе~\ref{subsec:ch2/sec1/subsec1}.
+\begin{equation*}
+    \begin{aligned}
+        - a \Delta \theta + b \kappa_a(\theta ^ 3 | \theta | - \varphi) = 0,  \\
+        - \alpha \Delta \varphi + \kappa_a (\varphi - \theta ^3 | \theta |) = 0.
+    \end{aligned}
+\end{equation*}
+
+Данная модель описывает процесс радиационного
+теплопереноса в области $\Omega \subset \mathbb{R}^3$ с липшицевой границей $\Gamma$.
+
+Дополним систему уравнений граничными условиями на $\Gamma$
+\begin{equation*}
+    \begin{aligned}
+        & a \partial_n \theta + \beta (\theta - \theta_b) = 0, \\
+        & \alpha \partial_n \varphi + \gamma(\varphi - \theta_b ^4 ) = 0.
+    \end{aligned}
+\end{equation*}
+
+
+Функции $\gamma, \theta_b, \beta$ -- являются известными.
+
+Краевая задача заключается в нахождении функций $\theta(x), \varphi(x), x \in \Omega$.
+
+Первым этапом решения задачи методом конечных элементов будет вывод слабой формулировки для
+исходной модели.
+Для этого умножим уравнения на соответствующие тестовые функции
+$v, \psi \in H^1(\Omega)$ и применим формулу Грина.
+Получим:
+\begin{equation*}
+    \begin{aligned}
+        & a( \nabla \theta, \nabla v ) + \int_\Gamma \beta \theta v d\Gamma,
+        + (b \kappa_a (| \theta | \theta^3 - \varphi ), v)
+        =  \int_\Gamma \beta \theta_b v d\Gamma,
+        \\
+        & \alpha (\nabla \varphi,\nabla \psi) + \int_{\Gamma_0 \cup \Gamma_2}
+        + (\kappa_a (\varphi - |\theta|\theta^3), \psi)
+        = \int_{\Gamma} \gamma \theta_b^4 \psi d\Gamma.
+    \end{aligned}
+\end{equation*}
+
+В операторном виде данная система представлена~\eqref{eq:2_1:weakOperational}
+в разделе~\ref{subsec:ch2/sec1/subsec2}.
+
+Положим $\Omega=\{(x,y),\, x,y \leq l \}, l = 1$.
+
+Метод конечных элементов требует разбиения области $\Omega$ на
+конечное число непересекающихся подобластей, называющихся
+\textit{конечными элементами}.
+Отметим, что большинство современных солверов включают в себя
+алгоритмы разбиения области на конечные элементы, а также подгрузку
+уже разбитых областей.
+
+Определим параметры системы следующим образом.
+$a = 0.6$,
+$\alpha = 0.333$,
+$k_a = 1$,
+$b = 0.025$,
+$\beta = 1$,
+$\gamma = 0.8 \cos\left(\frac{\pi}{2} y\right) + 0.5$,
+$\theta_b = 0.1 + y / 2$.
+
+Состояние, полученное при данных параметрах представлено на рисунке~\ref{fig:4_1:boundary}.
+\begin{figure}[h!t]
+    \begin{minipage}[b][][b]{0.49\linewidth}
+        \centering
+        \includegraphics[width=1\linewidth]{boundary/theta_iso_auto} \\ а) $\theta$
+    \end{minipage}
+    \hfill
+    \begin{minipage}[b][][b]{0.49\linewidth}
+        \centering
+        \includegraphics[width=1\linewidth]{boundary/phi_iso_auto} \\ б) $\varphi$
+    \end{minipage}
+    \caption{Решение граничной задачи}
+    \label{fig:4_1:boundary}
+\end{figure}
+
+
+Код, используемый для получения решения представлен в приложении~\ref{lst:boundary}.
+Инструментарий для получения изображений можно найти в репозитории~\cite{mesenev-github}.
+\begin{remark}
+    Алгоритмы численного решения начально-краевых задач для квазилинейных моделей
+    также основаны на продложенном выше методе Ньютона и будут изложены при описании
+    алгоритмов решения обратных задач.
+\end{remark}
+
+
+
+
+
+
+
+
+
