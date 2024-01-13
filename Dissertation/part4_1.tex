@@ -1,30 +1,35 @@
 \section{Численные алгоритмы решения прямых задач сложного теплообмена}
 \label{sec:ch4/sec1}
 
-\subsection{Стационарная модель}
+\subsection{Метод Ньютона для стационарной модели}
 \label{subsec:ch4/sec1/stationary}
-Стационарная модель сложного теплообмена
-в $P_1$ приближении записывается как
-\[
-    \begin{gathered}
+Краевая задача сложного теплообмена
+имеет вид (см. раздел~\ref{subsec:ch1/sec3/state})
+
+\begin{equation}
+    \label{eq:4_1:1}
         -a \Delta \theta+b \kappa_{a}| \theta|^{3} \theta =
-        b \kappa_{a} \varphi \\
+        b \kappa_{a} \varphi,
+\end{equation}
+\begin{equation}
+    \label{eq:4_1:2}
         -\alpha \Delta \varphi+\kappa_{a} \varphi =
-        \kappa_{a}|\theta|^{3} \theta \\
+        \kappa_{a}|\theta|^{3} \theta,
+\end{equation}
+\begin{equation}
+    \label{eq:4_1:3}
         a \frac{\partial \theta}{\partial n}
         +\left.\beta\left(\theta-\theta_{b}\right)\right|_{\Gamma}=0,
         \quad \alpha \frac{\partial \varphi}{\partial n}
         +\left.\gamma\left(\varphi-\theta_{b}^{4}\right)\right|_{\Gamma}=0.
-    \end{gathered}
-\]
-
-Основную сложность в решении прямой задачи представляет нелинойность
+\end{equation}
+Основную сложность при численном решении прямой задачи представляет нелинейность
 по температурному полю, которое входит в систему
 дифференциальных уравнений в четвёртой степени.
 
-Метод простой итераций применяется для решения задач в двумерной области.
+Метод простой итераций успешно применяется для решения задач в двумерной области.
 Он был использован в работах~\cite{Kovtanyuk2015,astrakhantseva2014numerical}.
-Однако, в трёхмерной области этот метод демонстрирует недостаточную сходимость,
+Однако, в трёхмерной области этот метод демонстрирует недостаточную скорость сходимости,
 что приводит к долгим итерационным процессам и увеличению вычислительных затрат.
 
 Вместо метода простой итераций для решения сложных задач оптимального управления
@@ -47,20 +52,24 @@
 решения задач с высокой степенью нелинейности.
 В результате модифицированная система уравнений примет следующий вид:
 
-\[
-    \begin{gathered}
+\begin{equation}
+    \tag{L1}
+    \label{eq:L1}
         -a \Delta \theta+b \kappa_{a}\left(\left(4 \widetilde{\theta}^{3}
         \theta-3 \widetilde{\theta}^{4}\right)-\varphi\right)=0,
         \quad-\alpha \Delta \varphi
         +\kappa_{a}\left(\varphi
         -\left(4 \widetilde{\theta}^{3}
-        \theta-3 \widetilde{\theta}^{4}\right)\right)=0, \\
+        \theta-3 \widetilde{\theta}^{4}\right)\right)=0,
+\end{equation}
+\begin{equation}
+     \tag{L2}
+    \label{eq:L2}
         a \frac{\partial \theta}{\partial n}
         +\left.\beta\left(\theta-\theta_{b}\right)\right|_{\Gamma}=0,
         \quad \alpha \frac{\partial \varphi}{\partial n}
         +\left.\gamma\left(\varphi-\theta_{b}^{4}\right)\right|_{\Gamma}=0.
-    \end{gathered}
-\]
+\end{equation}
 
 Монотонная сходимость метода Ньютона является важным свойством,
 которое позволяет обеспечить устойчивость итерационного процесса
@@ -112,55 +121,30 @@
 %
 
 
-\subsection{Решение краевой задачи}
+\subsection{Примеры численного решения краевой задачи \eqref{eq:4_1:1}--\eqref{eq:4_1:3}}
 \label{subsec:ch4/sec1/boundary}
 
-Рассмотрим стационарную модель,
-представленную в разделе~\ref{subsec:ch2/sec1/subsec1}.
-\begin{equation*}
-    \begin{aligned}
-        - a \Delta \theta + b \kappa_a(\theta ^ 3 | \theta | - \varphi) = 0,  \\
-        - \alpha \Delta \varphi + \kappa_a (\varphi - \theta ^3 | \theta |) = 0.
-    \end{aligned}
-\end{equation*}
-
-Данная модель описывает процесс радиационного
-теплопереноса в области $\Omega \subset \mathbb{R}^3$ с липшицевой границей $\Gamma$.
-
-Дополним систему уравнений граничными условиями на $\Gamma$
-\begin{equation*}
-    \begin{aligned}
-        & a \partial_n \theta + \beta (\theta - \theta_b) = 0, \\
-        & \alpha \partial_n \varphi + \gamma(\varphi - \theta_b ^4 ) = 0.
-    \end{aligned}
-\end{equation*}
-
-
-Функции $\gamma, \theta_b, \beta$ -- являются известными.
-
-Краевая задача заключается в нахождении функций $\theta(x), \varphi(x), x \in \Omega$.
 
 Первым этапом решения задачи методом конечных элементов будет вывод слабой формулировки для
-исходной модели.
-Для этого умножим уравнения на соответствующие тестовые функции
+линеаризированной модели.
+Для этого умножим уравнения~\eqref{eq:L1} на соответствующие тестовые функции
 $v, \psi \in H^1(\Omega)$ и применим формулу Грина.
-Получим:
+Учитывая краевые условия~\eqref{eq:L2}, получим:
 \begin{equation*}
     \begin{aligned}
-        & a( \nabla \theta, \nabla v ) + \int_\Gamma \beta \theta v d\Gamma,
-        + (b \kappa_a (| \theta | \theta^3 - \varphi ), v)
-        =  \int_\Gamma \beta \theta_b v d\Gamma,
+        & a( \nabla \theta, \nabla v ) + \int_\Gamma \beta \theta v d\Gamma
+        + \left(b \kappa_a (| \theta | \theta^3 - \varphi ), v\right)
+        = \int_\Gamma \beta \theta_b v d\Gamma,
         \\
-        & \alpha (\nabla \varphi,\nabla \psi) + \int_{\Gamma_0 \cup \Gamma_2}
-        + (\kappa_a (\varphi - |\theta|\theta^3), \psi)
+        & \alpha (\nabla \varphi,\nabla \psi)
+        + \int_{\Gamma_0 \cup \Gamma_2} \gamma \varphi v d\Gamma
+        + \left( (\kappa_a (\varphi - |\theta|\theta^3), \psi\right)
         = \int_{\Gamma} \gamma \theta_b^4 \psi d\Gamma.
     \end{aligned}
 \end{equation*}
 
-В операторном виде данная система представлена~\eqref{eq:2_1:weakOperational}
-в разделе~\ref{subsec:ch2/sec1/subsec2}.
-
-Положим $\Omega=\{(x,y),\, x,y \leq l \}, l = 1$.
+\textbf{Пример 1} (двумерная область).
+Положим $\Omega=\{(x,y),\, 0 \leq x,y \leq 1 \}$.
 
 Метод конечных элементов требует разбиения области $\Omega$ на
 конечное число непересекающихся подобластей, называющихся
@@ -177,8 +161,9 @@ $b = 0.025$,
 $\beta = 1$,
 $\gamma = 0.8 \cos\left(\frac{\pi}{2} y\right) + 0.5$,
 $\theta_b = 0.1 + y / 2$.
-
-Состояние, полученное при данных параметрах представлено на рисунке~\ref{fig:4_1:boundary}.
+Начальное приближение для функций $\theta$ и $\varphi$ выбрано нулевым.
+Состояние, полученное за три итерации при данных параметрах представлено
+на рисунке~\ref{fig:4_1:boundary}.
 \begin{figure}[h!t]
     \begin{minipage}[b][][b]{0.49\linewidth}
         \centering
@@ -189,24 +174,40 @@ $\theta_b = 0.1 + y / 2$.
         \centering
         \includegraphics[width=1\linewidth]{boundary/phi_iso_auto} \\ б) $\varphi$
     \end{minipage}
-    \caption{Решение граничной задачи}
+    \caption{Решение граничной задачи в двумерной области}
     \label{fig:4_1:boundary}
 \end{figure}
 
 
 Код, используемый для получения решения представлен в приложении~\ref{lst:boundary}.
 Инструментарий для получения изображений можно найти в репозитории~\cite{mesenev-github}.
+
+\textbf{Пример 2} (трёхмерный случай).
+В таком случае область $\Omega=\{(x,y,z),\, 0 \leq x,y,z \leq 1 \}$.
+Переопределим функции $\gamma, \theta_b$ следующим образом:
+$\gamma = 0.8 \cos\left(\frac{\pi}{2} z\right) + 0.5$,
+$\theta_b = 1- y / 2 + z /2$.
+
+Начальное приближение также выбрано нулевым.
+Для нахождения состояния потребовалось шесть итераций,
+результат представлен на рисунке~\ref{fig:4_1:boundary_3d}.
+\begin{figure}[h!t]
+    \begin{minipage}[b][][b]{0.49\linewidth}
+        \centering
+        \includegraphics[width=1\linewidth]{boundary/theta_3d} \\ а) $\theta$
+    \end{minipage}
+    \hfill
+    \begin{minipage}[b][][b]{0.49\linewidth}
+        \centering
+        \includegraphics[width=1\linewidth]{boundary/phi_3d} \\ б) $\varphi$
+    \end{minipage}
+    \caption{Решение граничной задачи в трёхмерной области}
+    \label{fig:4_1:boundary_3d}
+\end{figure}
+
 \begin{remark}
     Алгоритмы численного решения начально-краевых задач для квазилинейных моделей
     также основаны на продложенном выше методе Ньютона и будут изложены при описании
     алгоритмов решения обратных задач.
 \end{remark}
-
-
-
-
-
-
-
-
 
