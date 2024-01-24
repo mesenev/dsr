@@ -122,7 +122,7 @@ $\theta, v \in V, \varphi, w \in$ $H^{1}(\Omega)$
 
 \begin{definition}
 [Задача P]
-    \label{subsec:ch3:sec2:subsec3}
+    \label{subsec:ch3:sec2:subsec3:P}
     \[
         J(\theta)=\int_{0}^{T}
         \int_{G_{1}}\left(\theta-\theta_{d}\right)^{2} d x d t \rightarrow \inf
@@ -300,9 +300,9 @@ $\theta, v \in V, \varphi, w \in$ $H^{1}(\Omega)$
 Для численного решения задачи оптимального управления с фазовыми ограничениями
 $\left.\theta\right|_{G_{2}} \leq \theta_{*}$, рассмотрим следующую задачу со штрафом.
 
-Задача $\mathbf{P}_{\varepsilon}:
-J_{\varepsilon}(\theta) \rightarrow \inf$,
-где
+\begin{definition}
+[Задача $\mathbf{P}_{\varepsilon}$]
+$J_{\varepsilon}(\theta) \rightarrow \inf$, где
 \[
     \begin{aligned}
         & J_{\varepsilon}(\theta)=\int_{0}^{T}
@@ -322,6 +322,8 @@ J_{\varepsilon}(\theta) \rightarrow \inf$,
         & \text { если } \theta>\theta_{*}
     \end{cases}
 \]
+\end{definition}
+
 Оценки, представленные в лемме~\ref{lm:3_2:1}, также позволяют доказать разрешимость
 задачи со штрафом аналогично доказательству теоремы~\ref{th:3_2:1}.
 

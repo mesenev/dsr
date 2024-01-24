@@ -449,8 +449,6 @@ q_{b}=\left.\partial_{n} \widehat{\theta}\right|_{\Gamma}$,
 %6_Chebotarev
 
 %6_cheb
-
-\subsection{Численное решение квазилинейной начально-краевой задачи моделирующей ЭВЛА}
 \label{subsec:ch4/sec3/quasilinear}
 Перенос тепла и излучения будет рассматриваться в среде,
 состоящей из четырех частей, которые интерпретируются как кровь,
@@ -632,24 +630,36 @@ P_{\theta}\right)=(7 \text{~Вт}, 3 \text{~Вт})$
 
 \subsection{Метод штрафов для задачи с фазовыми ограничениями}
 \label{subsec:ch4/sec3/subsec5}
-Квазистационарная модель радиационного и диффузионного теплообмена в ограниченной области
+Квазилинейная модель радиационного и диффузионного теплообмена в ограниченной области
 $\Omega \subset \mathbb{R}^{3}$ с границей $\Gamma=\partial \Omega$
-в разделе~\ref{sec:ch3:sec3} представлена следующим образом
+в разделе~\ref{sec:ch3:sec2} представлена в виде начально-краевой задачи
+следующим образом:
 \begin{equation*}
 \begin{aligned}
 & \sigma \partial \theta / \partial t-\operatorname{div}(k(\theta) \nabla \theta)-\beta \varphi=u_{1} \chi, \\
 & -\operatorname{div}(\alpha \nabla \varphi)+\beta \varphi=u_{2} \chi, \quad x \in \Omega, \quad t \in(0, T), \\
-& \theta=\left.0\right|_{\Gamma}, \quad \alpha \partial_{n} \varphi+\left.2^{-1} \varphi\right|_{\Gamma}=0,\left.\quad \theta\right|_{t=0}=\theta_{0} .
+& \theta=\left.0\right|_{\Gamma}, \quad \alpha \partial_{n}
+    \varphi+\left.2^{-1} \varphi\right|_{\Gamma}=0,\left.\quad \theta\right|_{t=0}=\theta_{0} .
 \end{aligned}
 \end{equation*}
-Со следующими ограничениями
+Требуется найти неизвестные интенсивности $u_1,\, u_2$ и соответствующие поля $\theta, \, \varphi$
+по условию
+\[
+    J(\theta)=\int_{0}^{T}
+    \int_{G_{1}}\left(\theta-\theta_{d}\right)^{2} d x d t \rightarrow \inf,
+\]
+при ограничениях
 \[
     u_{1,2} \geq 0, \quad u_{1}+u_{2} \leq P,\left.\quad \theta\right|_{G_{2}} \leq \theta_{*}.
 \]
 
+В разделе~\ref{subsec:ch3/sec2/penalty} показано, что задачу с ограничениями
+на температуру в области $G_2$ можно
+аппрокисимировать задачей со штрафом $P_\varepsilon$.
+
 
 Рассмотрим итерационный алгоритм решения задачи оптимального управления
-$\left(\text{P}_{\varepsilon}\right)$ для случая, когда параметры управления
+$\left(\mathbf{P}_{\varepsilon}\right)$ для случая, когда параметры управления
 $u_{1}$ и $u_{2}$ не зависят от времени.
 На каждой итерации алгоритма
 решается линейно-квадратичная задача оптимального управления,
@@ -698,7 +708,6 @@ $u_{1}$ и $u_{2}$ не зависят от времени.
 \[
     \widehat{J}_{\varepsilon}\left(u_{1} \theta_{1}+u_{2} \theta_{2}+\theta_{3}\right) \rightarrow \inf
 \]
-
 на треугольнике  $\left\{u_{1}, u_{2} \in \mathbb{R}:
 u_{1,2} \geq 0, u_{1}+u_{2} \leq P\right\}$.
 Функции $\theta_{1}, \theta_{2}$ и $\theta_{3}$
@@ -760,5 +769,5 @@ $\left(u_{1}, u_{2}\right)=(3,7)$.
 Отметим, что при $\left(u_{1}, u_{2}\right)=(3,7)$ максимальное значение
 температуры в точке $(3.5,10)$ равно $50,2^{ \circ} \text{C}$.
 
-Эксперимент демонстрирует возможность снижения температуры в
+Данный пример демонстрирует возможность снижения температуры в
 околовенозной ткани при сохранении температурного режима внутри вены.
