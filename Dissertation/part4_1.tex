@@ -131,16 +131,19 @@
 линеаризированной модели.
 Для этого умножим уравнения~\eqref{eq:L1} на соответствующие тестовые функции
 $v, \psi \in H^1(\Omega)$ и применим формулу Грина.
-Учитывая краевые условия~\eqref{eq:L2}, получим:
+Учитывая краевые условия~\eqref{eq:L2},
+получим вариационные равенства $\forall v, \psi \in H^1(\Omega)$:
 \begin{equation*}
     \begin{aligned}
         & a( \nabla \theta, \nabla v ) + \int_\Gamma \beta \theta v d\Gamma
-        + \left(b \kappa_a (| \theta | \theta^3 - \varphi ), v\right)
+        + \left(b \kappa_a (\left(4 \widetilde{\theta}^{3}
+        \theta-3 \widetilde{\theta}^{4}\right) - \varphi ), v\right)
         = \int_\Gamma \beta \theta_b v d\Gamma,
         \\
         & \alpha (\nabla \varphi,\nabla \psi)
         + \int_{\Gamma_0 \cup \Gamma_2} \gamma \varphi v d\Gamma
-        + \left( (\kappa_a (\varphi - |\theta|\theta^3), \psi\right)
+        + \left( (\kappa_a (\varphi - \left(4 \widetilde{\theta}^{3}
+        \theta-3 \widetilde{\theta}^{4}\right)), \psi\right)
         = \int_{\Gamma} \gamma \theta_b^4 \psi d\Gamma.
     \end{aligned}
 \end{equation*}
@@ -185,12 +188,12 @@ $\theta_b = 0.1 + y / 2$.
 Инструментарий для получения изображений можно найти в репозитории~\cite{mesenev-github}.
 
 \textbf{Пример 2} (трёхмерная область).
-В таком случае область $\Omega=\{(x,y,z),\, 0 \leq x,y,z \leq 1 \}$.
-Переопределим функции $\gamma, \theta_b$ следующим образом:
+Пусть $\Omega=\{(x,y,z),\, 0 \leq x,y,z \leq 1 \}$.
+Определим функции $\gamma, \theta_b$ следующим образом:
 $\gamma = 0.8 \cos\left(\frac{\pi}{2} z\right) + 0.5$,
 $\theta_b = 1- y / 2 + z /2$.
 
-Начальное приближение также выбрано нулевым.
+Начальное приближение также выберем нулевым.
 Для нахождения состояния потребовалось шесть итераций,
 результат представлен на рисунке~\ref{fig:4_1:boundary_3d}.
 \begin{figure}[h!t]
