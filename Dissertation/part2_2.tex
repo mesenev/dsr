@@ -2,7 +2,7 @@
 задачи сложного теплообмена с граничными условиями типа
 Коши}\label{sec:ch2/sec2}
 
-\subsection{Постановка обратной задачи}\label{subsec:ch2/sec2/subsec1}
+\subsection{Постановка задачи, не содержащей краевых условий для интенсивности излучения}\label{subsec:ch2/sec2/subsec1}
 Рассмотрим систему эллиптических уравнений~\eqref{eq:2_1:initial}
 моделирующую стационарный радиационный и диффузиозный теплообмен в
 ограниченной области $\Omega \subset \mathbb{R}^3$.
@@ -242,7 +242,7 @@ $s > 0$, $h \in \mathbb R$ для монотонной степенной фун
     к пределу в~\eqref{eq:2_2:ms}.
     Поэтому
     \[
-        a A \hat{\theta} + b \kappa_a ([\hat{\theta}]^4 - \hat{\varphi} = Br), \;
+        a A \hat{\theta} + b \kappa_a ([\hat{\theta}]^4 - \hat{\varphi}) = Br, \;
         \alpha A \hat{\varphi} + \kappa_a (\hat{\varphi} -[\hat{\theta}]^4) = B \hat{u},
     \]
     и при этом $j_\lambda \leq J_\lambda(\hat{\theta},
@@ -332,6 +332,9 @@ $s > 0$, $h \in \mathbb R$ для монотонной степенной фун
     \end{equation}
     и при этом $\lambda\hat{u} = p_2$.
 \end{theorem}
+
+Полученные условия оптимальности используются в главе~\ref{ch:ch4} при разработке алгоритма
+нахождения квазирешения.
 
 \subsection{Аппроксимация задачи с условиями типа Коши}
 \label{subsec:ch2/sec2/approximation}
@@ -435,8 +438,4 @@ $\theta_\lambda,\,\partial_n\theta_\lambda$ при малых $\lambda$
 аппроксимируют краевые условия задачи~\eqref{eq:2_2:eq1}-\eqref{eq:2_2:bc2}.
 
 В главе~\ref{subsec:ch4/sec4/subsec1} рассмотрен численный метод решения задачи
-и преведены численные примеры, демонстрирующие его эффективность.
-
-
-
-
+и приведены численные примеры, демонстрирующие его эффективность.

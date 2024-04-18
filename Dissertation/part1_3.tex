@@ -8,11 +8,11 @@ $Q = \Omega \times (0, T)$, $\Sigma = \Gamma \times (0, T)$.
 Введем следующие обозначения: $|\Omega|$ — объем области $\Omega$,
 $|\Gamma|$ — площадь границы $\Gamma$, $\mu(E)$ — мера множества $E$;
 $L^p(\Omega)$, $L^p(\Gamma)$, $1 \le p \le \infty$ — пространства Лебега;
-$H^s(\Omega)$ — пространство Соболева $W^{2s}(\Omega)$,
+$H^s(\Omega)$ — пространство Соболева $W^{s}_{2}(\Omega)$,
 $H^1_0(\Omega) = \{v \in H^1(\Omega) : v|_\Gamma = 0\}$,
 $C^\infty_0(\Omega)$ — пространство функций класса $C^\infty$
 с компактным носителем в $\Omega$; аналогично определяются пространства
-вектор-функций $L^p_s(\Omega)$, $H^s(\Omega)$, $H^1_0(\Omega)$,
+вектор-функций $L^p(\Omega)$, $H^s(\Omega)$, $H^1_0(\Omega)$,
 $C^\infty_0(\Omega)$; $L^p(0, T; X)$ — пространство Лебега функций
 со значениями в банаховом пространстве $X$, $C([0, T]; X)$ — пространство
 функций, непрерывных на $[0, T]$, со значениями в $X$, $X'$ — пространство,
@@ -27,7 +27,7 @@ $C^\infty_0(\Omega)$; $L^p(0, T; X)$ — пространство Лебега �
 а через $(f, v)$ — значение функционала $f \in V'$ на элементе
 $v \in V$, совпадающее со скалярным произведением в $H$,
 если $f \in H$.
-Определим пространство $\mathcal{W} = \{ y \in L^2(0, T; V):
+Определим пространство $W = \{ y \in L^2(0, T; V):
 y' \in L^2(0, T, V') \}$.
 
 Скалярное произведение в $H$ и нормы в $H$,
@@ -58,7 +58,7 @@ $V$, $V'$ определяются формулами
     Тогда для любых $a, b \ge 0$, $\epsilon > 0$
     справедливо неравенство:
     \[
-        ab \le \frac{\epsilon^p a^p}{p} + \frac{b^q}{q\epsilon}.
+        ab \le \frac{\epsilon^p a^p}{p} + \frac{b^q}{\epsilon^q}.
     \]
 \end{lemma}
 
@@ -118,21 +118,11 @@ $V$, $V'$ определяются формулами
 
 \begin{theorem}[Принцип Шаудера]
     \label{thm:schauder}~\cite[с.~193]{Lusternik1982}
-    Пусть $X$ — банахово пространство, $M \subset X$ — выпуклое
+    Пусть $X$ — банахово пространство, $M \subset X$ — ограниченное выпуклое
     замкнутое множество, $A : M \to M$ — вполне непрерывный оператор.
     Тогда оператор $A$ имеет неподвижную точку $x \in M$, т.е. $Ax = x$.
 \end{theorem}
 
-\begin{lemma}
-    \label{lem:embedding}~\cite[с.~365]{Zeidler1990a}
-    Пусть $X, Y, Z$ — банаховы пространства и $X \subset Y \subset Z$,
-    причем вложение $X \subset Y$ компактно,
-    а вложение $Y \subset Z$ непрерывно.
-    Тогда для любого $\varepsilon > 0$ существует постоянная
-    $C_\varepsilon > 0$ такая, что
-    $\|u\|_Y \leq \varepsilon \|u\|_X
-    + C_\varepsilon \|u\|_Z \ \forall u \in X$.
-\end{lemma}
 
 \begin{theorem}
     \label{thm:compactness}~\cite[теорема 3]{Simon1986}
@@ -191,82 +181,6 @@ $V$, $V'$ определяются формулами
     $1 \leq s \leq p \leq \infty$.
 \end{lemma}
 
-\begin{lemma}
-    \label{lem:Lp_separability_reflexivity}~\cite[с. 1020]{Zeidler1990b}
-    Пространство $L^p(\Omega)$ сепарабельно при $1 \leq p < \infty$
-    и рефлексивно при $1 < p < \infty$.
-\end{lemma}
-
-\begin{lemma}
-    \label{lem:convergence_max_function}
-    Пусть $f_k \to f$ в $L^p(\Omega)$, $1 \leq p < \infty$.
-    Тогда $g_k \to g$ в $L^p(\Omega)$,
-    где $g_k = \max\{f_k, 0\}$, $g = \max\{f, 0\}$.
-\end{lemma}
-
-\begin{proof}
-    Так как $|g_k - g| \leq |f_k - f|$, то
-    \begin{equation*}
-        \|g_k - g\|_{L^p(\Omega)} =
-        \int_{\Omega} |g_k - g|^p \mathrm{d}x
-        \leq \int_{\Omega} |f_k - f|^p \mathrm{d}x =
-        \|f_k - f\|_{L^p(\Omega)} \to 0.
-    \end{equation*}
-\end{proof}
-
-\begin{lemma}
-    \label{lem:convergence_positive_functions}
-    Пусть $f_k \to f$ в $L^p(\Omega)$, $1 \leq p < \infty$,
-    $f_k \geq 0$ почти всюду в $\Omega$.
-    Тогда $f \geq 0$ почти всюду в $\Omega$.
-\end{lemma}
-
-\begin{proof}
-    По лемме~\ref{lem:convergence_max_function} получаем,
-    что $f_k = \max\{f_k, 0\} \to \max\{f, 0\}$ в $L^p(\Omega)$.
-    Следовательно, $f = \max\{f, 0\}$,
-    поэтому $f \geq 0$ почти всюду в $\Omega$.
-\end{proof}
-
-\begin{lemma}
-    \label{lem:convergence_power_functions}
-    Пусть $f_k, f \geq 0$, $f_k \to f$ в $L^p(\Omega)$, $1 < p < \infty$.
-    Тогда $f_k^s \to f^s$ в $L^1(\Omega)$, если $1 < s < p$.
-\end{lemma}
-
-\begin{proof}
-    По формуле Лагранжа
-    \[
-        |f_k^s - f^s| \leq s \xi^{s-1} |f_k - f|
-        \leq s(f_k^{s-1} + f^{s-1}) |f_k - f|,
-    \]
-    где $\xi(x)$ находится между $f_k(x)$ и $f(x)$.
-    Применяя неравенство Гёльдера с показателями
-    $p, q = \frac{p}{p-1}$, получаем, что
-    \begin{equation}
-        \label{eq:1_7:23}
-        \begin{split}
-            \|f_k^s - f^s\|_{L^1(\Omega)} =
-            &\int_{\Omega} |f_k^s - f^s| \, dx
-            \leq s \int_{\Omega} (f_k^{s-1} + f^{s-1}) |f_k - f| \, dx \\
-            &\leq \|f_k - f\|_{L^p(\Omega)} \left( \|f_k^{s-1}\|_{L^q(\Omega)}
-            + \|f^{s-1}\|_{L^q(\Omega)} \right).
-        \end{split}
-    \end{equation}
-
-    Применяя неравенство Гёльдера с показателями $\frac{p-1}{p-s}$
-    и $\frac{p-1}{s-1}$, получаем, что
-    \[
-        \|f_k^{s-1}\|_{L^q(\Omega)} = \left(\int_{\Omega} f_k^{(s-1)p}\,
-        dx\right)^{\frac{1}{p}} \leq |\Omega|^{\frac{p-s}{p}}
-        \left(\int_{\Omega} f_k^p\, dx\right)^{\frac{s-1}{p}} =
-        |\Omega|^{\frac{s}{p}-1} \|f_k\|_{L^p(\Omega)}^{s-1}.
-    \]
-
-    Следовательно, второй сомножитель в\eqref{eq:1_7:23} ограничен,
-    поэтому $\|f_k^s - f^s\|_{L^1(\Omega)} \to 0$.
-\end{proof}
-
 \begin{theorem}[Лебег]
     \label{th:lebeg}~\cite[321]{Kolmogorov2004}
     Пусть $\Omega \subset \mathbb{R}^N$, $f_n \to f$ п.в. в $\Omega$,
@@ -286,40 +200,7 @@ $V$, $V'$ определяются формулами
 \begin{lemma}
     \label{lm:1_7:15}\cite[47]{Ziemer1989}
     Пусть $u \in H^{1}(\Omega)$, $\nabla u = 0$ n.в. в $\Omega$.
-    Тогда $u = \text{const}\, \theta \Omega$.
-\end{lemma}
-
-\begin{lemma}
-    \label{lm:1_7:16}\cite[47]{Kinderlehrer1983}
-    Пусть $u \in H^{1}(\Omega)$, $u^{+} = \max \{u, 0\}$,
-    $u^{-} = \min \{u, 0\}$.
-    Тогда $u^{+}, u^{-} \in H^{1}(\Omega)$ и
-    \[
-        \nabla u^{+} =
-        \begin{cases}
-            \nabla u, & \text{если } u > 0, \\
-            0, & \text{если } u \leq 0,
-        \end{cases}
-        \qquad
-        \nabla u^{-} =
-        \begin{cases}
-            \nabla u, & \text{если } u < 0, \\
-            0, & \text{если } u \geq 0.
-        \end{cases}
-    \]
-\end{lemma}
-
-\begin{lemma}
-    \label{lm:1_7:lipshitz}\cite[50]{Kinderlehrer1983}
-    Пусть $f(t), t \in \mathbb{R}$ - липшицева функция,
-    производная которой существует всюду, за исключением,
-    быть может, множества $\left\{a_{1}, \ldots, a_{M}\right\}$,
-    $u \in H^{1}(\Omega)$, $G \subset \mathbb{R}^{N}$.
-    Тогда $f(u) \in H^{1}(\Omega)$,
-    $\frac{\partial f(u)}{\partial x_{i}} = f^{\prime}(u)
-    \frac{\partial u}{\partial x_{i}}$,
-    где обе части этого равенства считаются равными нулю,
-    когда $x \in \bigcup_{j=1}^{M}\left\{y: u(y)=a_{j}\right\}$.
+    Тогда $u = \text{const} \; \theta \; \text{в} \; \Omega$.
 \end{lemma}
 
 \begin{lemma}
@@ -342,32 +223,6 @@ $V$, $V'$ определяются формулами
 \end{lemma}
 
 \begin{lemma}
-    \label{lm:1_7:21}\cite{berninger2009non}
-    Пусть $f(t), t \in \mathbb{R}$ - липшицева функция.
-    Для любой функции $u \in H^{1}(\Omega)$ справедливо равенство
-    $f(\gamma(u))=\gamma(f(u))$, где
-    $\gamma: H^{1}(\Omega) \rightarrow L^{2}(\Gamma)$ - оператор следа.
-\end{lemma}
-
-\begin{lemma}
-    \label{lm:1_7:22}
-    Пусть $u \in H^{1}(\Omega), u \geq 0$ n.в. в $\Omega$.
-    Тогда $\left.u\right|_{\Gamma} \geq 0$ п.в. на $\Gamma$.
-\end{lemma}
-
-\begin{proof}
-    Применим лемму~\ref{lm:1_7:21} для функции $f(t)=\max \{t, 0\}$:
-
-    \[
-        \max \left\{\left.u\right|_{\Gamma},
-        0\right\}=\left.\max \{u, 0\}\right|_{\Gamma}=\left.u\right|_{\Gamma}
-    \]
-
-
-    Следовательно, $\left.u\right|_{\Gamma} \geq 0$ п.в. на $\Gamma$.
-\end{proof}
-
-\begin{lemma}
     \label{lm:1_7:23}\cite[41]{grisvard1985elliptic}
     Для любого $\varepsilon>0$ существует постоянная $C_{\varepsilon}>0$ такая,
     что для любой функции $u \in H^{1}(\Omega)$ выполняется неравенство
@@ -376,7 +231,6 @@ $V$, $V'$ определяются формулами
         \|u\|_{L^{2}(\Gamma)}^{2} \leq \varepsilon\|\nabla u\|^{2}
         +C_{\varepsilon}\|u\|^{2}.
     \]
-
 \end{lemma}
 
 \begin{lemma}[Гронуолл]
@@ -386,59 +240,7 @@ $V$, $V'$ определяются формулами
     \[
         f(t) \leq a+b \int_{0}^{t} f(\tau) d \tau \quad \forall t \in[0, T]
     \]
-    $m o f(t) \leq a e^{b t} \forall t \in[0, T]$
-\end{lemma}
-
-\begin{lemma}
-    \label{lm:1_7:25}
-    Оператор $A: V \rightarrow V^{\prime}$, определяемый формулой
-    $(A u, v)=$ $a(\nabla u, \nabla v)+\int_{\Gamma} b u v d \Gamma$,
-    где $a>0, b \in L^{\infty}(\Gamma), b \geq b_{0}>0, b_{0}=$
-    const, непрерывен.
-\end{lemma}
-
-\begin{proof}
-    \[
-        \begin{array}{r}
-            \|A u\|_{V^{\prime}}=\sup _{\|v\|_{V}=1}(A u, v)
-            \leq \sup _{\|v\|_{V}=1}\left(a\|\nabla u\|\|\nabla v\|
-            +\|b\|_{L^{\infty}(\Gamma)}\|u\|_{L^{2}(\Gamma)}\|v\|_{L^{2}(\Gamma)}\right) \leq \\
-            \leq a\|u\|_{V}+\|b\|_{L^{\infty}(\Gamma)} C_{1}^{2}\|u\|_{V}=C\|u\|_{V},
-        \end{array}
-    \]
-    где $C_{1}$ - норма оператора следа
-    $\gamma: H^{1}(\Omega) \rightarrow L^{2}(\Gamma)$.
-\end{proof}
-
-\begin{lemma}
-    \label{lm:1_7:26}
-    Пусть $\mathbf{v} \in L^{\infty} \left(0, T; \mathbf{H}^{1}(\Omega)\right)$,
-    оператор $B(t): V \rightarrow V^{\prime}$ oпpeделяется формулой
-    $(B(t) u, v)=(\mathbf{v} \cdot \nabla u, v)$.
-    Тогда $\exists C>0:|(B(t) u, w)|
-    \leq$ $C\|u\|_{V}\|w\|_{V} \forall u, w \in V, t \in(0, T)$.
-\end{lemma}
-
-\begin{proof}
-    Применяя неравенство Гёльдера с показателями 4, 2, 4, получаем, что
-    \[
-        \begin{aligned}
-            & |(B(t) u, w)|=|(\mathbf{v} \cdot \nabla u, w)|
-            \leq\|\mathbf{v}(t)\|_{\mathbf{L}^{4}(\Omega)}
-            \|\nabla u\|\|w\|_{L^{4}(\Omega)} \leq \\
-            & \leq C_{1}^{2}\|\mathbf{v}\|_{L^{\infty}\left(0, T; \mathbf{H}^{1}
-            (\Omega)\right)}\|u\|_{V}\|w\|_{V}
-        \end{aligned}
-    \]
-    где $C_{1}-$ норма оператора вложения $H^{1}(\Omega) \subset L^{4}(\Omega)$
-\end{proof}
-
-\begin{lemma}
-    \label{lm:1_7:27}\cite[238]{Zeidler1990a}
-    Функционал $f(v)=(A v, v)^{1 / 2}$,
-    где $A$ -- оператор из леммы 1.25,
-    определяет норму в пространстве $V$,
-    эквивалентную стандартной норме в $V$.
+    $mo \; f(t) \leq a e^{bt} \; \forall \; t \in[0, T]$.
 \end{lemma}
 
 \begin{lemma}
@@ -455,36 +257,8 @@ $V$, $V'$ определяются формулами
 \end{lemma}
 
 \begin{lemma}
-    \label{lm:1_7:30}
-    Пусть $f: \mathbb{R} \rightarrow \mathbb{R},\left|f\left(x_{1}\right)
-    -f\left(x_{2}\right)\right| \leq C\left|x_{1}-x_{2}\right|$.
-    Тогда отображение $y \mapsto f(y)$ непрерывно
-    отображает пространство $C([0, T] ; H)$ в себя.
-\end{lemma}
-
-\begin{proof}
-    Пусть $y \in C([0, T] ; H)$.
-    Тогда $z=f(y) \in C([0, T] ; H)$,
-    так как $\left\|z\left(t_{1}\right)-z\left(t_{2}\right)\right\|
-    \leq C\left\|y\left(t_{1}\right)-y\left(t_{2}\right)\right\|$.
-    Поскольку $\left\|z_{1}(t)-z_{2}(t)\right\|
-    \leq C \| y\left(t_{1}\right)-$ $y\left(t_{2}\right) \|, \mathrm{TO}$
-
-    \[
-        \begin{array}{r}
-            \left\|z_{1}-z_{2}\right\|_{C([0, T] ; H)}=
-            \max _{t \in[0, T]}\left\|z_{1}(t)
-            -z_{2}(t)\right\| \leq C \max _{t \in[0, T]}\left\|y_{1}(t)
-            -y_{2}(t)\right\| = \\
-            =C\left\|y_{1}-y_{2}\right\|_{C([0, T] ; H)}.
-        \end{array}
-    \]
-    Лемма доказана.
-\end{proof}
-
-\begin{lemma}
     \label{lm:1_7:31}\cite[423]{Zeidler1990a}
-    Для любой функции и $\in W$ справедлива формуЛа
+    Для любой функции и $\in W$ справедливо равенство
     \[
         \|u(t)\|^{2}-\|u(0)\|^{2}=2 \int_{0}^{t}\left(u^{\prime}(\tau),
         u(\tau)\right) d \tau, \quad 0 \leq t \leq T
@@ -492,97 +266,10 @@ $V$, $V'$ определяются формулами
 \end{lemma}
 
 \begin{lemma}
-    \label{lm:1_7:32}
+    \label{lm:1_7:32}\cite[356]{Kolmogorov2004}
     Для любой функции и $\in W$ справедливо равенство
     \[
         \frac{d\|u(t)\|^{2}}{d t}=2\left(u^{\prime}(t),
         u(t)\right) \quad \text { n.8. нa }(0, T)
     \]
 \end{lemma}
-
-\begin{proof}
-    Продифференцируем (1.24) по $t$ согласно~\cite[356]{Kolmogorov2004}
-\end{proof}
-
-\begin{lemma}
-    \label{lm:1_7:33}
-    Пусть $y \in W, k \geq 0$.
-    Тогда $z_{1}=\max \{y-k, 0\} \in L^{2}(0, T ; V)
-    \cap$ $C([0, T] ; H), z_{2}=
-    \min \{y+k, 0\} \in L^{2}(0, T ; V) \cap C([0, T] ; H)$
-    и справедливы равенства
-    \[
-        2 \int_{0}^{t}\left(y^{\prime}(\tau), z_{k}(\tau)\right) d \tau=
-        \left\|z_{k}(t)\right\|^{2}
-        -\left\|z_{k}(0)\right\|^{2}, \quad 0 \leq t \leq T, \quad k=1,2
-    \]
-\end{lemma}
-
-\begin{proof}
-    Пространство $H^{1}(Q)$ плотно в $W$~\cite[423]{Zeidler1990a} поэтому
-    существует последовательность $y_{j} \in H^{1}(Q), y_{j} \rightarrow y$ в $W$.
-    В силу непрерывности вложения $W \subset C([0, T] ; H)$
-    имеем $y_{j} \rightarrow y$ в $C([0, T] ; H)$.
-
-    Положим $z_{1 j}=\max \left\{y_{j}-k, 0\right\}$.
-    Отображение $y \mapsto \max \{y-k, 0\}$ непрерывно отображает
-    пространство $C([0, T] ; H)$ в себя (лемма 1.30$)$, поэтому
-    $z_{1 j} \rightarrow z_{1}$ в $C([0, T] ; H)$.
-
-    Поскольку $\left\|z_{1 j}(t)\right\| \leq\left\|y_{j}(t)\right\|$
-    и $\left\|\nabla z_{1 j}(t)\right\| \leq\left\|\nabla y_{j}(t)\right\|$,
-    то $\left\|z_{1 j}(t)\right\|_{V} \leq$ $\left\|y_{j}(t)\right\|_{V}$,
-    следовательно, последовательность $z_{1 j}$ ограничена в $L^{2}(0, T ; V)$,
-    поэтому в ней существует подпоследовательность
-    $z_{1 j} \rightarrow z_{1}$ слабо в $L^{2}(0, T ; V)$.
-
-    По лемме 1.16 получаем, что
-
-    \[
-        z_{1 j}^{\prime}=
-        \left\{\begin{array}{l}
-                   y_{j}^{\prime}, \quad \text { если }
-                   y_{j}>k\left(z_{1 j}>0\right), \\
-                   0, \quad \text { если }
-                   y_{j} \leq k\left(z_{1 j}=0\right).
-        \end{array}\right.
-    \]
-    Рассмотрим интеграл
-
-    \[
-        \begin{aligned}
-            & 2 \int_{0}^{t}\left(y_{j}^{\prime}, z_{1 j}\right) d \tau=
-            2 \int_{0}^{t}\left(z_{1 j}^{\prime}, z_{1 j}\right) d \tau=
-            \int_{\Omega} \int_{0}^{t}
-            \frac{d\left(z_{1 j}^{2}\right)}{d t} d \tau d x= \\
-            &=\left\|z_{1 j}(t)\right\|^{2}-\left\|z_{1 j}(0)\right\|^{2}.
-        \end{aligned}
-    \]
-    Перейдем к пределу в (1.25) при $j \rightarrow \infty$.
-    Примем во внимание, что $y_{j}^{\prime} \rightarrow y^{\prime}$
-    сильно в $L^{2}\left(0, T ; V^{\prime}\right)$ и
-    $z_{1 j} \rightarrow z_{1}$ слабо в $L^{2}(0, T ; V)$,
-    а также $z_{1 j} \rightarrow z_{1}$ в $C([0, T] ; H)$,
-    поэтому $\left\|z_{1 j}(t)\right\| \rightarrow\left\|z_{1}(t)\right\|, t \in[0, T]$.
-    Таким образом, получаем утверждение леммы для $z_{1}$.
-    Утверждение для $z_{2}$ доказывается аналогично.
-\end{proof}
-
-\begin{theorem}
-    \label{th:1_7:7}\cite[426]{Zeidler1990a}
-    Пусть $A(t): V \rightarrow V^{\prime}$ -- линейный оператор,
-    $\forall u, v \in V$ функция $t \mapsto(A(t) u, v)$
-    измерима на $(0, T), \exists C, c>0, d \geq 0:
-    \forall u, v \in$ $V, t \in(0, T):|(A(t) u, v)|
-    \leq C\|u\|_{V}\|v\|_{V},(A(t) u, u)
-    \geq c\|u\|_{V}^{2}-d\|u\|_{H}^{2},
-    f \in$ $L^{2}\left(0, T ; V^{\prime}\right), u_{0} \in H$.
-    Тогда задача
-    \[
-        \begin{gathered}
-            u^{\prime}(t)+A(t) u(t)=f(t) \quad \text { n.в. на }(0, T),\\
-            u(0)=u_{0}, \quad u \in W
-        \end{gathered}
-    \]
-    имеет единственное решение.
-\end{theorem}

@@ -2,6 +2,10 @@
 \label{sec:ch1/sec5}
 %JPCS ВВЛА 2023
 
+В данном параграфе представлен анализ модели сложного теплообмена, в котором учитывается зависимость
+коэффициента теплопроводности от температуры.
+Результаты анализа используются в главе~\ref{sec:ch4/sec3}.
+
 \subsection{Формулировка задачи}
 \label{subsec:ch1/sec5/subsec1}
 
@@ -30,7 +34,8 @@
 
 Здесь $\theta$ -- нормированная температура, $\varphi$ -- нормированная интенсивность излучения.
 Нормирующими коэффициентами для получения из $\theta$ и $\varphi$ абсолютной температуры
-и средней интенсивности излучения являются $\mathcal{M}_{\theta}$ и $\mathcal{M}_{\varphi}$ соответственно.
+и средней интенсивности излучения являются
+$\mathcal{M}_{\theta}$ и $\mathcal{M}_{\varphi}$ соответственно~\cite{Kovtanyuk2014a}.
 Положительные параметры $b, \alpha, \beta, \gamma, p$ описывают радиационные
 и теплофизические свойства среды~\cite{ESAIM}, $\sigma(x, t)$ - произведение удельной
 теплоемкости на объемную плотность, $k(\theta)$ -- коэффициент теплопроводности,
@@ -38,7 +43,7 @@ $f$ и $g$ описывают вклад источников тепла и из
 Символом $\partial_{n}$ обозначена производная по направлению
 внешней нормали $\mathbf{n}$ к границе $\Gamma$.
 
-Предположим, что $\Omega$ -- липшицева ограниченная область,
+Как и ранее предположим, что $\Omega$ -- липшицева ограниченная область,
 $\Gamma=\partial \Omega, Q=\Omega \times(0, T), \Sigma=\Gamma \times(0, T)$.
 Обозначим через $L^{p}, 1 \leq p \leq \infty$ пространство Лебега,
 через $H^{1}$ пространство Соболева $W_{2}^{1}$ и через $L^{p}(0, T ; X)$
@@ -61,7 +66,7 @@ $\Gamma=\partial \Omega, Q=\Omega \times(0, T), \Sigma=\Gamma \times(0, T)$.
 (k2) $0<k_{0} \leq k(s) \leq k_{1},\left|k^{\prime}(s)\right| \leq k_{2},
 s \in \mathbb{R}, \quad k_{j}=$ Const.
 
-(k3) $0 \leq \theta_{b} \in L^{\infty}(\Sigma), 0 \leq \theta_{\text{в}}
+(k3) $0 \leq \theta_{b} \in L^{\infty}(\Sigma), 0 \leq \theta_{\text{in}}
 \in L^{\infty}(\Omega)$; $\gamma_{0} \leq \gamma \in L^{\infty}(\Gamma), p_{0}
 \leq p \in L^{\infty}(\Gamma), \gamma_{0}, p_{0}=$ Const $>0$.
 
@@ -75,7 +80,7 @@ s \in \mathbb{R}, \quad k_{j}=$ Const.
 
 
 Определим операторы $A_{1}: V \rightarrow V_{0}^{\prime}$ и $A_{2}: V \rightarrow V^{\prime}$
-такие, что для всех $\theta, \varphi, v$ выполняются следующие равенства:
+такие, что для всех $\theta, \varphi, v \in V$ выполняются следующие равенства:
 
 \[
     \begin{gathered}
@@ -115,14 +120,14 @@ s \in \mathbb{R}, \quad k_{j}=$ Const.
 \]
 
 \begin{remark}
-    Так как $\theta \in W$, следовательно $\theta \in C([0, T] ; V)$.
-    Таким образом, начальные условия имеют смысл.
+    Так как $\theta \in W$, следовательно $\theta \in C([0, T] ; H)$.
+    Таким образом, начальное условие имеет смысл.
 \end{remark}
 
 \subsection{Расщепление задачи}
 \label{subsec:ch1/sec5/subsec2}
 
-Определим оператор $F_{1}: L^{\infty}(\Omega) \rightarrow V$ и
+Определим операторы $F_{1}: L^{\infty}(\Omega) \rightarrow V$ и
 $F_{2}: L^{\infty}(Q) \times L^{2}(0, T ; V) \rightarrow W$ следующим образом.
 Пусть $\varphi=F_{1}(\theta)$, если
 

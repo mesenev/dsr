@@ -48,14 +48,12 @@ $A=0$ соответствует изотропному рассеянию.
 \begin{equation}
     \label{eq:1_4:4-4}
     \alpha \frac{\partial \varphi}{\partial \mathbf{n}} + \gamma
-    (\varphi-\theta_0^4)|_{\Gamma} = 0.
+    (\varphi-\theta_b^4)|_{\Gamma} = 0.
 \end{equation}
 Здесь через $\partial/\partial \mathbf{n}$ обозначаем производную
 в направлении внешней нормали.
-Неотрицательные функции
-неотрицательные константы$\theta_{0}, \gamma$, определенные на $\Gamma$,  и функция $\beta$,
-описывающая, в частности, отражающие свойства границы $\Gamma$,
-являются заданными.
+Неотрицательные функции $\theta_{b}, \gamma$, определенные на $\Gamma$, и функция $\beta$,
+описывающая, в частности, отражающие свойства границы $\Gamma$, являются заданными.
 
 \subsection{Слабое решение краевой задачи}\label{subsec:ch1/sec3/weak}
 % Далее CNSNS_2014
@@ -86,7 +84,7 @@ $A=0$ соответствует изотропному рассеянию.
     \begin{equation}
         \label{eq:1_4:4-6}
         \alpha(\nabla \varphi, \nabla \psi)+\kappa_{a}\left(\varphi-|\theta| \theta^{3},
-        \psi\right)+\int_{\Gamma} \gamma\left(\varphi-\theta_{0}^{4}\right) \psi d \Gamma=0,
+        \psi\right)+\int_{\Gamma} \gamma\left(\varphi-\theta_{0}^{4}\right) \psi d \Gamma=0.
     \end{equation}
 \end{definition}
 
@@ -107,8 +105,3 @@ $(\theta^4, \eta)$  имеет смысл для любой функции $\eta
         & 0 \leqslant \theta \leqslant M, \quad 0 \leqslant \varphi \leqslant M^{4}.
     \end{align}
 \end{theorem}
-%Доказательство теоремы~\ref{th:1_4:weakExist} основано на построении
-%операторного уравнения, которое определяет слабое решение
-%задачи~\eqref{eq:1_4:4-1}--\eqref{eq:1_4:4-4},
-%обосновании слабого принципа максимума и
-%применении принципа Лере-Шаудера.

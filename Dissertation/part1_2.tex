@@ -72,19 +72,20 @@ $\mathbf{q}_{r}-$ аппроксимация плотности потока и�
     Справедливы равенства:
     \[
         \begin{gathered}
-            \int_{S} 1 \cdot d \omega=4 \pi, \quad \int_{S} \mathbf{a}
-            \cdot \boldsymbol{\omega} d \omega=0,
+            \int_{S} 1 \cdot d \boldsymbol{\omega}=4 \pi, \quad \int_{S} \mathbf{a}
+            \cdot \boldsymbol{\omega} d \boldsymbol{\omega}=0,
             \quad \int_{S}(\mathbf{a} \cdot \boldsymbol{\omega})(\mathbf{b} \cdot \boldsymbol{\omega}) d
-            \omega=\frac{4 \pi}{3} \mathbf{a} \cdot \mathbf{b}, \\
-            \int_{S} \omega d \omega=0, \quad \int_{S}(\mathbf{a} \cdot \omega) \omega d
-            \omega=\frac{4 \pi}{3} \mathbf{a}, \\
+            \boldsymbol{\omega}=\frac{4 \pi}{3} \mathbf{a} \cdot \mathbf{b}, \\
+            \int_{S} \boldsymbol{\omega} d \omega=0,
+            \quad \int_{S}(\mathbf{a} \cdot \boldsymbol{\omega}) \boldsymbol{\omega} d
+            \boldsymbol{\omega}=\frac{4 \pi}{3} \mathbf{a}, \\
             \int_{\boldsymbol{\omega} \cdot \mathbf{a}>0} \mathbf{a} \cdot \boldsymbol{\omega} d
-            \boldsymbol{\omega}=\pi, \quad \int_{\omega \cdot \mathbf{a}>0}(\mathbf{a} \cdot
-            \boldsymbol{\omega})(\mathbf{b} \cdot \boldsymbol{\omega}) d \omega
-            =\frac{2 \pi}{3} \mathbf{a} \cdot \mathbf{b},
+            \boldsymbol{\omega}=\pi, \quad \int_{\boldsymbol{\omega} \cdot \mathbf{a}>0}(\mathbf{a} \cdot
+            \boldsymbol{\omega})(\mathbf{b} \cdot \boldsymbol{\omega}) d \boldsymbol{\omega}
+            = \frac{2 \pi}{3} \mathbf{a} \cdot \mathbf{b},
         \end{gathered}
     \]
-    где $\mathbf{a}, b$ -- любые векторы.
+    где $\mathbf{a}, \mathbf{b}$ -- любые векторы.
 \end{lemma}
 \begin{proof} Доказательство является простым упражнением.\end{proof}
 %\begin{proof}
@@ -334,7 +335,7 @@ $\mathbf{q}_{r}-$ аппроксимация плотности потока и�
     + \left(\kappa_{a}+\kappa_{s}^{\prime}\right)
     \Phi(x, t)+\nabla \varphi(x, t)=0.
 \end{equation}
-Итак, уравнения~\eqref{eq:1_2:18}\eqref{eq:1_2:19}
+Итак, уравнения~\eqref{eq:1_2:18},\eqref{eq:1_2:19}
 представляют собой $P_{1}$ приближение
 для уравнения переноса излучения.
 Дальнейшие преобразования основываются на предположении, что выполняется закон Фика:
