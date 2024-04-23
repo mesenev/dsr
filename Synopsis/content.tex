@@ -33,8 +33,126 @@
 
 
 \underline{\textbf{Первая глава}} посвящена анализу
-диффузионных моделей сложного теплообмена, основанных на $P_1$
-приближении.
+диффузионных моделей сложного теплообмена.
+В разделе 1.1 приведена модель сложного теплообмена с
+полным уравнением переноса излучения, а также её нормализованный вариант.
+Раздел 1.2 посвящен выводу модели переноса излучения в
+$P_1$ приближении.
+Для получения которого интенсивность излучения и фазовая функция заменяются линейным приближением
+соответствующих функций.
+
+\begin{gather*}
+    I^{*}(x, \omega, t) = \varphi(x, t)
+    +\boldsymbol{\Phi}(x, t) \cdot \omega, \label{eq:1_2:14}\\
+    P\left(\omega, \omega^{\prime}\right)= 1
+    + A \omega \cdot \omega^{\prime}. \label{eq:1_2:15}
+\end{gather*}
+
+Таким образом, диффузионное $P_1$ приближение уравнения переноса излучения
+представляется в виде
+\begin{equation}
+    \label{eq:1_2:21}
+    \frac{1}{c} \frac{\partial \varphi(x, t)}{\partial t}-\alpha \Delta
+    \varphi(x, t)+\kappa_{a}\left(\varphi(x, t)-\theta^{4}(x, t)\right)=0.
+\end{equation}
+\begin{equation}
+    \label{eq:1_2:23}
+    \frac{\partial \theta(x, t)}{\partial t}-a \Delta \theta(x, t)+\mathbf{v}(x, t) \cdot \nabla
+    \theta(x, t)+b \kappa_{a}\left(\theta^{4}(x, t)-\varphi(x, t)\right)=0.
+\end{equation}
+\begin{equation}
+    \label{eq:1_2:24}
+    \alpha \frac{\partial \varphi(x, t)}{\partial n}+
+    \gamma(x)\left(\varphi(x, t)-\theta_{b}^{4}(x, t)\right)=0,
+\end{equation}
+дополняется граничным условием для температуры
+\begin{equation}
+    \label{eq:1_2:25}
+    a \frac{\partial \theta(x, t)}{\partial n}
+    +\beta(x)\left(\theta(x, t)-\theta_{b}(x, t)\right)=0
+\end{equation}
+и начальными условиями
+\begin{equation}
+    \label{eq:1_2:26}
+    \theta(x, 0)=\theta_{0}(x), \quad \varphi(x, 0)=\varphi_{0}(x).
+\end{equation}
+
+В разделе 1.3 приведены определения функциональных пространств, вспомогательных утвержений и определений,
+которые используются в дальнейшем.
+
+В разделе 1.4 приведена стационарная модель сложного теплообмена
+в ограниченной области $\Omega \subset \mathbb{R}^3$ с границей $\Gamma=\partial \Omega$.
+\begin{equation}
+    \label{eq:1_4:4-1}
+    -a \Delta \theta + \textbf{v} \cdot \nabla \theta
+    + b \kappa_a \theta^4 =  b \kappa_a \varphi,
+\end{equation}
+
+\begin{equation}
+    \label{eq:1_4:4-2}
+    - \alpha \Delta \varphi + \kappa_a \varphi = \kappa_a \theta^4.
+\end{equation}
+с граничными условиями
+\begin{equation}
+    \label{eq:1_4:4-3}
+    a \frac{\partial \theta}{\partial \mathbf{n}}
+    +\left.\beta\left(\theta-\theta_{b}\right)\right|_{\Gamma}=0,
+\end{equation}
+\begin{equation}
+    \label{eq:1_4:4-4}
+    \alpha \frac{\partial \varphi}{\partial \mathbf{n}} + \gamma
+    (\varphi-\theta_b^4)|_{\Gamma} = 0.
+\end{equation}
+
+Здесь $\theta$ -- нормализованная температура, $\varphi$ --
+нормализованная интенсивность излучения, усредненная по всем
+направлениям, $\textbf{v}$ -- заданное поле скоростей, $\kappa_a$ --
+коэффициент поглощения.
+Постоянные $a$, $b$ и $\alpha$
+определяются следующим образом:
+\[
+    a=\frac{k}{\rho c_v},\quad b = \frac{4\sigma n^2 T_{\max}^3}{\rho c_v},
+    \quad \alpha=\frac{1}{3\kappa - A \kappa_s},
+\]
+где $k$ -- теплопроводность, $c_v$ -- удельная теплоемкость, $\rho$ --
+плотность, $\sigma$ -- постоянная Стефана-Больцмана, $n$ --
+показатель преломления, $T_{\max}$ -- максимальная температура в
+ненормализованной модели, $\kappa = \kappa_s + \kappa_a$ -- коэффициент
+полного взаимодействия, $\kappa_s$ -- коэффициент рассеяния.
+Также сформулировано слабое решение для задачи~\eqref{eq:1_4:4-1}--\eqref{eq:1_4:4-4}.
+
+
+Раздел 1.5 посвящен квазистационарной модели сложного теплообмена.
+Представлена следующая начально-краевая задача:
+\begin{equation}
+    \label{eq:2_3:1}
+    \begin{split}
+        & \frac{\partial \theta}{\partial t} - a \Delta \theta
+        + b \kappa_{a} \left(|\theta| \theta^{3}-\varphi\right) = 0,\\
+        & - \alpha \Delta \varphi
+        + \kappa_{a} \left(\varphi-|\theta| \theta^{3}\right) = 0,
+        \quad x \in \Omega, \quad 0 < t < T;
+    \end{split}
+\end{equation}
+\begin{align}
+    a \left(\partial_{n} \theta+\theta\right)=r,
+    & \quad \alpha\left(\partial_{n} \varphi
+    + \varphi\right) = u \text { на } \Gamma;  \label{eq:2_3:2}\\
+    & \left.\theta\right|_{t=0} = \theta_{0}. \label{eq:2_3:3}
+\end{align}
+Данная модель описывает систему связанных уравнений в частных про
+изводных, моделирующих квазистационарный радиационный и диффузионный
+теплообмен.
+Дано определение слабого решения, доказана лемма о существовании и единственности
+слабого решения, а также справедливости утверждений
+\[
+    \psi=[\theta]^{5 / 2} \in L^{\infty}(0, T ; H) \cap L^{2}(0, T ; V),
+    \quad[\theta]^{4} \in L^{2}(0, T ; H).
+\]
+Данная лемма широко используется в дальнейшем. %TODO: где именно?
+
+В разделе 1.6 рассмотрена квазилинейная модель сложного теплообмена.
+
 
 
 \underline{\textbf{Вторая глава}} посвящена исследованию
@@ -66,14 +184,14 @@
     \renewcommand{\bibname}{\large \bibtitleauthor}
     \nocite{*}
     \insertbiblioauthor           % Подключаем Bib-базы
-    %\insertbiblioexternal   % !!! bibtex не умеет работать с несколькими библиографиями !!!
+%\insertbiblioexternal   % !!! bibtex не умеет работать с несколькими библиографиями !!!
 }{% Реализация пакетом biblatex через движок biber
-    % Цитирования.
-    %  * Порядок перечисления определяет порядок в библиографии (только внутри подраздела, если `\insertbiblioauthorgrouped`).
-    %  * Если не соблюдать порядок "как для \printbibliography", нумерация в `\insertbiblioauthor` будет кривой.
-    %  * Если цитировать каждый источник отдельной командой --- найти некоторые ошибки будет проще.
-    %
-    %% authorvak
+% Цитирования.
+%  * Порядок перечисления определяет порядок в библиографии (только внутри подраздела, если `\insertbiblioauthorgrouped`).
+%  * Если не соблюдать порядок "как для \printbibliography", нумерация в `\insertbiblioauthor` будет кривой.
+%  * Если цитировать каждый источник отдельной командой --- найти некоторые ошибки будет проще.
+%
+%% authorvak
     \nocite{vakbib1}%
     \nocite{vakbib2}%
     %
@@ -100,34 +218,34 @@
     \ifnumgreater{\value{usefootcite}}{0}{
         \begin{refcontext}[labelprefix={}]
             \ifnum \value{bibgrouped}>0
-                \insertbiblioauthorgrouped    % Вывод всех работ автора, сгруппированных по источникам
+            \insertbiblioauthorgrouped    % Вывод всех работ автора, сгруппированных по источникам
             \else
-                \insertbiblioauthor      % Вывод всех работ автора
+            \insertbiblioauthor      % Вывод всех работ автора
             \fi
         \end{refcontext}
     }{
         \ifnum \totvalue{citeexternal}>0
-            \begin{refcontext}[labelprefix=A]
-                \ifnum \value{bibgrouped}>0
-                    \insertbiblioauthorgrouped    % Вывод всех работ автора, сгруппированных по источникам
-                \else
-                    \insertbiblioauthor      % Вывод всех работ автора
-                \fi
-            \end{refcontext}
-        \else
+        \begin{refcontext}[labelprefix=A]
             \ifnum \value{bibgrouped}>0
-                \insertbiblioauthorgrouped    % Вывод всех работ автора, сгруппированных по источникам
+            \insertbiblioauthorgrouped    % Вывод всех работ автора, сгруппированных по источникам
             \else
-                \insertbiblioauthor      % Вывод всех работ автора
+            \insertbiblioauthor      % Вывод всех работ автора
             \fi
+        \end{refcontext}
+        \else
+        \ifnum \value{bibgrouped}>0
+        \insertbiblioauthorgrouped    % Вывод всех работ автора, сгруппированных по источникам
+        \else
+        \insertbiblioauthor      % Вывод всех работ автора
         \fi
-        %  \insertbiblioauthorimportant  % Вывод наиболее значимых работ автора (определяется в файле characteristic во второй section)
+        \fi
+    %  \insertbiblioauthorimportant  % Вывод наиболее значимых работ автора (определяется в файле characteristic во второй section)
         \begin{refcontext}[labelprefix={}]
             \insertbiblioexternal            % Вывод списка литературы, на которую ссылались в тексте автореферата
         \end{refcontext}
-        % Невидимый библиографический список для подсчёта количества внешних публикаций
-        % Используется, чтобы убрать приставку "А" у работ автора, если в автореферате нет
-        % цитирований внешних источников.
+    % Невидимый библиографический список для подсчёта количества внешних публикаций
+    % Используется, чтобы убрать приставку "А" у работ автора, если в автореферате нет
+    % цитирований внешних источников.
         \printbibliography[heading=nobibheading, section=0, env=countexternal, keyword=biblioexternal, resetnumbers=true]%
     }
 }
