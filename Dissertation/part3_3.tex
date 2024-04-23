@@ -81,7 +81,9 @@ $\Gamma =\partial \Omega, Q =\Omega \times(0, T)$, $\Sigma=\Gamma \times(0, T)$.
 Более того, обратный оператор $B^{-1}: H \rightarrow V$ является непрерывным.
 Следовательно, мы можем исключить интенсивность излучения $\varphi=u_{2} B^{-1} \chi$
 и сформулировать задачу оптимального управления следующим образом.
-\begin{definition}[Задача $CPP$]
+
+
+Задача $CPP$.
 \[
     \begin{gathered}
         J(\theta)=\int_{G_{d}}\left(\left.\theta\right|_{t=T}
@@ -95,7 +97,6 @@ $\Gamma =\partial \Omega, Q =\Omega \times(0, T)$, $\Sigma=\Gamma \times(0, T)$.
     U_{a d}=\left\{u=u_{1} \chi+u_{2} \beta B^{-1} \chi: u_{1,2} \in L^{2}(0, T), u_{1,2}
     \geq 0, u_{1}+u_{2} \leq P\right\}
 \]
-\end{definition}
 
 \subsection{Предварительные результаты}
 \label{subsec:ch3:sec3:subsec3}
@@ -146,7 +147,7 @@ $\Gamma =\partial \Omega, Q =\Omega \times(0, T)$, $\Sigma=\Gamma \times(0, T)$.
         \leq \sigma_{2} \int_{0}^{t}\|v(\tau)\|^{2} d \tau
     \]
     Основываясь на лемме Гронуолла, мы приходим к выводу, что $v=0$ и, следовательно,
-    $\theta \leq \theta_{*}$ в $\Omega \times(0, T)$
+    $\theta \leq \theta_{*}$ в $\Omega \times(0, T)$.
 \end{proof}
 
 Леммы~\ref{lm:3_3:1} и~\ref{lm:3_3:2} влекут
@@ -172,27 +173,28 @@ $U_{a d}$ так, что $J\left(\theta_{m}\right) \rightarrow j=\inf J$, где
 
 \subsection{Метод штрафных функций}\label{subsec:ch3:sec3:subsec4}
 Рассмотрим следующую задачу оптимального управления с параметром $\varepsilon>0$,
-решения которой аппроксимируют решение задачи $CPP$ как $\varepsilon \rightarrow+0$.
-\begin{definition}
-[Задача $CPP_{\varepsilon}$]
-    \[
-        \begin{gathered}
-            J_{\varepsilon}(\theta)=\int_{G_{d}}
-            \left(\left.\theta\right|_{t=T}
-            -\theta_{d}\right)^{2} d x
-            + \frac{1}{\varepsilon} \int_{0}^{T} \int_{G_{b}} F(\theta) d x d t \rightarrow \inf \\
-            \sigma \theta^{\prime}+A(\theta)=g+u, \quad \theta(0)=\theta_{0}, \quad u \in U_{a d}
-        \end{gathered}
-    \]
-    Здесь,
-    \[
-        F(\theta)=
-        \begin{cases}
-            0, & \text { если } \theta \leq \theta_{*}, \\
-            \left(\theta-\theta_{*}\right)^{2}, & \text { если } \theta>\theta_{*}
-        \end{cases}
-    \]
-\end{definition}
+решения которой аппроксимируют решение задачи $CPP$ при $\varepsilon \rightarrow+0$.
+
+
+Задача $CPP_{\varepsilon}$.
+\[
+    \begin{gathered}
+        J_{\varepsilon}(\theta)=\int_{G_{d}}
+        \left(\left.\theta\right|_{t=T}
+        -\theta_{d}\right)^{2} d x
+        + \frac{1}{\varepsilon} \int_{0}^{T} \int_{G_{b}} F(\theta) d x d t \rightarrow \inf \\
+        \sigma \theta^{\prime}+A(\theta)=g+u, \quad \theta(0)=\theta_{0}, \quad u \in U_{a d}
+    \end{gathered}
+\]
+Здесь,
+\[
+    F(\theta)=
+    \begin{cases}
+        0, & \text { если } \theta \leq \theta_{*}, \\
+        \left(\theta-\theta_{*}\right)^{2}, & \text { если } \theta>\theta_{*}
+    \end{cases}
+\]
+
 Оценки, представленные в лемме~\ref{lm:3_3:1}, позволяют, аналогично
 доказательству теоремы~\ref{th:3_3:1}, доказать разрешимость задачи со штрафом.
 \begin{theorem}
@@ -202,8 +204,8 @@ $U_{a d}$ так, что $J\left(\theta_{m}\right) \rightarrow j=\inf J$, где
 \end{theorem}
 
 Рассмотрим аппроксимирующие свойства решений задачи со штрафом.
-Пусть $\left\{\theta_{\varepsilon}, u_{\varepsilon}\right\}$ будет решением задачи
-$\left(\mathrm{CPP}_{\varepsilon}\right)$ и $\{\theta, u\}$ будет решением задачи $CPP$.
+Пусть $\left\{\theta_{\varepsilon}, u_{\varepsilon}\right\}$ решение задачи
+$\left(\mathrm{CPP}_{\varepsilon}\right)$ и $\{\theta, u\}$ решение задачи $CPP$.
 Тогда,
 \begin{equation}
     \label{eq:3_3:6}
@@ -211,8 +213,7 @@ $\left(\mathrm{CPP}_{\varepsilon}\right)$ и $\{\theta, u\}$ будет реше
     + A\left(\theta_{\varepsilon}\right)=g + u_{\varepsilon},
     \quad \theta_{\varepsilon}(0) = \theta_{0}.
 \end{equation}
-
-так как $\left.\theta\right|_{G_{b}} \leq \theta_{*}$, верны следующие неравенства:
+Так как $\left.\theta\right|_{G_{b}} \leq \theta_{*}$, верны следующие неравенства:
 \[
     \int_{G_{d}}\left(\left.\theta_{\varepsilon}\right|_{t=T}-\theta_{d}\right)^{2} d x \leq J(\theta),
     \quad \int_{0}^{T} \int_{G_{b}} F\left(\theta_{\varepsilon}\right) d x d t \leq \varepsilon J(\theta).
@@ -229,29 +230,29 @@ $L^{2}(0, T ; H), \theta_{\varepsilon} \rightarrow \widehat{\theta}$ слабо 
 \[
     \int_{0}^{T} \int_{G_{b}} F\left(\theta_{\varepsilon}\right) d x d t \rightarrow \int_{0}^{T}
     \int_{G_{b}} F(\widehat{\theta}) dx dt\text { и }\int_{0}^{T} \int_{G_{b}}
-    F\left(\theta_{\varepsilon}\right) dx dt \rightarrow 0,
-    \text{ как } \varepsilon \rightarrow+0
+    F\left(\theta_{\varepsilon}\right) dx dt \rightarrow 0
+    \text{ при } \varepsilon \rightarrow+0
 \]
 
 Следовательно, $F(\widehat{\theta})=0$ и
 $\left.\widehat{\theta}\right|_{G_{b}} \leq \theta_{*}$.
 
-Результатов о сходимости достаточно, чтобы перейти к пределу как $\varepsilon \rightarrow+0$
-в системе состояний~\eqref{eq:3_3:6} и доказать, что предельная пара
+Результатов о сходимости достаточно, чтобы перейти к пределу при $\varepsilon \rightarrow+0$
+в системе~\eqref{eq:3_3:6} и доказать, что предельная пара
 $\{\widehat{\theta}, \widehat{u}\} \in$ $L^{2}(0, T ; V) \times U_{a d}$
-является приемлемым для задачи $CPP$.
-Поскольку функционал $J$ является слабо полунепрерывным снизу, то есть
+является допустимой для задачи $CPP$.
+Поскольку функционал $J$ является слабо полунепрерывным снизу, то
 \[
     j \leq J(\widehat{\theta}) \leq \liminf J\left(\theta_{\varepsilon}\right) \leq J(\theta)=j=\inf J.
 \]
-Тогда пара $\{\widehat{\theta}, \widehat{u}\}$ это решение задачи $CPP$.
+Тогда пара $\{\widehat{\theta}, \widehat{u}\}$ решение задачи $CPP$.
 \begin{theorem}
     Пусть выполняются условия $(c1)$-$(c4)$,
     $\theta_{0} \leq \theta_{*}$ п.в. в $\Omega, \theta_{b} \leq \theta_{*}$ п.в. в
     $\Sigma$.
     Если $\left\{\theta_{\varepsilon}, u_{\varepsilon}\right\}$ решения задачи
-    $\left(C P_{\varepsilon}\right)$ для $\varepsilon>0$, тогда существует последовательность вида
-    $\varepsilon \rightarrow+0$ $u_{\varepsilon} \rightarrow \widehat{u}$ слабо в
+    $\left(C P_{\varepsilon}\right)$ для $\varepsilon>0$, тогда существует последовательность
+    $\varepsilon \rightarrow+0$ такая, что $u_{\varepsilon} \rightarrow \widehat{u}$ слабо в
     $L^{2}(0, T ; H), \, \theta_{\varepsilon} \rightarrow \widehat{\theta}$
     слабо в $L^{2}(0, T ; V)$, сильно в $L^{2}(0, T ; H)$, где
     $\{\widehat{\theta}, \widehat{u}\}$ есть решение задачи $CPP$.

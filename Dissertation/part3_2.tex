@@ -298,26 +298,26 @@ $\theta, v \in V, \varphi, w \in$ $H^{1}(\Omega)$
 $\left.\theta\right|_{G_{2}} \leq \theta_{*}$, рассмотрим следующую задачу со штрафом.
 
 Задача $P_{\varepsilon}$.
-    $J_{\varepsilon}(\theta) \rightarrow \inf$, где
-    \[
-        \begin{aligned}
-            & J_{\varepsilon}(\theta)=\int_{0}^{T}
-            \int_{G_{1}}\left(\theta-\theta_{d}\right)^{2} d x d t \\
-            & +\frac{1}{\varepsilon} \int_{0}^{T}
-            \int_{G_{2}} F(\theta) d x d t, \\
-            & \sigma \theta^{\prime}+A(\theta)=u,
-            \quad \theta(0)=\theta_{0}, \quad u \in U_{a d}.
-        \end{aligned}
-    \]
-    Здесь,
-    \[
-        F(\theta)=
-        \begin{cases}
-            0, & \text { если } \theta \leq \theta_{*} \\
-            \left(\theta-\theta_{*}\right)^{2},
-            & \text { если } \theta>\theta_{*}
-        \end{cases}
-    \]
+$J_{\varepsilon}(\theta) \rightarrow \inf$, где
+\[
+    \begin{aligned}
+        & J_{\varepsilon}(\theta)=\int_{0}^{T}
+        \int_{G_{1}}\left(\theta-\theta_{d}\right)^{2} d x d t \\
+        & +\frac{1}{\varepsilon} \int_{0}^{T}
+        \int_{G_{2}} F(\theta) d x d t, \\
+        & \sigma \theta^{\prime}+A(\theta)=u,
+        \quad \theta(0)=\theta_{0}, \quad u \in U_{a d}.
+    \end{aligned}
+\]
+Здесь,
+\[
+    F(\theta)=
+    \begin{cases}
+        0, & \text { если } \theta \leq \theta_{*} \\
+        \left(\theta-\theta_{*}\right)^{2},
+        & \text { если } \theta>\theta_{*}
+    \end{cases}
+\]
 
 Оценки, представленные в лемме~\ref{lm:3_2:1}, также позволяют доказать разрешимость
 задачи со штрафом аналогично доказательству теоремы~\ref{th:3_2:1}.
@@ -343,12 +343,12 @@ $\left(P_{\varepsilon}\right)$ и $\{\theta, u\}$ — решение задач�
 Так как $\left.\theta\right|_{G_{2}} \leq \theta_{*}$, выполняется следующее неравенство:
 
 \[
-        \int_{0}^{T} \int_{G_{1}}\left(\theta_{\varepsilon}
-        -\theta_{d}\right)^{2} d x d t+\frac{1}{\varepsilon}
-        \int_{0}^{T} \int_{G_{2}}
-        F\left(\theta_{\varepsilon}\right) d x d t
-        \leq \int_{0}^{T} \int_{G_{1}}
-        \left(\theta-\theta_{d}\right)^{2} d x d t=J(\theta).
+    \int_{0}^{T} \int_{G_{1}}\left(\theta_{\varepsilon}
+    -\theta_{d}\right)^{2} d x d t+\frac{1}{\varepsilon}
+    \int_{0}^{T} \int_{G_{2}}
+    F\left(\theta_{\varepsilon}\right) d x d t
+    \leq \int_{0}^{T} \int_{G_{1}}
+    \left(\theta-\theta_{d}\right)^{2} d x d t=J(\theta).
 \]
 Следовательно,
 \[
@@ -410,3 +410,9 @@ $\{\widehat{\theta}, \widehat{u}\} \in L ^{2}(0, T ; V) \times U_{a d}$
     \]
     где $\{\widehat{\theta}, \widehat{u}\}$ есть решение задачи $P$\@.
 \end{theorem}
+
+\begin{remark}
+    Вопрос единственности решения задачи $P$ является открытым, что обусловлено невыпуклостью этой задачи.
+    Тем не менее, представленные результаты гарантируют сходимость решений задачи со штрафом
+    к решению задачи $P$.
+\end{remark}

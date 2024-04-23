@@ -36,6 +36,31 @@
 %        \EndFor
 %    \end{algorithmic}
 %\end{algorithm}
+\textbf{Алгоритм градиентного спуска}
+
+1.\ Выбираем значение градиентного шага $\varepsilon$,
+
+2.\ Выбираем количество итераций $N$,
+
+3.\ Выбираем начальное приближение для управления $u_{0} \in U$,
+
+4.\ для $k \leftarrow 0,1,2, \ldots, N$ выполнить:
+
+\hspace{1cm} a.\ Для заданного $u_{k}$, вычислить состояние
+$y_{k}=\left\{\theta_{k}, \varphi_{k}\right\}$, решение
+задачи~\eqref{eq:2_2:eq1}--\eqref{eq:2_2:bc1}.
+
+\hspace{1cm} b.\ Вычислить значение функционала качества
+$J_{\lambda}\left(\theta_{k}, u_{k}\right)$.
+
+\hspace{1cm} c.\ Из уравнений~\eqref{eq:2_2:oc1}, вычислить сопряженное
+состояние $p_{k}=\left\{p_{1k}, p_{2k}\right\}$,
+где $\widehat{\theta} \coloneqq \theta_{k}, \widehat{u} \coloneqq u_{k}$.
+
+\hspace{1cm} d.\ Пересчитать управление
+$u_{k+1}=u_{k}-\varepsilon\left(\lambda u_{k}-p_{2}\right).$
+
+
 
 Значение параметра $\varepsilon$ выбирается эмпирически таким образом, чтобы значение
 $\varepsilon (\lambda u_k - p_2)$ являлось существенной поправкой для $u_{k+1}$.
