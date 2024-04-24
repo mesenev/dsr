@@ -151,7 +151,29 @@ $P_1$ приближении.
 \]
 Данная лемма широко используется в дальнейшем. %TODO: где именно?
 
-В разделе 1.6 рассмотрена квазилинейная модель сложного теплообмена.
+В разделе 1.6 рассмотрена квазилинейная модель сложного теплообмена,
+представленная начально-краевой задачей в ограниченной трехмерной
+области $\Omega$ с отражающей границей $\Gamma=\partial \Omega$:
+
+\begin{equation}
+    \label{eq:1_6:1}
+    \sigma \partial \theta / \partial t
+    -\operatorname{div}(k(\theta) \nabla \theta)
+    +b\left(\theta^{3}|\theta|-\varphi\right)=f,
+\end{equation}
+\begin{equation}
+    \label{eq:1_6:2}
+    -\operatorname{div}(\alpha \nabla \varphi)
+    +\beta\left(\varphi-\theta^{3}|\theta|\right)=g, x \in \Omega, 0<t<T,
+\end{equation}
+\begin{equation}
+    \label{eq:1_6:3}
+    k(\theta) \partial_{n} \theta+\left.p\left(\theta-\theta_{b}\right)\right|_{\Gamma}=0,
+    \alpha \partial_{n} \varphi
+    +\left.\gamma\left(\varphi-\theta_{b}^{4}\right)\right|_{\Gamma}=0,
+    \left.\quad \theta\right|_{t=0}=\theta_{in}.
+\end{equation}
+
 
 
 
