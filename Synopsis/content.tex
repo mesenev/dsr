@@ -173,11 +173,89 @@ $P_1$ приближении.
     +\left.\gamma\left(\varphi-\theta_{b}^{4}\right)\right|_{\Gamma}=0,
     \left.\quad \theta\right|_{t=0}=\theta_{in}.
 \end{equation}
+Приведено определение слабой формулировки задачи~\eqref{eq:1_6:1}--\eqref{eq:1_6:3},
+даны некоторые априорные оценки решений и доказано существование решения начально-краевой задачи.
+Представлены результаты единственности ограниченных решений,
+а также сходимость к решению начально-краевой задачи рекурсивной
+последовательности
+$\theta_{m} \in W, \quad \varphi_{m} \in L^{2}(0, T ; V)$ такой, что
+\begin{equation}
+    \label{eq:1_6:10}
+    \theta_{m}=F_{2}\left(\theta_{m-1}, \varphi_{m-1}\right),
+    \quad \varphi_{m}=F_{1}\left(\theta_{m}\right), \quad m=1,2, \ldots
+\end{equation}
+где $\theta_{0}=\theta_{\text {in }}, \quad \varphi_{0}=F_{1}\left(\theta_{0}\right)$.
+
+\underline{\textbf{Вторая глава}} посвящена исследованию граничных обратных задач для
+стационарной и квазистационарной моделей сложного теплообмена.
+При решении таких задач часто встречаются краевые условия для
+эллиптических или параболических уравнений,
+когда на границе (части границы) задаётся неизвестная функция
+и её нормальная производная (условия Коши).
+
+В разделе 2.1 рассмотрена нормализованная стационарная модель,
+описывающая процесс радиационного теплопереноса в
+области $\Omega \subset \mathbb{R}^3$ с липшицевой границей $\Gamma$.
+Модель имеет следующий вид
+\begin{equation}
+    \label{eq:2_1:initial}
+    \begin{aligned}
+        - a \Delta \theta + b \kappa_a(\theta ^ 3 | \theta | - \varphi) = 0,  \\
+        - \alpha \Delta \varphi + \kappa_a (\varphi - \theta ^3 | \theta |) = 0,
+    \end{aligned}
+\end{equation}
+и дополняется граничными условиями на
+$\Gamma \coloneqq \partial \Omega =\overline{\Gamma}_0 \cup \overline{\Gamma}_1 \cup \overline{\Gamma}_2$,
+где части границы $\Gamma_0, \Gamma_1, \Gamma_2$ не имеют пересечений.
+
+\begin{equation}
+    \label{eq:2_1:initial-boundary}
+    \begin{aligned}
+        \Gamma &: \; a \partial_n \theta + \beta (\theta - \theta _b) = 0, \\
+        \Gamma_0 \cup \Gamma_2 &: \; \alpha \partial_n \varphi
+        + \gamma(\varphi - \theta_b ^4 ) = 0, \\
+        \Gamma_1 &: \; \alpha \partial_n \varphi + u(\varphi - \theta_b ^4 ) = 0. \\
+    \end{aligned}
+\end{equation}
+Функции $\gamma, \theta_b, \beta$ -- являются известными.
+Функция $u$ характеризует отражающие свойства участка границы $\Gamma_1$.
+Предполагается, что
+\begin{equation}
+    \label{eq:2_1:control_bounds}
+    0 < u_1 \leq u \leq u_2,
+\end{equation}
+где $u_1$ и $u_2$ -- заданные ограниченные функции.
+
+Рассматриваемая экстремальная задача состоит в минимизации функционала
+\begin{equation}
+    \label{eq:2_1:quality}
+    J(\theta) = \frac{1}{2} \int_{\Gamma_2} (\theta - \theta_0)^2 d\Gamma
+\end{equation}
+на решениях краевой задачи.
+
+Далее ставится задача нахождения квазирешения, которая состоит в минимизации
+функционала~\eqref{eq:2_1:quality} на компоненте $\theta$ решения системы
+\begin{equation}
+    \label{eq:2_1:weakOperational}
+    A_1 \theta + b \kappa_a (| \theta | \theta^3 - \varphi ) =
+    f, A_2 \varphi + \kappa_a (\varphi - |\theta|\theta^3) + F(\varphi, u) = g.
+\end{equation}
 
 
 
 
-\underline{\textbf{Вторая глава}} посвящена исследованию
+
+
+
+
+
+
+
+
+
+
+
+
 
 \underline{\textbf{Третья глава}} посвящена исследованию
 

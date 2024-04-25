@@ -34,7 +34,6 @@ $\mathcal{Y}_{l}^{m}(\boldsymbol{\omega})$~\cite[496]{modest2013radiative}:
     \frac{1}{4 \pi} \int_{S} P\left(\omega, \omega^{\prime}\right) d \omega=1+\frac{A}{4 \pi}
     \int_{S} \omega \cdot \omega^{\prime} d \omega=1,
 \]
-вычисление интеграла см.\ ниже.
 Коэффициент $A \in[-1,1]$ описывает анизотропию рассеяния,
 а величина $A / 3$ имеет смысл среднего косинуса угла рассеяния, поскольку
 \[
@@ -44,11 +43,9 @@ $\mathcal{Y}_{l}^{m}(\boldsymbol{\omega})$~\cite[496]{modest2013radiative}:
     \int_{S}\left(\omega \cdot \omega^{\prime}\right)
     \left(\omega \cdot \omega^{\prime}\right) d \omega=\frac{A}{3},
 \]
-вычисление интегралов см.\ ниже.
 Случай $A=0$ соответствует изотропному рассеянию.
 Диапазон допустимых значений величины $A \in[-1,1]$ обусловлен тем, что при $|A|>1$
 фазовая функция может принимать отрицательные значения.
-
 Отметим, что если функция $I^*$ ищется в виде~\eqref{eq:1_2:14},
 то~\cite[502]{modest2013radiative}:
 \begin{gather*}
@@ -66,367 +63,42 @@ $\mathbf{q}_{r}-$ аппроксимация плотности потока и�
 Следовательно, функция $\varphi(x, t)$ имеет физический смысл
 нормализованной интенсивности излучения в
 точке $x$ в момент времени $t$, усредненной по всем направлениям.
-
-\begin{lemma}
-    \label{lm:1:1}
-    Справедливы равенства:
-    \[
-        \begin{gathered}
-            \int_{S} 1 \cdot d \boldsymbol{\omega}=4 \pi, \quad \int_{S} \mathbf{a}
-            \cdot \boldsymbol{\omega} d \boldsymbol{\omega}=0,
-            \quad \int_{S}(\mathbf{a} \cdot \boldsymbol{\omega})(\mathbf{b} \cdot \boldsymbol{\omega}) d
-            \boldsymbol{\omega}=\frac{4 \pi}{3} \mathbf{a} \cdot \mathbf{b}, \\
-            \int_{S} \boldsymbol{\omega} d \omega=0,
-            \quad \int_{S}(\mathbf{a} \cdot \boldsymbol{\omega}) \boldsymbol{\omega} d
-            \boldsymbol{\omega}=\frac{4 \pi}{3} \mathbf{a}, \\
-            \int_{\boldsymbol{\omega} \cdot \mathbf{a}>0} \mathbf{a} \cdot \boldsymbol{\omega} d
-            \boldsymbol{\omega}=\pi, \quad \int_{\boldsymbol{\omega} \cdot \mathbf{a}>0}(\mathbf{a} \cdot
-            \boldsymbol{\omega})(\mathbf{b} \cdot \boldsymbol{\omega}) d \boldsymbol{\omega}
-            = \frac{2 \pi}{3} \mathbf{a} \cdot \mathbf{b},
-        \end{gathered}
-    \]
-    где $\mathbf{a}, \mathbf{b}$ -- любые векторы.
-\end{lemma}
-%\begin{proof}
-%    Первое равенство вытекает из определения поверхностного интеграла
-%    и представляет собой выражение для площади
-%    поверхности единичной сферы.
-%
-%
-%    Для вычисления остальных интегралов воспользуемся
-%    формулой перехода от поверхностного интеграла
-%    к двойному
-%    \begin{equation}
-%        \label{eq:1_2:16}
-%        \int_{S} f(\omega) d \omega=\int_{D} f
-%        \left(\omega_{1}(u, v), \omega_{2}(u, v),
-%        \omega_{3}(u, v)\right)\left|\boldsymbol{\omega}_{u}
-%        \times \boldsymbol{\omega}_{v}\right| d u d v,
-%    \end{equation}
-%
-%    где $D=\left\{(u, v): 0 \leqslant u \leqslant 2 \pi,-\frac{\pi}{2}
-%    \leqslant v \leqslant \frac{\pi}{2}\right\},
-%    \omega_{1}(u, v)=\cos u \cos v, \omega_{2}(u, v)=$ $\sin u \cos v,
-%    \omega_{3}(u, v)=\sin v,\left|\omega_{u}
-%    \times \omega_{v}\right| d u d v=\cos v d u d v-$ элемент площади поверхности единичной сферы.
-%    Тогда для вычисления остальных интегралов воспользуемся
-%    формулой перехода от поверхностного интеграла
-%    к двойному:
-%    \[
-%        \int_{S} f(\omega) d \omega=\int_{D} f\left(\omega_{1}(u, v), \omega_{2}(u, v),
-%        \omega_{3}(u, v)\right)\left|\boldsymbol{\omega}_{u} \times \boldsymbol{\omega}_{v}\right| d u d v
-%    \]
-%    где $D=\left\{(u, v): 0 \leqslant u \leqslant 2 \pi,-\frac{\pi}{2} \leqslant v \leqslant
-%    \frac{\pi}{2}\right\}, \omega_{1}(u, v)=\cos u \cos v, \omega_{2}(u, v)=$ $\sin u \cos v,
-%    \omega_{3}(u, v)=\sin v,\left|\omega_{u} \times \omega_{v}\right| d u d v=\cos v d u d v$
-%    -- элемент площади поверхности единичной сферы.
-%    Тогда
-%    \[
-%        \int_{S} f(\omega) d \omega=\int_{D} f\left(\omega_{1}(u, v), \omega_{2}(u, v),
-%        \omega_{3}(u, v)\right)\left|\boldsymbol{\omega}_{u}
-%        \times \boldsymbol{\omega}_{v}\right| d u d v.
-%    \]
-%
-%    Для вычисления второго интеграла положим
-%    $f(\boldsymbol{\omega})=\mathbf{a}
-%    \cdot \boldsymbol{\omega}=\sum_{i=1}^{3} a_{i} \boldsymbol{\omega}_{i}$,
-%
-%    \[
-%        \begin{aligned}
-%            & \int_{S} \mathbf{a} \cdot \boldsymbol{\omega} d \boldsymbol{\omega}=
-%            \int_{-\pi / 2}^{\pi / 2}
-%            \int_{0}^{2 \pi}\left(a_{1} \cos u \cos v+
-%            a_{2} \sin u \cos v+a_{3} \sin v\right) \cos v d u d v=0. \\
-%            & \text { получим } \\
-%            & \text { В третьем интеграле положим }
-%            f(\boldsymbol{\omega})=(\mathbf{a} \cdot \boldsymbol{\omega})(\mathbf{b}
-%            \cdot \boldsymbol{\omega})=\sum_{i, j=1}^{3} a_{i} b_{j}
-%            \boldsymbol{\omega}_{i} \boldsymbol{\omega}_{j} \text {, } \\
-%            & \int_{S}(\mathbf{a} \cdot \boldsymbol{\omega})(\mathbf{b}
-%            \cdot \boldsymbol{w}) d \boldsymbol{w}= \\
-%            & =\int_{-\pi / 2}^{\pi / 2} \int_{0}^{2 \pi}
-%            \mathbf{a}^{T}\left(\begin{array}{ccc}
-%                                    \cos ^{2} u \cos ^{2} v & \sin u \cos u \cos ^{2} v
-%                                    & \cos u \sin v \cos v \\\sin u \cos u \cos ^{2} v
-%                                    & \sin ^{2} u \cos ^{2} v
-%                                    & \sin u \sin v \cos v \\\cos u \sin v \cos v
-%                                    & \sin u \sin v \cos v & \sin ^{2} v
-%            \end{array}\right) \mathbf{b} \cos v d u d v= \\
-%            & =\int_{-\pi / 2}^{\pi / 2} \mathbf{a}^{T}\left(
-%            \begin{array}{ccc}
-%                \pi \cos ^{2} v & 0 & 0 \\0 & \pi \cos ^{2} v & 0 \\0 & 0 & 2 \pi \sin ^{2} v
-%            \end{array}\right) \mathbf{b} \cos v d v=\frac{4 \pi}{3} \mathbf{a} \cdot \mathbf{b}
-%        \end{aligned}
-%    \]
-%    здесь $\mathbf{a}, \mathbf{b}$ - векторы-столбцы.
-%
-%
-%    Равенства во второй строке получаются из доказанных равенств:
-%    \[
-%        \begin{gathered}
-%            \int_{S} \omega d \boldsymbol{\omega}=\sum_{i=1}^{3} \mathbf{e}_{i}
-%            \int_{S}\left(\boldsymbol{\omega}
-%            \cdot \mathbf{e}_{i}\right) d \boldsymbol{\omega}=0, \\
-%            \int_{S}(\mathbf{a} \cdot \boldsymbol{\omega}) \omega d
-%            \boldsymbol{\omega}=\sum_{i=1}^{3} \mathbf{e}_{i}
-%            \int_{S}(\mathbf{a} \cdot \boldsymbol{\omega})\left(\boldsymbol{\omega}
-%            \cdot \mathbf{e}_{i}\right) d
-%            \boldsymbol{\omega}=\frac{4 \pi}{3} \sum_{i=1}^{3}\left(\mathbf{a}
-%            \cdot \mathbf{e}_{i}\right)
-%            \mathbf{e}_{i}=\frac{4 \pi}{3} \mathbf{a}.
-%        \end{gathered}
-%    \]
-%
-%
-%    Для доказательства первого равенства в третьей строке введем систему
-%    координат так, чтобы ось $O z$ была сонаправлена с вектором а.
-%    Воспользуемся формулой~\eqref{eq:1_2:16}, в которой вместо $S$ следует
-%    взять верхнюю полусферу, $D=$ $\left\{(u, v): 0 \leqslant u
-%    \leqslant 2 \pi, 0 \leqslant v \leqslant \frac{\pi}{2}\right\}$.
-%    Заметим, что $f(\omega)=\mathbf{a} \cdot \boldsymbol{\omega}=|\mathbf{a}| \sin v$.
-%
-%    Таким образом,
-%    \[
-%        \int_{\omega \cdot \mathbf{a}>0} \mathbf{a} \cdot \omega d \omega=|\mathbf{a}|
-%        \int_{0}^{\pi / 2} \int_{0}^{2 \pi} \sin v \cos v d u d v =
-%        2 \pi \int_{0}^{\pi / 2} \sin v \cos v d v=\pi.
-%    \]
-%    Для доказательства второго равенства в третьей строке заметим, что
-%    \[
-%        \begin{gathered}
-%            \int_{S}(\mathbf{a} \cdot \boldsymbol{\omega})(\mathbf{b}
-%            \cdot \boldsymbol{\omega}) d
-%            \boldsymbol{\omega}=\int_{\boldsymbol{\omega} \cdot
-%            \mathbf{a}>0}(\mathbf{a} \cdot \boldsymbol{\omega})(\mathbf{b}
-%            \cdot \mathbf{\omega}) d
-%            \boldsymbol{\omega}+
-%            \int_{\boldsymbol{\omega} \cdot \mathbf{a}<0}(\mathbf{a}
-%            \cdot \boldsymbol{\omega})(\mathbf{b}
-%            \cdot \boldsymbol{\omega}) d \boldsymbol{\omega}, \\
-%            \int_{\omega \cdot \mathbf{a}>0}(\mathbf{a}
-%            \cdot \boldsymbol{\omega})(\mathbf{b}
-%            \cdot \boldsymbol{\omega}) d
-%            \boldsymbol{\omega}=\int_{\boldsymbol{\omega}
-%            \cdot \mathbf{a}<0}(\mathbf{a}
-%            \cdot \boldsymbol{\omega})(\mathbf{b}
-%            \cdot \boldsymbol{\omega}) d \boldsymbol{\omega},
-%        \end{gathered}
-%    \]
-%    следовательно,
-%    $
-%    \int_{\boldsymbol{\omega} \cdot \mathbf{a}>0}(\mathbf{a}
-%    \cdot \boldsymbol{\omega})(\mathbf{b}
-%    \cdot \boldsymbol{\omega}) d \boldsymbol{\omega}=
-%    \frac{1}{2} \int_{S}(\mathbf{a}
-%    \cdot \boldsymbol{\omega})(\mathbf{b}
-%    \cdot \boldsymbol{\omega}) d \boldsymbol{\omega}=
-%    \frac{2 \pi}{3} \mathbf{a} \cdot \mathbf{b}.
-%    $
-%    Лемма доказана.
-%\end{proof}
-
-Подставляя~\eqref{eq:1_2:14},\eqref{eq:1_2:15} в~\eqref{eq:1_1:9}, получаем
-\begin{gather*}
-    \frac{1}{c}\left(\frac{\partial \varphi(x, t)}{\partial t}
-    + \boldsymbol{\omega} \cdot \frac{\partial \Phi(x, t)}{\partial t}\right)
-    + \boldsymbol{\omega} \cdot \nabla \varphi(x, t) \\
-    + \boldsymbol{\omega} \cdot \nabla_{x}(\Phi(x, t) \cdot \boldsymbol{\omega})
-    + \kappa \varphi(x, t)
-    + \mathrm{\kappa} \Phi(x, t) \cdot \boldsymbol{\omega}= \\
-    \frac{\kappa_{s}}{4 \pi} \int_{S}\left(1+A \omega \cdot
-    \boldsymbol{\omega}^{\prime}\right)\left(\varphi(x, t)+\boldsymbol{\Phi}(x, t)
-    \cdot \boldsymbol{\omega}^{\prime}\right) d \boldsymbol{\omega}^{\prime}
-    + \mathrm{\kappa}_{a} \theta^{4}(x, t).
-\end{gather*}
-
-С учетом равенств
-\begin{gather*}
-    \int_{S} \Phi(x, t) \cdot \omega^{\prime} d \omega^{\prime} = 0,
-    \quad \int_{S} \omega \cdot \omega^{\prime} d \omega^{\prime} = 0, \\
-    \quad \int_{S}\left(\Phi(x, t) \cdot \omega^{\prime}\right)\left(\omega \cdot
-    \omega^{\prime}\right) d \omega^{\prime}=\frac{4 \pi}{3} \Phi(x, t) \cdot \omega
-\end{gather*}
-
-имеем
-
-\begin{gather*}
-    \frac{1}{c}\left(\frac{\partial \varphi(x, t)}{\partial t}
-    + \omega \cdot \frac{\partial \Phi(x, t)}{\partial t}\right) \\
-    + \boldsymbol{\omega} \cdot \nabla \varphi(x, t)
-    + \boldsymbol{\omega} \cdot \nabla_{x}
-    (\boldsymbol{\Phi}(x, t) \cdot \boldsymbol{\omega})
-    + \boldsymbol{\kappa} \varphi(x, t)+\mathrm{\kappa}
-    \boldsymbol{\Phi}(x, t) \cdot \boldsymbol{\omega} = \\
-    = \mathrm{k}_{s}\left(\varphi(x, t)+\frac{A}{3} \boldsymbol{\Phi}(x, t) \cdot
-    \boldsymbol{\omega}\right)+\mathrm{\kappa}_{a} \theta^{4}(x, t),
-\end{gather*}
-
-или
-
-\begin{equation}
-    \label{eq:1_2:17}
-    \begin{aligned}
-        &\frac{1}{c}\left(\frac{\partial \varphi(x, t)}{\partial t}
-        + \omega \cdot \frac{\partial \Phi(x, t)}{\partial t}\right)
-        + \omega \cdot \nabla \varphi(x, t)
-        + \omega \cdot \nabla_{x}(\Phi(x, t) \cdot \omega) \\
-        &+ \mathrm{\kappa}_{a} \varphi(x, t)+\left(\mathrm{\kappa}_{a}
-        + \mathrm{\kappa}_{s}^{\prime}\right)
-        \Phi(x, t) \cdot \omega = \mathrm{\kappa}_{a} \theta^{4}(x, t),
-    \end{aligned}
-\end{equation}
-
-где $\kappa_{s}^{\prime}=\kappa_{s}(1-A / 3)$ - приведенный коэффициент рассеяния.
-
-
-Проинтегрируем уравнение~\eqref{eq:1_2:17} по $\omega \in S$.
-Получим
-\begin{equation}
-    \label{eq:1_2:18}
-    \frac{1}{c} \frac{\partial \varphi(x, t)}{\partial t}
-    + \frac{1}{3} \operatorname{div} \Phi(x, t)
-    + \mathrm{\kappa}_{a} \varphi(x, t)
-    = \mathrm{\kappa}_{a} \theta^{4}(x, t),
-\end{equation}
-так как
-\[
-    \begin{gathered}
-        \int_{S} \omega \cdot \nabla_{x}(\Phi(x, t)
-        \cdot \boldsymbol{\omega}) d \boldsymbol{\omega}=\sum_{i=1}^{3}
-        \int_{S}\left(\boldsymbol{\omega}
-        \cdot \mathbf{e}_{i}\right)\left(\omega \cdot
-        \frac{\partial \Phi(x, t)}{\partial x_{i}}\right) d \boldsymbol{\omega} = \\
-        = \frac{4 \pi}{3} \sum_{i=1}^{3} \frac{\partial \Phi(x, t)}{\partial x_{i}} \cdot
-        \mathbf{e}_{i}=\frac{4 \pi}{3} \sum_{i=1}^{3}
-        \frac{\partial \Phi_{i}(x, t)}{\partial x_{i}}=
-        \frac{4 \pi}{3} \operatorname{div} \boldsymbol{\Phi}(x, t).
-    \end{gathered}
-\]
-
-Умножим уравнение~\eqref{eq:1_2:17} на $\omega:$
-
-\[
-    \begin{aligned}
-        \frac{1}{c} \frac{\partial \varphi(x, t)}{\partial t} \omega+&
-        \frac{1}{c}\left(\omega \cdot \frac{\partial \Phi(x, t)}{\partial t}\right)
-        \omega+(\omega \cdot \nabla \varphi(x, t)) \omega
-        +\left(\omega \cdot \nabla_{x}(\Phi(x, t)
-        \cdot \omega)\right) \omega+\\
-        &+\kappa_{a} \varphi(x, t) \omega+\left(\kappa_{a}
-        +\kappa_{s}^{\prime}\right)(\Phi(x, t)
-        \cdot \omega) \omega=\kappa_{a} \theta^{4}(x, t) \omega
-    \end{aligned}
-\]
-и проинтегрируем полученное равенство по $\omega \in S$.
-Для вычисления четвертого слагаемого представим интеграл по единичной сфере $S$
-как сумму интегралов по верхней $S_{1}$ и нижней $S_{2}$ полусферам и воспользуемся тем, что
-\[
-    \int_{S_{2}}\left(\omega \cdot \nabla_{x}(\Phi(x, t)
-    \cdot \omega)\right) \omega d
-    \omega=-\int_{S_{1}}\left(\omega \cdot \nabla_{x}(\Phi(x, t)
-    \cdot \omega)\right) \omega d \omega,
-\]
-следовательно, интеграл равен 0.
-Таким образом,
-\begin{equation}
-    \label{eq:1_2:19}
-    \frac{1}{c} \frac{\partial \Phi(x, t)}{\partial t}
-    + \left(\kappa_{a}+\kappa_{s}^{\prime}\right)
-    \Phi(x, t)+\nabla \varphi(x, t)=0.
-\end{equation}
-Итак, уравнения~\eqref{eq:1_2:18},\eqref{eq:1_2:19}
-представляют собой $P_{1}$ приближение
-для уравнения переноса излучения.
-Дальнейшие преобразования основываются на предположении, что выполняется закон Фика:
+С учётом полученных представлений и закона Фика:
 \begin{equation}
     \label{eq:1_2:20}
     \Phi(x, t)=-3 \alpha \nabla \varphi(x, t),
 \end{equation}
-где $\alpha=\frac{1}{3\left(\kappa_{a}+\kappa_{s}^{\prime}\right)}
-=\frac{1}{3 \kappa-A \kappa_{s}}$.
-Фактически мы пренебрегаем производной
-$\frac{\partial \Phi}{\partial t}$ в уравнении~\eqref{eq:1_2:19}.
-Подставив~\eqref{eq:1_2:20} в~\eqref{eq:1_2:18}, получим
+где $\alpha=\frac{1}{3\left(\kappa_{a}+\kappa_{s}^{\prime}\right)} =\frac{1}{3 \kappa-A \kappa_{s}}$,
+и пренебрегая слагаемым $\frac{1}{c}\frac{\partial}{\partial t}I^*$ в~\eqref{eq:1_1:9}
+можно получить~\cite{Kovtanyuk2014a}
 \begin{equation}
     \label{eq:1_2:21}
-    \frac{1}{c} \frac{\partial \varphi(x, t)}{\partial t}-\alpha \Delta
-    \varphi(x, t)+\kappa_{a}\left(\varphi(x, t)-\theta^{4}(x, t)\right)=0.
+    -\alpha \Delta \varphi(x, t)+\kappa_{a}\left(\varphi(x, t)-\theta^{4}(x, t)\right)=0.
 \end{equation}
+
+В~\cite{Kovtanyuk2014a} также выводятся краевые условия для $\varphi$:
+\begin{equation}
+    \label{eq:1_2:24}
+    \alpha \frac{\partial \varphi(x, t)}{\partial n}+
+    \gamma(x)\left(\varphi(x, t)-\theta_{b}^{4}(x, t)\right)=0.
+\end{equation}
+где $\gamma=\frac{\varepsilon}{2(2-\varepsilon)}$.
+Отметим, что на участках втекания и вытекания среды
+можно принять $\gamma=1/2$~\cite{JVM-14}.
+
 
 Чтобы получить уравнение для температуры, подставим~\eqref{eq:1_2:14} в~\eqref{eq:1_1:10}.
 Получим
 \begin{equation}
     \label{eq:1_2:22}
-    \frac{\partial \theta(x, t)}{\partial t}-a \Delta \theta(x, t)+\mathbf{v}(x, t) \cdot
-    \nabla \theta(x, t)+b \kappa_{a}\left(\theta^{4}(x, t)-\varphi(x, t)\right)=\frac{b}{c}
-    \frac{\partial \varphi(x, t)}{\partial t}.
+    \frac{\partial \theta(x, t)}{\partial t} - a \Delta \theta(x, t)
+    + b \kappa_{a}\left(\theta^{4}(x, t)-\varphi(x, t)\right)=0.
 \end{equation}
 Учитывая~\eqref{eq:1_2:21}, уравнение~\eqref{eq:1_2:22} можно записать в виде с кросс-диффузией:
 \[
     \frac{\partial \theta(x, t)}{\partial t}-a \Delta \theta(x, t)+\mathbf{v}(x, t) \cdot
     \nabla \theta(x, t)=b \alpha \Delta \varphi(x, t).
 \]
-
-В дальнейшем вместо уравнения~\eqref{eq:1_2:22} будем использовать уравнение
-с нулевой правой частью (см., например~\cite{frank2010optimal})
-\begin{equation}
-    \label{eq:1_2:23}
-    \frac{\partial \theta(x, t)}{\partial t}-a \Delta \theta(x, t)+\mathbf{v}(x, t) \cdot \nabla
-    \theta(x, t)+b \kappa_{a}\left(\theta^{4}(x, t)-\varphi(x, t)\right)=0.
-\end{equation}
-
-Далее выведем граничные условия типа Маршака для $P_{1}$ приближения (см.\ \cite{Marshak1947}).
-Для этого подставим~\eqref{eq:1_2:14} в граничное условие~\eqref{eq:1_1:11}:
-\[
-    \begin{gathered}
-        \varphi(x, t)+\boldsymbol{\Phi}(x, t) \cdot \boldsymbol{\omega}=\varepsilon(x)
-        \theta_{b}^{4}(x, t)+\rho^{s}(x)\left(\varphi(x, t)+\boldsymbol{\Phi}(x, t)
-        \cdot \boldsymbol{\omega}_{R}\right)+ \\
-        +\frac{\rho^{d}(x)}{\pi} \int_{\omega^{\prime} \cdot
-        \mathbf{n}>0}\left(\varphi(x, t)+\boldsymbol{\Phi}(x, t) \cdot
-        \boldsymbol{\omega}^{\prime}\right) \omega^{\prime} \cdot \mathbf{n} d \omega^{\prime}, \\
-        \quad \boldsymbol{\omega} \cdot \mathbf{n}<0, \quad
-        \boldsymbol{\omega}_{R}=\boldsymbol{\omega}-2(\boldsymbol{\omega} \cdot
-        \mathbf{n}) \mathbf{n}.
-    \end{gathered}
-\]
-Для вычисления интеграла применим лемму~\ref{lm:1:1}:
-\[
-    \begin{aligned}
-        \varphi(x, t)+\boldsymbol{\Phi}(x, t) \cdot \boldsymbol{\omega} & =
-        \varepsilon(x) \theta_{b}^{4}(x, t)+\rho^{s}(x)[\varphi(x, t) + \\
-        &+\boldsymbol{\Phi}(x, t) \cdot \boldsymbol{\omega}-2(\boldsymbol{\omega}
-        \cdot \mathbf{n})(\boldsymbol{\Phi}(x, t) \cdot \mathbf{n})]+\\
-        &+\rho^{d}(x)\left(\varphi(x, t)+\frac{2}{3} \boldsymbol{\Phi}(x, t)
-        \cdot \mathbf{n}\right), \quad \boldsymbol{\omega} \cdot \mathbf{n}<0.
-    \end{aligned}
-\]
-Умножим данное равенство на $\boldsymbol{\omega} \cdot \mathbf{n}$ и проинтегрируем по множеству
-входящих направлений, для которых $\boldsymbol{\omega} \cdot \mathbf{n}<0$.
-Получим
-\[
-    \begin{gathered}
-        -\pi \varphi(x, t)+\frac{2 \pi}{3} \boldsymbol{\Phi}(x, t) \cdot \mathbf{n}=
-        -\pi \varepsilon(x) \theta_{b}^{4}(x, t)-\pi \rho^{s}(x) \varphi(x, t)+\frac{2 \pi \rho^{s}(x)}{3}
-        \boldsymbol{\Phi}(x, t) \cdot \mathbf{n}- \\
-        -\frac{4 \pi \rho^{s}(x)}{3} \boldsymbol{\Phi}(x, t) \cdot \mathbf{n}-\pi
-        \rho^{d}(x)\left(\varphi(x, t)+\frac{2}{3} \boldsymbol{\Phi}(x, t) \cdot \mathbf{n}\right),
-    \end{gathered}
-\]
-или
-\[
-    \varepsilon(x) \varphi(x, t)=\varepsilon(x) \theta_{b}^{4}(x, t)+
-    \frac{2(2-\varepsilon(x))}{3} \boldsymbol{\Phi}(x, t) \cdot \mathbf{n}.
-\]
-Воспользуемся равенством~\eqref{eq:1_2:20}, будем иметь
-\begin{equation}
-    \label{eq:1_2:24}
-    \alpha \frac{\partial \varphi(x, t)}{\partial n}+
-    \gamma(x)\left(\varphi(x, t)-\theta_{b}^{4}(x, t)\right)=0,
-\end{equation}
-где $\gamma=\frac{\varepsilon}{2(2-\varepsilon)}$.
-Отметим, что на участках втекания и вытекания среды
-можно принять $\gamma=1/2$~\cite{JVM-14}.
 
 
 Дополним полученные соотношения граничным условием для температуры~\eqref{eq:1_1:12}:
@@ -440,7 +112,8 @@ $\frac{\partial \Phi}{\partial t}$ в уравнении~\eqref{eq:1_2:19}.
     \label{eq:1_2:26}
     \theta(x, 0)=\theta_{0}(x), \quad \varphi(x, 0)=\varphi_{0}(x).
 \end{equation}
-Соотношения~\eqref{eq:1_2:21},\eqref{eq:1_2:23}--\eqref{eq:1_2:26}
-образуют диффузионную модель сложного теплообмена.
+Соотношения~\eqref{eq:1_2:21}--\eqref{eq:1_2:26}
+образуют диффузионную модель сложного теплообмена в рамках
+$P_1$ приближения для уравнения переноса теплового излучения.
 
 \FloatBarrier
