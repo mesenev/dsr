@@ -238,11 +238,79 @@ $\Gamma \coloneqq \partial \Omega =\overline{\Gamma}_0 \cup \overline{\Gamma}_1 
 \end{equation}
 
 
-Для поставленной экстремальной задачи доказано существование решения, а также
-выведены условия оптимальности
+Для поставленной экстремальной задачи доказано существование решения,
+а также выведена система оптимальности, на котором
+основан численный алгоритм, представленный в~4.2.2.
 
 
+Раздел~2.2 содержит постановку задачи без краевых условия для интенсивности излучения.
+Будем предполагать, что на границе $\Gamma = \partial \Omega$ известно температурное поле, и тепловой поток:
+\begin{equation}
+    \label{eq:2_2:bc} \theta = \theta_b, \quad \partial_n\theta = q_b.
+\end{equation}
 
+Оптимизационный метода решения краевой задачи~\eqref{eq:2_1:initial},\eqref{eq:2_2:bc}
+заключается в рассмотрении задачи граничного
+оптимального управления с <<искусственными>> краевыми условиями
+\begin{equation}
+    \label{eq:2_2:bc3}
+    a(\partial_n\theta+\theta) = r,\;\;
+    \alpha(\partial_n\varphi+\varphi) = u \text{ на }\Gamma.
+\end{equation}
+Функция $r(x),\, x\in\Gamma$ является заданной, а неизвестная функция $u(x),\, x\in\Gamma$
+играет роль управления.
+Экстремальная задача заключается в отыскании тройки
+$\{\theta_\lambda,\varphi_\lambda,u_\lambda\}$ такой, что
+\begin{equation}
+    \label{eq:2_2:cost}
+    J_\lambda(\theta, u) = \frac{1}{2}\int\limits_\Gamma (\theta - \theta_b)^2 d\Gamma
+    + \frac{\lambda}{2}\int\limits_\Gamma u^2 d\Gamma \rightarrow\inf
+\end{equation}
+на решениях краевой задачи~\eqref{eq:2_1:initial},\eqref{eq:2_2:bc3}.
+Функция $\theta_b(x),\, x\in\Gamma$  и параметр регуляризации $\lambda>0$ заданы.
+
+Для формулировки задачи оптимального управления определим оператор
+ограничений $F(\theta, \varphi, u) : V \times V \times U \rightarrow V' \times V'$
+\[
+    F(\theta, \varphi, u) = \{ aA\theta + b \kappa_a ( [\theta]^4- \varphi) - Br,\;
+    \alpha A \varphi + \kappa_a (\varphi -[\theta]^4) - Bu\},
+\]
+где
+\[
+    (Ay,z) = (\nabla y, \nabla z) +
+    \int\limits_{\Gamma}yz d\Gamma, \;\;\; (Bw, z)
+    = \int\limits_{\Gamma}wz d\Gamma.
+\]
+Тогда задача оптимального управления $(CP)$ заключается в отыскании тройки
+$\{\theta, \varphi, u \} \in V \times V \times U$
+такой, что
+\begin{equation}
+    \label{eq:2_2:cp}
+    J_\lambda(\theta, u) \equiv \frac{1}{2}\|\theta -\theta_b\|^2_\Gamma
+    + \frac{\lambda}{2}\|u\|^2_\Gamma \rightarrow \inf,\;\; F(\theta, \varphi, u)=0.
+\end{equation}
+
+
+Доказана однозначная разрешимость краевой задачи~\eqref{eq:2_1:initial},\eqref{eq:2_2:bc3}
+и даны априорные оценки решения, которые далее используются для доказательства разрешимости
+задачи $(CP)$.
+
+Доказана следующая теорема
+\begin{theorem*}
+    Пусть выполняются условия
+    $a,b,\alpha,\kappa_a, \lambda ={\textrm Const}> 0$,
+    $\theta_b, \,q_b \in U,\;\; r=a(\theta_b+q_b)$
+    и существует решение
+    задачи~\eqref{eq:2_1:initial},\eqref{eq:2_2:bc}.
+    Если $\{\theta_\lambda,\varphi_\lambda,u_\lambda\}$ -- решение
+    задачи $(CP)$ для $\lambda>0$, то существует последовательность $\lambda\to +0$
+    такая, что
+    \[
+        \theta_\lambda\rightarrow\theta_*, \;\; \varphi_\lambda\rightarrow\varphi_*
+        \text{ слабо в }V,\text{ сильно в }H,
+    \]
+    где $\theta_*,\varphi_*$ -- решение задачи~\eqref{eq:2_1:initial},\eqref{eq:2_2:bc}.
+\end{theorem*}
 
 
 
@@ -255,13 +323,6 @@ $\Gamma \coloneqq \partial \Omega =\overline{\Gamma}_0 \cup \overline{\Gamma}_1 
 
 
 \underline{\textbf{Третья глава}} посвящена исследованию
-
-Можно сослаться на свои работы в автореферате. Для этого в файле
-\verb!Synopsis/setup.tex! необходимо присвоить положительное значение
-счётчику \verb!\setcounter{usefootcite}{1}!. В таком случае ссылки на
-работы других авторов будут подстрочными.
-Изложенные в третьей главе результаты опубликованы в~\cite{vakbib1, vakbib2}.
-Использование подстрочных ссылок внутри таблиц может вызывать проблемы.
 
 В \underline{\textbf{четвертой главе}} приведено описание
 
