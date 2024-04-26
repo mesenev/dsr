@@ -51,14 +51,13 @@ $P_1$ приближении.
 Таким образом, диффузионное $P_1$ приближение уравнения переноса излучения
 представляется в виде
 \begin{equation}
-    \label{eq:1_2:21}
-    \frac{1}{c} \frac{\partial \varphi(x, t)}{\partial t}-\alpha \Delta
-    \varphi(x, t)+\kappa_{a}\left(\varphi(x, t)-\theta^{4}(x, t)\right)=0.
+    \label{eq:1_2:23}
+    \frac{\partial \theta(x, t)}{\partial t}-a \Delta \theta(x, t)
+    +b \kappa_{a}\left(\theta^{4}(x, t)-\varphi(x, t)\right)=0.
 \end{equation}
 \begin{equation}
-    \label{eq:1_2:23}
-    \frac{\partial \theta(x, t)}{\partial t}-a \Delta \theta(x, t)+\mathbf{v}(x, t) \cdot \nabla
-    \theta(x, t)+b \kappa_{a}\left(\theta^{4}(x, t)-\varphi(x, t)\right)=0.
+    \label{eq:1_2:21}
+    - \alpha \Delta \varphi(x, t)+\kappa_{a}\left(\varphi(x, t)-\theta^{4}(x, t)\right)=0.
 \end{equation}
 \begin{equation}
     \label{eq:1_2:24}
@@ -69,40 +68,42 @@ $P_1$ приближении.
 \begin{equation}
     \label{eq:1_2:25}
     a \frac{\partial \theta(x, t)}{\partial n}
-    +\beta(x)\left(\theta(x, t)-\theta_{b}(x, t)\right)=0
+    +\beta(x)\left(\theta(x, t)-\theta_{b}(x, t)\right)=0,
 \end{equation}
-и начальными условиями
+а также начальными условиями
 \begin{equation}
     \label{eq:1_2:26}
     \theta(x, 0)=\theta_{0}(x), \quad \varphi(x, 0)=\varphi_{0}(x).
 \end{equation}
 
-В разделе 1.3 приведены определения функциональных пространств, вспомогательных утвержений и определений,
+В разделе 1.3 приведены определения функциональных пространств,
+вспомогательных утверждений и определений,
 которые используются в дальнейшем.
 
-В разделе 1.4 приведена стационарная модель сложного теплообмена
+В разделе 1.4 приведены теоретические результаты для
+стационарной модели сложного теплообмена
 в ограниченной области $\Omega \subset \mathbb{R}^3$ с границей $\Gamma=\partial \Omega$.
+\begin{equation}
+    \label{eq:1_4:4-2}
+    - \alpha \Delta \varphi + \kappa_a \varphi = \kappa_a \theta^4,
+\end{equation}
 \begin{equation}
     \label{eq:1_4:4-1}
     -a \Delta \theta + \textbf{v} \cdot \nabla \theta
     + b \kappa_a \theta^4 =  b \kappa_a \varphi,
 \end{equation}
-
-\begin{equation}
-    \label{eq:1_4:4-2}
-    - \alpha \Delta \varphi + \kappa_a \varphi = \kappa_a \theta^4.
-\end{equation}
 с граничными условиями
-\begin{equation}
-    \label{eq:1_4:4-3}
-    a \frac{\partial \theta}{\partial \mathbf{n}}
-    +\left.\beta\left(\theta-\theta_{b}\right)\right|_{\Gamma}=0,
-\end{equation}
 \begin{equation}
     \label{eq:1_4:4-4}
     \alpha \frac{\partial \varphi}{\partial \mathbf{n}} + \gamma
     (\varphi-\theta_b^4)|_{\Gamma} = 0.
 \end{equation}
+\begin{equation}
+    \label{eq:1_4:4-3}
+    a \frac{\partial \theta}{\partial \mathbf{n}}
+    +\left.\beta\left(\theta-\theta_{b}\right)\right|_{\Gamma}=0,
+\end{equation}
+
 
 Здесь $\theta$ -- нормализованная температура, $\varphi$ --
 нормализованная интенсивность излучения, усредненная по всем
@@ -119,7 +120,6 @@ $P_1$ приближении.
 показатель преломления, $T_{\max}$ -- максимальная температура в
 ненормализованной модели, $\kappa = \kappa_s + \kappa_a$ -- коэффициент
 полного взаимодействия, $\kappa_s$ -- коэффициент рассеяния.
-Также сформулировано слабое решение для задачи~\eqref{eq:1_4:4-1}--\eqref{eq:1_4:4-4}.
 
 
 Раздел 1.5 посвящен квазистационарной модели сложного теплообмена.
@@ -149,7 +149,8 @@ $P_1$ приближении.
     \psi=[\theta]^{5 / 2} \in L^{\infty}(0, T ; H) \cap L^{2}(0, T ; V),
     \quad[\theta]^{4} \in L^{2}(0, T ; H).
 \]
-Данная лемма широко используется в дальнейшем. %TODO: где именно?
+Указанный результат используется в параграфе~2.3 в анализе
+оптимизационного метода для квазистационарной модели.
 
 В разделе 1.6 рассмотрена квазилинейная модель сложного теплообмена,
 представленная начально-краевой задачей в ограниченной трехмерной
@@ -174,17 +175,11 @@ $P_1$ приближении.
     \left.\quad \theta\right|_{t=0}=\theta_{in}.
 \end{equation}
 Приведено определение слабой формулировки задачи~\eqref{eq:1_6:1}--\eqref{eq:1_6:3},
-даны некоторые априорные оценки решений и доказано существование решения начально-краевой задачи.
+даны априорные оценки решений и доказано существование решения начально-краевой задачи.
 Представлены результаты единственности ограниченных решений,
-а также сходимость к решению начально-краевой задачи рекурсивной
-последовательности
-$\theta_{m} \in W, \quad \varphi_{m} \in L^{2}(0, T ; V)$ такой, что
-\begin{equation}
-    \label{eq:1_6:10}
-    \theta_{m}=F_{2}\left(\theta_{m-1}, \varphi_{m-1}\right),
-    \quad \varphi_{m}=F_{1}\left(\theta_{m}\right), \quad m=1,2, \ldots
-\end{equation}
-где $\theta_{0}=\theta_{\text {in }}, \quad \varphi_{0}=F_{1}\left(\theta_{0}\right)$.
+а также сходимость к решению начально-краевой задачи
+последовательности, построенной рекурсивно.
+
 
 \underline{\textbf{Вторая глава}} посвящена исследованию граничных обратных задач для
 стационарной и квазистационарной моделей сложного теплообмена.
@@ -192,6 +187,7 @@ $\theta_{m} \in W, \quad \varphi_{m} \in L^{2}(0, T ; V)$ такой, что
 эллиптических или параболических уравнений,
 когда на границе (части границы) задаётся неизвестная функция
 и её нормальная производная (условия Коши).
+
 
 В разделе 2.1 рассмотрена нормализованная стационарная модель,
 описывающая процесс радиационного теплопереноса в
@@ -242,7 +238,8 @@ $\Gamma \coloneqq \partial \Omega =\overline{\Gamma}_0 \cup \overline{\Gamma}_1 
 \end{equation}
 
 
-
+Для поставленной экстремальной задачи доказано существование решения, а также
+выведены условия оптимальности
 
 
 
