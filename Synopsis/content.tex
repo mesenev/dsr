@@ -121,11 +121,11 @@ $P_1$ приближении.
 ненормализованной модели, $\kappa = \kappa_s + \kappa_a$ -- коэффициент
 полного взаимодействия, $\kappa_s$ -- коэффициент рассеяния.
 
-
+%TODO: Проверить эти формулы!
 Раздел 1.5 посвящен квазистационарной модели сложного теплообмена.
 Представлена следующая начально-краевая задача:
 \begin{equation}
-    \label{eq:2_3:1}
+    \label{eq:1_5:1}
     \begin{split}
         & \frac{\partial \theta}{\partial t} - a \Delta \theta
         + b \kappa_{a} \left(|\theta| \theta^{3}-\varphi\right) = 0,\\
@@ -137,8 +137,8 @@ $P_1$ приближении.
 \begin{align}
     a \left(\partial_{n} \theta+\theta\right)=r,
     & \quad \alpha\left(\partial_{n} \varphi
-    + \varphi\right) = u \text { на } \Gamma;  \label{eq:2_3:2}\\
-    & \left.\theta\right|_{t=0} = \theta_{0}. \label{eq:2_3:3}
+    + \varphi\right) = u \text { на } \Gamma;  \label{eq:1_5:2}\\
+    & \left.\theta\right|_{t=0} = \theta_{0}. \label{eq:1_5:3}
 \end{align}
 Данная модель описывает систему связанных уравнений в частных про
 изводных, моделирующих квазистационарный радиационный и диффузионный
@@ -312,7 +312,48 @@ $\{\theta, \varphi, u \} \in V \times V \times U$
     где $\theta_*,\varphi_*$ -- решение задачи~\eqref{eq:2_1:initial},\eqref{eq:2_2:bc}.
 \end{theorem*}
 
+В разделе~2.3 представлен анализ оптимизационного метода для квазистационарной
+модели.
+Квазистационарный радиационный и диффузионный теплообмен в ограниченной области
+$\Omega \subset \mathbb{R}^{3}$ с границей $\Gamma=\partial \Omega$ моделируем
+следующей начально-краевой задачей:
 
+\begin{equation}
+    \label{eq:2_3:1}
+    \begin{split}
+        & \frac{\partial \theta}{\partial t} - a \Delta \theta
+        + b \kappa_{a} \left(|\theta| \theta^{3}-\varphi\right) = 0,\\
+        & - \alpha \Delta \varphi
+        + \kappa_{a} \left(\varphi-|\theta| \theta^{3}\right) = 0,
+        \quad x \in \Omega, \quad 0 < t < T;
+    \end{split}
+\end{equation}
+\begin{align}
+    a \left(\partial_{n} \theta+\theta\right)=r,
+    & \quad \alpha\left(\partial_{n} \varphi
+    + \varphi\right) = u \text { на } \Gamma;  \label{eq:2_3:2}\\
+    & \left.\theta\right|_{t=0} = \theta_{0}. \label{eq:2_3:3}
+\end{align}
+
+
+Экстремальная задача состоит в том, чтобы найти тройку
+$\left\{\theta_{\lambda}, \varphi_{\lambda}, u_{\lambda}\right\}$ такую, что
+\begin{equation}
+    \label{eq:2_3:4}
+    J_{\lambda}(\theta, u)=\frac{1}{2} \int_{0}^{T}
+    \int_{\Gamma}\left(\theta-\theta_{b}\right)^{2} d \Gamma d t+\frac{\lambda}{2}
+    \int_{0}^{T} \int_{\Gamma} u^{2} d \Gamma d t \rightarrow \inf
+\end{equation}
+на решениях задачи~\eqref{eq:2_3:1}--\eqref{eq:2_3:3}.
+
+Ставится задача оптимального управления $(OC)$, доказывается существование решение задачи $(OC)$
+и выводится система оптимальности.
+Представлено доказательство сходимости решений задачи оптимального
+управления к решению задачи оптимального управления.
+
+
+В разделе~2.4 рассмотрена задача сложного теплообмена с условиями Коши для
+температуры на части границы.
 
 
 
@@ -328,7 +369,7 @@ $\{\theta, \varphi, u \} \in V \times V \times U$
 
 \FloatBarrier
 \pdfbookmark{Заключение}{conclusion}                                  % Закладка pdf
-В \underline{\textbf{заключении}} приведены основные результаты работы, которые заключаются в следующем:
+В \underline{\textbf{заключении}} приведены основные результаты работы, которые состоят в следующем:
 \input{common/concl}
 
 \pdfbookmark{Литература}{bibliography}                                % Закладка pdf
