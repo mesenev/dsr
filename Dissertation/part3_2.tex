@@ -93,10 +93,9 @@ $\theta, v \in V, \varphi, w \in$ $H^{1}(\Omega)$
     \begin{aligned}
         &(A(\theta), v)=(k(\theta) \nabla \theta, \nabla v)=(\nabla h(\theta), \nabla v) \\
         &(B \varphi, w)=(\alpha \nabla \varphi, \nabla w)+(\beta \varphi, w)+2^{-1}
-        \int_{\Gamma} \varphi w d \Gamma
+        \int_{\Gamma} \varphi w d \Gamma,
     \end{aligned}
 \]
-
 где
 \[
     h(s)=\int_{0}^{s} k(r) d r.
@@ -118,14 +117,12 @@ $\theta, v \in V, \varphi, w \in$ $H^{1}(\Omega)$
 Поэтому можно исключить интенсивность излучения $\varphi=u_{2} B^{-1} \chi$ и
 сформулировать задачу оптимального управления следующим образом.
 
-\begin{definition}
-[Задача P]
-    \label{subsec:ch3:sec2:subsec3:P}
+
+\textbf{Задача} $(P)$.
     \[
         J(\theta)=\int_{0}^{T}
         \int_{G_{1}}\left(\theta-\theta_{d}\right)^{2} d x d t \rightarrow \inf
     \]
-
     \[
         \begin{aligned}
             & \sigma \theta^{\prime}+A(\theta)=u,
@@ -134,17 +131,14 @@ $\theta, v \in V, \varphi, w \in$ $H^{1}(\Omega)$
             \quad u \in U_{a d},
         \end{aligned}
     \]
-
     где
-
     \[
         \begin{array}{r}
             U_{a d}=\left\{u=u_{1} \chi+u_{2} \beta B^{-1}
             \chi: u_{1,2} \in L^{2}(0, T),\right. \\
-            \left.u_{1,2} \geq 0, u_{1}+u_{2} \leq P\right\}
+            \left.u_{1,2} \geq 0, u_{1}+u_{2} \leq P\right\}.
         \end{array}
     \]
-\end{definition}
 
 \subsection{Предварительные результаты}
 \label{subsec:ch3:sec2:subsec4}

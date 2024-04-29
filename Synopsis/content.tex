@@ -354,16 +354,50 @@ $\left\{\theta_{\lambda}, \varphi_{\lambda}, u_{\lambda}\right\}$ такую, ч
 
 В разделе~2.4 рассмотрена задача сложного теплообмена с условиями Коши для
 температуры на части границы.
+В данном случае граница области состоит из двух участков,
+$\Gamma \coloneqq \partial \Omega =\overline{\Gamma}_1 \cup \overline{\Gamma}_2$,
+так что $\Gamma_1 \cap \Gamma_2 =  \emptyset$.
+На всей границе $\Gamma$ задается тепловой поток $q_b$,
+в качестве условия
+переопределения на $\Gamma_1$, в дополнение к условию на
+$\varphi$, задается температурное поле $\theta_b$,
+\begin{equation}
+    \label{eq:2_4:bc2}
+    \alpha\partial_n\varphi + \gamma (\varphi - \theta_b ^4 ) = 0,\;
+    \theta=\theta_b\quad x\in \Gamma_1.
+\end{equation}
 
 
+Для постановки задачи управления вводится новая неизвестная функция
+$\psi= a\theta + \alpha b \varphi$.
+Полученная краевая задача имеет вид
+\begin{equation}
+    \label{eq:2_4:eq2}
+    - a \Delta \theta + g (\theta) = \frac{\kappa_a}{\alpha}\psi, \quad
+    \Delta \psi = 0, \; x \in \Omega,
+\end{equation}
+\begin{equation}
+    \label{eq:2_4:bc3}
+    a \partial_n \theta = q_b, \; \text{ на }\Gamma, \;\;
+    \alpha \partial_n \psi + \gamma \psi  =  r,\;\;
+    \theta = \theta_b  \text{ на }\Gamma_1.
+\end{equation}
+Здесь $g(\theta) = b \kappa_a|\theta|\theta^3 + \frac{a\kappa_a}{\alpha}\theta$, $r=\alpha b \gamma \theta_b^4+ \alpha q_b + a \gamma \theta_b$.
 
 
+Для соответствующей задачи оптимального управления
+доказано существование и единственность решения.
+Приведено доказательство, что решения задачи оптимального управления
+аппроксимируют решение начальной краевой задачи.
 
 
+\underline{\textbf{Третья глава}} посвящена исследованию квазилинейных моделей.
+В разделе~3.1 рассмотрена задача оптимального управления для
+квазилинейных уравнений радиационно-кондуктивного
+теплообмена, моделирующих процесс внутривенной
+лазерной абляции в ограниченной области $\Omega$ с отражающей границей $\Gamma=\partial\Omega$.
+$\Omega$ с отражающей границей $\Gamma=\partial\Omega$.
 
-
-
-\underline{\textbf{Третья глава}} посвящена исследованию
 
 В \underline{\textbf{четвертой главе}} приведено описание
 
