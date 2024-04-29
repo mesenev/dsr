@@ -15,7 +15,7 @@
 \newcommand{\contribution}{\pdfbookmark[1]{Личный вклад}{contribution}\underline{\textbf{\contributionTXT}}}
 \newcommand{\publications}{\pdfbookmark[1]{Публикации}{publications}\underline{\textbf{\publicationsTXT}}}
 
-\input{common/characteristic} % Характеристика работы по структуре во введении и в автореферате не отличается (ГОСТ Р 7.0.11, пункты 5.3.1 и 9.2.1), потому её загружаем из одного и того же внешнего файла, предварительно задав форму выделения некоторым параметрам
+%\input{common/characteristic} % Характеристика работы по структуре во введении и в автореферате не отличается (ГОСТ Р 7.0.11, пункты 5.3.1 и 9.2.1), потому её загружаем из одного и того же внешнего файла, предварительно задав форму выделения некоторым параметрам
 
 %Диссертационная работа была выполнена при поддержке грантов \dots
 
@@ -397,6 +397,37 @@ $\psi= a\theta + \alpha b \varphi$.
 теплообмена, моделирующих процесс внутривенной
 лазерной абляции в ограниченной области $\Omega$ с отражающей границей $\Gamma=\partial\Omega$.
 $\Omega$ с отражающей границей $\Gamma=\partial\Omega$.
+Задача заключается в минимизации функционала
+\[ J(\theta)=\int_{0}^{T} \int_{G_{1}}\left(\theta-\theta_{d}\right)^{2} dx dt \rightarrow \inf \]
+на решениях начально-краевой задачи:
+\begin{equation}
+    \label{eq:3_2:1}
+    \begin{gathered}
+        \sigma \partial \theta / \partial t-\operatorname{div}(k(\theta)
+        \nabla \theta)-\beta \varphi=u_{1} \chi \\
+        -\operatorname{div}(\alpha \nabla \varphi)+\beta \varphi=u_{2}
+        \chi, \quad x \in \Omega, \quad t \in(0, T),
+    \end{gathered}
+\end{equation}
+\begin{equation}
+    \label{eq:3_2:2}
+    \theta=\left.0\right|_{\Gamma},
+    \quad \alpha \partial_{n} \varphi
+    +\left.2^{-1} \varphi\right|_{\Gamma}=0,
+    \left.\quad \theta\right|_{t=0}=\theta_{0}.
+\end{equation}
+При этом учитываются ограничения:
+\[ u_{1,2} \geq 0, \quad u_{1}+u_{2} \leq P, \left.\quad \theta\right|_{G_{2}} \leq \theta_{*} \]
+Здесь $G_{1}$ и $G_{2}$ подмножества $\Omega, \theta$
+представляют разницу между реальной температурой
+и температурой на границе, которая является постоянной.
+
+Доказано существование решения соответствующей задачи оптимального
+управления и даны априорные оценки решений.
+Показано, что решения задачи со штрафом сходятся к решению задачи оптимального управления.
+
+В разделе~3.2 приведён анализ метода штрафных функций используемого
+для решения задачи оптимального управления с финальным наблюдением.
 
 
 В \underline{\textbf{четвертой главе}} приведено описание
