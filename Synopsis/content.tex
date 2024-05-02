@@ -96,12 +96,12 @@ $P_1$ приближении.
 \begin{equation}
     \label{eq:1_4:4-4}
     \alpha \frac{\partial \varphi}{\partial \mathbf{n}} + \gamma
-    (\varphi-\theta_b^4)|_{\Gamma} = 0.
+    (\varphi-\theta_b^4)|_{\Gamma} = 0,
 \end{equation}
 \begin{equation}
     \label{eq:1_4:4-3}
     a \frac{\partial \theta}{\partial \mathbf{n}}
-    +\left.\beta\left(\theta-\theta_{b}\right)\right|_{\Gamma}=0,
+    +\left.\beta\left(\theta-\theta_{b}\right)\right|_{\Gamma}=0.
 \end{equation}
 
 
@@ -149,7 +149,7 @@ $P_1$ приближении.
     \psi=[\theta]^{5 / 2} \in L^{\infty}(0, T ; H) \cap L^{2}(0, T ; V),
     \quad[\theta]^{4} \in L^{2}(0, T ; H).
 \]
-Указанный результат используется в параграфе~2.3 в анализе
+Указанный результат используется в параграфе~2.3 при анализе
 оптимизационного метода для квазистационарной модели.
 
 В разделе 1.6 рассмотрена квазилинейная модель сложного теплообмена,
@@ -189,7 +189,7 @@ $P_1$ приближении.
 и её нормальная производная (условия Коши).
 
 
-В разделе 2.1 рассмотрена нормализованная стационарная модель,
+В разделе~2.1 рассмотрена нормализованная стационарная модель,
 описывающая процесс радиационного теплопереноса в
 области $\Omega \subset \mathbb{R}^3$ с липшицевой границей $\Gamma$.
 Модель имеет следующий вид
@@ -462,10 +462,49 @@ $\Omega$ с отражающей границей $\Gamma=\partial\Omega$.
 В \underline{\textbf{четвертой главе}} приведены разработанные численные методы решения
 параболических уравнений и задач оптимизаций.
 В разделе~4.1 приводятся алгоритмы решения прямых стационарных задач.
-Продемонстрированы примеры численного решения в двумерной и трёхмерной области.
+Рассмотрим пример численного решения задачи~\eqref{eq:1_4:4-2}--\eqref {eq:1_4:4-3}
+с параметрами, определёнными как
+$\gamma = 0.8 \cos\left(\frac{\pi}{2} z\right) + 0.5$,
+$\theta_b = 1- y / 2 + z /2$
+Начальное приближение решения выбрано нулевым.
+Результат представлен на рисунке~\ref{fig:4_1:boundary_3d}.
+\begin{figure}[h!t]
+    \begin{minipage}[b][][b]{0.49\linewidth}
+        \centering
+        \includegraphics[width=1\linewidth]{boundary/theta_3d} \\ а) $\theta$
+    \end{minipage}
+    \hfill
+    \begin{minipage}[b][][b]{0.49\linewidth}
+        \centering
+        \includegraphics[width=1\linewidth]{boundary/phi_3d} \\ б) $\varphi$
+    \end{minipage}
+    \caption{Решение граничной задачи в трёхмерной области}
+    \label{fig:4_1:boundary_3d}
+\end{figure}
 
-Далее, в разделе~4.2, рассмотрены алгоритмы решения граничных обратных задач.
+
+В разделе~4.2 рассмотрены алгоритмы решения граничных обратных задач.
 Приведён пример реализации алгоритма градиентного спуска с проекцией в двумерном случае.
+Для задачи~\eqref{eq:2_1:initial}--\eqref{eq:2_1:weakOperational}
+определим параметры среды соответствующие стеклу.
+Результаты работы алгоритма нахождения квазирешения обратной задачи
+представлены на рисунке~\ref{fig:4_3:control}.
+\begin{figure}[h!t]
+    \begin{minipage}[b][][b]{0.49\linewidth}
+        \centering
+        \includegraphics[width=1\linewidth]{dvmg368/1} \\ а) Первый эксперимент
+    \end{minipage}
+    \hfill
+    \begin{minipage}[b][][b]{0.49\linewidth}
+        \centering
+        \includegraphics[width=1\linewidth]{dvmg368/2} \\ б) Второй эксперимент
+    \end{minipage}
+    \caption{Тестовая функция $u$, начальная $u_0$, найденная функция $u_{end}.$}
+    \label{fig:4_3:control}
+\end{figure}
+
+Приведён результат работы алгоритма по решению задачи оптимального
+управления для квазистационарной модели.
 
 Приводятся алгоритмы нахождения решения для квазилинейной и квазистационарной модели.
 Алгоритмы решения задач с данными Коши, а также примеры численного моделирования подобных задач
@@ -475,17 +514,12 @@ $\Omega$ с отражающей границей $\Gamma=\partial\Omega$.
 
 \FloatBarrier
 \pdfbookmark{Заключение}{conclusion}                                  % Закладка pdf
-В \underline{\textbf{заключении}} приведены основные результаты работы, которые состоят в следующем:
+В \underline{\textbf{заключении}} приведены основные результаты работы.
 \input{common/concl}
-
-\pdfbookmark{Литература}{bibliography}                                % Закладка pdf
-При использовании пакета \verb!biblatex! список публикаций автора по теме
-диссертации формируется в разделе <<\publications>>\ файла
-\verb!common/characteristic.tex!  при помощи команды \verb!\nocite!
 
 \ifdefmacro{\microtypesetup}{\microtypesetup{protrusion=false}}{} % не рекомендуется применять пакет микротипографики к автоматически генерируемому списку литературы
 \urlstyle{rm}                               % ссылки URL обычным шрифтом
-\ifnumequal{\value{bibliosel}}{0}{% Встроенная реализация с загрузкой файла через движок bibtex8
+\ifnumequal{\value{bibliosel}}{1}{% Встроенная реализация с загрузкой файла через движок bibtex8
     \renewcommand{\bibname}{\large \bibtitleauthor}
     \nocite{*}
     \insertbiblioauthor           % Подключаем Bib-базы
