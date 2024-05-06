@@ -117,27 +117,25 @@ $\theta, v \in V, \varphi, w \in$ $H^{1}(\Omega)$
 сформулировать задачу оптимального управления следующим образом.
 
 
-\textbf{Задача} $(P)$.
-    \[
-        J(\theta)=\int_{0}^{T}
-        \int_{G_{1}}\left(\theta-\theta_{d}\right)^{2} d x d t \rightarrow \inf
-    \]
-    \[
-        \begin{aligned}
-            & \sigma \theta^{\prime}+A(\theta)=u,
-            \quad \theta(0)=\theta_{0},\left.\quad
-            \theta\right|_{G_{2}} \leq \theta_{*},
-            \quad u \in U_{a d},
-        \end{aligned}
-    \]
-    где
-    \[
-        \begin{array}{r}
-            U_{a d}=\left\{u=u_{1} \chi+u_{2} \beta B^{-1}
-            \chi: u_{1,2} \in L^{2}(0, T),\right. \\
-            \left.u_{1,2} \geq 0, u_{1}+u_{2} \leq P\right\}.
-        \end{array}
-    \]
+\textbf{Задача} $P$.
+\[
+    J(\theta)=\int_{0}^{T}
+    \int_{G_{1}}\left(\theta-\theta_{d}\right)^{2} d x d t \rightarrow \inf,
+\]
+\[
+    \begin{aligned}
+        & \sigma \theta^{\prime}+A(\theta)=u,
+        \quad \theta(0)=\theta_{0},\left.\quad
+        \theta\right|_{G_{2}} \leq \theta_{*},
+        \quad u \in U_{a d},
+    \end{aligned}
+\]
+где
+\[
+    U_{a d}=\left\{u=u_{1} \chi+u_{2} \beta B^{-1}
+    \chi: u_{1,2} \in L^{2}(0, T),\right.
+    \left.u_{1,2} \geq 0, u_{1}+u_{2} \leq P\right\}.
+\]
 
 \subsection{Предварительные результаты}
 \label{subsec:ch3:sec2:subsec4}
@@ -295,14 +293,14 @@ $J_{\varepsilon}(\theta) \rightarrow \inf$, где
 \[
     \begin{aligned}
         & J_{\varepsilon}(\theta)=\int_{0}^{T}
-        \int_{G_{1}}\left(\theta-\theta_{d}\right)^{2} d x d t \\
-        & +\frac{1}{\varepsilon} \int_{0}^{T}
+        \int_{G_{1}}\left(\theta-\theta_{d}\right)^{2} dx dt
+         +\frac{1}{\varepsilon} \int_{0}^{T}
         \int_{G_{2}} F(\theta) d x d t, \\
         & \sigma \theta^{\prime}+A(\theta)=u,
         \quad \theta(0)=\theta_{0}, \quad u \in U_{a d}.
     \end{aligned}
 \]
-Здесь,
+Здесь
 \[
     F(\theta)=
     \begin{cases}
@@ -318,12 +316,12 @@ $J_{\varepsilon}(\theta) \rightarrow \inf$, где
 \begin{theorem}
     \label{th:3_2:2}
     Пусть выполняются условия $(c1)$-$(c3)$.
-    Тогда существует решение задачи $\left(P_{\varepsilon}\right)$.
+    Тогда существует решение задачи $P_{\varepsilon}$.
 \end{theorem}
 
 Рассмотрим аппроксимационные свойства решений задачи со штрафом.
 Пусть $\left\{\theta_{\varepsilon}, u_{\varepsilon}\right\}$ — решения задачи
-$\left(P_{\varepsilon}\right)$ и $\{\theta, u\}$ — решение задачи P\@.
+$P_{\varepsilon}$ и $\{\theta, u\}$ — решение задачи P\@.
 Тогда,
 
 \begin{equation}
@@ -345,12 +343,10 @@ $\left(P_{\varepsilon}\right)$ и $\{\theta, u\}$ — решение задач�
 \]
 Следовательно,
 \[
-    \begin{aligned}
-        &\int_{0}^{T} \int_{G_{1}}\left(\theta_{\varepsilon}
-        -\theta_{d}\right)^{2} d x d t \leq J(\theta), \\
-        &\int_{0}^{T} \int_{G_{2}} F
+        \int_{0}^{T} \int_{G_{1}}\left(\theta_{\varepsilon}
+        -\theta_{d}\right)^{2} d x d t \leq J(\theta), \quad
+        \int_{0}^{T} \int_{G_{2}} F
         \left(\theta_{\varepsilon}\right) d x d t \leq \varepsilon J(\theta).
-    \end{aligned}
 \]
 
 
@@ -361,8 +357,8 @@ $\left(P_{\varepsilon}\right)$ и $\{\theta, u\}$ — решение задач�
 \[
     \begin{aligned}
         u_{\varepsilon}  \rightarrow \widehat{u} & \text { слабо в } L^{2}(0, T ; H); \\
-        \theta_{\varepsilon}  \rightarrow \widehat{\theta} & \text { слабо в } L^{2}(0, T ; V), \\
-        & \text { сильно в } L^{2}(0, T; H).
+        \theta_{\varepsilon}  \rightarrow \widehat{\theta} & \text { слабо в } L^{2}(0, T ; V),
+        \text { сильно в } L^{2}(0, T; H).
     \end{aligned}
 \]
 Заметим, что
@@ -395,17 +391,14 @@ $\{\widehat{\theta}, \widehat{u}\} \in L ^{2}(0, T ; V) \times U_{a d}$
     \label{th:3_2:3}
     Пусть выполнены условия $(c1)$-$(c3)$, и $\theta_{0} \leq \theta_{*}$ п.\ в. в $\Omega$.
     Если $\left\{\theta_{\varepsilon}, u_{\varepsilon}\right\}$ есть решение задачи
-    $\left(P_{\varepsilon}\right)$ для $\varepsilon>0$, тогда существует
+    $P_{\varepsilon}$ для $\varepsilon>0$, тогда существует
     такая последовательность $\varepsilon \rightarrow+0$, что
     \[
-        \begin{aligned}
-            &u_{\varepsilon} \rightarrow \widehat{u} \text { слабо в } L^{2}(0, T ; H) \\
-            &\theta_{\varepsilon} \rightarrow \widehat{\theta} \text { сильно в } L^{2}(0, T ; H),
-        \end{aligned}
+            u_{\varepsilon} \rightarrow \widehat{u} \text { слабо в } L^{2}(0, T ; H), \quad
+            \theta_{\varepsilon} \rightarrow \widehat{\theta} \text { сильно в } L^{2}(0, T ; H),
     \]
     где $\{\widehat{\theta}, \widehat{u}\}$ есть решение задачи $P$\@.
 \end{theorem}
-
 \begin{remark}
     Вопрос единственности решения задачи $P$ является открытым, что обусловлено невыпуклостью этой задачи.
     Тем не менее, представленные результаты гарантируют сходимость решений задачи со штрафом

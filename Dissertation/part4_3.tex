@@ -227,7 +227,6 @@ $J\left(\theta_{N-1}\right)-J\left(\theta_{N}\right)<10^{-15}$.
     \end{cases}
 \]
 
-
 \subsection{Примеры численного моделирования для двумерного случая}
 \label{subsec:ch4/sec3/numeric-samples}
 
@@ -623,8 +622,8 @@ $1950 \text{~нм}, P=6 \text{~Вт}$ (синий).
 
 \begin{figure}[h!t]
     \centerfloat{\includegraphics[scale=0.33]{6_cheb/4}}
-    \caption{Поведение температуры в точках $(1.5,10)$ (твердое тело),
-        $(2.5,10)$ ( пунктирной линией) и $(3,5,10)$ (пунктирной линией).
+    \caption{Поведение температуры в точках $(1.5,10)$ (сплошная линия),
+        $(2.5,10)$ (пунктирной линией) и $(3,5,10)$ (пунктирной линией с точкой).
         Длина волны равна $810 \text{~нм},\left(P_{\varphi},
         P_{\theta}\right)=(7 \text{~W}, 3 \text{~W})$.}
     \label{fig:4_3:6}
@@ -668,37 +667,32 @@ $\Omega \subset \mathbb{R}^{3}$ с границей $\Gamma=\partial \Omega$
 
 
 Рассмотрим итерационный алгоритм решения задачи оптимального управления
-$\left(P_{\varepsilon}\right)$ для случая, когда параметры управления
+$P_{\varepsilon}$ для случая, когда параметры управления
 $u_{1}$ и $u_{2}$ не зависят от времени.
 На каждой итерации алгоритма
 решается линейно-квадратичная задача оптимального управления,
 в которой требуется найти минимум функционала:
-
 \begin{equation}
     \label{eq:3_2:9}
-    \begin{aligned}
-        &\widehat{J}_{\varepsilon}(\theta)=\int_{0}^{T}
-        \int_{G_{1}}\left(\theta-\theta_{d}\right)^{2} d x d t \\
-        &+\frac{1}{\varepsilon} \int_{0}^{T}
-        \int_{G_{*}}\left(\theta-\theta_{*}\right)^{2} d x d t
-        \rightarrow \inf, \quad u\in U_{a d}
-    \end{aligned}
+    \widehat{J}_{\varepsilon}(\theta)=\int_{0}^{T}
+    \int_{G_{1}}\left(\theta-\theta_{d}\right)^{2} dx dt
+    +\frac{1}{\varepsilon} \int_{0}^{T}
+    \int_{G_{*}}\left(\theta-\theta_{*}\right)^{2} dx dt
+    \rightarrow \inf, \quad u\in U_{ad}
 \end{equation}
-
 с соответствующими ограничениями
 \begin{equation}
     \label{eq:3_2:10}
-    \begin{aligned}
-        &\sigma \partial \theta / \partial t-\operatorname{div}(k(\widehat{\theta})
+    \begin{gathered}
+        \sigma \partial \theta / \partial t-\operatorname{div}(k(\widehat{\theta})
         \nabla \theta)=u, \quad x \in \Omega, \quad 0<t<T, \\
-        &\left.\theta\right|_{\Gamma}=0, \quad \theta(x, 0)=\theta_{0}.
-    \end{aligned}
+        \left.\theta\right|_{\Gamma}=0, \quad \theta(x, 0)=\theta_{0}.
+    \end{gathered}
 \end{equation}
-
-Здесь,
+Здесь
 \[
     \begin{gathered}
-        U_{a d}=\left\{u=u_{1} \chi+u_{2} \beta B^{-1} \chi: u_{1,2} \in \mathbb{R},\right. \\
+        U_{a d}=\left\{u=u_{1} \chi+u_{2} \beta B^{-1} \chi: u_{1,2} \in \mathbb{R},\right.
         \left.u_{1,2} \geq 0, u_{1}+u_{2} \leq P\right\}, \\
         G_{*}=\left\{x \in G_{2}: \hat{\theta}(x, t)>\theta_{*}\right\}.
     \end{gathered}
@@ -706,7 +700,6 @@ $u_{1}$ и $u_{2}$ не зависят от времени.
 
 Функция $\widehat{\theta}$ описывает поле температуры,
 найденное на предыдущей итерации.
-
 В качестве зависимости коэффициента теплопроводности от температуры используется
 гладкая аппроксимация кусочно-постоянной функции, рассмотренная
 в~\cite{van2014optical, Some_Poluektova2014, Endovenous_Malskat2014}.
@@ -742,7 +735,7 @@ u_{1,2} \geq 0, u_{1}+u_{2} \leq P\right\}$.
 аналогичная рассматриваемой в разделе~\ref{subsec:ch4/sec3/quasilinear}
 (рисунок~\ref{fig:4_3:3}).
 Толщина карбонизированного слоя равна $0,2 \text{~мм}$,
-скорость вытягивания волокна $2 \text{~мм}/\text{s}$.
+скорость вытягивания волокна $2 \text{~мм}/\text{с}$.
 Рассматривалось излучение с длиной волны $1064 \text{~нм}$.
 Оптические и теплофизические параметры среды взяты
 из~\cite{van2014optical, Some_Poluektova2014, Endovenous_Malskat2014}.

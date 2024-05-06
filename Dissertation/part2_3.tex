@@ -3,12 +3,12 @@
 %paper03
 В данном параграфе рассмотрен нестационарный аналог задачи
 с данными Коши для температуры на границе области.
+
 \subsection{Постановка задачи оптимального управления}
 \label{subsec:ch2/sec3/state}
 Квазистационарный радиационный и диффузионный теплообмен в ограниченной области
 $\Omega \subset \mathbb{R}^{3}$ с границей $\Gamma=\partial \Omega$ моделируем
 следующей начально-краевой задачей:
-
 \begin{equation}
     \label{eq:2_3:1}
     \begin{split}
@@ -38,7 +38,6 @@ $\varphi$ — нормализованная интенсивность излу
 
 Экстремальная задача состоит в том, чтобы найти тройку
 $\left\{\theta_{\lambda}, \varphi_{\lambda}, u_{\lambda}\right\}$ такую, что
-
 \begin{equation}
     \label{eq:2_3:4}
     J_{\lambda}(\theta, u)=\frac{1}{2} \int_{0}^{T}
@@ -87,19 +86,18 @@ $\left\{\theta_{\lambda}, \varphi_{\lambda}, u_{\lambda}\right\}$
 Для удобства напомним основные условия и определения.
 
 Через $U$ обозначим пространство $L^{2}(\Sigma)$ с нормой
-
-\[ \|u\|_{\Sigma}=\left(\int_{\Sigma} u^{2} d \Gamma d t\right)^{1 / 2}. \]
-
-
+$ \|u\|_{\Sigma}=\left(\int_{\Sigma} u^{2} d \Gamma d t\right)^{1 / 2}$.
 Также будем использовать пространство
 \[
-    W=\left\{y \in L^{2}(0, T ; V): \quad y^{\prime}
-    \in L^{2}\left(0, T, V^{\prime}\right)\right\},
+    W=\left\{y \in L^{2}(0, T ; V):y^{\prime}
+    \in L^{2}\left(0, T, V^{\prime}\right)\right\}
 \]
 где $y^{\prime}=d y / d t$.
 
-Будем считать, что \\
-$(k)\; a, b, \alpha, \kappa_{a}, \lambda=$ Const $>0$, \\
+Будем считать, что
+
+$(k)\; a, b, \alpha, \kappa_{a}, \lambda=$ Const $>0$,
+
 $(kk)\; \theta_{b}, q_{b} \in U, r=a\left(\theta_{b}+q_{b}\right)
 \in L^{5}(\Sigma), \; \theta_{0} \in L^{5}(\Omega)$.
 
@@ -107,12 +105,10 @@ $(kk)\; \theta_{b}, q_{b} \in U, r=a\left(\theta_{b}+q_{b}\right)
 Определим операторы $A: V \rightarrow V^{\prime}, B: U \rightarrow V^{\prime}$,
 используя следующие равенства, справедливые для любых
 $y, z \in V, w \in L^{2}(\Gamma)$:
-
 \[
     (A y, z)=(\nabla y, \nabla z)+\int_{\Gamma} y z d \Gamma,
     \quad(B w, z)=\int_{\Gamma} w z d \Gamma.
 \]
-
 \begin{definition}
     Пара $\theta \in W, \varphi \in L^{2}(0, T ; V)$ называется слабым
     решением задачи~\eqref{eq:2_3:1}--\eqref{eq:2_3:3}, если
@@ -128,7 +124,6 @@ $y, z \in V, w \in L^{2}(\Gamma)$:
 $F(\theta, \varphi, u): W \times L^{2}(0, T; V) \times U
 \rightarrow L^{2} \left(0, T, V^{\prime}\right)
 \times L^{2}\left(0, T, V^{\prime}\right) \times H$ таким, что
-
 \[
     \begin{aligned}
         F(\theta, \varphi, u)= & \{\theta^{\prime}+a A
@@ -140,7 +135,6 @@ $F(\theta, \varphi, u): W \times L^{2}(0, T; V) \times U
 
 Таким образом задача оптимального управления $(OC)$ заключается в отыскании тройки
 $\{\theta, \varphi, u\} \in W \times L^{2}(0, T ; V) \times U$ такой, что
-
 \[
     J_{\lambda}(\theta, u) \equiv \frac{1}{2}\left\|\theta-
     \theta_{b}\right\|_{\Sigma}^{2}+
@@ -163,7 +157,6 @@ $\{\theta, \varphi, u\} \in W \times L^{2}(0, T ; V) \times U$ такой, чт�
     Выберем минимизирующую последовательность
     $u_{m} \in U, \theta_{m} \in W, \varphi_{m} \in L^{2}(0, T; V),
     J_{\lambda}\left(\theta_{m}, u_{m}\right) \rightarrow j_{\lambda}$,
-
     \begin{equation}
         \label{eq:2_3:13}
         \begin{gathered}
@@ -177,7 +170,6 @@ $\{\theta, \varphi, u\} \in W \times L^{2}(0, T ; V) \times U$ такой, чт�
 
     В силу леммы~\ref{lm:1_5:1}, ограниченность последовательности $u_{m}$
     в пространстве $U$ влечет оценки
-
     \[
         \begin{gathered}
             \left\|\theta_{m}\right\|_{L^{2}(0, T ; V)} \leq C,
@@ -193,7 +185,6 @@ $\{\theta, \varphi, u\} \in W \times L^{2}(0, T ; V) \times U$ такой, чт�
     Переходя, если необходимо, к подпоследовательностям, заключаем, что существует тройка
     $\{\widehat{u}, \widehat{\theta}, \widehat{\varphi}\}
     \in U \times W \times L^{2}(0, T; V)$,
-
     \[
         \begin{gathered}
             u_{m} \rightarrow \widehat{u} \text { слабо в } U \\
@@ -203,16 +194,13 @@ $\{\theta, \varphi, u\} \in W \times L^{2}(0, T ; V) \times U$ такой, чт�
             \text{ слабо в }  L^{2}(0, T ; V).
         \end{gathered}
     \]
+    Более того, $\widehat{\theta} \in L^{8}(Q) \cap L^{\infty}\left(0, T ; L^{5}(\Omega)\right)$.
 
-
-    Более того, $\widehat{\theta} \in L^{8}(Q)
-    \cap L^{\infty}\left(0, T ; L^{5}(\Omega)\right)$.
 
     Результаты о сходимости позволяют перейти к пределу в~\eqref{eq:2_3:13}.
     В этом случае предельный переход в
     нелинейной части следует из следующего неравенства,
     справедливого при $\xi \in C^{\infty}(\bar{Q})$:
-
     \[
         \begin{aligned}
             & \int_{0}^{T}\left|\left(\left[\theta_{m}\right]^{4}
@@ -228,7 +216,6 @@ $\{\theta, \varphi, u\} \in W \times L^{2}(0, T ; V) \times U$ такой, чт�
 
 
     В результате получаем, что
-
     \[
         \widehat{\theta}^{\prime}+a A \widehat{\theta}+b
         \kappa_{a}\left([\widehat{\theta}]^{4}-\widehat{\varphi}\right)=B r,
@@ -236,7 +223,6 @@ $\{\theta, \varphi, u\} \in W \times L^{2}(0, T ; V) \times U$ такой, чт�
         \quad \alpha A \widehat{\varphi}+\kappa_{a}\left(\widehat{\varphi}-
         [\widehat{\theta}]^{4}\right)=B \widehat{u},
     \]
-
     где
     \[
         j_{\lambda} \leq J_{\lambda}(\widehat{\theta},
@@ -271,7 +257,6 @@ $L^{2}\left(0, T; V^{\prime}\right) \times L^{2} \left(0, T ; V^{\prime}\right) 
     Пусть выполнены условия $(k), (kk)$.
     Если $\widehat{y} \in W \times L^{2}(0, T ; V), \widehat{u} \in U$
     является решением задачи $(OC)$, то справедливо равенство:
-
     \[
         \operatorname{Im} F_{y}^{\prime}
         (\widehat{y}, \widehat{u})=L^{2}\left(0, T; V^{\prime}\right)
@@ -281,7 +266,6 @@ $L^{2}\left(0, T; V^{\prime}\right) \times L^{2} \left(0, T ; V^{\prime}\right) 
 
 \begin{proof}
     Достаточно проверить, что задача
-
     \[
         \xi^{\prime}+a A \xi+b \kappa_{a}\left(4|\widehat{\theta}|^{3}
         \xi-\eta\right)=f_{1}, \quad \xi(0)=\xi_{0},
@@ -302,7 +286,6 @@ $L^{2}\left(0, T; V^{\prime}\right) \times L^{2} \left(0, T ; V^{\prime}\right) 
 
 
 Согласно лемме~\ref{lm:2_3:2} лагранжиан задачи $(OC)$ имеет вид
-
 \[
     \begin{aligned}
         & L\left(\theta, \varphi, u, p_{1}, p_{2}, q\right)=
@@ -321,7 +304,6 @@ $L^{2}\left(0, T; V^{\prime}\right) \times L^{2} \left(0, T ; V^{\prime}\right) 
 является решением задачи $(OC)$, то в силу принципа
 Лагранжа~\cite[гл. 2, теорема 1.5]{10} выполняются вариационные равенства
 $\forall \zeta \in L^{2}(0, T ; V), v \in U$
-
 \[
     \begin{gathered}
         \int_{0}^{T}\left(\left(B\left(\widehat{\theta}-\theta_{b}\right),
@@ -362,7 +344,6 @@ $\forall \zeta \in L^{2}(0, T ; V), v \in U$
 \label{subsec:ch2/sec3/approximation}
 Рассмотрим начально-краевую задачу для уравнений сложного
 теплообмена, в которой отсутствуют граничные условия на интенсивность излучения:
-
 \begin{equation}
     \label{eq:2_3:16}
     \frac{\partial \theta}{\partial t}-a \Delta \theta
@@ -383,7 +364,6 @@ $\forall \zeta \in L^{2}(0, T ; V), v \in U$
 для достаточно гладких $\theta_{b}, q_{b}$, доказаны в~\cite{Chebotarev2019Problem}.
 Покажем, что решения задачи $(OC)$ при $\lambda \rightarrow+0$
 аппроксимируют решение задачи~\eqref{eq:2_3:16},\eqref{eq:2_3:17}
-
 \begin{theorem}
     \label{th:2_3:3}
     Пусть выполняются условия $(k), (kk)$ и существует решение
@@ -391,7 +371,6 @@ $\forall \zeta \in L^{2}(0, T ; V), v \in U$
     задачи~\eqref{eq:2_3:16},\eqref{eq:2_3:17}.
     Если $\left\{\theta_{\lambda}, \varphi_{\lambda}, u_{\lambda}\right\}$
     — решение задачи $(OC)$ при $\lambda>0$, то при $\lambda\rightarrow+0$
-
     \[
         \begin{gathered}
             \theta_{\lambda} \rightarrow \theta \text { слабо в } L^{2}(0, T ; V),
@@ -406,7 +385,6 @@ $\forall \zeta \in L^{2}(0, T ; V), v \in U$
     — решение задачи~\eqref{eq:2_3:16},\eqref{eq:2_3:17},
     $u=\alpha\left(\partial_{n} \varphi+\varphi\right) \in U$.
     Тогда
-
     \[
         \theta^{\prime}+a A \theta+b \kappa_{a}\left([\theta]^{4}-\varphi\right)=B r,
         \quad \theta(0)=\theta_{0}, \quad \alpha A \varphi
@@ -421,7 +399,6 @@ $\forall \zeta \in L^{2}(0, T ; V), v \in U$
         +\frac{\lambda}{2}\left\|u_{\lambda}\right\|_{\Sigma}^{2}
         \leq J_{\lambda}(\theta, u)=\frac{\lambda}{2}\|u\|_{\Sigma}^{2}.
     \]
-
     Таким образом
     \[
         \left\|u_{\lambda}\right\|_{\Sigma}^{2} \leq C, \quad\left\|\theta_{\lambda}
@@ -432,7 +409,6 @@ $\forall \zeta \in L^{2}(0, T ; V), v \in U$
     Здесь и далее $C>0$ не зависит от $\lambda$.
     Ограниченность последовательности $u_{\lambda}$
     в пространстве $U$ влечет по лемме~\ref{lm:1_5:1} оценки
-
     \[
         \begin{gathered}
             \left\|\theta_{\lambda}\right\|_{L^{2}(0, T ; V)} \leq C,
