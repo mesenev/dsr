@@ -6,7 +6,7 @@
 Стационарная нормализованная диффузионная модель, описывающая
 радиационный, кондуктивный и конвективный теплообмен в
 ограниченной области $\Omega \subset \mathbb{R}^3$,
-имеет следующий вид~\eqref{eq:1_2:21}--\eqref{eq:1_2:26}:
+имеет следующий вид (см.~\eqref{eq:1_2:21}--\eqref{eq:1_2:26})
 \begin{equation}
     \label{eq:1_4:4-1}
     -a \Delta \theta + \textbf{v} \cdot \nabla \theta
@@ -36,7 +36,7 @@ $A=0$ соответствует изотропному рассеянию.
 
 Будем предполагать, что функции $\theta$ и $\varphi$, описывающие
 процесс сложного теплообмена, удовлетворяют следующим условиям на
-границе $\Gamma = \partial \Omega$:
+границе $\Gamma = \partial \Omega$
 \begin{equation}
     \label{eq:1_4:4-3}
     a \frac{\partial \theta}{\partial \mathbf{n}}
@@ -62,14 +62,13 @@ $A=0$ соответствует изотропному рассеянию.
 0 \leqslant \Theta_{0} \leqslant M,
 \beta \geqslant \beta_{0}>0, \gamma \geqslant \gamma_{0}>0$; \\
 (iii) $\gamma+(\mathbf{v} \cdot \mathbf{n}) \geqslant c_{0}>0$ на части границы,
-где $(\mathbf{v} \cdot \mathbf{n})<0.$ \\
-
+где $(\mathbf{v} \cdot \mathbf{n})<0$. \\
 Здесь $M, \beta_{0}, \gamma_{0}$, и $c_{0}$ положительные постоянные.
 
 
 \begin{definition}
     Пара $\{\theta, \varphi\} \in H^1(\Omega) \times H^1(\Omega)$ называется
-    слабым решением задачи $(\ref{eq:1_4:4-1})$-$(\ref{eq:1_4:4-4})$, если для
+    слабым решением задачи\ref{eq:1_4:4-1}--\eqref{eq:1_4:4-4}, если для
     любых $\eta, \psi \in H^1(\Omega)$
     выполняются равенства
     \begin{equation}
@@ -86,13 +85,13 @@ $A=0$ соответствует изотропному рассеянию.
 \end{definition}
 
 Отметим, что в силу вложения $H^1(\Omega) \subset L^6(\Omega)$ выражение
-$(\theta^4, \eta)$  имеет смысл для любой функции $\eta \in H^1(\Omega)$.
+$(\theta^4, \eta)$ имеет смысл для любой функции $\eta \in H^1(\Omega)$.
 
 \begin{theorem}
     \label{th:1_4:weakExist}~\cite[Th. 2]{CNSNS-15}
     Пусть выполняются условия (i)-(iii).
     Тогда существует единственное слабое
-    решение задачи $(\ref{eq:1_4:4-1})$-$(\ref{eq:1_4:4-4})$,
+    решение задачи~\eqref{eq:1_4:4-1})--\eqref{eq:1_4:4-4},
     удовлетворяющее неравенствам
     \begin{align}
         & a\|\nabla \theta\|^{2} \leqslant b \kappa_{a} M^{5}|\Omega|

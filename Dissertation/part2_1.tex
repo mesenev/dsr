@@ -53,7 +53,9 @@ $\Gamma \coloneqq \partial \Omega =\overline{\Gamma}_0 \cup \overline{\Gamma}_1 
 
 
 Обратная задача состоит в нахождении функций
-\[ u(x), x \in  \Gamma_1, \; \theta(x), \varphi(x), x \in \Omega \]
+\[
+    u(x), x \in  \Gamma_1, \; \theta(x), \varphi(x), x \in \Omega,
+\]
 удовлетворяющих условиям~\eqref{eq:2_1:initial}--\eqref{eq:2_1:control_bounds},
 а также дополнительному условию на участке границы $\Gamma_2$:
 \begin{equation}
@@ -80,7 +82,7 @@ $\Gamma \coloneqq \partial \Omega =\overline{\Gamma}_0 \cup \overline{\Gamma}_1 
 $\text{(i)}\;    \beta\in L^\infty(\Gamma); \gamma \in L^\infty(\Gamma_0\cup\Gamma_2);$
 $u_1, u_2 \in L^\infty(\Gamma_1);$
 $0 < \beta_0 \le \beta; 0 < \gamma_0 \le \gamma;\; \beta_0,\gamma_0=Const,$
-$0 \le u_1 \le u_2.$
+$0 \le u_1 \le u_2$.
 
 Пусть $H = L^2(\Omega), V = H^1(\Omega), Y = V \times V $.
 Пространство $H$ отождествляем с сопряжённым пространством $H'$ так,
@@ -92,7 +94,7 @@ $0 \le u_1 \le u_2.$
 $U_{ad} = \{u \in U, u_1 \le u \le u_2 \}$ --- множество допустимых управлений.
 
 Пусть $v$ произвольный элемент множества $V$.
-Определим операторы:
+Определим операторы
 \begin{gather*}
     A_{1,2}\colon V \to V', \;\; F \colon V \times U \to V', \; f \in V', \; g \in V'.\\
     (A_1\theta,v) = a( \nabla \theta, \nabla v ) + \int_\Gamma \beta \theta v d\Gamma, \;
@@ -134,7 +136,7 @@ $U_{ad} = \{u \in U, u_1 \le u \le u_2 \}$ --- множество допусти
     Пусть выполняется условие (i).
     Тогда для каждого $ u \in U_{ad} $ существует единственное слабое решение
     $\{\theta, \varphi \}$ для задачи~\eqref{eq:2_1:initial},\eqref{eq:2_1:initial-boundary}
-    и справедливы оценки:
+    и справедливы оценки
     \begin{equation}
         \label{eq:2_1:lemma_1}
         M_1 \le \theta \le M_2, \; M_1^4 \le \varphi \le M_2^4,
@@ -174,7 +176,7 @@ $U_{ad} = \{u \in U, u_1 \le u \le u_2 \}$ --- множество допусти
         + r(\theta, h) \; \forall h \in V, \; \text{ где } \;
         J'(\theta)\langle h \rangle = \int_{\Gamma_2} (\theta - \theta_0)h d\Gamma
     \end{equation}
-    и для остаточного члена $r(\theta,h)$ справедливо соотношение:
+    и для остаточного члена $r(\theta,h)$ справедливо соотношение
     \begin{equation}
         \label{eq:2_1:lemma_proof_2}
         \frac{|r(\theta,h)|}{\|h\|_V} \rightarrow 0
@@ -198,13 +200,13 @@ $U_{ad} = \{u \in U, u_1 \le u \le u_2 \}$ --- множество допусти
 \end{proof}
 
 Вывод условий оптимальности основан на принципе множителей
-Лагранжа для гладко-выпуклых задач минимизации~\cite{10}[Th. 1.5].
+Лагранжа для гладко-выпуклых задач минимизации~\cite{10}[Теорема 1.5].
 \begin{theorem}
     \label{th:2_1:2}
     Пусть $\hat{y}=\{\hat{\theta},\hat{\varphi} \} \in Y, \hat{u} \in U_{ad}$
     --- решение экстремальной задачи~\eqref{eq:2_1:minimizationOperational}.
     Тогда существует пара $p = (p_1, p_2)$, $p \in Y$
-    такая, что тройка $(\hat{y}, \hat{u}, p)$, удовлетворяет следующим условиям:
+    такая, что тройка $(\hat{y}, \hat{u}, p)$, удовлетворяет следующим условиям
     \begin{equation}
         \label{eq:2_1:theorem_2_eq1}
         A_1 p_1 + 4 |\hat{\theta}|^3 \kappa_a(b p_1 - p_2) = f_c,
@@ -269,5 +271,5 @@ $U_{ad} = \{u \in U, u_1 \le u \le u_2 \}$ --- множество допусти
 \end{proof}
 
 Численный алгоритм, основанный на полученной системе
-оптимальности представлен в~\ref{subsec:ch4/sec3/boundary}.
+оптимальности представлен в разделе~\ref{sec:ch4/sec3}.
 \FloatBarrier

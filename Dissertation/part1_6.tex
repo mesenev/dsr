@@ -4,7 +4,7 @@
 
 В данном параграфе представлен анализ модели сложного теплообмена, в котором учитывается зависимость
 коэффициента теплопроводности от температуры.
-Результаты анализа используются в главе~\ref{sec:ch4/sec3}.
+Результаты анализа используются в разделе~\ref{sec:ch4/sec3}.
 
 \subsection{Формулировка задачи}
 \label{subsec:ch1/sec5/subsec1}
@@ -81,7 +81,6 @@ s \in \mathbb{R}, \quad k_{j}=$ Const.
 
 Определим операторы $A_{1}: V \rightarrow V_{0}^{\prime}$ и $A_{2}: V \rightarrow V^{\prime}$
 такие, что для всех $\theta, \varphi, v \in V$ выполняются следующие равенства:
-
 \[
     \begin{gathered}
         \left(A_{1}(\theta), v\right)=(k(\theta) \nabla \theta, \nabla v)
@@ -110,9 +109,7 @@ s \in \mathbb{R}, \quad k_{j}=$ Const.
         =g_{b}+g \quad \text { п. в. в }(0, T).
     \end{equation}
 \end{definition}
-
 Здесь $f_{b}, g_{b} \in L^{2}\left(0, T ; V^{\prime}\right)$ и
-
 \[
     \left(f_{b}, v\right)=\int_{\Gamma} p \theta_{b} v d \Gamma,
     \quad\left(g_{b}, v\right)=
@@ -174,8 +171,7 @@ $ (A(\zeta, \theta), v)=(k(\zeta) \nabla \theta, \nabla v)
         -[\theta]^{4}\right), \psi\right)=\left(g-\beta M_{2}, \psi\right) \leq 0.
     \]
 
-    Заметим, что с учетом ограничений на $\theta$ выполняются следующие неравенства:
-
+    Заметим, что с учетом ограничений на $\theta$ выполняются следующие неравенства
     \[
         \begin{gathered}
             \left(A_{2} \varphi-g_{b}, \psi\right)=(\alpha \nabla \psi, \nabla \psi)+\int_{\Gamma}
@@ -202,7 +198,6 @@ $ (A(\zeta, \theta), v)=(k(\zeta) \nabla \theta, \nabla v)
 \begin{proof}
     Пусть $\widehat{\theta}=\theta-w$.
     Перепишем уравнение~\eqref{eq:1_6:7} следующим образом
-
     \begin{equation}
         \label{eq:1_6:9}
         \sigma \widehat{\theta}^{\prime}+A(\zeta, \theta)-f_{b}
@@ -259,7 +254,6 @@ $\theta_{m} \in W, \quad \varphi_{m} \in L^{2}(0, T ; V)$ такую, что
     \label{lm:1_6:3}
     Если выполнены условия (k1) - (k4), то существует константа $C>0$,
     не зависящая от $m$, такая, что
-
     \begin{equation}
         \label{eq:1_6:12}
         \left\|\varphi_{m}\right\|_{L^{2}(0, T ; V)} \leq C,
@@ -274,12 +268,10 @@ $\theta_{m} \in W, \quad \varphi_{m} \in L^{2}(0, T ; V)$ такую, что
 
 \begin{proof}
     Из определения последовательностей $\varphi_{m}, \theta_{m}$ следуют равенства
-
     \begin{equation}
         \label{eq:1_6:14}
         A_{2} \varphi_{m}+\beta\left(\varphi_{m}-\left[\theta_{m}\right]^{4}\right)=g_{b}+g,
     \end{equation}
-
     \begin{equation}
         \label{eq:1_6:15}
         \sigma \theta_{m}^{\prime}+A\left(\theta_{m-1}, \theta_{m}\right)
@@ -292,7 +284,6 @@ $\theta_{m} \in W, \quad \varphi_{m} \in L^{2}(0, T ; V)$ такую, что
     т.е. ограниченности последовательностей в $L^{\infty}(Q)$.
     Получим оценку, гарантирующую компактность последовательности $\theta_{m}$ в $L^{2}(Q)$.
     Перепишем~\eqref{eq:1_6:15} как
-
     \begin{equation}
         \label{eq:1_6:16}
         \sigma \theta_{m}^{\prime}=\chi_{m} \quad \text { п. в. в }(0, T),
@@ -310,7 +301,6 @@ $\theta_{m} \in W, \quad \varphi_{m} \in L^{2}(0, T ; V)$ такую, что
     на интервале $(s, s+\delta)$ и по $s$ на $(0, T-\delta)$,
     предполагая, что $\delta>0$ достаточно мало.
     В результате получим
-
     \[
         \frac{1}{2} \int_{0}^{T-\delta}\left\|\sqrt{\sigma}\left(\theta_{m}(s+\delta)
         -\theta_{m}(s)\right)\right\|^{2} d s
@@ -373,15 +363,12 @@ $\theta_{m} \in W, \quad \varphi_{m} \in L^{2}(0, T ; V)$ такую, что
     Пусть $\theta_{1}, \varphi_{1}$ — другое решение задачи~\eqref{eq:1_6:1}-\eqref{eq:1_6:3},
     $\theta=\theta_{1}-\theta_{*}, \varphi=\varphi_{1}-\varphi_{*}$.
     Тогда
-
     \begin{equation}
         \label{eq:1_6:18}
         \sigma \theta^{\prime}+A_{1}\left(\theta_{1}\right)-A_{1}\left(\theta_{*}\right)
         +b\left(\left[\theta_{1}\right]^{4}-\left[\theta_{*}\right]^{4}-\varphi\right)
         =0 \quad \text { п. в. в }(0, T), \quad \theta(0)=0.
     \end{equation}
-
-
     \begin{equation}
         \label{eq:1_6:19}
         A_{2} \varphi+\beta\left(\varphi
@@ -392,7 +379,6 @@ $\theta_{m} \in W, \quad \varphi_{m} \in L^{2}(0, T ; V)$ такую, что
 
     Умножим~\eqref{eq:1_6:18} на $\theta$ и проинтегрируем по времени.
     Получим
-
     \[
         \begin{gathered}
             \frac{1}{2}\|\sqrt{\sigma} \theta\|^{2}
@@ -408,7 +394,6 @@ $\theta_{m} \in W, \quad \varphi_{m} \in L^{2}(0, T ; V)$ такую, что
 
     Пусть $\left|\theta_{1}\right| \leq M,\left|\theta_{*}\right| \leq M$.
     С учетом ограничения на функцию $k$ получаем неравенство
-
     \begin{equation}
         \label{eq:1_6:20}
         \begin{aligned}
@@ -425,7 +410,6 @@ $\theta_{m} \in W, \quad \varphi_{m} \in L^{2}(0, T ; V)$ такую, что
         \varepsilon=\frac{k_{0}}{k_{2}\left\|\nabla \theta_{*}\right\|_{L^{\infty}(Q)}},
     \]
     из~\eqref{eq:1_6:20} получаем оценку
-
     \begin{equation}
         \label{eq:1_6:21}
         \frac{\sigma_{0}}{2}\|\theta\|^{2} \leq \int_{0}^{t}\left(4 M \max b\|\theta\|^{2}
@@ -435,7 +419,6 @@ $\theta_{m} \in W, \quad \varphi_{m} \in L^{2}(0, T ; V)$ такую, что
     \end{equation}
 
     Умножим~\eqref{eq:1_6:19} скалярно на $\varphi$, в результате получим
-
     \[
         \left(A_{2} \varphi, \varphi\right)+(\beta \varphi, \varphi)
         =\left(\beta\left(\left[\theta_{1}\right]^{4}
@@ -455,11 +438,10 @@ $\theta_{m} \in W, \quad \varphi_{m} \in L^{2}(0, T ; V)$ такую, что
     Если выполнены условия (k1) - (k4) и $\theta_{*}, \varphi_{*}$ является
     решением задачи~\eqref{eq:1_6:1}-\eqref{eq:1_6:3}
     так, что $\theta_{*}, \nabla \theta_{*} \in L^{\infty}(Q)$.
-    Тогда для последовательностей~\eqref{eq:1_6:10} справедливы следующие сходимости:
-
+    Тогда для последовательностей~\eqref{eq:1_6:10} справедливы следующие сходимости
     \[
         \theta_{m} \rightarrow \theta_{*} \quad \text { в } L^{2}(0, T ; V),
-        \quad \varphi_{m} \rightarrow \varphi_{*} \quad \text { в } L^{2}(0, T ; V)
+        \quad \varphi_{m} \rightarrow \varphi_{*} \quad \text { в } L^{2}(0, T ; V).
     \]
 \end{theorem}
 

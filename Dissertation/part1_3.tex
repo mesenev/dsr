@@ -189,18 +189,11 @@ $V$, $V'$ определяются формулами
     Тогда $f \in L^1(\Omega)$, $\int_{\Omega} f_n(x) \, dx \to \int_{\Omega} f(x) \, dx$.
 \end{theorem}
 
-\begin{theorem}[Леви]
-    \label{th:levi}~\cite[322]{Kolmogorov2004}
-    Пусть $\Omega \subset \mathbb{R}^N$, последовательность $f_n \in L^1(\Omega)$
-    не убывает и $\forall n : \int_{\Omega} f_n(x) \, dx \leq K$.
-    Тогда $f_n \to f$ п.\ в. в $G$, где $f \in L^1(\Omega)$,
-    $\int_{\Omega} f_n(x) \, dx \to \int_{\Omega} f(x) \, dx$.
-\end{theorem}
 
 \begin{lemma}
     \label{lm:1_7:15}\cite[47]{Ziemer1989}
     Пусть $u \in H^{1}(\Omega)$, $\nabla u = 0$ n.в. в $\Omega$.
-    Тогда $u = \text{const} \; \theta \; \text{в} \; \Omega$.
+    Тогда $u = \text{const} \text{ в } \Omega$.
 \end{lemma}
 
 \begin{lemma}
@@ -226,7 +219,6 @@ $V$, $V'$ определяются формулами
     \label{lm:1_7:23}\cite[41]{grisvard1985elliptic}
     Для любого $\varepsilon>0$ существует постоянная $C_{\varepsilon}>0$ такая,
     что для любой функции $u \in H^{1}(\Omega)$ выполняется неравенство
-
     \[
         \|u\|_{L^{2}(\Gamma)}^{2} \leq \varepsilon\|\nabla u\|^{2}
         +C_{\varepsilon}\|u\|^{2}.
@@ -237,9 +229,7 @@ $V$, $V'$ определяются формулами
     \label{lm:1_7:24}\cite[191]{Gaevskii1978}
     Пусть $f:[0, T] \rightarrow \mathbb{R}$ -- непрерывная функция $b \geq 0$.
     Если
-    \[
-        f(t) \leq a+b \int_{0}^{t} f(\tau) d \tau \quad \forall t \in[0, T]
-    \]
+    \[ f(t) \leq a+b \int_{0}^{t} f(\tau) d \tau \quad \forall t \in[0, T] \]
     $mo \; f(t) \leq a e^{bt} \; \forall \; t \in[0, T]$.
 \end{lemma}
 
@@ -270,6 +260,6 @@ $V$, $V'$ определяются формулами
     Для любой функции и $\in W$ справедливо равенство
     \[
         \frac{d\|u(t)\|^{2}}{d t}=2\left(u^{\prime}(t),
-        u(t)\right) \quad \text { n.8. нa }(0, T)
+        u(t)\right) \quad \text { п.\ в.\ нa }(0, T)
     \]
 \end{lemma}

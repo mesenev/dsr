@@ -37,11 +37,11 @@
 $\varphi$ является интенсивностью излучения усредненной по всем направлениям,
 $\alpha$ -- коэффициент диффузии фотонов, $\beta$ -- коэффициент поглощения,
 $k(\theta)$ является коэффициентом теплопроводности, $\sigma(x, t)$
-является произведением удельной теплоемкости и плотностью среды, $u_{1}$
+является произведением удельной теплоемкости и плотности среды, $u_{1}$
 описывает мощность источника тепла, $u_{2}$ -- мощность источника теплового излучения.
 $P$ -- максимальная мощность источника,
 $\chi$ есть характеристическая функция той части среды,
-в которой он расположен, деленная на объём.
+в которой он расположен, деленная на его объём.
 
 \begin{remark}
     Задача оптимального управления заключается в достижении заданного распределения
@@ -80,14 +80,12 @@ $(c3)\; \theta_{0} \in H$
 
 $(c4)\; \alpha_{0} \leq \alpha(x) \leq \alpha_{1},
 \beta_{0} \leq \beta(x) \leq \beta_{1}, \quad x \in \Omega$,
-
 где $\sigma_{i}, k_{i}, \alpha_{i}$, и $\beta_{i}$ положительные константы.
 
 Определим нелинейный оператор $A: V \rightarrow V^{\prime}$ и линейный оператор
 $B: H^{1}(\Omega) \rightarrow\left(H^{1}(\Omega)\right)^{\prime}$
 используя следующие равенства, справедливые для любого
 $\theta, v \in V, \varphi, w \in$ $H^{1}(\Omega)$
-
 \[
     \begin{aligned}
         &(A(\theta), v)=(k(\theta) \nabla \theta, \nabla v)=(\nabla h(\theta), \nabla v) \\
@@ -219,7 +217,6 @@ $\theta, v \in V, \varphi, w \in$ $H^{1}(\Omega)$
 
     Ограниченность в $L^{2}(0, T; H)$ множества допустимых
     управлений $U_{a d}$ влечет по лемме~\ref{lm:3_2:1} оценки:
-
     \begin{equation}
         \label{eq:3_2:5}
         \begin{gathered}
@@ -272,9 +269,9 @@ $\theta, v \in V, \varphi, w \in$ $H^{1}(\Omega)$
     следует, что $h\left(\theta_{m}\right) \rightarrow h(\theta)$ in $L^{2}(Q)$
     и, следовательно $\chi=h(\theta)$.
     Кроме того, предельная функция $\theta$ удовлетворяет неравенству
-    $\left.\theta\right|_{G_{2}} \leq \theta_{*}.$
+    $\left.\theta\right|_{G_{2}} \leq \theta_{*}$.
     Следовательно, допустима предельная пара
-    $\{\theta, u\} \in L^{2}(0, T ; V) \times U_{a d}.$
+    $\{\theta, u\} \in L^{2}(0, T ; V) \times U_{a d}$.
 
 
     Поскольку функционал $J$ слабо полунепрерывен снизу,
@@ -331,8 +328,7 @@ $P_{\varepsilon}$ и $\{\theta, u\}$ — решение задачи P\@.
     \quad \theta_{\varepsilon}(0)=\theta_{0}.
 \end{equation}
 
-Так как $\left.\theta\right|_{G_{2}} \leq \theta_{*}$, выполняется следующее неравенство:
-
+Так как $\left.\theta\right|_{G_{2}} \leq \theta_{*}$, выполняется следующее неравенство
 \[
     \int_{0}^{T} \int_{G_{1}}\left(\theta_{\varepsilon}
     -\theta_{d}\right)^{2} d x d t+\frac{1}{\varepsilon}
@@ -379,7 +375,6 @@ $\left.\widehat{\theta}\right|_{G_{2}} \leq \theta_{*}$.
 $\{\widehat{\theta}, \widehat{u}\} \in L ^{2}(0, T ; V) \times U_{a d}$
 допустима для задачи P\@.
 Поскольку функционал $J$ слабо полунепрерывен снизу,
-
 \[
     j \leq J(\widehat{\theta})
     \leq \liminf J \left(\theta_{\varepsilon}\right)

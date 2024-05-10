@@ -37,7 +37,6 @@ $\mathbf{x} \in \mathbb{X}$, где $\mathbb{X}$ некоторое гильбе
 
 Цель алгоритма градиентного спуска - минимизировать функцию
 $f(\mathbf{x})$, итеративно обновляя параметры следующим образом:
-
 \[ \mathbf{x}_{k+1} = x_k - \eta \nabla f(\mathbf{x}_k), \]
 где $\mathbf{x}_k$ - вектор параметров на итерации $k$,
 $\eta$ - величина шага, и $\nabla f(\mathbf{x}_k)$ - градиент
@@ -80,7 +79,7 @@ $\mathcal{C}$, которая ближе всего к заданной точк
     \item \textbf{Ограничения-коробки:} Множество ограничений представляет
     собой коробку, определенную как
     $\mathcal{C} = \{\mathbf{x} \in \mathbb{R}^n , | , a_i
-    \leq x_i \leq b_i, , i=1,\dots,n\}.$
+    \leq x_i \leq b_i, , i=1,\dots,n\}$.
     В этом случае оператор проекции можно вычислить поэлементно:
     \[
         (\mathcal{P}_{\mathcal{C}}(y))_i =
@@ -99,7 +98,7 @@ $\mathcal{C}$, которая ближе всего к заданной точк
     \item \textbf{Ограничения-симплексы:} Множество ограничений
     представляет собой симплекс, определенный как
     $\mathcal{C} = \{\mathbf{x} \in \mathbb{R}^n ,
-    | , \mathbf{x} \geq \mathbf{0}, , \sum_{i=1}^n x_i = 1\}.$
+    | , \mathbf{x} \geq \mathbf{0}, , \sum_{i=1}^n x_i = 1\}$.
     Оператор проекции для этого множества ограничений включает
     более сложный алгоритм, такой как тот,
     который представлен, например~\cite{Duchi2011}.
@@ -307,7 +306,7 @@ $\Gamma_2$ выберем в качестве $\theta_0$.
         \centering
         \includegraphics[width=1\linewidth]{dvmg368/2} \\ б) Второй эксперимент
     \end{minipage}
-    \caption{Тестовая функция $u$, начальная $u_0$, найденная функция $u_{end}.$}
+    \caption{Тестовая функция $u$, начальная $u_0$, найденная функция $u_{end}$.}
     \label{fig:4_3:control}
 \end{figure}
 
@@ -385,7 +384,7 @@ $J_{\lambda}\left(\theta_{k}, u_{k}\right)$.
 где $\widehat{\theta} \coloneqq \theta_{k}, \widehat{u} \coloneqq u_{k}$.
 
 \hspace{1cm} d.\ Пересчитать управление
-$u_{k+1}=u_{k}-\varepsilon\left(\lambda u_{k}-p_{2}\right).$
+$u_{k+1}=u_{k}-\varepsilon\left(\lambda u_{k}-p_{2}\right)$.
 
 Параметр $\varepsilon$ выбирается эмпирически таким образом, чтобы
 значение $\varepsilon\left(\lambda u_{k}-p_{2}\right)$ являлось
@@ -663,7 +662,7 @@ $\Omega \subset \mathbb{R}^{3}$ с границей $\Gamma=\partial \Omega$
 
 В разделе~\ref{subsec:ch3/sec2/penalty} показано, что задачу с ограничениями
 на температуру в области $G_2$ можно
-аппрокисимировать задачей со штрафом $P_\varepsilon$.
+аппроксимировать задачей со штрафом $P_\varepsilon$.
 
 
 Рассмотрим итерационный алгоритм решения задачи оптимального управления
@@ -705,8 +704,7 @@ $u_{1}$ и $u_{2}$ не зависят от времени.
 в~\cite{van2014optical, Some_Poluektova2014, Endovenous_Malskat2014}.
 
 Как легко видеть, задача~\eqref{eq:3_2:9},\eqref{eq:3_2:10} сводится к
-нахождению минимума квадратичной функции параметров $u_{1}$ и $u_{2}$:
-
+нахождению минимума квадратичной функции параметров $u_{1}$ и $u_{2}$
 \[
     \widehat{J}_{\varepsilon}\left(u_{1} \theta_{1}+u_{2} \theta_{2}+\theta_{3}\right) \rightarrow \inf
 \]
@@ -715,8 +713,6 @@ u_{1,2} \geq 0, u_{1}+u_{2} \leq P\right\}$.
 Функции $\theta_{1}, \theta_{2}$ и $\theta_{3}$
 вычисляются заранее как решения следующих линейных
 начально-краевых задач для $x \in \Omega, t \in(0, T)$:
-
-
 \[
     \begin{aligned}
         &\sigma \partial \theta_{1} / \partial t-\operatorname{div}\left(k(\widehat{\theta})

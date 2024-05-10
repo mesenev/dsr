@@ -68,7 +68,7 @@ $a(\partial_n \theta +\left.\beta\left(\theta-\theta_{b}\right)\right|_{\Gamma}=
 представляющими смесь условий Дирихле
 (фиксированное значение) и Неймана (фиксированный градиент).
 
-4.\ Наконец, начальное условие предоставляется четвертым уравнением,
+4.\ Наконец, начальное условие предоставляется четвертым уравнением
 $\theta|_{t=0} = \theta_0$, которое дает начальное
 распределение температуры в области.
 
@@ -76,7 +76,8 @@ $\theta|_{t=0} = \theta_0$, которое дает начальное
 системы~\eqref{eq:1_5:1}--\eqref{eq:1_5:3} представлено в работе~\cite{JMAA-19}.
 Результаты анализа будут использованы при изучении обратной задачи в главе~\ref{sec:ch1/sec5}.
 
-Приведём здесь анализ прямой задачи, где $\beta=\gamma=1, \theta_b = r$.
+Приведём новые результаты анализа прямой задачи с данными $\beta=\gamma=1, \; \theta_b = r$.
+В дальнейшем эти результаты будут использованы для обоснования оптимизационного метода решения
 
 Далее предполагаем, что:
 
@@ -87,13 +88,10 @@ $\theta|_{t=0} = \theta_0$, которое дает начальное
 
 
 Здесь через $U$ обозначено пространство $L^{2}(\Sigma)$ с нормой
-\[
-    \|u\|_{\Sigma}=\left(\int_{\Sigma} u^{2} d \Gamma d t\right)^{1/2}.
-\]
+$\|u\|_{\Sigma}=\left(\int_{\Sigma} u^{2} d \Gamma d t\right)^{1/2}$.
 
 Используя следующие равенства, определим операторы $A: V \rightarrow V^{\prime}, B: U \rightarrow V^{\prime}$,
-которые выполняются для любых $y, z \in V, w \in L^{2}(\Gamma)$:
-
+которые выполняются для любых $y, z \in V, w \in L^{2}(\Gamma)$
 \[
     (A y, z)=(\nabla y, \nabla z)+\int_{\Gamma} y z d \Gamma, \quad(B w, z)=\int_{\Gamma} w z d \Gamma.
 \]
@@ -103,7 +101,6 @@ $\theta|_{t=0} = \theta_0$, которое дает начальное
 $A^{-1}: V^{\prime} \mapsto V$.
 Заметим, что для любых $v \in V, w \in L^{2}(\Gamma), g \in V^{\prime}$
 выполняются следующие неравенства:
-
 \[
     \|v\|^{2} \leq C_{0}\|v\|_{V}^{2}, \; \|v\|_{V^{\prime}} \leq C_{0}\|v\|_{V}, \;
     \|B w\|_{V^{\prime}} \leq\|w\|_{\Gamma}, \; \left\|A^{-1} g\right\|_{V} \leq\|g\|_{V^{\prime}}.
@@ -136,7 +133,6 @@ $[\theta]^s \coloneqq |\theta|^s \mathrm{sign}\theta,\,s  \in \mathbb{R}$.
 
     Выразим $\varphi$ из последнего уравнения~\eqref{eq:1_5:weak} и подставим его в первое.
     В результате получаем следующую задачу Коши для уравнения с операторными коэффициентами:
-
     \begin{equation}
         \label{eq:1_5:4}
         \theta^{\prime}+a A \theta+L[\theta]^{4}=B r+f, \quad \theta(0)=\theta_{0}.
@@ -181,7 +177,6 @@ $[\theta]^s \coloneqq |\theta|^s \mathrm{sign}\theta,\,s  \in \mathbb{R}$.
     \]
     Умножая в смысле скалярного произведения $H$ уравнение~\eqref{eq:1_5:4}
     на $[\theta]^{4}=[\psi]^{8 / 5}$, получаем
-
     \begin{equation}
         \label{eq:1_5:6}
         \frac{1}{5} \frac{d}{d t}\|\psi\|^{2}
@@ -213,7 +208,6 @@ $[\theta]^s \coloneqq |\theta|^s \mathrm{sign}\theta,\,s  \in \mathbb{R}$.
     \]
 
     Умножая в смысле скалярного произведения $H$ последнее равенство на $\zeta$, получаем
-
     \[
         \alpha\|\zeta\|^{2}+\kappa_{a}\left(A^{-1} \zeta, \zeta\right)
         =\alpha b \kappa_{a}\left([\theta]^{4}, \zeta\right)
@@ -224,14 +218,15 @@ $[\theta]^s \coloneqq |\theta|^s \mathrm{sign}\theta,\,s  \in \mathbb{R}$.
     Следовательно, $\|\zeta\|_{V^{\prime}}^{2}=\left(A^{-1} \zeta,
     \zeta\right) \leq \frac{\alpha \kappa_{a} b^{2}}{4}\left\|[\theta]^{4}\right\|^{2}$
     и в силу оценок~\eqref{eq:1_5:5},~\eqref{eq:1_5:7} получаем
-
     \begin{equation}
         \label{eq:1_5:8}
         \left\|\theta^{\prime}\right\|_{L^{2}\left(0, T ; V^{\prime}\right)}
         \leq\|B r+f\|_{L^{2}\left(0, T ; V^{\prime}\right)}
         +a C_{1}+\sqrt{\alpha \kappa_{a}} b C_{2}.
     \end{equation}
-    Оценок~\eqref{eq:1_5:5}--\eqref{eq:1_5:8} достаточно, для доказательства разрешгимости задачи.
+
+
+    Оценок~\eqref{eq:1_5:5}--\eqref{eq:1_5:8} достаточно, для доказательства разрешимости задачи.
     Пусть $\theta_{1,2}$ является решением задачи~\eqref{eq:1_5:4}, $\eta=\theta_{1}-\theta_{2}$.
     Тогда
     \[
