@@ -85,7 +85,7 @@ $(c4)\; \alpha_{0} \leq \alpha(x) \leq \alpha_{1},
 Определим нелинейный оператор $A: V \rightarrow V^{\prime}$ и линейный оператор
 $B: H^{1}(\Omega) \rightarrow\left(H^{1}(\Omega)\right)^{\prime}$
 используя следующие равенства, справедливые для любого
-$\theta, v \in V, \varphi, w \in$ $H^{1}(\Omega)$
+$\theta, v \in V, \varphi, w \in$ $H^{1}(\Omega)$:
 \[
     \begin{aligned}
         &(A(\theta), v)=(k(\theta) \nabla \theta, \nabla v)=(\nabla h(\theta), \nabla v) \\
@@ -179,8 +179,9 @@ $\theta, v \in V, \varphi, w \in$ $H^{1}(\Omega)$
 \begin{proof}
     Скалярно умножим в $H$ первое уравнение~\eqref{eq:3_2:3} на
     $v=\max \{\theta-$ $\left.\theta_{*}, 0\right\} \in L^{2}(0, T ; V)$, получим
-
-    \[ \left(\sigma v^{\prime}, v\right)+(k(\theta) \nabla v, \nabla v)=0. \]
+    \[
+        \left(\sigma v^{\prime}, v\right)+(k(\theta) \nabla v, \nabla v)=0.
+    \]
     Отбрасывая неотрицательный второй член, приходим к оценке
     \[ \frac{d}{d t}(\sigma v, v) \leq\left(\sigma_{t} v, v\right) \leq \sigma_{2}\|v\|^{2}. \]
     Учитывая, что $\left.v\right|_{t=0}=0$, проинтегрируем
@@ -318,9 +319,8 @@ $J_{\varepsilon}(\theta) \rightarrow \inf$, где
 
 Рассмотрим аппроксимационные свойства решений задачи со штрафом.
 Пусть $\left\{\theta_{\varepsilon}, u_{\varepsilon}\right\}$ — решения задачи
-$P_{\varepsilon}$ и $\{\theta, u\}$ — решение задачи P\@.
-Тогда,
-
+$P_{\varepsilon}$ и $\{\theta, u\}$ — решение задачи P.
+Тогда
 \begin{equation}
     \label{eq:3_2:8}
     \sigma \theta_{\varepsilon}^{\prime}

@@ -1,6 +1,6 @@
 \section{Квазистационарная модель сложного теплообмена}
 \label{sec:ch1/sec4}
-Квазистационарная модель - это тип математической модели,
+Квазистационарная модель это тип математической модели,
 который описывает систему, претерпевающую медленные изменения
 со временем или имеющую относительно длительный период стабильности
 по сравнению с интересующим масштабом времени.
@@ -68,7 +68,7 @@ $a(\partial_n \theta +\left.\beta\left(\theta-\theta_{b}\right)\right|_{\Gamma}=
 представляющими смесь условий Дирихле
 (фиксированное значение) и Неймана (фиксированный градиент).
 
-4.\ Наконец, начальное условие предоставляется четвертым уравнением
+4.\ Наконец, начальное условие представляется четвертым уравнением
 $\theta|_{t=0} = \theta_0$, которое дает начальное
 распределение температуры в области.
 
@@ -77,21 +77,21 @@ $\theta|_{t=0} = \theta_0$, которое дает начальное
 Результаты анализа будут использованы при изучении обратной задачи в главе~\ref{sec:ch1/sec5}.
 
 Приведём новые результаты анализа прямой задачи с данными $\beta=\gamma=1, \; \theta_b = r$.
-В дальнейшем эти результаты будут использованы для обоснования оптимизационного метода решения
+В дальнейшем эти результаты будут использованы для обоснования оптимизационного метода решения.
 
-Далее предполагаем, что:
+Далее предполагаем, что
 
 (j) $a, b, \alpha, \kappa_{a} =$ Const $>0$,
 
 (jj) $\theta_{b}, q_{b}, u=\theta^4_b \in U, r
 =a\left(\theta_{b}+q_{b}\right) \in L^{5}(\Sigma), \; \theta_{0} \in L^{5}(\Omega)$.
-
-
 Здесь через $U$ обозначено пространство $L^{2}(\Sigma)$ с нормой
-$\|u\|_{\Sigma}=\left(\int_{\Sigma} u^{2} d \Gamma d t\right)^{1/2}$.
+\[
+    \|u\|_{\Sigma}=\left(\int_{\Sigma} u^{2} d \Gamma d t\right)^{1/2}.
+\]
 
 Используя следующие равенства, определим операторы $A: V \rightarrow V^{\prime}, B: U \rightarrow V^{\prime}$,
-которые выполняются для любых $y, z \in V, w \in L^{2}(\Gamma)$
+которые выполняются для любых $y, z \in V, w \in L^{2}(\Gamma)$:
 \[
     (A y, z)=(\nabla y, \nabla z)+\int_{\Gamma} y z d \Gamma, \quad(B w, z)=\int_{\Gamma} w z d \Gamma.
 \]
@@ -114,11 +114,11 @@ $A^{-1}: V^{\prime} \mapsto V$.
     \begin{equation}
         \label{eq:1_5:weak}
         \theta^{\prime}+a A \theta+b \kappa_{a}\left([\theta]^{4}-\varphi\right)=B r,
-        \quad \theta(0)=\theta_{0}, \quad \alpha A \varphi+\kappa_{a}\left(\varphi-[\theta]^{4}\right)=B u
+        \quad \theta(0)=\theta_{0}, \quad \alpha A \varphi+\kappa_{a}\left(\varphi-[\theta]^{4}\right)=B u.
     \end{equation}
 \end{definition}
 Здесь и далее будем обозначать через
-$[\theta]^s \coloneqq |\theta|^s \mathrm{sign}\theta,\,s  \in \mathbb{R}$.
+$[\theta]^s \coloneqq |\theta|^s \mathrm{sign}\theta,\quad s \in \mathbb{R}$.
 \begin{lemma}
     \label{lm:1_5:1}
     Пусть выполняются условия (j), (jj).
@@ -146,9 +146,12 @@ $[\theta]^s \coloneqq |\theta|^s \mathrm{sign}\theta,\,s  \in \mathbb{R}$.
 
     Получим априорные оценки решения задачи~\eqref{eq:1_5:4},
     на основании которых стандартным образом выводится разрешимость этой задачи.
-    Пусть $[\zeta, \eta]=\left(\left(\alpha I+\kappa_{a} A^{-1}\right) \zeta,
-    \eta\right), \zeta \in V^{\prime}, \eta \in V$.
-    Обратите внимание, что выражение $[[\eta]]=\sqrt{[\eta, \eta]}$
+    Пусть
+    \[
+        [\zeta, \eta]=\left(\left(\alpha I+\kappa_{a} A^{-1}\right) \zeta,
+    \eta\right), \zeta \in V^{\prime}, \eta \in V.
+    \]
+    Обратим внимание, что выражение $[[\eta]]=\sqrt{[\eta, \eta]}$
     определяет норму в $H$, эквивалентную стандартной.
 
     Скалярно умножив уравнение~\eqref{eq:1_5:4} в смысле пространства $H$,

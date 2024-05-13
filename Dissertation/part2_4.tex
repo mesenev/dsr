@@ -6,7 +6,7 @@
 Рассмотрим следующую систему полулинейных эллиптических уравнений, которая
 моделирует радиационный и диффузионный (сложный) теплообмен в
 ограниченной липшицевой области $\Omega\subset \mathbb{R}^3$ с границей
-$\Gamma=\partial\Omega$ (см.\ гл.~\ref{ch:ch1}).
+$\Gamma=\partial\Omega$ (см.\ гл.~\ref{ch:ch1}):
 \begin{equation}
     \label{eq:2_4:eq1}
     - a\Delta\theta + b\kappa_a(|\theta|\theta^3- \varphi)=0,   \quad
@@ -41,8 +41,8 @@ $\psi= a\theta + \alpha b \varphi$.
 Складывая первое уравнение в~\eqref{eq:2_4:eq1} со вторым, умноженным на $b$,
 заключаем, что $\psi$ -- гармоническая функция.
 Исключая $\varphi$ из первого уравнения в~\eqref{eq:2_4:eq1} и используя краевые
-условия~\eqref{eq:2_4:bc1},\eqref{eq:2_4:bc2},
-получаем краевую задачу
+условия~\eqref{eq:2_4:bc1},~\eqref{eq:2_4:bc2},
+получаем краевую задачу:
 \begin{equation}
     \label{eq:2_4:eq2}
     - a \Delta \theta + g (\theta) = \frac{\kappa_a}{\alpha}\psi, \quad
@@ -57,7 +57,7 @@ $\psi= a\theta + \alpha b \varphi$.
 Здесь $g(\theta) = b \kappa_a|\theta|\theta^3 + \frac{a\kappa_a}{\alpha}\theta$, $r=\alpha b \gamma \theta_b^4+ \alpha q_b + a \gamma \theta_b$.
 
 Сформулируем задачу оптимального управления, которая аппроксимирует
-задачу~\eqref{eq:2_4:eq2},\eqref{eq:2_4:bc3}.
+задачу~\eqref{eq:2_4:eq2},~\eqref{eq:2_4:bc3}.
 Задача состоит в отыскании тройки $\{\theta_\lambda,\psi_\lambda,u_\lambda\}$ такой, что
 \begin{gather}
     \label{eq:2_4:cost}
@@ -202,7 +202,7 @@ $\{\theta_\lambda, \psi_\lambda, u_\lambda \} \in V \times V \times U$
         + f_1,\;\;\; A_2\psi_m = f_2 + B_2 u_m.
     \end{equation}
     Из ограниченности последовательности $u_m$ в
-    пространстве $U$ следуют, на основании леммы~\ref{lm:2_4:1}, оценки
+    пространстве $U$ следуют, на основании леммы~\ref{lm:2_4:1}, оценки:
     \[
         \|\theta_m\|_V \leq C,\;\;
         \|\psi_m\|_V \leq C,\;\;\|\theta_m\|_{L^6(\Omega)} \leq C.
@@ -272,7 +272,7 @@ $\{\theta_\lambda, \psi_\lambda, u_\lambda \} \in V \times V \times U$
 Пусть $\{\hat{\theta}, \hat{\varphi}, \hat{u} \}$ -- решение задачи $(P_\lambda)$.
 Вычислив производные Гато функции Лагранжа по $\theta,\,\psi$ и $u$, получаем
 в силу принципа Лагранжа~\cite[Гл. 2, теорема 1.5]{10} следующие равенства
-$\forall v\in V,\, w \in U$
+$\forall v\in V,\, w \in U$:
 \begin{equation}
     \label{eq:2_4:oc1}
     (B_1(\hat{\theta} -\theta_b), v) + (A_1 v + g'(\hat{\theta})v, p_1)=0,\;
@@ -283,7 +283,7 @@ $\forall v\in V,\, w \in U$
     \lambda(B_2\hat{u},w) - (B_2 w, p_2) = 0.
 \end{equation}
 
-Из условий~\eqref{eq:2_4:oc1},\eqref{eq:2_4:oc2}
+Из условий~\eqref{eq:2_4:oc1},~\eqref{eq:2_4:oc2}
 вытекают уравнения для сопряженного состояния,
 которые вместе с уравнениями~\eqref{eq:2_4:w1}
 для оптимальной тройки дают систему оптимальности задачи $(P_\lambda)$.
@@ -316,13 +316,13 @@ $\forall v\in V,\, w \in U$
 
 Покажем, что если существует пара
 $\{\theta,\varphi\}\in V\times V$ -- решение обратной
-задачи~\eqref{eq:2_4:eq1}-\eqref{eq:2_4:bc2} и при этом
+задачи~\eqref{eq:2_4:eq1}--\eqref{eq:2_4:bc2} и при этом
 $q=a\partial_n\varphi|_{\Gamma_2}\in L^2(\Gamma_2)$, то
 решения задачи $(P_\lambda)$ при $\lambda \to + 0$
-аппроксимируют решение задачи~\eqref{eq:2_4:eq1}-\eqref{eq:2_4:bc2}.
+аппроксимируют решение задачи~\eqref{eq:2_4:eq1}--\eqref{eq:2_4:bc2}.
 
 Предварительно заметим, что указанная пара
-для всех $ v \in V$ удовлетворяет равенствам
+для всех $ v \in V$ удовлетворяет равенствам:
 \begin{equation}
     \label{eq:2_4:ip1}
     a(\nabla\theta, \nabla v)
@@ -341,7 +341,7 @@ $q=a\partial_n\varphi|_{\Gamma_2}\in L^2(\Gamma_2)$, то
 
 \begin{theorem}
     Пусть выполняются условия $(l), (ll)$ и существует решение
-    задачи~\eqref{eq:2_4:eq1}-\eqref{eq:2_4:bc2},
+    задачи~\eqref{eq:2_4:eq1}--\eqref{eq:2_4:bc2},
     удовлетворяющее равенствам~\eqref{eq:2_4:ip1},~\eqref{eq:2_4:ip2},
     Если $\{\theta_\lambda,\psi_\lambda,u_\lambda\}$ -- решение
     задачи $(P_\lambda)$ для $\lambda>0$, то существует последовательность
@@ -352,7 +352,7 @@ $q=a\partial_n\varphi|_{\Gamma_2}\in L^2(\Gamma_2)$, то
         \frac{1}{\alpha b}(\psi_\lambda-a\theta_\lambda)\rightarrow\varphi_*
         \text{ \textit{ слабо в} }V,\text{ \textit{ сильно в} }H,
     \]
-    где $\theta_*,\varphi_*$ -- решение задачи~\eqref{eq:2_4:eq1}-\eqref{eq:2_4:bc2}.
+    где $\theta_*,\varphi_*$ -- решение задачи~\eqref{eq:2_4:eq1}--\eqref{eq:2_4:bc2}.
 \end{theorem}
 
 
@@ -385,7 +385,7 @@ $q=a\partial_n\varphi|_{\Gamma_2}\in L^2(\Gamma_2)$, то
         \lambda\to +0.
     \]
     Из ограниченности последовательности $u_\lambda$ в пространстве $U$ следуют, на основании
-    леммы~\ref{lm:2_4:1}, оценки
+    леммы~\ref{lm:2_4:1}, оценки:
     \[ \|\theta_\lambda\|_V \leq C,\; \|\psi_\lambda\|_V \leq C, \]
     где постоянная $C > 0$ не зависит от $\lambda$.
     Поэтому можно выбрать последовательность $\lambda \to + 0$ такую, что
@@ -409,5 +409,5 @@ $q=a\partial_n\varphi|_{\Gamma_2}\in L^2(\Gamma_2)$, то
         A_2 \psi_* = f_2 + B_2 u_*, \quad \theta_*|_{\Gamma_1} = \theta_b.
     \end{equation}
     Полагая $\varphi_*= \frac{1}{\alpha b}(\psi_*-a\theta_*)$, заключаем, что
-    пара $\theta_*,\varphi_*$ -- решение задачи~\eqref{eq:2_4:eq1}-\eqref{eq:2_4:bc2}.
+    пара $\theta_*,\varphi_*$ -- решение задачи~\eqref{eq:2_4:eq1}--\eqref{eq:2_4:bc2}.
 \end{proof}
