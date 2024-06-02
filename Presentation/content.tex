@@ -1,89 +1,142 @@
-\section{Списки}
-\begin{frame}[plain, noframenumbering]
-    \begin{center}
-        \Huge
-        Списки
-    \end{center}
-\end{frame}
+\section{Модели сложного теплообмена}\label{sec:$p_1$}
 
-\subsection{Нумерованные}
-
+\subsection{Стационарная модель сложного теплообмена}\label{subsec:st}
 \begin{frame}
-    \frametitle{Нумерованные списки}
-    \begin{enumerate}
-        \item один
-        \item два
-        \item три
-    \end{enumerate}
+    \frametitle{Стационарная модель}
+    Область $\Omega \subset \mathbb{R}^3$, граница  $\Gamma = \partial \Omega$.
+    \begin{gather}
+        -a \Delta \theta + + b \kappa_a \theta^4 =  b \kappa_a \varphi,
+        \quad
+        - \alpha \Delta \varphi + \kappa_a \varphi = \kappa_a \theta^4,  \label{eq:pres:1}\\
+        a \frac{\partial \theta}{\partial \mathbf{n}}
+        +\left.\beta\left(\theta-\theta_{b}\right)\right|_{\Gamma}=0,
+        \quad
+        \alpha \frac{\partial \varphi}{\partial \mathbf{n}} + \gamma
+        (\varphi-\theta_b^4)|_{\Gamma} = 0. \label{eq:pres:2}
+    \end{gather}
+    $\Omega$ -- липшицева ограниченная область, $\Gamma$ состоит из конечного числа гладких кусков,
+    исходные данные удовлетворяют условиям:
+    \begin{itemize}
+        \item (i) $\theta_{0}, \beta, \gamma \in L^{\infty}(\Gamma),
+        0 \leqslant \theta_{0} \leqslant M, \beta \geqslant \beta_{0}>0, \gamma \geqslant \gamma_{0}>0$;
+    \end{itemize}
+    Здесь $M, \beta_{0}, \gamma_{0}$, и $c_{0}$ положительные постоянные.
 \end{frame}
 \note{
-    Этот текст будет виден только если его отображение включено
-    в~файле \textbf{Presentation/setup}.
-    Для раздельного вывода презентации и заметок на~разные экраны (как
-    в~impress или powerpoint) можно использовать программу
-    \textit{pdf-presenter-console}.
+    Стационарная нормализованная диффузионная модель, описывающая
+    радиационный, кондуктивный и конвективный теплообмен в
+    ограниченной области $\Omega \subset \mathbb{R}^3$,
+    имеет следующий вид
+    ...
+    Здесь $\theta$ -- нормализованная температура, $\varphi$ --
+    нормализованная интенсивность излучения, усредненная по всем
+    направлениям, $\textbf{v}$ -- заданное поле скоростей, $\kappa_a$ --
+    коэффициент поглощения.
+    Постоянные $a$, $b$ и $\alpha$
+    определяются следующим образом:
+    \[
+        a = \frac{k}{\rho c_v},\quad b = \frac{4\sigma n^2 T_{\max}^3}{\rho c_v},
+        \quad \alpha=\frac{1}{3\kappa - A \kappa_s},
+    \]
+    где $k$ -- теплопроводность, $c_v$ -- удельная теплоемкость, $\rho$ --
+    плотность, $\sigma$ -- постоянная Стефана-Больцмана, $n$ --
+    показатель преломления, $T_{\max}$ -- максимальная температура в
+    ненормализованной модели, $\kappa = \kappa_s + \kappa_a$ -- коэффициент
+    полного взаимодействия, $\kappa_s$ -- коэффициент рассеяния.
+    Коэффициент $A \in [-1, 1]$ описывает анизотропию рассеяния, случай
+    $A=0$ соответствует изотропному рассеянию.
+
+    Будем предполагать, что функции $\theta$ и $\varphi$, описывающие
+    процесс сложного теплообмена, удовлетворяют следующим условиям на
+    границе $\Gamma = \partial \Omega$: ...
 }
-
-\subsection{Не нумерованные}
-
 
 \begin{frame}
-    \frametitle{Перечисления}
-    \begin{itemize}
-        \item Проблема 1
-        \item Проблема 2
-        \item Проблема 3
-    \end{itemize}
+    \begin{definition}
+        Пара
+        $\{\theta, \varphi\} \in H^1(\Omega) \times H^1(\Omega)$ называется слабым решением задачи,
+        если для любых $\eta, \psi \in H^1(\Omega)$ выполняются равенства:
+        \begin{gather*}
+            a(\nabla \theta, \nabla \eta)
+            + \left(b \kappa_{a}\left(|\theta| \theta^{3} - \varphi\right), \eta\right)
+            + \int_{\Gamma} \beta\left(\theta - \theta_{0}\right) \eta d \Gamma=0, \\
+            \alpha(\nabla \varphi, \nabla \psi)+\kappa_{a}\left(\varphi-|\theta| \theta^{3},
+            \psi\right)+\int_{\Gamma} \gamma\left(\varphi-\theta_{0}^{4}\right) \psi d \Gamma=0.
+        \end{gather*}
+    \end{definition}
+    \begin{theorem}
+        Пусть выполняются условия (i).
+        Тогда существует единственное слабое
+        решение задачи~\eqref{eq:pres:1}--\eqref{eq:pres:2},
+        удовлетворяющее неравенствам:
+        \begin{align}
+            & a\|\nabla \theta\|^{2} \leqslant b \kappa_{a} M^{5}|\Omega|
+            + \|\gamma\|_{L^{\infty}(\Gamma)} M^{2}|\Gamma|,\\
+            & \alpha\|\nabla \varphi\|^{2} \leqslant \kappa_{a} M^{8}|\Omega|
+            + \|\beta\|_{L^{\infty}(\Gamma)} M^{8}|\Gamma|,\\
+            & 0 \leqslant \theta \leqslant M, \quad 0 \leqslant \varphi \leqslant M^{4}.
+        \end{align}
+    \end{theorem}
 \end{frame}
-\note[itemize]{
-    \item Тезис 1
-    \item Тезис 2
-    \item Тезис 3
-}
 
-\subsection{Комбинированные}
+\subsection{Квазистационарная модель сложного теплообмена}\label{subsec:qst}
+\begin{frame}
+    \frametitle{Квазистационарная модель}
+    \begin{align}
+        \frac{\partial\theta}{\partial t} - a\Delta\theta
+        + b\kappa_a (|\theta|\theta^3 - \phi) &= 0, \label{eq:1_5:1}\\
+        - \alpha\Delta\phi + \kappa_a (\phi - |\theta|\theta^3 ) &= 0,
+        \quad x \in \Omega, \quad 0 < t < T ; \label{eq:1_5:1+} \\
+        a \frac{\partial \theta}{\partial n}
+        +\left.\beta\left(\theta-\theta_{b}\right)\right|_{\Gamma}&=0,
+        \quad \alpha \frac{\partial \varphi}{\partial \mathbf{n}} + \gamma
+        (\varphi-\theta_b^4)|_{\Gamma} = 0 \text{ на } \Gamma; \label{eq:1_5:2} \\
+        \theta|_{t=0} &= \theta_0. \label{eq:1_5:3}
+    \end{align}
+    \begin {itemize}
+        \item (j) $a, b, \alpha, \kappa_{a} =$ Const $>0$,
+        \item (jj) $\theta_{b}, q_{b}, u=\theta^4_b \in U, r
+        =a\left(\theta_{b}+q_{b}\right) \in L^{5}(\Sigma), \; \theta_{0} \in L^{5}(\Omega)$.
+    \end{itemize}
+
+    Здесь через $U$ обозначено пространство $L^{2}(\Sigma)$ с нормой
+    \[
+        \|u\|_{\Sigma}=\left(\int_{\Sigma} u^{2} d \Gamma d t\right)^{1/2}.
+    \]
+\end{frame}
 
 \begin{frame}
-    \frametitle{Комбинация списков}
-    \begin{enumerate}
-        \item \textbf{Задача 1}
-              \begin{itemize}
-                  \item Подзадача 1-1
-                  \item Подзадача 1-2
-              \end{itemize}
-        \item \textbf{Задача 2}
-              \begin{itemize}
-                  \item Подзадача 2-1
-                  \item Подзадача 2-2
-                  \item Подзадача 2-3
-              \end{itemize}
-        \item \textbf{Задача 3}
-              \begin{itemize}
-                  \item Подзадача 3-1
-                  \item Подзадача 3-2
-                  \item Подзадача 3-3
-              \end{itemize}
-    \end{enumerate}
-\end{frame}
-\note[itemize]{
-    \item Задача 1
-    \item Задача 2
-    \item Задача 3
-}
+    Определим операторы $A: V \rightarrow V^{\prime}, B: U \rightarrow V^{\prime}$,
+    которые выполняются для любых $y, z \in V, w \in L^{2}(\Gamma)$:
+    \[
+        (A y, z)=(\nabla y, \nabla z)+\int_{\Gamma} y z d \Gamma, \quad(B w, z)=\int_{\Gamma} w z d \Gamma.
+    \]
 
-\begin{frame}[allowframebreaks]
-    \frametitle{Разделение слайда}
-    Поясняющий текст
-    \begin{itemize}
-        \item Один
-        \item Два
-        \item Три
-    \end{itemize}
-    \framebreak
-    Продолжение предыдущего слайда
+    \begin{definition}
+        Пара $\theta \in W, \varphi \in L^{2}(0, T ; V)$
+        называется слабым решением задачи~\eqref{eq:1_5:1}--\eqref{eq:1_5:3}
+        если
+        \begin{equation}
+            \label{eq:1_5:weak}
+            \theta^{\prime}+a A \theta+b \kappa_{a}\left([\theta]^{4}-\varphi\right)=B r,
+            \quad \theta(0)=\theta_{0}, \quad \alpha A \varphi+\kappa_{a}\left(\varphi-[\theta]^{4}\right)=B u.
+        \end{equation}
+    \end{definition}
+    Здесь и далее будем обозначать через
+    $[\theta]^s \coloneqq |\theta|^s \mathrm{sign}\theta,\quad s \in \mathbb{R}$.
+    \begin{lemma}[1.20]
+        Пусть выполняются условия (j), (jj).
+        Тогда существует единственное слабое решение задачи~\eqref{eq:1_5:1}--\eqref{eq:1_5:3} и справедливо
+        \[
+            \psi=[\theta]^{5 / 2} \in L^{\infty}(0, T ; H) \cap L^{2}(0, T ; V),
+            \quad[\theta]^{4} \in L^{2}(0, T ; H).
+        \]
+    \end{lemma}
+
 \end{frame}
 
-\section{Графика}
+
+\section{Граничные обратные задачи и задачи с данными Коши}\label{sec:-------}
 \begin{frame}[plain, noframenumbering]
     \begin{center}
         \Huge
@@ -95,211 +148,21 @@
 \begin{frame}
     \frametitle{Одиночное изображение}
     \centering
-    \includegraphics[width=0.8\linewidth]{latex} % окружение figure не требуется
+%    \includegraphics[width=0.8\linewidth]{} % окружение figure не требуется
 \end{frame}
 
 \begin{frame}
-    \frametitle{Векторная графика}
-    \begin{figure}
-        \centering
-        \ifdefmacro{\tikzsetnextfilename}{\tikzsetnextfilename{tikz_presentation}}{}% присваиваемое предкомпилированному pdf имя файла (не обязательно)
-        \input{Presentation/images/tikz_plot.tikz}
-    \end{figure}
+
 \end{frame}
 
-\subsection{Расположение}
+\subsection{Расположение}\label{subsec:}
 
 \begin{frame}
-    \frametitle{Изображения по-вертикали}
-    \centering
-    \vfill
-    \includegraphics[width=0.8\linewidth,height=0.1\textheight]{latex} \\
-    \TeX
-    \vfill
-    \includegraphics[width=0.8\linewidth,height=0.2\textheight]{latex} \\
-    \LaTeX
-    \vfill
-    \includegraphics[scale=0.2]{latex} \\
-    \vfill
+
 \end{frame}
 
 
-\begin{frame}
-    \frametitle{Изображения по-горизонтали}
-    \begin{minipage}[t]{0.47\linewidth}
-        \textbf{Составная \\ подпись 1}
-        \center{\includegraphics[width=1\linewidth]{knuth1}}
-    \end{minipage}
-    \hfill
-    \begin{minipage}[t]{0.47\linewidth}
-        \textbf{Составная \\ подпись 2}
-        \center{\includegraphics[width=1\linewidth]{knuth2}}
-    \end{minipage}
-\end{frame}
-
-\subsection{Линии}
-
-\begin{frame}
-    \frametitle{Разделяющие линии}
-    \begin{minipage}[c]{0.47\linewidth}
-        \center{\includegraphics[width=1\linewidth]{latex}}
-        \bigskip
-        \hrule{}
-        \bigskip
-        \textbf{Составная \\ подпись 1}
-    \end{minipage}
-    \hfill
-    \vrule{}
-    \hfill
-    \begin{minipage}[c]{0.47\linewidth}
-        \flushright
-        \textbf{Составная \\ подпись 2}
-        \center{\includegraphics[width=1\linewidth]{knuth2}}
-    \end{minipage}
-\end{frame}
-
-\section{Остальное}
-\begin{frame}[plain, noframenumbering]
-    \begin{center}
-        \Huge
-        Остальное
-    \end{center}
-\end{frame}
-
-\subsection{Формулы}
-
-\begin{frame}
-    \frametitle{Формулы}
-    \[
-    \left\{
-    \begin{array}{rl}
-        \dot x = & \sigma (y-x)  \\
-        \dot y = & x (r - z) - y \\
-        \dot z = & xy - bz
-    \end{array}
-    \right.
-    \]
-\end{frame}
-
-\begin{frame}
-    \frametitle{amsmath}
-    \centering
-    \begin{minipage}[t]{0.5\linewidth}
-        \begin{multline*}
-            y = 1 x^1 + 2 x^2 + 3 x^3 + \\ + 4 x^4 + 5 x^5 + \dots
-        \end{multline*}
-    \end{minipage}
-\end{frame}
-
-\begin{frame}[allowframebreaks]
-    \frametitle{Уравнения Максвелла}
-    \centering{
-        \small
-        \def\arraystretch{1.8}%
-        \begin{tabular}{ll}
-            \toprule
-            Интегральная форма                                                                                                                                            & Дифференциальная форма                                                          \\ \midrule
-            \(Q_e(t) = \displaystyle\oiint_S \vec D(t) \cdot d\vec{s} = \displaystyle\iiint_V \rho_v(t) dv\)                                                              & \(\nabla \cdot \vec D(t) = \rho_v(t)\)                                          \\
-            \(\displaystyle\oiint_S \vec B(t) \cdot d\vec{s} = 0\)                                                                                                        & \(\nabla \cdot \vec B(t) = 0\)                                                  \\
-            \(V_{emf}(t) = \displaystyle\oint_L \vec E(t) \cdot d\vec{l}\) = \(- \displaystyle\iint_S \left[\frac{\partial\vec{B}(t)}{\partial t}\right] \cdot d\vec{s}\) & \(\nabla \times \vec E(t) = - \frac{\partial\vec{B}(t)}{\partial t}\)           \\
-            \(I(t) = \displaystyle\oint_L \vec H(t) \cdot d\vec{l} = \displaystyle\iint_S \left[\vec J(t) + \frac{\partial\vec{D}(t)}{\partial t}\right] \cdot d\vec{s}\) & \(\nabla \times \vec H(t) = \vec J(t) + \frac{\partial\vec{D}(t)}{\partial t}\) \\ \midrule
-            \(\displaystyle\oiint_S \vec J \cdot d\vec{s} = -\frac{\partial Q_e}{\partial t}\)                                                                            & \(\nabla \cdot \vec J = - \frac{\partial \rho_v}{\partial t}\)                  \\
-            \bottomrule
-            \multicolumn{2}{c}{\(\vec D(t) = \left[\varepsilon(t)\right] * \vec E(t)\)}                                                                                                                                                                     \\
-            \multicolumn{2}{c}{\(\vec B(t) = \left[\mu(t)\right] * \vec H(t)\)}                                                                                                                                                                             \\
-        \end{tabular}
-    }
-    \framebreak
-
-    \hspace{0.05\linewidth}
-    \centering{
-        \small
-        \def\arraystretch{1.8}%
-        \begin{tabular}{ll}
-            \toprule
-            Интегральная форма                                                                                                                & Дифференциальная форма                               \\ \midrule
-            \(Q_e = \displaystyle\oiint_S \vec D \cdot d\vec{s} = \displaystyle\iiint_V \rho_v dv\)                                           & \(\nabla \cdot \vec D = \rho_v\)                     \\
-            \(\displaystyle\oiint_S \vec B \cdot d\vec{s} = 0\)                                                                               & \(\nabla \cdot \vec B = 0\)                          \\
-            \(V_{emf} = \displaystyle\oint_L \vec E \cdot d\vec{l}\) = \(- \displaystyle\iint_S \left[j \omega \vec B\right] \cdot d\vec{s}\) & \(\nabla \times \vec E = - j \omega \vec B\)         \\
-            \(I = \displaystyle\oint_L \vec H \cdot d\vec{l} = \displaystyle\iint_S \left[\vec J + j \omega \vec D\right] \cdot d\vec{s}\)    & \(\nabla \times \vec H = \vec J + j \omega \vec{D}\) \\ \midrule
-            \(\displaystyle\oiint_S \vec J \cdot d\vec{s} = - j \omega Q_e\)                                                                  & \(\nabla \cdot \vec J = - j \omega \rho_v\)          \\
-            \bottomrule
-            \multicolumn{2}{c}{\(\vec D(t) = \left[\varepsilon\right] \vec E(t)\)}                                                                                                                   \\
-            \multicolumn{2}{c}{\(\vec B(t) = \left[\mu\right] \vec H(t)\)}                                                                                                                           \\
-        \end{tabular}
-    }
-\end{frame}
-
-\subsection{Таблицы}
-
-\begin{frame}
-    \frametitle{Таблица}
-    \centering
-    \begin{tabular}{|l|l|}
-        \hline
-        \textbf{Заголовок 1} & \textbf{Заголовок 2} \\
-        \hline
-        Сумма                & \(b+a\)              \\
-        \hline
-        Разность             & \(a-b\)              \\
-        \hline
-        Произведение         & \(a*b\)              \\
-        \hline
-    \end{tabular}
-\end{frame}
-
-\begin{frame}
-    \frametitle{Другая таблица}
-    \centering
-    \begin{tabular}{lc}
-        \toprule
-        \multicolumn{1}{c}{\textbf{Заголовок 1}} & \textbf{Заголовок 2} \\ \midrule
-        Сумма                                    & \(b+a\)              \\
-        Разность                                 & \(a-b\)              \\
-        Произведение                             & \(a*b\)              \\
-        \bottomrule
-    \end{tabular}
-\end{frame}
+\section{Задачи оптимального управления для квазилинейных моделей}\label{sec:-----}
 
 
-\subsection{Разное}
-
-\begin{frame}
-    \frametitle{Большой многоуровневый список}
-    \begin{itemize}
-        \item \textbf{Пункт 1}
-              \begin{itemize}
-                  \itemi Подпункт 1-1
-                  \itemi Подпункт 1-2
-              \end{itemize}
-        \item \textbf{Пункт 2}
-              \begin{itemize}
-                  \itemi Подпункт 2-1
-              \end{itemize}
-        \item \textbf{Пункт 3}
-              \begin{itemize}
-                  \itemi Подпункт 3-1
-                  \itemi Подпункт 3-2
-              \end{itemize}
-        \item \textbf{Пункт 4}
-              \begin{itemize}
-                  \itemi Подпункт 4-1
-              \end{itemize}
-        \item \textbf{Пункт 5}
-              \begin{itemize}
-                  \itemi Подпункт 5-1
-                  \itemi Подпункт 5-2
-                  \itemi Подпункт 5-3
-              \end{itemize}
-    \end{itemize}
-\end{frame}
-
-\begin{frame}
-    \frametitle{Четыре изображения}
-    \centering
-    \includegraphics[width=0.35\linewidth,angle=35]{latex}
-    \includegraphics[width=0.35\linewidth,angle=135]{latex}\\
-    \includegraphics[width=0.35\linewidth,angle=15]{latex}
-    \includegraphics[width=0.35\linewidth,angle=-15]{latex}
-\end{frame}
-
+\section{Численные методы и комплексы программ}\label{sec:----}
