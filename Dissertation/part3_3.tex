@@ -42,11 +42,11 @@ $k(\theta)$ --  коэффициент теплопроводности, $\sigma
 на нагрев наконечника волокна, $u_{2}$ --  мощность источника, затрачиваемая на излучение,
 $\chi$ равно характеристической функции части среды, в которой расположен наконечник волокна,
 деленной на объем наконечника волокна.
-Функции $\theta_{b}, \theta_{0}$ определяют граничное и начальное распределения температуры.
+Функции $\theta_{b}$, $\theta_{0}$ определяют граничное и начальное распределения температуры.
 
 Требуется обеспечить близость распределения температуры к желаемому температурному полю $\theta_{d}$
 в конечный момент времени $t=T$ в подобласти $G_{d}$, при этом температура в подобласти $G_{b}$
-не превышает постоянного критического значения значение $\theta_{*}$.
+не превышает постоянного критического значения $\theta_{*}$.
 
 \subsection{Формализация задачи оптимального управления}\label{subsec:ch3:sec3:subsec2}
 
@@ -71,7 +71,7 @@ $\Gamma =\partial \Omega, Q =\Omega \times(0, T)$, $\Sigma=\Gamma \times(0, T)$.
 
 \begin{remark}
     Так как $(\sigma \theta)^{\prime}=\sigma \theta^{\prime}+\theta
-    \partial \sigma / \partial t \in L^{2}\left(0, T ; V^{\prime}\right)$ and $\sigma
+    \partial \sigma / \partial t \in L^{2}\left(0, T ; V^{\prime}\right)$ и $\sigma
     \theta \in L^{2}(0, T ; V)$, тогда $\sigma \theta \in$ $C([0, T] ; H)$,
     и поэтому начальные условия имеют смысл.
 \end{remark}
@@ -249,8 +249,8 @@ $\{\widehat{\theta}, \widehat{u}\} \in$ $L^{2}(0, T ; V) \times U_{a d}$
 Тогда пара $\{\widehat{\theta}, \widehat{u}\}$ решение задачи $CPP$.
 \begin{theorem}
     Пусть выполняются условия $(c1)$--$(c4)$,
-    $\theta_{0} \leq \theta_{*}$ п.\ в. в $\Omega, \theta_{b} \leq \theta_{*}$ п.\ в. в
-    $\Sigma$.
+    $\theta_{0} \leq \theta_{*}$ п.\ в.\ в
+    $\Omega$, $\theta_{b} \leq \theta_{*}$ п.\ в.\ в $\Sigma$.
     Если $\left\{\theta_{\varepsilon}, u_{\varepsilon}\right\}$ решения задачи
     $CPP_{\varepsilon}$ для $\varepsilon>0$, тогда существует последовательность
     $\varepsilon \rightarrow+0$ такая, что $u_{\varepsilon} \rightarrow \widehat{u}$ слабо в
