@@ -1395,23 +1395,23 @@
     \textbf{Пример 1.}
     Рассмотрим куб $\Omega = \{ (x, y, z), 0 \leq x,y,z \leq l \}$ с границей
     $\Gamma \equiv \Gamma_1 \cup \Gamma_2$, где
-    \[
+    $
         \Gamma_1 = \{(x, y, z), 0 \leq x,y, \leq l, z \in 0, l\}, \;
-        \Gamma_2 = \partial \Omega \setminus \hat{\Gamma_1}.
-    \]
+        \Gamma_2 = \partial \Omega \setminus \Gamma_1.
+    $
     Пусть граничные данные $q_b$ и $\theta_b$ в~\eqref{eq:2_4:bc1},~\eqref{eq:2_4:bc2} имеют вид:
     \[ q_b = 0.5, \quad \theta_b = 0.1 + z/2. \]
 
     \begin{figure}[h!t]
-        \begin{minipage}[b][][b]{0.39\linewidth}
+        \begin{minipage}[b][][b]{0.49\linewidth}
             \centering
-            \includegraphics[width=1\linewidth]{jvm-2022/1_theta}
+            \includegraphics[width=1\linewidth]{theta_top}
             \\ а) $\theta|_{z=1}$
         \end{minipage}
         \hfill
-        \begin{minipage}[b][][b]{0.39\linewidth}
+        \begin{minipage}[b][][b]{0.49\linewidth}
             \centering
-            \includegraphics[width=1\linewidth]{jvm-2022/1_phi}
+            \includegraphics[width=1\linewidth]{phi_top}
             \\ б) $\varphi|_{z=1}$
         \end{minipage}
         \caption{Результаты первого эксперимента}
@@ -1469,4 +1469,15 @@
     после тридцати итераций становится равным $6.2\cdot10^{-5}$.
     Полученное состояние представлено рисунками ~\ref{fig:4_4:6}а,~\ref{fig:4_4:6}б.
 
+\end{frame}
+
+
+\begin{frame}
+    \frametitle{Особенности реализации программ по моделированию процессов сложного теплообмена}
+    \begin{enumerate}
+        \item Выбор основного языка программирования
+        \item Пакеты численного решения диф.\ уравнений
+        \item Архитектурные особенности при написании программ по моделированию
+        \item Улучшение эффективности расчётов
+    \end{enumerate}
 \end{frame}
