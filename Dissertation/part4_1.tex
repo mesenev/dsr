@@ -8,20 +8,20 @@
 
 \begin{equation}
     \label{eq:4_1:1}
-        -a \Delta \theta+b \kappa_{a}| \theta|^{3} \theta =
-        b \kappa_{a} \varphi,
+    -a \Delta \theta+b \kappa_{a}| \theta|^{3} \theta =
+    b \kappa_{a} \varphi,
 \end{equation}
 \begin{equation}
     \label{eq:4_1:2}
-        -\alpha \Delta \varphi+\kappa_{a} \varphi =
-        \kappa_{a}|\theta|^{3} \theta,
+    -\alpha \Delta \varphi+\kappa_{a} \varphi =
+    \kappa_{a}|\theta|^{3} \theta,
 \end{equation}
 \begin{equation}
     \label{eq:4_1:3}
-        a \frac{\partial \theta}{\partial n}
-        +\left.\beta\left(\theta-\theta_{b}\right)\right|_{\Gamma}=0,
-        \quad \alpha \frac{\partial \varphi}{\partial n}
-        +\left.\gamma\left(\varphi-\theta_{b}^{4}\right)\right|_{\Gamma}=0.
+    a \frac{\partial \theta}{\partial n}
+    +\left.\beta\left(\theta-\theta_{b}\right)\right|_{\Gamma}=0,
+    \quad \alpha \frac{\partial \varphi}{\partial n}
+    +\left.\gamma\left(\varphi-\theta_{b}^{4}\right)\right|_{\Gamma}=0.
 \end{equation}
 Основную сложность при численном решении прямой задачи представляет нелинейность
 по температурному полю, которое входит в систему
@@ -46,7 +46,7 @@
 Метод Ньютона является усовершенствованным вариантом метода простой итерации,
 в котором нелинейное слагаемое $|\theta|^3 \theta$ аппроксимируется
 выражением $\widetilde{\theta}^4+4 \widetilde{\theta^3}(\theta-\widetilde{\theta})$,
-где $\widetilde{\theta}$ --  приближение для температуры на предыдущей итерации.
+где $\widetilde{\theta}$ -- приближение для температуры на предыдущей итерации.
 Эта аппроксимация обеспечивает более точное решение и быструю сходимость,
 что делает метод Ньютона более эффективным для
 решения задач с высокой степенью нелинейности.
@@ -65,12 +65,12 @@
     \end{gathered}
 \end{equation}
 \begin{equation}
-     \tag{L2}
+    \tag{L2}
     \label{eq:L2}
-        a \frac{\partial \theta}{\partial n}
-        +\left.\beta\left(\theta-\theta_{b}\right)\right|_{\Gamma}=0,
-        \quad \alpha \frac{\partial \varphi}{\partial n}
-        +\left.\gamma\left(\varphi-\theta_{b}^{4}\right)\right|_{\Gamma}=0.
+    a \frac{\partial \theta}{\partial n}
+    +\left.\beta\left(\theta-\theta_{b}\right)\right|_{\Gamma}=0,
+    \quad \alpha \frac{\partial \varphi}{\partial n}
+    +\left.\gamma\left(\varphi-\theta_{b}^{4}\right)\right|_{\Gamma}=0.
 \end{equation}
 
 Монотонная сходимость метода Ньютона является важным свойством,
@@ -121,7 +121,6 @@
 %        \quad x \in \Omega, \quad 0<t<T, \\
 %\end{gather*}
 %
-
 
 \subsection{Примеры численного решения краевой задачи \eqref{eq:4_1:1}--\eqref{eq:4_1:3}}
 \label{subsec:ch4/sec1/boundary}
@@ -215,3 +214,57 @@ $\theta_b = 1- y / 2 + z /2$.
     также основаны на предложенном выше методе Ньютона и будут изложены при описании
     алгоритмов решения обратных задач.
 \end{remark}
+
+\subsection{Зависимость температурного поля от граничных параметров $\gamma, \beta$}
+\label{subsec:ch4/sec1/gamma_beta}
+
+
+Для исследования зависимости температурного поля от граничных параметров положим
+область $\Omega$ равную единичному квадрату.
+Параметры среды и граничную функцию $\theta_b$ положим равными
+$a = 0.6$, $\alpha = 0.333$, $\kappa_a = 1$, $b = 0.025$, $beta = 1$
+(\textit{параметры среды аналогичны предыдущему примеру}),
+$\theta_b = y$.
+Проследим динамику поля температуры
+в центральной точке квадрата в зависимости от
+изменения граничных параметров $\gamma$ и $\beta$.
+
+\begin{figure}[h!t]
+    \begin{minipage}[b][][b]{0.49\linewidth}
+        \centering
+        \includegraphics[width=1\linewidth]{additional/1/theta_dynamic}
+    \end{minipage}
+    \hfill
+    \begin{minipage}[b][][b]{0.49\linewidth}
+        \centering
+        \includegraphics[width=1\linewidth]{additional/1/phi_dynamic}
+    \end{minipage}
+    \caption{$\theta, \varphi$ в точке $\{0.5, 0.5\}$}
+    \label{fig:4_1:dep}
+\end{figure}
+
+Как видно на рисунке~\ref{fig:4_1:dep} параметр $\gamma$ оказывает существенно меньшее влияние
+на температурное поле, чем параметр $\beta$.
+В то же самое время, поле излучения $\varphi$ меняется довольно существенно.
+Следовательно, при увеличении параметров $\kappa$ и $b$
+будет увеличиваться влияние параметра $\gamma$ на температурное поле $\theta$.
+В целях демонстрации положим $b = 1$ и приведём изолинии температурного поля для значений
+$\gamma = \{0.1, 0.9\}$.
+Как видно из приведённых рисунков~\ref{fig:4_1:theta_diff} температурное поле
+в таком случае меняется весьма значительно.
+Моделирование в трёхмерной области даёт аналогичные результаты.
+
+\begin{figure}[h!t]
+    \begin{minipage}[b][][b]{0.49\linewidth}
+        \centering
+        \includegraphics[width=1\linewidth]{additional/1/theta_1_auto} \\ а) $\gamma = 0.1$
+    \end{minipage}
+    \hfill
+    \begin{minipage}[b][][b]{0.49\linewidth}
+        \centering
+        \includegraphics[width=1\linewidth]{additional/1/theta_2_auto} \\ б) $\gamma = 0.9$
+    \end{minipage}
+    \caption{}
+    \label{fig:4_1:theta_diff}
+\end{figure}
+
