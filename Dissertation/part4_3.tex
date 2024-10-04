@@ -451,7 +451,7 @@ q_{b}=\left.\partial_{n} \widehat{\theta}\right|_{\Gamma}$,
 задачи~\eqref{eq:2_3:16},~\eqref{eq:2_3:17} с граничными
 условиями типа Коши.
 
-\subsection{Численный анализ устойчивости решения}
+\subsection{Численный анализ устойчивости решения задачи с данными Коши}
 \label{subsec:ch4/sec3/robustness}
 Хорошо известно, что для уравнения Лапласа задача с данными Коши неустойчива.
 Проверим, как ведёт себя рассматриваемая модель при изменении параметра $q_b$.
@@ -460,27 +460,43 @@ q_{b}=\left.\partial_{n} \widehat{\theta}\right|_{\Gamma}$,
 $\theta|_{\Gamma_1} = \theta_b$, $a\partial_n \theta = q_b$.
 $\theta^\varepsilon$ -- решение с данными
 $\theta|_{\Gamma_1} = \theta_b$, $a\partial_n \theta = q_b +\varepsilon \psi$.
-Здесь $\psi = \psi(x), x \in \Gamma_1$ некоторая форма возмущения.
-Для параметров среды аналогичных~\ref{subsec:ch4/sec3/quasistationary}
+Здесь $\psi = \psi(x), x \in \Gamma_1$ некоторая функция, моделирующая возмущение.
+Параметры среды выберем такие же, как в п.~\ref{subsec:ch4/sec3/quasistationary}.
 Для проведения численного моделирования область $\Omega$ определим
 как квадрат с единичной стороной, где $\Gamma_1$ соответствует стороне $y = 1$.
 Положим $\theta_b = (x + y) / 2$ и $q_b = a / 2$ соответственно.
+
+\textbf{Пример 1.}
 Функцию возьмём константной $\psi = 1$, для $\varepsilon$ возьмём 11 точек из интервала
 $[-0.1, 0.1]$.
 
+
+\textbf{Пример 2.}
+В данном случае возьмём в качестве функции возмущения быстро осциллирующую функцию
+$\psi = \sin (100 * \pi x)$.
 \begin{figure}[h!t]
-    \begin{minipage}[b][][b]{0.9\linewidth}
+    \begin{minipage}[b][][b]{0.49\linewidth}
         \centering
-        \includegraphics[width=1\linewidth]{additional/2/deps}
+        \includegraphics[width=1\linewidth]{additional/2/deps_1}\\ а) $\psi = 1,$
     \end{minipage}
     \hfill
+    \begin{minipage}[b][][b]{0.49\linewidth}
+        \centering
+        \includegraphics[width=1\linewidth]{additional/2/eps_sin} \\ б) $\psi = \sin (100 * \pi x)$.
+    \end{minipage}
     \caption{$||\theta^\varepsilon - \theta||_{L_2(\Omega)}$}
     \label{fig:4_3:vareps}
 \end{figure}
 
-Из рисунка~\ref{fig:4_3:vareps} видно, что численные эксперименты демонстрируют
+Из рисунков~\ref{fig:4_3:vareps} видно, что численные эксперименты демонстрируют
 устойчивость решения относительно изменений теплового потока.
 При прочих начальных данных результат устойчивости схожий.
+
+
+\textit{Вывод}: Разработанный комплекс программ и проведенные на его
+основе численные эксперименты позволяют высказать
+гипотезу об устойчивости решения задачи сложного теплообмена
+с данными Коши по отношению к изменению граничных условий.
 %6_Chebotarev
 
 %6_cheb
