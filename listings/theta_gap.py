@@ -1,4 +1,4 @@
-"""Оценка влияния скачка коэффициента теплопроводности на тепловое излучение"""
+"""Assessment of the effect of a jump in the thermal conductivity coefficient on thermal radiation"""
 from dolfin import *
 # noinspection PyUnresolvedReferences
 from dolfin import dx, ds
