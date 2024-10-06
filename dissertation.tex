@@ -2,7 +2,6 @@
 \RequirePackage[l2tabu,orthodox]{nag} % Раскомментировав, можно в логе получать рекомендации относительно правильного использования пакетов и предупреждения об устаревших и нерекомендуемых пакетах
 % Формат А4, 14pt (ГОСТ Р 7.0.11-2011, 5.3.6)
 \documentclass[a4paper,14pt,oneside,openany]{memoir}
-%\usepackage{ntheorem}
 
 \input{common/setup}            % общие настройки шаблона
 \input{common/packages}         % Пакеты общие для диссертации и автореферата
@@ -48,8 +47,8 @@
 \begin{document}
 %%% Переопределение именований типовых разделов
 % https://tex.stackexchange.com/a/156050
-    \gappto\captionsrussian{\input{common/renames}\unskip} % for polyglossia and babel
-    \input{common/renames}
+\gappto\captionsrussian{\input{common/renames}} % for polyglossia and babel
+\input{common/renames}
 
 %%% Структура диссертации (ГОСТ Р 7.0.11-2011, 4)
     \include{Dissertation/title}           % Титульный лист
@@ -132,17 +131,17 @@
     \input{Dissertation/references}      % Список литературы
     \input{Dissertation/lists}           % Списки таблиц и изображений (иллюстративный материал)
 
-    \setcounter{totalchapter}{\value{chapter}} % Подсчёт количества глав
+\setcounter{totalchapter}{\value{chapter}} % Подсчёт количества глав
 
 %%% Настройки для приложений
-    \appendix
+\appendix
 % Оформление заголовков приложений ближе к ГОСТ:
-    \setlength{\midchapskip}{20pt}
-    \renewcommand*{\afterchapternum}{\par\nobreak\vskip \midchapskip}
-    \renewcommand\thechapter{\Asbuk{chapter}} % Чтобы приложения русскими буквами нумеровались
+\setlength{\midchapskip}{20pt}
+\renewcommand*{\afterchapternum}{\par\nobreak\vskip \midchapskip}
+\renewcommand\thechapter{\Asbuk{chapter}} % Чтобы приложения русскими буквами нумеровались
 
-    \include{Dissertation/appendix}% Приложения
+\include{Dissertation/appendix}        % Приложения
 
-    \setcounter{totalappendix}{\value{chapter}} % Подсчёт количества приложений
+\setcounter{totalappendix}{\value{chapter}} % Подсчёт количества приложений
 
 \end{document}
