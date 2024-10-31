@@ -1,0 +1,1841 @@
+\section{Модели сложного теплообмена}\label{sec:$p_1$}
+\begin{frame}
+    \frametitle{Глава 1. Модели сложного теплообмена}
+    Рассматриваются диффузионные модели сложного теплообмена, основанные
+    на $P_1$ приближении уравнения теплового излучения.
+    Представлены новые результаты, связанные с корректностью квазистационарной
+    и квазилинейной моделями сложного теплообмена.
+\end{frame}
+\note{
+
+}
+
+\subsection{Стационарная модель}\label{subsec:st}
+\begin{frame}
+    \frametitle{Стационарная модель}
+    Область $\Omega \subset \mathbb{R}^3$, граница  $\Gamma = \partial \Omega$.
+    \begin{gather}
+        -a \Delta \theta + + b \kappa_a \theta^4 =  b \kappa_a \varphi,
+        \quad
+        - \alpha \Delta \varphi + \kappa_a \varphi = \kappa_a \theta^4,  \label{eq:pres:1}\\
+        a \frac{\partial \theta}{\partial \mathbf{n}}
+        +\left.\beta\left(\theta-\theta_{b}\right)\right|_{\Gamma}=0,
+        \quad
+        \alpha \frac{\partial \varphi}{\partial \mathbf{n}} + \gamma
+        (\varphi-\theta_b^4)|_{\Gamma} = 0. \label{eq:pres:2}
+    \end{gather}
+
+    Здесь $\theta$ -- нормализованная температура, $\varphi$ -- нормализованная интенсивность излучения,
+    усреднённая по всем направлениям, $\kappa_a$ -- коэффициент поглощения.
+    Константы $a, b, \alpha, \gamma, \beta$ описываются следующим образом:
+    \[
+        a = \frac{k}{\rho c_v}, \; b = \frac{4 \sigma n^2 T^3_{\max}}{\rho c_v}, \;
+        \alpha = \frac{1}{3\kappa -A \kappa_s},
+    \]
+
+
+
+    $\Omega$ -- липшицева ограниченная область, $\Gamma$ состоит из конечного числа гладких кусков,
+    исходные данные удовлетворяют условиям:
+    \begin{itemize}
+        \item (i) $\theta_{0}, \beta, \gamma \in L^{\infty}(\Gamma),
+        0 \leqslant \theta_{0} \leqslant M, \beta \geqslant \beta_{0}>0, \gamma \geqslant \gamma_{0}>0$;
+    \end{itemize}
+    Здесь $M, \beta_{0}, \gamma_{0}$, и $c_{0}$ положительные постоянные.
+\end{frame}
+\note{
+    Результаты, приведённые ниже служат теоретической основой для представленных в дис. алгоритмов обратных задач.
+
+    где $k$ -- теплопроводность, $c_v$ -- удельная теплоёмкость, $\rho$ -- плотность,
+    $\sigma$ -- постоянная Стефана\,--\,Больцмана, $n$ -- индекс рефракции,
+    $T_{\max}$ -- максимальная температура,
+    $\kappa \coloneqq \kappa_s + \kappa_a$ -- коэффициент полного взаимодействия,
+    $\kappa_s$ -- коэффициент рассеяния.
+    Коэффициент $A \in [-1,1]$ описывает анизотропию рассеивания;
+    случай $A=0$ отвечает изотропному рассеиванию.
+}
+
+\begin{frame}
+    \frametitle{Слабая формулировка и существование решения}
+    \begin{definition}
+        Пара
+        $\{\theta, \varphi\} \in H^1(\Omega) \times H^1(\Omega)$ называется слабым решением задачи,
+        если для любых $\eta, \psi \in H^1(\Omega)$ выполняются равенства:
+        \begin{gather*}
+            a(\nabla \theta, \nabla \eta)
+            + \left(b \kappa_{a}\left(|\theta| \theta^{3} - \varphi\right), \eta\right)
+            + \int_{\Gamma} \beta\left(\theta - \theta_{0}\right) \eta d \Gamma=0, \\
+            \alpha(\nabla \varphi, \nabla \psi)+\kappa_{a}\left(\varphi-|\theta| \theta^{3},
+            \psi\right)+\int_{\Gamma} \gamma\left(\varphi-\theta_{0}^{4}\right) \psi d \Gamma=0.
+        \end{gather*}
+    \end{definition}
+    \begin{theorem}[Chebotarev, 2015]
+        Пусть выполняются условия (i).
+        Тогда существует единственное слабое
+        решение задачи~\eqref{eq:pres:1}--\eqref{eq:pres:2},
+        удовлетворяющее неравенствам:
+        \begin{align}
+            & a\|\nabla \theta\|^{2} \leqslant b \kappa_{a} M^{5}|\Omega|
+            + \|\gamma\|_{L^{\infty}(\Gamma)} M^{2}|\Gamma|,\\
+            & \alpha\|\nabla \varphi\|^{2} \leqslant \kappa_{a} M^{8}|\Omega|
+            + \|\beta\|_{L^{\infty}(\Gamma)} M^{8}|\Gamma|,\\
+            & 0 \leqslant \theta \leqslant M, \quad 0 \leqslant \varphi \leqslant M^{4}.
+        \end{align}
+    \end{theorem}
+\end{frame}
+\note{
+    Слабая формулировка выведена обычным способом - умножением уравнений на тестовые функции,
+    интегрированием по частям с учётом краевых условий.
+
+    --известный теоретический результат
+}
+
+\subsection{Квазистационарная модель}\label{subsec:qst}
+\begin{frame}
+    \frametitle{Квазистационарная модель}
+    \begin{align}
+        \frac{\partial\theta}{\partial t} - a\Delta\theta
+        + b\kappa_a (|\theta|\theta^3 - \phi) &= 0, \label{eq:1_5:1}\\
+        - \alpha\Delta\phi + \kappa_a (\phi - |\theta|\theta^3 ) &= 0,
+        \quad x \in \Omega, \quad 0 < t < T ; \label{eq:1_5:1+} \\
+        a \frac{\partial \theta}{\partial n}
+        +\left.\beta\left(\theta-\theta_{b}\right)\right|_{\Gamma}&=0,
+        \quad \alpha \frac{\partial \varphi}{\partial \mathbf{n}} + \gamma
+        (\varphi-\theta_b^4)|_{\Gamma} = 0 \text{ на } \Gamma; \label{eq:1_5:2} \\
+        \theta|_{t=0} &= \theta_0. \label{eq:1_5:3}
+    \end{align}
+    Предполагаем, что
+    \begin {itemize}
+        \item (j) $a, b, \alpha, \kappa_{a} =$ Const $>0$,
+        \item (jj) $\theta_{b}, q_{b}, u=\theta^4_b \in U, r
+        =a\left(\theta_{b}+q_{b}\right) \in L^{5}(\Sigma), \; \theta_{0} \in L^{5}(\Omega)$.
+    \end{itemize}
+
+    Здесь $\Sigma = \Gamma \times (0, T)$, $U$ -- пространство $L^{2}(\Sigma)$ с нормой
+    \[
+        \|u\|_{\Sigma}=\left(\int_{\Sigma} u^{2} d \Gamma d t\right)^{1/2}.
+    \]
+\end{frame}
+\note{
+    Квазистационарная модель
+    Квазистационарная модель -- медленные изменения со временем или
+    имеющую относительно длительный период стабильности по сравнению с
+    интересующим масштабом времени.
+    Такие модели часто используются, когда
+    изучаемая система находится в равновесии или близка к нему, но при этом мо
+    жет испытывать небольшие, медленные колебания со временем.
+    Термин ‘квази‘ означает, что система не совсем стационарна,
+    ее состояние меняется настолько медленно,
+    его можно считать почти стационарным для определенных анализов или целей.
+
+    В контексте теплообмена, излучения или других физических процессов
+    квазистационарные модели могут использоваться для описания сценариев, ко
+    гда параметры и свойства системы меняются очень медленно по сравнению с
+    масштабом времени конкретного изучаемого явления.
+    Такие модели могут упростить анализ и снизить вычислительную сложность, позволяя исследователям
+    сосредоточиться на основных аспектах проблемы.
+}
+
+\begin{frame}
+    Определим операторы $A: V \rightarrow V^{\prime}, B: U \rightarrow V^{\prime}$,
+    которые выполняются для любых $y, z \in V, w \in L^{2}(\Gamma)$:
+    \[
+        (A y, z)=(\nabla y, \nabla z)+\int_{\Gamma} y z d \Gamma, \quad(B w, z)=\int_{\Gamma} w z d \Gamma.
+    \]
+
+    \begin{definition}
+        Пара $\theta \in W, \varphi \in L^{2}(0, T ; V)$
+        называется слабым решением задачи~\eqref{eq:1_5:1}--\eqref{eq:1_5:3}
+        если
+        \begin{equation*}
+            \theta^{\prime}+a A \theta+b \kappa_{a}\left([\theta]^{4}-\varphi\right)=B r,
+            \quad \theta(0)=\theta_{0}, \quad \alpha A \varphi+\kappa_{a}\left(\varphi-[\theta]^{4}\right)=B u.
+        \end{equation*}
+    \end{definition}
+    Здесь и далее будем обозначать через
+    $[\theta]^s \coloneqq |\theta|^s \mathrm{sign}\theta,\quad s \in \mathbb{R}$.
+    \begin{lemma}[1.20]
+        Пусть выполняются условия (j), (jj).
+        Тогда существует единственное слабое решение задачи~\eqref{eq:1_5:1}--\eqref{eq:1_5:3} и справедливо
+        \[
+            \psi=[\theta]^{5 / 2} \in L^{\infty}(0, T ; H) \cap L^{2}(0, T ; V),
+            \quad[\theta]^{4} \in L^{2}(0, T ; H).
+        \]
+    \end{lemma}
+\end{frame}
+\note{
+    Следующий теоретический результат является новым и используется для обоснования
+    корректности оптимизационного метода для квазистационарной модели с данными Коши.
+}
+
+\subsection{Квазилинейная модель}\label{subsec:ql}
+\begin{frame}
+    \frametitle{Квазилинейная модель}
+    \begin{gather}
+        \sigma \partial \theta / \partial t
+        -\operatorname{div}(k(\theta) \nabla \theta)
+        +b\left(\theta^{3}|\theta|-\varphi\right)=f, \label{eq:1_6:1}\\
+        -\operatorname{div}(\alpha \nabla \varphi)
+        +\beta\left(\varphi-\theta^{3}|\theta|\right)=g, x \in \Omega, 0<t<T, \label{eq:1_6:2}\\
+        k(\theta) \partial_{n} \theta+\left.p\left(\theta-\theta_{b}\right)\right|_{\Gamma}=0,
+        \alpha \partial_{n} \varphi
+        +\left.\gamma\left(\varphi-\theta_{b}^{4}\right)\right|_{\Gamma}=0,
+        \left.\quad \theta\right|_{t=0}=\theta_{in}.\label{eq:1_6:3}
+    \end{gather}
+
+    Предполагаем, что:
+    \begin{itemize}
+        \item (k1) $\alpha, \beta, \sigma \in L^{\infty}(\Omega),
+        \quad b=r \beta, r = Const > 0; \alpha \geq \alpha_{0}, \beta \geq \beta_{0},
+        \sigma \geq \sigma_{0}, \alpha_{0}, \beta_{0}, \sigma_{0}=$ Const $>0$.
+
+        \item (k2) $0<k_{0} \leq k(s) \leq k_{1},\left|k^{\prime}(s)\right| \leq k_{2},
+        s \in \mathbb{R}, \quad k_{j}=$ Const.
+
+        \item (k3) $0 \leq \theta_{b} \in L^{\infty}(\Sigma), 0 \leq \theta_{\text{in}}
+        \in L^{\infty}(\Omega)$; $\gamma_{0} \leq \gamma \in L^{\infty}(\Gamma), p_{0}
+        \leq p \in L^{\infty}(\Gamma), \gamma_{0}, p_{0}=$ Const $>0$.
+
+        \item (k4) $0 \leq f, g \in L^{\infty}(Q).$
+    \end{itemize}
+
+\end{frame}
+\note{
+    Зависимость коэффициента теплопроводности от температуры,
+    $\sigma$ – произведение удельной теплоемкости на объемную плотность $(кг на м^3)$,
+    f и g описывают вклад источников тепла и излучения соответственно.
+    Положительные параметры ... описывают радиационные и теплофизические свойства среды
+}
+
+\begin{frame}
+    Определим операторы $A_{1}: V \rightarrow V_{0}^{\prime}$ и $A_{2}: V \rightarrow V^{\prime}$
+    такие, что для всех $\theta, \varphi, v \in V$ выполняются следующие равенства:
+    \[
+        \begin{gathered}
+            \left(A_{1}(\theta), v\right)=(k(\theta) \nabla \theta, \nabla v)
+            +\int_{\Gamma} p \theta v d \Gamma=(\nabla h(\theta), \nabla v)
+            +\int_{\Gamma} p \theta v d \Gamma, \\
+            \left(A_{2} \varphi, v\right)=(\alpha \nabla \varphi, \nabla v)
+            +\int_{\Gamma} \gamma \varphi v d \Gamma,
+        \end{gathered}
+    \]
+    где $ h(s)=\int_{0}^{s} k(r) d r$.
+
+
+    \begin{definition}
+        Пару $\theta \in W, \varphi \in L^{2}(0, T ; V)$ будем называть слабым
+        решением задачи~\eqref{eq:1_6:1}--\eqref{eq:1_6:3}, если
+        \begin{equation}
+            \label{eq:1_6:4}
+            \sigma \theta^{\prime}+A_{1}(\theta)+b\left([\theta]^{4}-\varphi\right)=f_{b}+f
+            \quad \text { п. в. в }(0, T), \quad \theta(0)=\theta_{\text{in}},
+        \end{equation}
+        \begin{equation}
+            \label{eq:1_6:5}
+            A_{2} \varphi+\beta\left(\varphi-[\theta]^{4}\right)
+            =g_{b}+g \quad \text { п. в. в }(0, T).
+        \end{equation}
+    \end{definition}
+    Здесь $f_{b}, g_{b} \in L^{2}\left(0, T ; V^{\prime}\right)$ и
+    \[
+        \left(f_{b}, v\right)=\int_{\Gamma} p \theta_{b} v d \Gamma,
+        \quad\left(g_{b}, v\right)=
+        \int_{\Gamma} \gamma \theta_{b}^{4} v d \Gamma \quad \forall v \in V.
+    \]
+\end{frame}
+
+\begin{frame}
+    \frametitle{Алгоритм решения начально-краевой задачи}
+    Пусть $\theta_{0}=\theta_{\text{in}}, \, \varphi_{0}=F_{1}\left(\theta_{0}\right)$.
+    Рекурсивно определим последовательность
+    $\theta_{m} \in W, \quad \varphi_{m} \in L^{2}(0, T ; V)$ такую, что
+    \begin{equation}
+        \label{eq:1_6:10}
+        \theta_{m}=F_{2}\left(\theta_{m-1}, \varphi_{m-1}\right),
+        \quad \varphi_{m}=F_{1}\left(\theta_{m}\right), \quad m=1,2, \ldots
+    \end{equation}
+    Здесь операторы $F_{1}: L^{\infty}(\Omega) \rightarrow V$ и
+    $F_{2}: L^{\infty}(Q) \times L^{2}(0, T ; V) \rightarrow W$ определены следующим образом.
+    Пусть $\varphi=F_{1}(\theta)$, если
+    \begin{equation}
+        \label{eq:1_6:6}
+        A_{2} \varphi+\beta\left(\varphi-[\theta]^{4}\right)=g_{b}+g,
+    \end{equation}
+    и $\theta=F_{2}(\zeta, \varphi)$, если
+    \begin{equation}
+        \label{eq:1_6:7}
+        \sigma \theta^{\prime}+A(\zeta, \theta)
+        +b\left([\theta]^{4}-\varphi\right)=f_{b}+f
+        \quad \text { п. в. в }(0, T), \quad \theta(0)=\theta_{i n}.
+    \end{equation}
+    Здесь
+    $ (A(\zeta, \theta), v)=(k(\zeta) \nabla \theta, \nabla v) +\int_{\Gamma} p \theta v d \Gamma \quad \forall v \in V$,
+    \[
+        W=\left\{y \in L^{2}(0, T ; V): \sigma y^{\prime}=\sigma d y / d t \in L^{2}
+        \left(0, T, V^{\prime}\right)\right\}.
+    \]
+\end{frame}
+\note{
+    17. Для решения квазилинейной задачи определим рекурсивную последовательность ...
+}
+
+\begin{frame}
+    \frametitle{Существование решения квазилинейной задачи}
+    \begin{lemma}[1.23]
+        \label{lm:1_6:3}
+        Если выполнены условия (k1)--(k4), то существует константа $C>0$,
+        не зависящая от $m$, такая, что
+        \begin{gather*}
+            \left\|\varphi_{m}\right\|_{L^{2}(0, T ; V)} \leq C,
+            \quad\left\|\theta_{m}\right\|_{L^{2}(0, T ; V)} \leq C, \\
+            \int_{0}^{T-\delta}\left\|\theta_{m}(s+\delta)
+            -\theta_{m}(s)\right\|^{2} d s \leq C \delta.
+        \end{gather*}
+    \end{lemma}
+
+    \begin{equation*}
+        \begin{aligned}
+            & \theta_{m} \rightarrow \widehat{\theta} \text { слабо в } L^{2}(0, T ; V),
+            \text { сильно в } L^{2}(0, T ; H), \\
+            & \varphi_{m} \rightarrow \widehat{\varphi} \text { слабо в } L^{2}(0, T ; V).
+        \end{aligned}
+    \end{equation*}
+
+    \begin{theorem}[1.7]
+        \label{th:1_6:1}
+        Если выполнены условия (k1)--(k4), то существует хотя бы одно
+        решение задачи~\eqref{eq:1_6:1}--\eqref{eq:1_6:3}.
+    \end{theorem}
+
+\end{frame}
+\note{
+    18-20.----вода
+}
+
+\begin{frame}
+    \frametitle{Теорема единственности и сходимость итеративного метода}
+    \begin{theorem}[1.8]
+        Если выполнены условия (k1)--(k4) и $\theta_{*}, \varphi_{*}$ является
+        решением задачи~\eqref{eq:1_6:1}--\eqref{eq:1_6:3}
+        так, что $\theta_{*}, \nabla \theta_{*} \in L^{\infty}(Q)$,
+        то других ограниченных решений этой задачи нет.
+    \end{theorem}
+
+
+    \begin{theorem}[1.9]
+        Если выполнены условия (k1)--(k4) и $\theta_{*}, \varphi_{*}$ является
+        решением задачи~\eqref{eq:1_6:1}--\eqref{eq:1_6:3}
+        так, что $\theta_{*}, \nabla \theta_{*} \in L^{\infty}(Q)$.
+        Тогда для последовательностей~\eqref{eq:1_6:10} справедливы следующие сходимости:
+        \[
+            \theta_{m} \rightarrow \theta_{*} \quad \text { в } L^{2}(0, T ; V),
+            \quad \varphi_{m} \rightarrow \varphi_{*} \quad \text { в } L^{2}(0, T ; V).
+        \]
+    \end{theorem}
+
+\end{frame}
+
+
+\section{Граничные обратные задачи и задачи с данными Коши}\label{sec:rev}
+\begin{frame}
+    \frametitle{Глава 2. Граничные обратные задачи и задачи с данными Коши}
+    Глава посвящена теоретическому анализу граничных обратных задач для
+    стационарной и квазистационарной моделей сложного теплообмена.
+    При постановке таких задач часто возникают такие краевые условия для эллиптических
+    или параболических уравнений, когда на границе (части границы) задается
+    неизвестная функция, а также ее нормальная производная (условия Коши).
+    Предложены оптимизационные методы решения сформулированных задач, вы
+    полнен анализ их корректности и установлены аппроксимационные свойства.
+\end{frame}
+
+\subsection{Граничная обратная задача}\label{subsec:rev}
+
+\begin{frame}
+    \frametitle{Граничная обратная задача}
+    Модель имеет следующий вид
+    \begin{equation}
+        \label{eq:2_1:initial}
+        - a \Delta \theta + b \kappa_a(\theta ^ 3 | \theta | - \varphi) = 0,  \quad
+        - \alpha \Delta \varphi + \kappa_a (\varphi - \theta ^3 | \theta |) = 0,
+    \end{equation}
+    и дополняется граничными условиями на
+    $\Gamma \coloneqq \partial \Omega =\overline{\Gamma}_0 \cup \overline{\Gamma}_1 \cup \overline{\Gamma}_2$,
+    где части границы $\Gamma_0, \Gamma_1, \Gamma_2$ не имеют пересечений:
+
+    \begin{equation}
+        \label{eq:2_1:initial-boundary}
+        \begin{aligned}
+            \Gamma &: \; a \partial_n \theta + \beta (\theta - \theta _b) = 0, \\
+            \Gamma_0 \cup \Gamma_2 &: \; \alpha \partial_n \varphi
+            + \gamma(\varphi - \theta_b ^4 ) = 0, \\
+            \Gamma_1 &: \; \alpha \partial_n \varphi + u(\varphi - \theta_b ^4 ) = 0. \\
+        \end{aligned}
+    \end{equation}
+
+    Функции $\gamma, \theta_b, \beta$ известны.
+    Неизвестная функция $u$ характеризует отражающие свойства участка границы $\Gamma_1$.
+    Предполагается, что $0 < u_1 \leq u \leq u_2$.
+
+    \textbf{Обратная задача} заключается в отыскании тройки $\theta, \varphi, u$
+    по дополнительному условию $\theta|_{\Gamma_2} = \theta_0$.
+
+    \textbf{Экстремальная задача} заключается в минимизации функционала
+    \[ J(\theta) = \frac{1}{2} \int_{\Gamma_2} (\theta - \theta_0)^2 d\Gamma. \]
+\end{frame}
+\note{
+    21. Решение экстремальной задачи называется квазирешением обратной задачи.
+}
+
+\begin{frame}
+    \frametitle{Существование решения и условия оптимальности}
+    Будем предполагать что исходные данные удовлетворяют условию
+    \begin{itemize}
+        \item $\text{(i)}\;\beta\in L^\infty(\Gamma); \gamma \in L^\infty(\Gamma_0\cup\Gamma_2);$
+        $u_1, u_2 \in L^\infty(\Gamma_1);$
+        $0 < \beta_0 \le \beta; 0 < \gamma_0 \le \gamma;\; \beta_0,\gamma_0=Const,$
+        $0 \le u_1 \le u_2$.
+    \end{itemize}
+    \begin{theorem}[2.1]
+        Пусть выполняется условие (i).
+        Тогда существует хотя бы одно решение задачи оптимального управления.
+    \end{theorem}
+
+    \begin{theorem}[2.2]
+        \label{th:2_1:2}
+        Пусть $\hat{y}=\{\hat{\theta},\hat{\varphi} \} \in Y, \hat{u} \in U_{ad}$
+        --- решение экстремальной задачи.
+        Тогда существует пара $p = (p_1, p_2)$, $p \in Y$
+        такая, что тройка $(\hat{y}, \hat{u}, p)$, удовлетворяет следующим условиям:
+        \begin{gather*}
+            A_1 p_1 + 4 |\hat{\theta}|^3 \kappa_a(b p_1 - p_2) = f_c,
+            \;\; (f_c,v) = - \int_{\Gamma_2} (\hat{\theta} - \theta_0) v d\Gamma, \\
+            A_2 p_2 + \kappa_a (p_2-b p_1) = g_c(p_2, \hat{u}),
+            \;(g_c(p_2, \hat{u}), v) = -\int_{\Gamma_1} \hat{u} p_2 v d\Gamma, \\
+            \int_{\Gamma_1} p_2 (\hat{\varphi} - \theta_b^4)(u-w) d\Gamma
+            \leq 0 \quad \forall w \in U_{ad}.
+        \end{gather*}
+    \end{theorem}
+\end{frame}
+\note{
+    22. Теорема условий оптимальности представляет необходимые условия оптимальности 1 порядка
+    и используется в главе 4.
+
+    - первый порядок условий оптимальности:
+    берем производную от некоторого отображения.
+    Без ограничений - приравниваем её к нулю (система оптимальности)
+    Для ф. 1 переменной -- необх. условие экстремума -- чтобы производная равнялась нулю. (часто недостаточно)
+    Вторая производная в точке минимума - >= 0. (достаточно если строго больше)
+    Если есть ограничения - если точка на границе отрезка:
+    (правая - f(x) != 0, f(x) <= 0, левая - >= 0)
+}
+
+\subsection{Обратная задача с условиями типа Коши}\label{subsec:rev_koshi}
+\begin{frame}
+    \frametitle{Задача без краевых условий для интенсивности излучения}
+    \textbf{Краевая задача:}
+    \begin{equation}
+        \label{eq:2_2:eq1}
+        - a \Delta \theta + b \kappa_a(\theta ^ 3 | \theta | - \varphi) = 0,  \quad
+        - \alpha \Delta \varphi + \kappa_a (\varphi - \theta ^3 | \theta |) = 0,
+    \end{equation}
+    На $\Gamma$ известно температурное поле и тепловой поток:
+    \begin{equation}
+        \label{eq:2_2:bc2} \theta = \theta_b, \quad \partial_n\theta = q_b.
+    \end{equation}
+    Заменяем на <<искусственные>> краевые условия
+    \begin{equation}
+        \label{eq:2_2:bc3}
+        a(\partial_n\theta+\theta) = r,\;\;
+        \alpha(\partial_n\varphi+\varphi) = u \text{ на }\Gamma.
+    \end{equation}
+    Функция $r(x),\, x\in\Gamma$ является заданной, а неизвестная функция $u(x),\, x\in\Gamma$
+    играет роль управления. Получаем \textbf{обратную задачу}.
+
+    \textbf{Экстремальная задача} заключается в отыскании тройки
+    $\{\theta_\lambda,\varphi_\lambda,u_\lambda\}$ такой, что
+    \begin{equation}
+        \label{eq:2_2:cost}
+        J_\lambda(\theta, u) = \frac{1}{2}\int\limits_\Gamma (\theta - \theta_b)^2 d\Gamma
+        + \frac{\lambda}{2}\int\limits_\Gamma u^2 d\Gamma \rightarrow\inf
+    \end{equation}
+    на решениях краевой задачи.
+\end{frame}
+\note{
+
+    23. Не задано $\varphi$!
+    В основе разработанного алгоритма решения лежит анализ экстремальной задачи.
+}
+
+\begin{frame}
+    \frametitle{Достаточные условия и задача оптимального управления}
+    Будем предполагать, что
+    \begin{itemize}
+        \item $(j) \;\; a,b,\alpha,\kappa_a, \lambda ={\textrm Const}> 0,$
+        \item $(jj) \;\, \theta_b, \,q_b \in U,\;\; r=a(\theta_b+q_b)$.
+    \end{itemize}
+    Определим оператор ограничений $F(\theta, \varphi, u) : V \times V \times U \rightarrow V' \times V'$,
+    \[
+        F(\theta, \varphi, u) = \{ aA\theta + b \kappa_a ( [\theta]^4- \varphi) - Br,\;
+        \alpha A \varphi + \kappa_a (\varphi -[\theta]^4) - Bu\}.
+    \]
+
+
+    \textbf{Задача $CP$.} Найти тройку $\{\theta, \varphi, u \} \in V \times V \times U$ такую, что
+    \begin{equation}
+        \label{eq:2_2:cp}
+        J_\lambda(\theta, u) \equiv \frac{1}{2}\|\theta -\theta_b\|^2_\Gamma
+        + \frac{\lambda}{2}\|u\|^2_\Gamma \rightarrow \inf,\;\; F(\theta, \varphi, u)=0.
+    \end{equation}
+\end{frame}
+\note{
+    24. как показано в диссертации, решения задачи $CP$ сходятся при $\lambda \to +0$ к решениям
+    задачи без краевых условий на $\varphi$
+}
+
+\begin{frame}
+    \frametitle{Разрешимость задачи $CP$ и условия оптимальности}
+
+    \begin{theorem}[2.3]
+        \label{th:2_2:1}
+        Пусть выполняются условия $(j), (jj)$.
+        Тогда существует решение задачи $CP$.
+    \end{theorem}
+    \begin{theorem}[2.4]
+        \label{th:2_2:2}
+        Пусть выполняются условия (j),(jj).
+        Если $\{\hat{\theta}, \hat{\varphi}, \hat{u}\}$ -- решение задачи $CP$,
+        то существует единственная пара $\{p_1, p_2 \} \in V\times V$ такая, что
+        \begin{equation}
+            \label{eq:2_2:as}
+            aAp_1 +4|\hat{\theta}|^3 \kappa_a(bp_1 - p_2) = B(\theta_b - \hat{\theta}), \;\;
+            \alpha A p_2 + \kappa_a (p_2 - b p_1)=0
+        \end{equation}
+        и при этом $\lambda\hat{u} = p_2$.
+    \end{theorem}
+\end{frame}
+\note{
+    25. Условия оптимальности лежат в основе численного метода
+}
+
+\begin{frame}
+    \frametitle{Аппроксимация задачи с условиями Коши}
+    \begin{theorem}[2.5]
+        \label{th:2_2:3}
+        Пусть выполняются условия (j),(jj) и существует решение
+        задачи~\eqref{eq:2_2:eq1}--\eqref{eq:2_2:bc2}.
+        Если $\{\theta_\lambda,\varphi_\lambda,u_\lambda\}$ -- решение
+        задачи $CP$ для $\lambda>0$, то существует последовательность $\lambda\to +0$
+        такая, что
+        \[
+            \theta_\lambda\rightarrow\theta_*, \;\; \varphi_\lambda\rightarrow\varphi_*
+            \text{ слабо в }V,\text{ сильно в }H,
+        \]
+        где $\theta_*,\varphi_*$ -- решение задачи~\eqref{eq:2_2:eq1}--\eqref{eq:2_2:bc2}.
+    \end{theorem}
+    Здесь $H = L^2(\Omega)$, $V = H^1(\Omega)$.
+
+    \vspace{10mm}
+    Из ограниченности последовательности $u_\lambda$
+    в пространстве $U$ следует
+    ее слабая относительная компактность и существование последовательности
+    (возможно не единственной) $\lambda\to+0$ такой, что
+    $u_\lambda \rightarrow u_*$ слабо в $U$.
+
+%    Для практического решения задачи~\eqref{eq:2_2:eq1}--\eqref{eq:2_2:bc2} важно то,
+%    что \textit{для любой последовательности} $\lambda\to+0$ справедлива оценка
+%    $\|\theta_\lambda -\theta_b\|^2_\Gamma\leq C\lambda$,
+%    а поскольку $\partial_n\theta_\lambda=\theta_b+q_b-\theta_\lambda$,
+%    то также $\|\partial_n\theta_\lambda-q_b\|^2_\Gamma\leq C\lambda$.
+%    Указанные неравенства гарантируют, что граничные значения
+%    $\theta_\lambda,\,\partial_n\theta_\lambda$ при малых $\lambda$
+%    аппроксимируют краевые условия задачи~\eqref{eq:2_2:eq1}--\eqref{eq:2_2:bc2}.
+\end{frame}
+\note{
+    26. Данный результат является обоснованием оптимизационного числ. алгоритма.
+}
+
+\subsection{Квазистационарная задача с данными Коши}\label{subsec:qst_koshi}
+\begin{frame}
+    \frametitle{Квазистационарная модель с данными Коши}
+    \textbf{Начально-краевая задача:}
+    \begin{equation}
+        \label{eq:2_3:1}
+        \begin{split}
+            & \frac{\partial \theta}{\partial t} - a \Delta \theta
+            + b \kappa_{a} \left(|\theta| \theta^{3}-\varphi\right) = 0,\\
+            & - \alpha \Delta \varphi
+            + \kappa_{a} \left(\varphi-|\theta| \theta^{3}\right) = 0,
+            \quad x \in \Omega, \quad 0 < t < T;
+        \end{split}
+    \end{equation}
+    \begin{align}
+        a \left(\partial_{n} \theta+\theta\right)=r,
+        & \quad \alpha\left(\partial_{n} \varphi
+        + \varphi\right) = u \text { на } \Gamma;  \label{eq:2_3:2}\\
+        & \left.\theta\right|_{t=0} = \theta_{0}. \label{eq:2_3:3}
+    \end{align}
+
+
+    \textbf{Экстремальная задача} состоит в том, чтобы найти тройку
+    $\left\{\theta_{\lambda}, \varphi_{\lambda}, u_{\lambda}\right\}$ такую, что
+    \begin{equation}
+        \label{eq:2_3:4}
+        J_{\lambda}(\theta, u)=\frac{1}{2} \int_{0}^{T}
+        \int_{\Gamma}\left(\theta-\theta_{b}\right)^{2} d \Gamma d t+\frac{\lambda}{2}
+        \int_{0}^{T} \int_{\Gamma} u^{2} d \Gamma d t \rightarrow \inf
+    \end{equation}
+    на решениях задачи~\eqref{eq:2_3:1}--\eqref{eq:2_3:3}.
+\end{frame}
+\note{
+    27. Аналог стационарной задачи с небольшими сдвигами по времени.
+    Для оптимизационного метода решения задачи требуются результаты анализа кв.стц. модели из гл. 1!
+    параметр u неизвестен.
+}
+
+\begin{frame}
+    \frametitle{Задача оптимального управления $OC$}
+    Будем считать, что
+    \begin{itemize}
+        \item $(k)\; a, b, \alpha, \kappa_{a}, \lambda=$ Const $>0$,
+        \item $(kk)\; \theta_{b}, q_{b} \in U, r=a\left(\theta_{b}+q_{b}\right)
+        \in L^{5}(\Sigma), \; \theta_{0} \in L^{5}(\Omega)$.
+    \end{itemize}
+
+    Задача оптимального управления $OC$ заключается в отыскании тройки
+    $\{\theta, \varphi, u\} \in W \times L^{2}(0, T ; V) \times U$ такой, что
+    \[
+        J_{\lambda}(\theta, u) \equiv \frac{1}{2}\left\|\theta-
+        \theta_{b}\right\|_{\Sigma}^{2}+
+        \frac{\lambda}{2}\|u\|_{\Sigma}^{2}
+        \rightarrow \inf, \quad F(\theta, \varphi, u)=0.
+    \]
+    Здесь и далее
+    $
+    W=\left\{y \in L^{2}(0, T ; V):y^{\prime}
+    \in L^{2}\left(0, T, V^{\prime}\right)\right\}
+    $.
+
+    \begin{theorem}[2.6]
+        \label{th:2_3:1}
+        Пусть выполняются условия $(k), (kk)$.
+        Тогда существует решение задачи $OC$.
+    \end{theorem}
+    Определим операторы $A: V \rightarrow V^{\prime}, B: U \rightarrow V^{\prime}$
+    \[
+        (A y, z)=(\nabla y, \nabla z)+\int_{\Gamma} y z d \Gamma,
+        \quad(B w, z)=\int_{\Gamma} w z d \Gamma,\quad y, z \in V, w \in L^{1}(\Gamma).
+    \]
+
+\end{frame}
+\note{
+    28. Вводим условия на начальные данные, которые будут достаточны для
+    док-ва теоремы 2.6 о существовании решения задачи оптимального управления.
+}
+
+\begin{frame}
+    \frametitle{Условия оптимальности и аппроксимация обратной задачи}
+
+
+    \begin{theorem}[2.7]
+        \label{th:2_3:2}
+        Пусть выполнены условия $(k), (kk)$.
+        Если $\{\widehat{\theta}, \widehat{\varphi}, \widehat{u}\}$ — решение задачи $OC$,
+        то существует единственная пара $\left\{p_ {1}, p_{2}\right\} \in W \times W$ такая, что
+        \begin{equation}
+            \label{eq:2_3:15}
+            \begin{aligned}
+                -p_{1}^{\prime}+a A p_{1}+4|\widehat{\theta}|^{3} \kappa_{a}\left(b p_{1}
+                -p_{2}\right)&=B\left(\theta_{b}-\widehat{\theta}\right), \;
+                p_{1}(T)=0, \\
+                \alpha A p_{2}+\kappa_{a}\left(p_{2}-b p_{1}\right)&=0,
+                \quad \lambda \widehat{u}=\left.p_{2}\right|_{\Sigma}.
+            \end{aligned}
+        \end{equation}
+    \end{theorem}
+
+    \begin{theorem}[2.8]
+        \label{th:2_3:3}
+        Пусть выполняются условия $(k), (kk)$ и существует решение
+        $\theta, \varphi \in$ $L^{2}\left(0, T ; H^{2}(\Omega) \right)$
+        задачи~\eqref{eq:2_3:1}--\eqref{eq:2_3:3}.
+        Если $\left\{\theta_{\lambda}, \varphi_{\lambda}, u_{\lambda}\right\}$
+        — решение задачи $OC$ при $\lambda>0$, то при $\lambda\rightarrow+0$
+        \[
+            \begin{gathered}
+                \theta_{\lambda} \rightarrow \theta \text { слабо в } L^{2}(0, T ; V),
+                \text { сильно в } L^{2}(Q), \\
+                \varphi_{\lambda} \rightarrow \varphi \text { слабо в } L^{2}(0, T ; V).
+            \end{gathered}
+        \]
+    \end{theorem}
+\end{frame}
+\note{
+
+    29. Те же условия являются достаточными для определения системы оптимальности и доказательства сходимости
+    решений задачи оптимального управления к решению начально-краевой задачи.
+
+
+}
+
+\subsection{Стационарная задача с условиями Коши на части границы}\label{subsec:st-koshi}
+\begin{frame}
+    \frametitle{Стационарная задача с условиями Коши для температуры на части границы}
+    Рассмотрим область $\Omega\subset \mathbb{R}^3$ с границей $\Gamma=\partial\Omega$.
+    \begin{equation}
+        \label{eq:2_4:eq1}
+        - a\Delta\theta + b\kappa_a(|\theta|\theta^3- \varphi)=0,   \quad
+        -\alpha \Delta \varphi + \kappa_a(\varphi-|\theta|\theta^3)=0,\; x\in\Omega.
+    \end{equation}
+    $\Gamma \coloneqq \partial \Omega =\overline{\Gamma}_1 \cup \overline{\Gamma}_2$
+    так, что $\Gamma_1 \cap \Gamma_2 =  \emptyset$.
+    На всей границе $\Gamma$ задается тепловой поток $q_b$,
+    \begin{equation}
+        \label{eq:2_4:bc1}
+        a\partial_n\theta = q_b, \quad x\in \Gamma.
+    \end{equation}
+    Для задания краевого условия для интенсивности излучения требуется знать функцию $\gamma$.
+    В случае, если эта функция неизвестна на части границы $\Gamma_2$,
+    краевое условие для интенсивности излучения на $\Gamma_2$ не ставится, а в качестве условия
+    переопределения на $\Gamma_1$, в дополнение к условию на
+    $\varphi$, задается температурное поле $\theta_b$,
+    \begin{equation}
+        \label{eq:2_4:bc2}
+        \alpha\partial_n\varphi + \gamma (\varphi - \theta_b ^4 ) = 0,\;
+        \theta=\theta_b\quad \text{ на } \Gamma_1.
+    \end{equation}.
+
+
+\end{frame}
+\note{
+    30. Рассмотрим случай если на всей границе известен поток, а параметр из гранич. условия
+    для $\varphi$ неизвестен. Мы дополняем "доступный" участок информацией о температуре: $theta_b$.
+    Если данные Коши заданы на части границы задача является ещё более сложной.
+    Для точной постановки нет результатов по её корректности.
+    Однако предлагаемый далее оптимизационный метод полностью теоретически обоснован и
+    лежит в основе соответствующего программного комплекса для численного решения.
+}
+
+
+\begin{frame}
+    \frametitle{Постановка задачи управления}
+    Введем новую неизвестную функцию
+    $\psi= a\theta + \alpha b \varphi$.
+
+    \textbf{Краевая задача}:
+    \begin{equation}
+        \label{eq:2_4:eq2}
+        - a \Delta \theta + g (\theta) = \frac{\kappa_a}{\alpha}\psi, \quad
+        \Delta \psi = 0, \; x \in \Omega,
+    \end{equation}
+    \begin{equation}
+        \label{eq:2_4:bc3}
+        a \partial_n \theta = q_b \; \text{ на }\Gamma, \;\;
+        \alpha \partial_n \psi + \gamma \psi  =  r,\;\;
+        \theta = \theta_b  \text{ на }\Gamma_1.
+    \end{equation}
+    Здесь $g(\theta) = b \kappa_a|\theta|\theta^3 + \frac{a\kappa_a}{\alpha}\theta$, $r=\alpha b \gamma \theta_b^4+ \alpha q_b + a \gamma \theta_b$.
+
+
+    Задача \textbf{оптимального управления}, аппроксимирующая краевую задачу,
+    заключается в отыскании тройки $\{\theta_\lambda,\psi_\lambda,u_\lambda\}$ такой, что
+    \begin{gather}
+        \label{eq:2_4:cost}
+        J_\lambda(\theta, u) =
+        \frac{1}{2} \int \limits_{\Gamma_1} (\theta - \theta_b)^2 d \Gamma
+        + \frac{\lambda}{2}\int\limits_{\Gamma_2} u^2 d\Gamma \rightarrow \inf, \\
+        - a \Delta \theta + g (\theta) = \frac{\kappa}{\alpha}\psi, \quad
+        \Delta \psi = 0, \; x \in \Omega, \\
+        a \partial_n \theta + s \theta = q_b + s \theta_b,
+        \; \alpha \partial_n \psi + \gamma \psi = r
+        \text{ на } \Gamma_1,\\
+        a \partial_n \theta = q_b, \;
+        \alpha \partial_n \psi = u \text{ на } \Gamma_2.
+    \end{gather}
+    $\lambda, s > 0$ -- регуляризирующие параметры.
+
+\end{frame}
+\note{
+    31. Используя замену, представленную на слайде, мы заменим исходную задачу, на краевую задачу
+    с функциями $\theta$, $\psi$.
+    Вместо системы двух нелинейных уравнений одно уравнение стало линейным (для $\Psi$)
+    (!!!Где нелинейность в исходной задаче!!!)
+    Два нелинейных заменили на нелинейное и линейное (пси - гармоническая, к тому же).
+    Особо обратим внимание на параметр s, который пришлось добавить в данную постановку из-за
+    того, что реализованный алгоритм не сходился. (Потеря точности решения.?)
+}
+
+% на слайде отсутсвуют определения f_1 и f_2
+\begin{frame}
+    \frametitle{Разрешимость задачи оптимального управления}
+    Будем предполагать, что исходные данные удовлетворяют условиям:
+    \begin{itemize}
+        \item $(l) \; a,b,\alpha,\kappa_a, \lambda, s ={\textrm Const}> 0.$
+        \item $(ll) \; 0<\gamma_0\leq \gamma \in L^\infty(\Gamma_1), \; \theta_b, r \in L^2(\Gamma_1),\; q_b\in L^2(\Gamma)$.
+    \end{itemize}
+    \textbf{Задача $(P_\lambda)$.} Найти тройку
+    $\{\theta_\lambda, \psi_\lambda, u_\lambda \} \in V \times V \times U$
+    такую, что
+    \begin{equation}
+        \label{eq:2_4:cp}
+        J_\lambda(\theta, u) = \frac{1}{2}\|\theta -\theta_b\|^2_{L^2(\Gamma_1)}
+        + \frac{\lambda}{2}\|u\|^2_U \rightarrow \inf,\;\; F(\theta, \psi, u) = 0.
+    \end{equation}
+    Здесь $F(\theta, \psi, u) : V \times V \times U \rightarrow V' \times V'$,
+    \begin{gather*}
+    (A_1 y,z)
+        =a (\nabla y, \nabla z) +
+        s\int\limits_{\Gamma_1}yz d\Gamma, \;\;
+        (A_2 y,z) =\alpha (\nabla y, \nabla z)
+        + \int\limits_{\Gamma_1}\gamma yz d\Gamma, \\
+        (B_1 f, v) = \int\limits_{\Gamma_1}fv d\Gamma,\;\;
+        (B_2 h, w) = \int\limits_{\Gamma_2}hw d\Gamma.
+    \end{gather*}
+    \[
+        F(\theta, \psi, u) = \left\{A_1\theta + g(\theta) - \frac{\kappa_a}{\alpha}\psi - f_1,\; A_2 \psi - f_2 - B_2 u \right\}.
+    \]
+
+    \begin{theorem}[2.9]
+        \label{th:2_4:1}
+        При выполнении условий $(l), (ll)$ существует решение задачи $(P_\lambda)$.
+    \end{theorem}
+\end{frame}
+\note{
+
+    32. Приведём достаточные условия существования решения задачи опт. управления, сформулируем задачу
+    в операторном виде и приведём теоретический результат о существовании решения задачи опт. управления.
+}
+
+\begin{frame}
+    \frametitle{Условия оптимальности}
+    \begin{theorem}[2.10]
+        Пусть выполняются условия $(l), (ll)$.
+        Если $\{\hat{\theta}, \hat{\psi}, \hat{u}\}$ -- решение
+        задачи оптимального управления, то существует единственная пара
+        $\{p_1, p_2 \} \in V\times V$ такая, что
+        \begin{equation}
+            \label{eq:2_4:as}
+            A_1 p_1+g'(\hat{\theta}) p_1=-B_1(\hat{\theta} -\theta_b),\;\;
+            A_2 p_2=\frac{\kappa_a}{\alpha}p_1,\;\;
+            \lambda\hat{u}=p_2|_{\Gamma_2}.
+        \end{equation}
+    \end{theorem}
+    Здесь $g'(\theta)=4b\kappa_a|\theta|^3+\frac{\kappa_a}{\alpha}$.
+
+    \vspace{10mm}
+    Градиент функционала $\tilde J_\lambda(u)$ равен
+    $ \tilde J'_\lambda (u) = \lambda u - p_2$, где $p_2$ -- компонента решения сопряженной системы~\eqref{eq:2_4:as},
+    $\hat{\theta}\coloneqq\theta(u)$.
+
+\end{frame}
+\note{
+    33. Также обозначенных условий достаточно для вывода системы оптимальности.
+}
+
+
+\begin{frame}
+    \frametitle{Аппроксимация решения обратной задачи}
+    Решение обратной задачи~\eqref{eq:2_4:eq1}--\eqref{eq:2_4:bc2} удовлетворяет равенствам для всех $ v \in V$
+    \begin{equation}
+        \label{eq:2_4:ip1}
+        a(\nabla\theta, \nabla v)
+        + b\kappa_a(|\theta|\theta^3 - \varphi, v)
+        = \int\limits_\Gamma q_b v d \Gamma,
+    \end{equation}
+    \begin{equation}
+        \label{eq:2_4:ip2}
+        \alpha (\nabla \varphi,\nabla v)
+        + \int\limits_{\Gamma_1}\gamma\varphi vd\Gamma
+        + \kappa_a(\varphi - |\theta|\theta^3,v) =
+        \int\limits_{\Gamma_1}\gamma\theta_b^4 v d\Gamma
+        +\int\limits_{\Gamma_2} q v d\Gamma
+    \end{equation}
+    и при этом $\theta|_{\Gamma_1}=\theta_b$.
+
+
+    \begin{theorem}[2.11]
+        Пусть выполняются условия $(l), (ll)$, и существует решение
+        задачи~\eqref{eq:2_4:eq1}--\eqref{eq:2_4:bc2},
+        удовлетворяющее равенствам~\eqref{eq:2_4:ip1},~\eqref{eq:2_4:ip2}.
+        Если $\{\theta_\lambda,\psi_\lambda,u_\lambda\}$ -- решение
+        задачи $(P_\lambda)$ для $\lambda>0$, то существует последовательность
+        $\lambda\to +0$
+        такая, что
+        \[
+            \theta_\lambda\rightarrow\theta_*, \;\;
+            \frac{1}{\alpha b}(\psi_\lambda-a\theta_\lambda)\rightarrow\varphi_*
+            \text{ \textit{ слабо в} }V,\text{ \textit{ сильно в} }H,
+        \]
+        где $\theta_*,\varphi_*$ -- решение задачи~\eqref{eq:2_4:eq1}--\eqref{eq:2_4:bc2}.
+    \end{theorem}
+
+\end{frame}
+\note{
+    34. На слайде представлен результат о сходимости решений задачи управления к решению исходной задачи.
+    $V = H^1(\Omega) = W_2 ^ 1 (\Omega)$ - пр-во соболева первого порядка ($L^p$ имеющие обобщённую производную
+    от туда же)
+    Обобщённая производная - $v$ "слабая производная" $u$, если
+    $\int _{a}^{b} u(t) \varphi'(t)dt=-\int _{a}^{b}v(t)\varphi (t)dt$....
+}
+
+
+\section{Задачи оптимального управления для квазилинейных моделей}\label{sec:opt}
+\begin{frame}
+    \frametitle{Глава 3. Задачи оптимального управления для квазилинейных уравнений сложного теплообмена}
+    В данной главе рассматриваются задачи оптимального управления
+    (обратные экстремальные задачи) для квазилинейных моделей.
+    \\
+    Анализ задач управления для моделей теплообмена, учитывающих зависимость
+    теплопроводности от температуры, а также изменение со временем плотности
+    и теплоемкости среды, важен для приложений.
+    Здесь изучены задачи с ограничением на температурное поле в некоторой подобласти.
+    \\
+    Рассмотрены варианты распределенного и финального наблюдений температуры.
+    \\
+    Предложены алгоритмы решения задач, основанные на методе штрафных функций и доказана
+    их сходимость.
+\end{frame}
+\note{
+    35. Слайд с текстом.
+}
+
+\subsection{Задачи оптимального управления с фазовыми ограничениями}\label{subsec:opt-phase}
+\begin{frame}
+    \frametitle{Квазилинейная модель c фазовыми ограничениями}
+    \textbf{Начально-краевая} задача:
+    \begin{equation}
+        \label{eq:3_2:1}
+        \begin{gathered}
+            \sigma \partial \theta / \partial t-\operatorname{div}(k(\theta)
+            \nabla \theta)-\beta \varphi=u_{1} \chi \\
+            -\operatorname{div}(\alpha \nabla \varphi)+\beta \varphi=u_{2}
+            \chi, \quad x \in \Omega, \quad t \in(0, T),
+        \end{gathered}
+    \end{equation}
+    \begin{equation}
+        \label{eq:3_2:2}
+        \theta=\left.0\right|_{\Gamma},
+        \quad \alpha \partial_{n} \varphi
+        +\left.2^{-1} \varphi\right|_{\Gamma}=0,
+        \left.\quad \theta\right|_{t=0}=\theta_{0}.
+    \end{equation}
+    При этом учитываются ограничения:
+    \[ u_{1,2} \geq 0, \quad u_{1}+u_{2} \leq P, \left.\quad \theta\right|_{G_{2}} \leq \theta_{*} \]
+    Задача \textbf{оптимального управления} заключается в минимизации
+    \[ J(\theta)=\int_{0}^{T} \int_{G_{1}}\left(\theta-\theta_{d}\right)^{2} dx dt \rightarrow \inf \]
+    на решениях начально-краевой задачи.
+
+    Здесь $G_{1}$ и $G_{2}$ подмножества $\Omega$, $\theta$
+    представляет разницу между реальной температурой
+    и постоянной температурой на границе.
+\end{frame}
+\note{
+    Дана область, в ней две подобласти. Мы хотим в одной достичь определенного температурного режима,
+    в другой хотим не допустить превышения заранее заданного ограничения.
+    P – максимальная мощность источника,
+    alpha – коэффициент диффузии фотонов,
+    Hi есть характеристическая функция той части среды, в которой он расположен, деленная на его объём.
+    beta – коэффициент поглощения, k(theta) является коэффициентом теплопроводности,
+    sigma является произведением удельной теплоемкости и плотности среды,
+    u1 описывает мощность источника тепла, u2 – мощность источника теплового излучения.
+}
+
+\begin{frame}
+    \frametitle{Ограничения на параметры среды}
+    $\Omega$ является липшицевой ограниченной областью, $\Gamma=\partial \Omega, Q=\Omega \times(0, T)$, $\Sigma=\Gamma \times(0, T)$.
+
+    Будем предполагать, что выполняются следующие условия:
+    \begin{itemize}
+        \item $(c1)\; \sigma_{0} \leq \sigma \leq \sigma_{1}, \quad|\partial \sigma / \partial t| \leq \sigma_{2}$
+
+        \item $(c2)\; k_{0} \leq k(s) \leq k_{1}, \quad\left|k^{\prime}(s)\right| \leq k_{2}, \quad s \in \mathbb{R}$,
+
+        \item $(c3)\; \theta_{0} \in H$
+
+        \item $(c4)\; \alpha_{0} \leq \alpha(x) \leq \alpha_{1}, \beta_{0} \leq \beta(x) \leq \beta_{1}, \quad x \in \Omega$,
+    \end{itemize}
+    где $\sigma_{i}, k_{i}, \alpha_{i}$, и $\beta_{i}$ положительные константы.
+
+    Определим нелинейный оператор $A: V \rightarrow V^{\prime}$ и линейный оператор
+    $B: H^{1}(\Omega) \rightarrow\left(H^{1}(\Omega)\right)^{\prime}$
+    используя следующие равенства, справедливые для любого
+    $\theta, v \in V, \varphi, w \in$ $H^{1}(\Omega)$:
+    \[
+        \begin{aligned}
+            &(A(\theta), v)=(k(\theta) \nabla \theta, \nabla v)=(\nabla h(\theta), \nabla v) \\
+            &(B \varphi, w)=(\alpha \nabla \varphi, \nabla w)+(\beta \varphi, w)+2^{-1}
+            \int_{\Gamma} \varphi w d \Gamma,
+        \end{aligned}
+    \]
+    где $h(s)=\int_{0}^{s} k(r) d r$.
+\end{frame}
+\note{
+    Ограничения на параметры среды, и операторы для формулировки задачи управления.
+}
+
+\begin{frame}
+    \frametitle{Разрешимость задачи оптимального управления}
+
+    \textbf{Задача} $P$.
+    \[
+        J(\theta)=\int_{0}^{T}
+        \int_{G_{1}}\left(\theta-\theta_{d}\right)^{2} d x d t \rightarrow \inf,
+    \]
+    \[
+        \begin{aligned}
+            & \sigma \theta^{\prime}+A(\theta)=u,
+            \quad \theta(0)=\theta_{0},\left.\quad
+            \theta\right|_{G_{2}} \leq \theta_{*},
+            \quad u \in U_{a d},
+        \end{aligned}
+    \]
+    где
+    \[
+        U_{a d}=\left\{u=u_{1} \chi+u_{2} \beta B^{-1}
+        \chi: u_{1,2} \in L^{2}(0, T),\right.
+        \left.u_{1,2} \geq 0, u_{1}+u_{2} \leq P\right\}.
+    \]
+    \begin{theorem}[3.1]
+        \label{th:3_2:1}
+        Пусть выполняются условия $(c1)$-$(c3)$, и $\theta_{0} \leq \theta_{*}$ п.\ в.\ в $\Omega$.
+        Тогда существует решение задачи $P$.
+    \end{theorem}
+\end{frame}
+\note{
+    Собственно, сформулированная задача оптимального управления и результат
+    о существовании решения задачи опт. управления.
+}
+
+
+\begin{frame}
+    \frametitle{Задача со штрафом}
+
+    \textbf{Задача} $P_{\varepsilon}$.
+    $J_{\varepsilon}(\theta) \rightarrow \inf$, где
+    \[
+        \begin{aligned}
+            & J_{\varepsilon}(\theta)=\int_{0}^{T}
+            \int_{G_{1}}\left(\theta-\theta_{d}\right)^{2} dx dt
+            +\frac{1}{\varepsilon} \int_{0}^{T}
+            \int_{G_{2}} F(\theta) d x d t, \\
+            & \sigma \theta^{\prime}+A(\theta)=u,
+            \quad \theta(0)=\theta_{0}, \quad u \in U_{a d},\\
+            &F(\theta)=
+            \begin{cases}
+                0, & \text { если } \theta \leq \theta_{*} \\
+                \left(\theta-\theta_{*}\right)^{2},
+                & \text { если } \theta>\theta_{*}.
+            \end{cases}
+        \end{aligned}
+    \]
+    \begin{theorem}[3.2]
+        \label{th:3_2:2}
+        Пусть выполняются условия $(c1)$-$(c3)$.
+        Тогда существует решение задачи $P_{\varepsilon}$.
+    \end{theorem}
+
+    \begin{theorem}[3.3]
+        \label{th:3_2:3}
+        Пусть выполнены условия $(c1)$-$(c3)$, и $\theta_{0} \leq \theta_{*}$ п.\ в. в $\Omega$.
+        $\left\{\theta_{\varepsilon}, u_{\varepsilon}\right\}$ -- решение задачи
+        $P_{\varepsilon}$ для $\varepsilon>0$, тогда существует п-ть $\varepsilon \rightarrow+0$
+        \[
+            u_{\varepsilon} \rightarrow \widehat{u} \text { слабо в } L^{2}(0, T ; H), \quad
+            \theta_{\varepsilon} \rightarrow \widehat{\theta} \text { сильно в } L^{2}(0, T ; H),
+        \]
+        где $\{\widehat{\theta}, \widehat{u}\}$ есть решение задачи $P$\@.
+    \end{theorem}
+\end{frame}
+\note{
+    39. На основе задачи опт. управления $P$, сформулируем задачу оптимального управления со штрафом.
+    Функционал качества дополняется вторым неотрицательным слагаемым. Его вес моделируется множителем 1 : eps
+
+
+    Сразу приведём результаты о существовании и сходимости.
+}
+
+\subsection{Задачи оптимального управления с финальным наблюдением}\label{subsec:final-check}
+\begin{frame}
+    \frametitle{Задача с финальным наблюдением}
+    $G_{d}$ и $G_{b}$ -- подобласти $\Omega$.
+    \textbf{Начально-краевая} задача
+    \begin{gather}
+        \label{eq:3_3:1}
+        \sigma \partial \theta / \partial t-\operatorname{div}(k(\theta) \nabla \theta)
+        -\beta \varphi=u_{1} \chi, \\
+        \quad-\operatorname{div}(\alpha \nabla \varphi)+\beta \varphi= u_{2} \chi,
+    \end{gather}
+    \begin{gather}
+        \label{eq:3_3:2}
+        k(\theta) \partial_{n} \theta+\left.\gamma
+        \left(\theta-\theta_{b}\right)\right|_{\Gamma}=0,
+        \quad \alpha \partial_{n} \varphi +
+        \left.0.5 \varphi\right|_{\Gamma}=0,\left.\quad \theta\right|_{t=0}=\theta_{0}.
+%        \quad x \in \Omega, \quad 0<t<T, \\
+    \end{gather}
+    При этом учитываются ограничения:
+    \[
+        u_{1,2} \geq 0, \quad u_{1}+u_{2} \leq P,\left.\quad \theta\right|_{G_{b}} \leq \theta_{*}.
+    \]
+
+    Задача \textbf{оптимального управления} заключается в минимизации функционала
+    \[
+        J(\theta)=\int_{G_{d}}\left(\left.\theta\right|_{t=T}
+        -\theta_{d}\right)^{2} d x \rightarrow \inf
+    \]
+    на решениях начально-краевой задачи.
+\end{frame}
+\note{
+
+    40. Требуется обеспечить близость распределения температуры к желаемому
+    температурному полю $theta_d$ в конечный момент времени $t = T$ в подобласти $G_d$,
+    при этом температура в подобласти $G_b$ не превышает постоянного критического
+    значения значение $theta^*$.
+}
+
+\begin{frame}
+    \frametitle{Существование решения задачи оптимального управления}
+    \textbf{Задача} $CPP$.
+    \[
+        \begin{gathered}
+            J(\theta)=\int_{G_{d}}\left(\left.\theta\right|_{t=T}
+            - \theta_{d}\right)^{2} d x \rightarrow \inf,
+            \quad \sigma \theta^{\prime}+A(\theta)=g+u, \quad \theta(0)=\theta_{0}, \\
+            \left.\theta\right|_{G_{b}} \leq \theta_{*}, \quad u \in U_{a d}.
+        \end{gathered}
+    \]
+    Здесь
+    $U_{a d}=\left\{u=u_{1} \chi+u_{2} \beta B^{-1} \chi: u_{1,2} \in L^{2}(0, T), u_{1,2}
+    \geq 0, u_{1}+u_{2} \leq P\right\}$.
+
+    \begin{theorem}[3.4]
+        \label{th:3_3:1}
+        Пусть условия $(c1)$--$(c4)$ выполняются,
+        $\theta_{0} \leq \theta_{*}$ п.\ в. в $\Omega, \theta_{b} \leq \theta_{*}$ п.\ в. в $\Sigma$.
+        Тогда решение задачи $CPP$ существует.
+    \end{theorem}
+\end{frame}
+\note{
+
+    41. Сформулируем задачу оптимального управления и приведём результат о существовании решения
+    этой задачи. Данная задача не учитывает необходимость не превышения температуры.
+}
+
+\begin{frame}
+    \frametitle{Метод штрафных функций}
+
+    \textbf{Задача} $CPP_{\varepsilon}$.
+    \[
+        \begin{gathered}
+            J_{\varepsilon}(\theta)=\int_{G_{d}}
+            \left(\left.\theta\right|_{t=T}
+            -\theta_{d}\right)^{2} d x
+            + \frac{1}{\varepsilon} \int_{0}^{T} \int_{G_{b}} F(\theta) d x d t \rightarrow \inf, \\
+            \sigma \theta^{\prime}+A(\theta)=g+u, \quad \theta(0)=\theta_{0}, \quad u \in U_{a d}.
+        \end{gathered}
+    \]
+    Здесь
+    \[
+        F(\theta)=
+        \begin{cases}
+            0, & \text { если } \theta \leq \theta_{*}, \\
+            \left(\theta-\theta_{*}\right)^{2}, & \text { если } \theta>\theta_{*}.
+        \end{cases}
+    \]
+    \begin{theorem}[3.5]
+        \label{th:3_3:2}
+        Пусть выполняются условия $(c1)$--$(c4)$.
+        Тогда существует решение задачи $CPP_{\varepsilon}$.
+    \end{theorem}
+\end{frame}
+\note{
+    42. Это исправляется в постановке следующей задаче оптимального управления, где
+    функционал качества содержит соответствующее слагаемое, которое "штрафует" решение.
+    Сразу же приведём результат о существовании решения соотв. задачи.
+}
+
+\begin{frame}
+    \frametitle{Аппроксимация решения задачи $CPP$}
+    \begin{theorem}[3.6]
+        Пусть выполняются условия $(c1)$--$(c4)$,
+        $\theta_{0} \leq \theta_{*}$ п.\ в. в $\Omega$, $\theta_{b} \leq \theta_{*}$ п.\ в. в
+        $\Sigma$.
+        Если $\left\{\theta_{\varepsilon}, u_{\varepsilon}\right\}$ решения задачи
+        $CPP_{\varepsilon}$ для $\varepsilon>0$, тогда существует последовательность
+        $\varepsilon \rightarrow+0$ такая, что
+        \[
+            \begin{gathered}
+                u_{\varepsilon} \rightarrow \widehat{u} \text{ слабо в } L^{2}(0, T ; H), \\
+                \theta_{\varepsilon} \rightarrow \widehat{\theta}
+                \text{ слабо в } L^{2}(0, T ; V),\text{ сильно в } L^{2}(0, T ; H),
+            \end{gathered}
+        \]
+        где
+        $\{\widehat{\theta}, \widehat{u}\}$ есть решение задачи $CPP$.
+    \end{theorem}
+\end{frame}
+\note{
+    Приведём результат о сходимости решения задачи опт. управления со штрафом к задаче опт. управления.
+}
+
+
+\section{Численные методы и комплексы программ}\label{sec:prog}
+\begin{frame}
+    \frametitle{Глава 4. Численные методы и комплексы програм}
+    Глава посвящена численным методам решения прямых, обратных и экстремальных задач,
+    рассмотренных в главах 1–3, а также результатам численного
+    моделирования, полученным при тестировании разработанного комплекса программ.
+
+    Комплекс программ работает на основе свободно распространяемых
+    пакетов (солверов) и включает в себя программы решения прямых краевых
+    и начально-краевых задач, программу нахождения квазирешений граничных
+    обратных задач, реализует оптимизационные методы поиска решений задач с
+    данными Коши для температурного поля, а также алгоритмы решения управления со штрафом.
+
+    Комплекс дополнен программой графической визуализации результатов моделирования.
+\end{frame}
+\note{ Вода }
+
+\subsection{Краевые задачи сложного теплообмена}\label{subsec:solve-direct}
+\begin{frame}
+    \frametitle{Алгоритм решения краевых задач}
+    \begin{itemize}
+        \item Линеаризация задачи методом Ньютона.
+        \item Триангуляция рассматриваемой области.
+        \item Применение метода конечных элементов для решения системы дифференциальных уравнений.
+    \end{itemize}
+    \begin{equation}
+        \label{eq:4_1:1}
+        -a \Delta \theta+b \kappa_{a}| \theta|^{3} \theta =
+        b \kappa_{a} \varphi,
+    \end{equation}
+    \begin{equation}
+        \label{eq:4_1:2}
+        -\alpha \Delta \varphi+\kappa_{a} \varphi =
+        \kappa_{a}|\theta|^{3} \theta,
+    \end{equation}
+    \begin{equation}
+        \label{eq:4_1:3}
+        a \frac{\partial \theta}{\partial n}
+        +\left.\beta\left(\theta-\theta_{b}\right)\right|_{\Gamma}=0,
+        \quad \alpha \frac{\partial \varphi}{\partial n}
+        +\left.\gamma\left(\varphi-\theta_{b}^{4}\right)\right|_{\Gamma}=0.
+    \end{equation}
+    Линеаризация методом Ньютона:
+    \begin{equation}
+        \tag{L1}
+        \label{eq:L1}
+        \begin{gathered}
+            -a \Delta \theta+b \kappa_{a}\left(\left(4 \widetilde{\theta}^{3}
+            \theta-3 \widetilde{\theta}^{4}\right)-\varphi\right)=0,\\
+            \quad-\alpha \Delta \varphi
+            +\kappa_{a}\left(\varphi
+            -\left(4 \widetilde{\theta}^{3}
+            \theta-3 \widetilde{\theta}^{4}\right)\right)=0;
+        \end{gathered}
+    \end{equation}
+    \begin{equation}
+        \tag{L2}
+        \label{eq:L2}
+        a \frac{\partial \theta}{\partial n}
+        +\left.\beta\left(\theta-\theta_{b}\right)\right|_{\Gamma}=0,
+        \quad \alpha \frac{\partial \varphi}{\partial n}
+        +\left.\gamma\left(\varphi-\theta_{b}^{4}\right)\right|_{\Gamma}=0.
+    \end{equation}
+\end{frame}
+\note{
+    Напомним как выглядела исходная стационарная модель
+    сложного теплообмена 34 слайда назад.
+    Линеаризируем её методом Ньютона.
+    (Существенно улучшает сходимость алгоритмов!!
+    Что важно при решении задач типа Коши и др.)
+}
+
+\begin{frame}
+    \frametitle{Примеры решений граничных задач}
+    \textbf{Пример 1} (двумерная область).
+    Положим $\Omega=\{(x,y),\, 0 \leq x,y \leq 1 \}$.
+    Параметры системы:
+
+    $a = 0.6$,
+    $\alpha = 0.333$,
+    $k_a = 1$,
+    $b = 0.025$,
+    $\beta = 1$,
+
+    $\gamma = 0.8 \cos\left(\frac{\pi}{2} y\right) + 0.5$,
+    $\theta_b = 0.1 + y / 2$.
+    \begin{figure}[h!t]
+        \begin{minipage}[b][][b]{0.49\linewidth}
+            \centering
+            \includegraphics[width=1\linewidth]{boundary/theta_iso_auto} \\ а) $\theta$
+        \end{minipage}
+        \hfill
+        \begin{minipage}[b][][b]{0.49\linewidth}
+            \centering
+            \includegraphics[width=1\linewidth]{boundary/phi_iso_auto} \\ б) $\varphi$
+        \end{minipage}
+        \label{fig:4_1:boundary}
+    \end{figure}
+\end{frame}
+\note{46. Код, реализующий расчёты для данных изображений присутствует в диссертации.
+Используется пакет Fenics. (кот. является расширением языка python)
+    "библиотека" для python для которой основной способ распространения это виртуальная машина (docker)
+}
+
+\begin{frame}
+
+    \textbf{Пример 2} (трёхмерная область).
+    Пусть $\Omega=\{(x,y,z),\, 0 \leq x,y,z \leq 1 \}$.
+    Определим функции $\gamma, \theta_b$ следующим образом:
+    $\gamma = 0.8 \cos\left(\frac{\pi}{2} z\right) + 0.5$,
+    $\theta_b = 1- y / 2 + z /2$.
+
+    Начальное приближение также выберем нулевым.
+    Для нахождения состояния потребовалось шесть итераций,
+    результат представлен на рисунке~\ref{fig:4_1:boundary_3d}.
+    \begin{figure}[h!t]
+        \begin{minipage}[b][][b]{0.49\linewidth}
+            \centering
+            \includegraphics[width=1\linewidth]{boundary/theta_3d} \\ а) $\theta$
+        \end{minipage}
+        \hfill
+        \begin{minipage}[b][][b]{0.49\linewidth}
+            \centering
+            \includegraphics[width=1\linewidth]{boundary/phi_3d} \\ б) $\varphi$
+        \end{minipage}
+        \label{fig:4_1:boundary_3d}
+    \end{figure}
+\end{frame}
+\note{
+    47. Трёхмерный случай. Размерность сетки ограничена - перестаёт влезать в память
+    (аллоцируемой солвером fenics). Впрочем, при максимальной размерности и так требуется порядка 3-4 секунд
+    на одну итерацию метода Ньютона.
+    Геометрия областей не ограничена (можно подгружать из файла)
+    Слабая формулировка. Фрифем, Феникс.
+}
+
+\subsection{Граничные обратные задачи}
+\begin{frame}
+    \frametitle{Нахождение квазирешения обратной задачи}
+    \begin{gather}
+        A_1 \theta + b \kappa_a (| \theta | \theta^3 - \varphi ) =
+        f, A_2 \varphi + \kappa_a (\varphi - |\theta|\theta^3) + F(\varphi, u) = g.
+        \label{eq:2_1:weakOperational}\\
+        J(\theta) = \frac{1}{2} \int_{\Gamma_2} (\theta - \theta_0)^2 d\Gamma,
+        \label{eq:2_1:quality}\\
+        A_1 p_1 + 4 |\hat{\theta}|^3 \kappa_a(b p_1 - p_2) = f_c,
+        \;\; (f_c,v) = - \int_{\Gamma_2} (\hat{\theta} - \theta_0) v d\Gamma,
+        \label{eq:2_1:theorem_2_eq1}\\
+        A_2 p_2 + \kappa_a (p_2-b p_1) = g_c(p_2, \hat{u}),
+        \;(g_c(p_2, \hat{u}), v) = -\int_{\Gamma_1} \hat{u} p_2 v d\Gamma,
+        \label{eq:2_1:theorem_2_eq2}\\
+        \int_{\Gamma_1} p_2 (\hat{\varphi} - \theta_b^4)(u-w) d\Gamma
+        \leq 0 \quad \forall w \in U_{ad}. \label{eq:2_1:theorem_2_eq3}
+    \end{gather}
+    \textbf{Алгоритм градиентного спуска с проекцией}
+    \begin{enumerate}
+        \item Выбор шага $\lambda$, числа итераций $N$, управления $u_0 \in U_{ad}$.
+        \item для $k \leftarrow 0,1,2, \ldots, N$ выполнить:
+        \begin{itemize}
+            \item Для $u_{k}$, вычислить $y_k = \{\theta_k, \varphi_k\}$ из~\eqref{eq:2_1:weakOperational}.
+            \item Вычислить значение $J(\theta_k)$ из уравнения~\eqref{eq:2_1:quality}.
+            \item Рассчитать $p_k=\{p_{1k},p_{2k}\}$
+            из~\eqref{eq:2_1:theorem_2_eq1}--\eqref{eq:2_1:theorem_2_eq2},
+            \item Пересчитать управление
+            $u_{k+1} = P_{ad}\left[ u_k - \lambda (\varphi_k - \theta_b^4)p_{2k} \right]$.
+        \end{itemize}
+    \end{enumerate}
+\end{frame}
+\note{
+    48. Соберём все необходимые уравнения вместе на 48(ом) слайде --
+    Исходная задача в операторном виде,
+    функционал качества
+    Сопряженная система (линейная)
+    (для решения задачи с 21го слайда)
+
+    Приведём алгоритм градиентного спуска с проекцией.
+    Обратим внимание, что оператор проекции нужен
+    из-за начальных ограничений на функцию управления (вызванных физичностью параметра, например)
+
+    Отметим, что в силу невыпуклости экстремальной задачи градиентные алгоритмы не обладают
+    свойством глобальной сходимости.
+
+    Однако свойства диффузионных моделей сложного теплообмена представленные в диссертации
+    и правильный выбор шага градиентного метода обеспечивают сходимость для
+    рассматриваемых задач.
+    Следующие примеры этот факт демонстрируют.
+}
+
+\begin{frame}
+    \frametitle{Численное моделирование двумерного случая}
+    Положим $\Omega = \{(x,y), 0 \leq x,y \leq 1\}$, $l = 1$ см.
+    Граница $\partial\Omega$:
+    \[
+        \begin{aligned}
+            \Gamma_0 & = \{x=\{0,1\}, y \in [0,1]\} \\
+            \Gamma_1 & = \{x\in [0,1], y=0\}
+            - \text{участок с неизвестными отр. свойствами}, \\
+            \Gamma_2 & = \{x \in [0,1], y=1\} - \text{участок наблюдения}.
+        \end{aligned}
+    \]
+    Будем также далее считать, что $a = 0.006[\text{см}^2/\text{c}]$,
+    $b=0.025[\text{см}/\text{с}]$, $\beta = 0.00005[\text{см}/\text{с}]$,
+    $\kappa=1[\text{см}^{-1}]$, $\kappa_s = 0$, $A = 0$, $\gamma = 0.3$.
+    Температуру на границе $\Omega$ положим равной $\theta_b = (x^2+y^2)/3$.
+
+    При указанных параметрах для первого эксперимента выберем следующее тестовое
+    значение функции $u$:
+    \begin{equation*}
+        u(x)=
+        \begin{cases}
+            0.01, & \text{если } x \le 0.5, \\
+            0.5, & \text{если } x > 0.5,
+        \end{cases}
+    \end{equation*}
+    и для второго эксперимента:
+    $u(x)=0.49x+0.01$.
+\end{frame}
+\note{
+    49. Положим параметры среды, соответствующие стеклу и зададим тестовую функцию управления
+    как показано на слайде.
+    Пластинка, у которого боковые стороны "обычные", верхняя грань - участок наблюдения,
+    нижняя грань - участок под контролем.
+}
+
+
+\begin{frame}
+    \frametitle{Результаты моделирования обратной граничной задачи}
+    \centering
+    \includegraphics[width=0.495\linewidth]{dvmg368/3}
+    \includegraphics[width=0.495\linewidth]{dvmg368/4}
+    \includegraphics[width=0.495\linewidth]{dvmg368/1}
+    \includegraphics[width=0.495\linewidth]{dvmg368/2}
+\end{frame}
+\note{
+    50. Интересный эффект "среднего значения". Большое количество итераций.
+    Обратить внимание на функционал качества.
+}
+
+\subsection{Задача оптимального управления для квазистац.\ модели}\label{quasi-solve}
+\begin{frame}
+    \frametitle{Моделирование квазистационарного процесса}
+    Задача оптимального управления для квазистационарной модели:
+    \begin{equation*}
+        J_{\lambda}(\theta, u)=\frac{1}{2} \int_{0}^{T}
+        \int_{\Gamma}\left(\theta-\theta_{b}\right)^{2} d \Gamma d t+\frac{\lambda}{2}
+        \int_{0}^{T} \int_{\Gamma} u^{2} d \Gamma d t \rightarrow \inf
+    \end{equation*}
+    при ограничениях
+    \begin{gather*}
+        \begin{split}
+            & \frac{\partial \theta}{\partial t} - a \Delta \theta
+            + b \kappa_{a} \left(|\theta| \theta^{3}-\varphi\right) = 0,\\
+            & - \alpha \Delta \varphi
+            + \kappa_{a} \left(\varphi-|\theta| \theta^{3}\right) = 0,
+            \quad x \in \Omega, \quad 0 < t < T;
+        \end{split}\\
+        a \left(\partial_{n} \theta+\theta\right)=r,
+        \quad \alpha\left(\partial_{n} \varphi
+        + \varphi\right) = u \text { на } \Gamma;\\
+        \left.\theta\right|_{t=0} = \theta_{0}.
+    \end{gather*}
+    Задача аппроксимирует задачу с данными типа Коши для температуры.
+\end{frame}
+\note{
+
+    51. Не привожу сопряженную систему в силу её неинформативности.
+    Неизвестны параметры параметры тетта, фи, u.
+    Не смотря на то, что модель не является стационарной - решается она как стационарная.
+}
+
+\begin{frame}
+    Область $\Omega \times(-L, L)$,
+    где $\Omega=$ $\left\{x=\left(x_{1}, x_{2}\right): 0<x_{1,2}<d\right\}$.
+
+
+    Определим параметры:
+    $d=1(\text{м})$, $a=0.9210^{-4}(\text{м}^{2} / \text{с})$,
+    $b=0.19(\text{м} / \text{с})$, $\alpha=0.0333(\text{м})$,
+    $\kappa_{a}=1\left(\text{м}^{-1}\right)$, $T = 1(\text{c})$.
+    \begin{figure}[h!t]
+        \begin{minipage}[b][][b]{0.49\linewidth}
+            \centering
+            \includegraphics[width=1\linewidth]{paper03/1} \\ а) Поле температуры,
+            полученное в статье *
+        \end{minipage}
+        \hfill
+        \begin{minipage}[b][][b]{0.49\linewidth}
+            \centering
+            \includegraphics[width=1\linewidth]{paper03/2} \\
+            б) Поле температуры, полученное предложенным алгоритмом
+        \end{minipage}
+        \label{fig:4_3:1}
+    \end{figure}
+    \tiny{* A. Y. Chebotarev, A. E. Kovtanyuk и N. D. Botkin. — \textit{«Problem of
+    radiation heat exchange with boundary conditions of the Cauchy type»}. —
+    Communications in Nonlinear Science and Numerical Simulation 75 (2019),
+        с. 262—269.}
+\end{frame}
+\note{
+
+    52. Приведены изображения сравнения полученных результатов в рамках работы
+    над диссертацией и коллег из Мюнхена (финальный момент времени)
+    Параметры среды соответствуют воздуху при нормальном атмосферном давлении и температуре 400C.
+
+    Эрмитов прямоугольный (конформный) элемент Богнера-Фокса-Шмидта и сведение задачи к нестационарной.
+}
+
+\subsection{Квазилинейная модель в контексте ВВЛА}
+\begin{frame}
+    \frametitle{Квазилинейная модель в контексте ВВЛА}
+    Возьмём оптические и термофизические среды из статьи **.
+    Параметры $\theta_{b}$ и $\theta_{i n}$ соответствуют
+    температуре $37^{\circ} \text{C}$, коэффициент $\gamma$ равен 1.
+    Начальное положение кончика оптического волокна $(r, z)=(0,5)$,
+    скорость отката составляет $2 \text{~мм} / \text{с}$.
+
+    \begin{figure}[h!t]
+        \includegraphics[scale=0.15]{6_cheb/1}
+        \label{fig:4_3:3}
+    \end{figure}
+    \tiny{** Peter WM van Ruijven и др. — \textit{«Optical-thermal mathematical model for
+    endovenous laser ablation of varicose veins»}. -- Lasers in medical science
+    29 (2014), с. 431—439}
+\end{frame}
+\note{
+    53. Рассмотрим квазилинейную модель в контексте моделирования процесса ВВЛА.
+    Параметры возьмём из статьи коллег. Область рассмотрения представлена на
+    слайде -- двумерная в силу осевой симметрии.
+
+    Почему квазилинейная модель? При закипании крови (появления потока пузырьков)
+    мы увеличиваем коэфициент в 200 раз.
+}
+
+
+\begin{frame}
+    \frametitle{Результаты вычисления}
+    \begin{minipage}[t]{0.47\linewidth}
+        \small{Поведение температуры в точке $(1.5,10)$
+            при мощности лазера $10\text{~Вт}$ и следующих длинах волн:
+            $810\text{~нм}$ (черный), $1064\text{~нм}$ (красный),
+            $1470\text{~нм}$ (зеленый) и $1950\text{~нм}$ (синий).}
+        \center{\includegraphics[width=1\linewidth]{6_cheb/2}}
+    \end{minipage}
+    \hfill
+    \begin{minipage}[t]{0.47\linewidth}
+        \small{Поведение температуры в точке $(1.5,10)$
+            для следующих длин волн и мощностей лазера:
+            $810 \text{~нм}, P=10 \text{~Вт}$ (черный);
+            $1064 \text{~нм}, P=11 \text{~W}$ (красный);
+            $1470 \text{~нм}, P=7,5 \text{~W}$ (зеленый);
+            $1950 \text{~нм}, P=6 \text{~W}$ (синий).}
+        \center{\includegraphics[width=1\linewidth]{6_cheb/4}}
+    \end{minipage}
+\end{frame}
+\note{
+
+    54. Данный пример демонстрирует возможность снижения температуры в
+    околовенозной ткани при сохранении температурного режима внутри вены.
+
+
+}
+
+\begin{frame}
+    \frametitle{Решение задачи с финальным наблюдением}
+    \begin{figure}[h!t]
+        \center{\includegraphics[scale=0.33]{2_cheb/2}}
+        \caption{Температурные профили: желаемая температура (черный),
+            1-е (зеленое), 2-е (синее) и 3-е (красное) приближения.}
+        \label{fig:4_3:7}
+    \end{figure}
+\end{frame}
+\note{
+    55.Требуется найти параметры u1, u2
+    Данный пример демонстрирует возможность снижения температуры в
+    околовенозной ткани при сохранении температурного режима внутри вены.
+}
+
+\subsection{Задачи с данными Коши}\label{subsec:koshi}
+\begin{frame}
+    \frametitle{Моделирование сложного теплообмена
+    с условиями типа Коши на всей границе}
+    \[
+        - a\Delta\theta + b\kappa_a(|\theta|\theta^3- \varphi)=0,
+        \quad -\alpha \Delta \varphi
+        + \kappa_a(\varphi-|\theta|\theta^3)=0,\; x\in\Omega.
+    \]
+    Будем предполагать, что на границе $\Gamma = \partial \Omega$ известно
+    температурное поле и тепловой поток:
+    \[
+        \theta = \theta_b,\quad \partial_n\theta = q_b.
+    \]
+    Согласно системе оптимальности~\eqref{eq:2_2:as} градиент функционала $\tilde J_\lambda(u)$ равен
+    \[
+        \tilde J'_\lambda (u) = \lambda u - p_2.
+    \]
+    Приведем примеры расчетов для куба $\Omega = {(x, y, z), 0 \leq x,y,z \leq l}$.
+
+    Будем считать, что $l=1~\text{см}$, $a = 0.006[\text{см}^2/\text{c}]$,
+    $b=0.025[\text{см}/\text{с}]$, $\kappa_a=1[\text{см}^{-1}]$, $\alpha = 0.(3)[\text{см}]$.
+    Параметр регуляризации $\lambda=10^{-12}$.
+
+    Определим $r$ и $u$ в~\eqref{eq:2_2:bc3} как $r = 0.7, \quad u = \hat u = 0.5$.
+\end{frame}
+\note{
+
+    56. Моделирование теплообмена без условий на излучение.
+    Определим тестовые параметры, снимем $\theta_b$ и перезапустим процесс.
+}
+
+\begin{frame}
+    \frametitle{Пример 1}
+    Для обозначенных параметров рассчитаем функции $\theta$, $\varphi$ из решения граничной задачи
+    и положим $\theta_b = \theta|_\Gamma$.
+    Нормальная производная $\partial_n \theta = q_b = r / a - \theta_b$.
+
+    Применяя алгоритм градиентного спуска найдем решение задачи $CP$.
+    \begin{figure}[h!t]
+        \begin{minipage}[b][][b]{0.49\linewidth}
+            \centering
+            \includegraphics[width=1\linewidth]{jvm-2020/exp1/theta_n_diff_iso}
+            \\ а) $|\partial_n\theta_\lambda-q_b|/|q_b|$
+        \end{minipage}
+        \hfill
+        \begin{minipage}[b][][b]{0.49\linewidth}
+            \centering
+            \includegraphics[width=1\linewidth]{jvm-2020/exp1/quality}
+            \\ б) Значение функционала качества
+        \end{minipage}
+        \label{fig:4_4:0}
+    \end{figure}
+\end{frame}
+\note{
+
+    57. Обратите внимание на малость функционала качества.
+    Сравним с тем, что получилось -- довольно близко, но не идеально.
+}
+
+\begin{frame}
+    \frametitle{Пример 2}
+    Зададим функции $\theta_{b}, q_{b}$ в краевом условии~\eqref{eq:2_2:bc2}
+    следующим образом:
+    \[
+        \theta_{b}=0.1 z+0.3, \quad q_{b}=
+        \begin{cases}
+            0.11, & \text { если } z=1, \\
+            0, & \text { если } 0<z<1, \\
+            -0.15, & \text { если } z=0.
+        \end{cases}
+    \]
+
+    В данном примере оптимальное управление $u$ в качестве тестового не задается.
+
+    \begin{figure}[h!t]
+        \begin{minipage}[b][][b]{0.49\linewidth}
+            \centering
+            \includegraphics[width=0.9\linewidth]{jvm-2020/dvmg/3a}
+            \\ а) Изменение функционала в зависимости от числа итераций
+        \end{minipage}
+        \hfill
+        \begin{minipage}[b][][b]{0.49\linewidth}
+            \centering
+            \includegraphics[width=1\linewidth]{jvm-2020/dvmg/2b}
+            \\ б) Оптимальное управление
+        \end{minipage}
+        \label{fig:4_4:3}
+    \end{figure}
+
+\end{frame}
+\note{
+    58. "Честный" эксперимент - используем то, что полагается в исходной задаче.
+    Функционал качества (его динамика) позволяет предположить аналогичный порядок
+    близости (с предыдущим примером)
+    точного и аппроксимированного решений.
+    Обратите внимание на линейность $\theta_b$ по оси $z$.
+}
+
+\begin{frame}
+    \frametitle{Пример 2}
+
+    Компоненты состояния, соответствующие найденному управлению, представлены на
+    рисунках.
+
+
+    \begin{figure}[h!t]
+        \begin{minipage}[b][][b]{0.49\linewidth}
+            \centering
+            \includegraphics[width=1\linewidth]{jvm-2020/dvmg/3b}
+            \\ а) Температура $\theta$
+        \end{minipage}
+        \hfill
+        \begin{minipage}[b][][b]{0.49\linewidth}
+            \centering
+            \includegraphics[width=1\linewidth]{jvm-2020/dvmg/2a}
+            \\ б) Излучение $\varphi$
+        \end{minipage}
+        \label{fig:4_4:4}
+    \end{figure}
+
+\end{frame}
+\note{
+    59. Компоненты состояния представлены на рисунках.
+    Хочу обратить внимание, что мы ничего про $\varphi$ не знаем из задачи и соответственно проверяемость алгоритма строится
+    на "тестовых" примерах.
+}
+
+\begin{frame}
+    \frametitle{Задача с условиями Коши на части границы}
+
+    Задача оптимального управления
+    заключается в отыскании тройки $\{\theta_\lambda,\psi_\lambda,u_\lambda\}$ такой, что
+    \begin{gather*}
+        J_\lambda(\theta, u) =
+        \frac{1}{2} \int \limits_{\Gamma_1} (\theta - \theta_b)^2 d \Gamma
+        + \frac{\lambda}{2}\int\limits_{\Gamma_2} u^2 d\Gamma \rightarrow \inf, \\
+        - a \Delta \theta + g (\theta) = \frac{\kappa}{\alpha}\psi, \quad
+        \Delta \psi = 0, \; x \in \Omega, \\
+        a \partial_n \theta + s \theta = q_b + s \theta_b,
+        \; \alpha \partial_n \psi + \gamma \psi = r
+        \text{ на } \Gamma_1,\\
+        a \partial_n \theta = q_b, \;
+        \alpha \partial_n \psi = u \text{ на } \Gamma_2,
+    \end{gather*}
+    где $\lambda, s > 0$ -- регуляризирующие параметры.
+
+    Будем считать, что
+    $l = 1~\text{см}$,
+    $a = 0.6[\text{см}^2/\text{c}]$,
+    $b = 0.025[\text{см}/\text{с}]$,
+    $\kappa_a = 1[\text{см}^{-1}]$,
+    $\alpha = 0.(3)[\text{см}]$.
+    Регуляризация $\lambda=10^{-12}$.
+\end{frame}
+\note{
+    60. На всей границе тепловой поток ($\partial_n \theta$). Параметры стекла.
+}
+
+\begin{frame}
+    \frametitle{Пример 1}
+    Рассмотрим куб $\Omega = \{ (x, y, z), 0 \leq x,y,z \leq l \}$ с границей
+    $\Gamma \equiv \Gamma_1 \cup \Gamma_2$, где
+    $
+    \Gamma_1 = \{(x, y, z), 0 \leq x,y, \leq l, z \in 0, l\}, \;
+    \Gamma_2 = \partial \Omega \setminus \Gamma_1.
+    $
+    Пусть граничные данные $q_b$ и $\theta_b$ в~\eqref{eq:2_4:bc1},~\eqref{eq:2_4:bc2} имеют вид:
+    \[ q_b = 0.5, \quad \theta_b = 0.1 + z/2. \]
+
+    \begin{figure}[h!t]
+        \begin{minipage}[b][][b]{0.49\linewidth}
+            \centering
+            \includegraphics[width=1\linewidth]{theta_top}
+            \\ а) $\theta|_{z=1}$
+        \end{minipage}
+        \hfill
+        \begin{minipage}[b][][b]{0.49\linewidth}
+            \centering
+            \includegraphics[width=1\linewidth]{phi_top}
+            \\ б) $\varphi|_{z=1}$
+        \end{minipage}
+        \label{fig:4_4:5}
+    \end{figure}
+
+
+    Начальное значение функционала качества равно $0.025$ и
+    через сотню итераций становится равным $5\cdot 10^{-5}$.
+\end{frame}
+\note{
+    61. Соответственно верхняя грань куба.
+    За сто итераций удаётся уменьшить значение функционала качества в 1000 раз.
+    Видно, что решения существенно отличаются (в зоне контроля)
+}
+
+\begin{frame}
+    \frametitle{Пример 1}
+    \begin{figure}[h!t]
+        \begin{minipage}[b][][b]{0.49\linewidth}
+            \centering
+            \includegraphics[width=1\linewidth]{theta}
+            \\ а) $\theta$
+        \end{minipage}
+        \hfill
+        \begin{minipage}[b][][b]{0.49\linewidth}
+            \centering
+            \includegraphics[width=1\linewidth]{phi}
+            \\ б) $\varphi$
+        \end{minipage}
+        \label{fig:4_4:5}
+    \end{figure}
+\end{frame}
+\note{
+    62. Обратим внимание на то, что не смотря на отсутствие информации на рёбрах куба, $\theta$
+    восстанавливает динамику граничного условия.
+}
+
+\begin{frame}
+    \frametitle{Пример 2}
+    Рассмотрим двумерный случай:
+
+    Квадрат $S = \{(x, y), 0 \leq x,y,z \leq 1~\text{см.}\}$ с
+    круговой полостью $R$ с центром $b_0 =\{0.5, 0.5\}$
+    $R = \{r, \| r - b_0 \| \leq 0.15~\text{см.} \}$.
+
+    Рассматриваемая область $\Omega = S \setminus R$.
+    $\Gamma \equiv \partial \Omega = \partial C \cup \partial B$ при этом
+    $ \Gamma_2 = \partial R, \Gamma_1 = \partial S \setminus \Gamma_2$.
+    Граничные данные $q_b$ и $\theta_b$ положим равными
+    \begin{gather*}
+        \theta_b = 0.5, \\
+        q_b =
+        \begin{cases}
+            0.2, & \text{если } x \in \Gamma_1 \\
+            -0.2, & \text{если } x \in \Gamma_2.
+        \end{cases}
+    \end{gather*}
+
+
+\end{frame}
+\note{
+    63. Квадрат с полостью внутри. (не доступная среда).
+}
+
+\begin{frame}
+    \frametitle{Пример 2}
+    \begin{figure}[h!t]
+        \begin{minipage}[b][][b]{0.49\linewidth}
+            \centering
+            \includegraphics[width=1\linewidth]{jvm-2022/2_theta}
+            \\ а) $\theta$
+        \end{minipage}
+        \hfill
+        \begin{minipage}[b][][b]{0.49\linewidth}
+            \centering
+            \includegraphics[width=1\linewidth]{jvm-2022/2_phi}
+            \\ б) $\varphi$
+        \end{minipage}
+        \label{fig:4_4:6}
+    \end{figure}
+    Начальное значение функционала качества $0.045$
+    после тридцати итераций становится равным $6.2\cdot10^{-5}$.
+
+\end{frame}
+
+\begin{frame}
+    \frametitle{Особенности реализации программ по моделированию процессов сложного теплообмена}
+    \begin{enumerate}
+        \item Выбор основного языка программирования
+        \item Пакеты численного решения диф.\ уравнений
+        \item Архитектурные особенности при написании программ по моделированию
+        \item Улучшение эффективности расчётов
+    \end{enumerate}
+\end{frame}
+\note{
+    интерпретируемость, ооп, функциональность. Хорошая интеграция с иде.
+
+    много бывает - лучше выбирать живые, с хорошей поддержкой. Большой объём примеров. Может, книги.
+
+    ТДД, логгирование. Тестирование. Визуализация. Консистентность экспериментов и результатов.
+    сохранение предыдущего результата.
+
+    Кэширование. Не допускать ленивости вычислений. Выносить как можно больше расчётов в файлы.
+}
