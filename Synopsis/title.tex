@@ -2,7 +2,7 @@
 
 \noindent%
 \begin{tabularx}{\textwidth}{@{}lXr@{}}%
-    & & \large{На правах рукописи}\\
+    & & \large{На правах рукописи} \\
     \IfFileExists{images/logo.pdf}{\includegraphics[height=2.5cm]{logo}}{\rule[0pt]{0pt}{2.5cm}}  & &
     \ifnumequal{\value{showperssign}}{0}{%
         \rule[0pt]{0pt}{1cm}
@@ -13,24 +13,24 @@
 
 \vspace{0pt plus1fill} %число перед fill = кратность относительно некоторого расстояния fill, кусками которого заполнены пустые места
 \begin{center}
-\textbf {\large \thesisAuthor}
+    \textbf {\large \thesisAuthor}
 \end{center}
 
 \vspace{0pt plus3fill} %число перед fill = кратность относительно некоторого расстояния fill, кусками которого заполнены пустые места
 \begin{center}
-\textbf {\Large %\MakeUppercase
-\thesisTitle}
+    \textbf {\Large %\MakeUppercase
+    \thesisTitle}
 
-\vspace{0pt plus3fill} %число перед fill = кратность относительно некоторого расстояния fill, кусками которого заполнены пустые места
-{\large Специальность \thesisSpecialtyNumber\ "---\par <<\thesisSpecialtyTitle>>}
+    \vspace{0pt plus3fill} %число перед fill = кратность относительно некоторого расстояния fill, кусками которого заполнены пустые места
+    {\large Специальность \thesisSpecialtyNumber\ "---\par <<\thesisSpecialtyTitle>>}
 
-\ifdefined\thesisSpecialtyTwoNumber
-{\large Специальность \thesisSpecialtyTwoNumber\ "---\par <<\thesisSpecialtyTwoTitle>>}
-\fi
+    \ifdefined\thesisSpecialtyTwoNumber
+    {\large Специальность \thesisSpecialtyTwoNumber\ "---\par <<\thesisSpecialtyTwoTitle>>}
+    \fi
 
-\vspace{0pt plus1.5fill} %число перед fill = кратность относительно некоторого расстояния fill, кусками которого заполнены пустые места
-\Large{Автореферат}\par
-\large{диссертации на соискание учёной степени\par \thesisDegree}
+    \vspace{0pt plus1.5fill} %число перед fill = кратность относительно некоторого расстояния fill, кусками которого заполнены пустые места
+    \Large{Автореферат}\par
+    \large{диссертации на соискание учёной степени\par \thesisDegree}
 \end{center}
 
 \vspace{0pt plus4fill} %число перед fill = кратность относительно некоторого расстояния fill, кусками которого заполнены пустые места
@@ -44,20 +44,23 @@
 \vspace{0.008\paperheight plus1fill}
 \noindent%
 \begin{tabularx}{\textwidth}{@{}lX@{}}
-    Научный руководитель:   & \textbf{\supervisorFio}\par
-                              \supervisorRegalia
-                              \vspace{0.013\paperheight}\\
-    Официальные оппоненты:  &
-        \textbf{\opponentOneFio,}\par
-        \opponentOneRegalia,\par
-        \opponentOneJobPlace,\par
-        \vspace{0.01\paperheight}
-        \textbf{\opponentTwoFio,}\par
-        \opponentTwoRegalia,\par
-        \opponentTwoJobPlace,\par
+    Научный руководитель: & \textbf{\supervisorFio}\par
+    \supervisorRegalia
+    \vspace{0.013\paperheight} \\
+    Официальные оппоненты: &
+    \textbf{\opponentOneFio,}\par
+    \opponentOneRegalia,\par
+    \opponentOneJobPlace,\par
+    \opponentOneJobPost.\par
+    \vspace{0.01\paperheight}
+    \textbf{\opponentTwoFio,}\par
+    \opponentTwoRegalia,\par
+    \opponentTwoJobPlace,\par
+    \opponentTwoJobPost.\par
+
     \vspace{0.013\paperheight} \\
     \ifdefined\leadingOrganizationTitle
-    Ведущая организация:    &
+    Ведущая организация: &
     \ifnumequal{\value{showopplead}}{0}{\vspace{6\onelineskip plus1fill}}{%
         \leadingOrganizationTitle
     }%
@@ -81,10 +84,10 @@
 \vspace{0.008\paperheight plus1fill}
 \noindent%
 \begin{tabularx}{\textwidth}{@{}%
->{\raggedright\arraybackslash}b{18em}@{}
->{\centering\arraybackslash}X
-r
-@{}}
+        >{\raggedright\arraybackslash}b{18em}@{}
+        >{\centering\arraybackslash}X
+    r
+    @{}}
     Ученый секретарь\par
     диссертационного совета\par
     \defenseCouncilNumber,\par
