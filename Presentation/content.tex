@@ -217,8 +217,6 @@
 %
 \include{Presentation/1_quasisolution}
 
-
-
 \subsection{Квазистационарная задача с данными Коши}\label{subsec:qst_koshi}
 \begin{frame}
     \frametitle{Квазистационарная модель с данными Коши}
@@ -317,12 +315,16 @@
 \subsection{Стационарная задача с условиями Коши на части границы}\label{subsec:st-koshi}
 \begin{frame}
     \frametitle{Стац.\ задача с условиями Коши для температуры на части границы}
-    Рассмотрим область $\Omega\subset \mathbb{R}^3$ с границей $\Gamma=\partial\Omega$.
-    \begin{equation}
+        \begin{wrapfigure}{r}{0.3\textwidth}
+        \centering{\includegraphics[width=1\linewidth]{omega-circle}}
+%        \caption*{$\Gamma \coloneqq \partial \Omega =\overline{\Gamma}_0 \cup \overline{\Gamma}_1 \cup \overline{\Gamma}_2$}
+    \end{wrapfigure}
+    Рассмотрим область $\Omega$ с границей $\Gamma=\partial\Omega$.
+    \begin{gather}
         \label{eq:2_4:eq1}
-        - a\Delta\theta + b\kappa_a(|\theta|\theta^3- \varphi)=0,   \quad
-        -\alpha \Delta \varphi + \kappa_a(\varphi-|\theta|\theta^3)=0,\; x\in\Omega.
-    \end{equation}
+        - a\Delta\theta + b\kappa_a(\theta^4 - \varphi) = 0,   \\
+        -\alpha \Delta \varphi + \kappa_a(\varphi- \theta^4) = 0.
+    \end{gather}
     $\Gamma \coloneqq \partial \Omega =\overline{\Gamma}_1 \cup \overline{\Gamma}_2$
     так, что $\Gamma_1 \cap \Gamma_2 =  \emptyset$.
     На всей границе $\Gamma$ задается тепловой поток $q_b$,
@@ -520,6 +522,11 @@
 \subsection{Задачи оптимального управления с ограничениями на состояние системы и метод штрафа}\label{subsec:opt-phase}
 \begin{frame}
     \frametitle{Квазилинейная модель c фазовыми ограничениями}
+    \begin{wrapfigure}{r}{0.3\textwidth}
+        \centering{\includegraphics[width=1\linewidth]{omega-g1-g2}}
+%        \caption*{$\Gamma \coloneqq \partial \Omega =\overline{\Gamma}_0 \cup \overline{\Gamma}_1 \cup \overline{\Gamma}_2$}
+    \end{wrapfigure}
+
     \textbf{Начально-краевая} задача:
     \begin{equation}
         \label{eq:3_2:1}
@@ -561,7 +568,7 @@
     \begin{itemize}
         \item $(c1)\; \sigma_{0} \leq \sigma \leq \sigma_{1}, \quad|\partial \sigma / \partial t| \leq \sigma_{2}$
         \item $(c2)\; k_{0} \leq k(s) \leq k_{1}, \quad\left|k^{\prime}(s)\right| \leq k_{2}, \quad s \in \mathbb{R}$,
-        \item $(c3)\; \theta_{0} \in H$
+        \item $(c3)\; \theta_{0} \in L^2(\Omega)$
         \item $(c4)\; \alpha_{0} \leq \alpha(x) \leq \alpha_{1}, \beta_{0} \leq \beta(x) \leq \beta_{1}, \quad x \in \Omega$,
     \end{itemize}
     \begin{theorem}[3.2]
