@@ -315,7 +315,7 @@
 \subsection{Стационарная задача с условиями Коши на части границы}\label{subsec:st-koshi}
 \begin{frame}
     \frametitle{Стац.\ задача с условиями Коши для температуры на части границы}
-        \begin{wrapfigure}{r}{0.3\textwidth}
+        \begin{wrapfigure}{r}{0.4\textwidth}
         \centering{\includegraphics[width=1\linewidth]{omega-circle}}
 %        \caption*{$\Gamma \coloneqq \partial \Omega =\overline{\Gamma}_0 \cup \overline{\Gamma}_1 \cup \overline{\Gamma}_2$}
     \end{wrapfigure}
@@ -426,14 +426,14 @@
     $\Gamma \equiv \partial \Omega = \partial C \cup \partial B$, при этом
     $ \Gamma_2 = \partial R, \Gamma_1 = \partial S \setminus \Gamma_2$.
     Граничные данные $q_b$ и $\theta_b$ положим равными
-    \begin{gather*}
+    $
         \theta_b = 0.5, \;
         q_b =
         \begin{cases}
             0.2, & \text{если } x \in \Gamma_1 \\
             -0.2, & \text{если } x \in \Gamma_2.
         \end{cases}
-    \end{gather*}
+        $
     \begin{figure}[h!t]
         \begin{minipage}[b][][b]{0.49\linewidth}
             \centering
@@ -459,28 +459,25 @@
     Положим $a\partial_n \theta = q_b +\varepsilon \psi$, где $\psi = \psi(x)$, $x \in \Gamma_1$ функция возмущения.
 
     Полученное решение задачи~\eqref{eq:2_4:eq2},~\eqref{eq:2_4:bc3} обозначим за $\theta^{\varepsilon}$.
-
     $\theta$ будет соответствовать случаю $\varepsilon = 0$.
 
     Область $\Omega$ -- квадрат с единичной стороной, $\Gamma_1$ соответствует стороне $y = 1$.
 
-    Положим $\theta_b = (x + y) / 2$ и $q_b = a / 2$.
-
-    $\varepsilon \in [-0.1, 0.1]$, вычислим $L^2$ норму отклонения возмущенного поля.
+    Положим $\theta_b = (x + y) / 2$ и $q_b = a / 2$, $\varepsilon \in [-0.1, 0.1]$,
+    вычислим $L^2$ норму отклонения возмущенного поля.
     \begin{figure}[h!t]
-        \begin{minipage}[b][][b]{0.49\linewidth}
+        \begin{minipage}[b][][b]{0.4\linewidth}
             \centering
             \includegraphics[width=1\linewidth]{additional/2/deps_1}\\ а) $\psi = 1,$
         \end{minipage}
         \hfill
-        \begin{minipage}[b][][b]{0.49\linewidth}
+        \begin{minipage}[b][][b]{0.4\linewidth}
             \centering
             \includegraphics[width=1\linewidth]{additional/2/eps_sin} \\ б) $\psi = \sin (100 * \pi x)$.
         \end{minipage}
         \caption{$||\theta^\varepsilon - \theta||_{L^2(\Omega)}$}
         \label{fig:4_4:vareps}
     \end{figure}
-
     Численные эксперименты демонстрируют
     устойчивость решения относительно изменений теплового потока.
 \end{frame}
@@ -522,7 +519,7 @@
 \subsection{Задачи оптимального управления с ограничениями на состояние системы и метод штрафа}\label{subsec:opt-phase}
 \begin{frame}
     \frametitle{Квазилинейная модель c фазовыми ограничениями}
-    \begin{wrapfigure}{r}{0.3\textwidth}
+    \begin{wrapfigure}{r}{0.34\textwidth}
         \centering{\includegraphics[width=1\linewidth]{omega-g1-g2}}
 %        \caption*{$\Gamma \coloneqq \partial \Omega =\overline{\Gamma}_0 \cup \overline{\Gamma}_1 \cup \overline{\Gamma}_2$}
     \end{wrapfigure}
