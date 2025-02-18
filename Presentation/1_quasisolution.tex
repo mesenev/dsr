@@ -140,7 +140,12 @@
 }
 
 \begin{frame}
-    \frametitle{Модель управления температурным полем через граничный параметр}
+    \textbf{Численные эксперименты:}
+
+    \begin{wrapfigure}{r}{0.3\textwidth}
+        \centering{\includegraphics[width=1\linewidth]{omega_1}}
+%        \caption*{$\Gamma \coloneqq \partial \Omega =\overline{\Gamma}_0 \cup \overline{\Gamma}_1 \cup \overline{\Gamma}_2$}
+    \end{wrapfigure}
     Положим $\Omega = \{(x,y), 0 \leq x,y \leq 1\}$, $l = 1$ см.
     Граница $\partial\Omega$:
     \[
@@ -177,12 +182,13 @@
 
 
 \begin{frame}
-    \frametitle{Модель управления температурным полем через граничные параметр}
+    \textbf{Результаты моделирования:}
+
     \centering
-    \includegraphics[width=0.42\linewidth]{dvmg368/3}
-    \includegraphics[width=0.42\linewidth]{dvmg368/4}
     \includegraphics[width=0.42\linewidth]{dvmg368/1}
     \includegraphics[width=0.42\linewidth]{dvmg368/2}
+    \includegraphics[width=0.42\linewidth]{dvmg368/3}
+    \includegraphics[width=0.42\linewidth]{dvmg368/4}
 \end{frame}
 \note{
     Интересный эффект "среднего значения". Большое количество итераций.
@@ -243,19 +249,21 @@
     без краевых условий для интенс излучения при $\lambda$ стремящемся к 0.
 }
 \begin{frame}
-    \frametitle{Пример 1}
-    \textbf{Задача $CP$.} Найти тройку $\{\theta, \varphi, u \} \in V \times V \times U$
-    такую, что
-    \begin{equation}
-        \label{eq:2_2:cp}
-        J_\lambda(\theta, u) \equiv \frac{1}{2}\|\theta -\theta_b\|^2_\Gamma
-        + \frac{\lambda}{2}\|u\|^2_\Gamma \rightarrow \inf,\;\; F(\theta, \varphi, u)=0.
-    \end{equation}
+    \textbf{Пример 1.}
+
+
+    Приведем примеры расчетов для куба $\Omega = {(x, y, z), 0 \leq x,y,z \leq l}$.
+
+    Будем считать, что $l=1~\text{см}$, $a = 0.006[\text{см}^2/\text{c}]$,
+    $b=0.025[\text{см}/\text{с}]$, $\kappa_a=1[\text{см}^{-1}]$, $\alpha = 0.(3)[\text{см}]$.
+    Параметр регуляризации $\lambda=10^{-12}$.
+
+    Определим $r$ и $u$ в~\eqref{eq:2_2:bc3} как $r = 0.7, \quad u = \hat u = 0.5$.
     Для обозначенных параметров рассчитаем функции $\theta$, $\varphi$ из решения граничной задачи
     и положим $\theta_b = \theta|_\Gamma$.
     Нормальная производная $\partial_n \theta = q_b = r / a - \theta_b$.
 
-    Применяя алгоритм градиентного спуска найдем решение задачи $CP$.
+    Применяя алгоритм градиентного спуска найдем решение задачи оптимального управления.
     \begin{figure}[h!t]
         \begin{minipage}[b][][b]{0.49\linewidth}
             \centering
@@ -279,7 +287,9 @@
 }
 
 \begin{frame}
-    \frametitle{Пример 2}
+    \textbf{Пример 2.}
+
+
     Зададим функции $\theta_{b}, q_{b}$ в краевом условии~\eqref{eq:2_2:bc2}
     следующим образом:
     \[
@@ -292,18 +302,20 @@
     \]
 
     В данном примере оптимальное управление $u$ в качестве тестового не задается.
+    Начальное значение функционала качества $J_\lambda$ составляет $7.20 \cdot 10^{-6}$.
+    Финальное значение $2.86 \cdot 10^{-10}$.
 
     \begin{figure}[h!t]
         \begin{minipage}[b][][b]{0.49\linewidth}
             \centering
-            \includegraphics[width=0.9\linewidth]{jvm-2020/dvmg/3a}
-            \\ а) Изменение функционала в зависимости от числа итераций
+            \includegraphics[width=0.9\linewidth]{jvm-2020/dvmg/3b}
+            \\ а) Полученное температурное поле $\theta_\lambda$
         \end{minipage}
         \hfill
         \begin{minipage}[b][][b]{0.49\linewidth}
             \centering
-            \includegraphics[width=1\linewidth]{jvm-2020/dvmg/2b}
-            \\ б) Оптимальное управление
+            \includegraphics[width=1\linewidth]{jvm-2020/dvmg/2a}
+            \\ б) Полученное поле излучения $\varphi_\lambda$
         \end{minipage}
         \label{fig:4_4:3}
     \end{figure}
