@@ -326,7 +326,7 @@
 \subsection{Стационарная задача с условиями Коши на части границы}\label{subsec:st-koshi}
 \begin{frame}
     \frametitle{Стац.\ задача с условиями Коши для температуры на части границы}
-        \begin{wrapfigure}{r}{0.4\textwidth}
+    \begin{wrapfigure}{r}{0.4\textwidth}
         \centering{\includegraphics[width=1\linewidth]{omega-circle}}
 %        \caption*{$\Gamma \coloneqq \partial \Omega =\overline{\Gamma}_0 \cup \overline{\Gamma}_1 \cup \overline{\Gamma}_2$}
     \end{wrapfigure}
@@ -350,7 +350,7 @@
     $\varphi$, задается температурное поле $\theta_b$,
     \begin{equation}
         \label{eq:2_4:bc2}
-        \alpha\partial_n\varphi + \gamma (\varphi - \theta_b ^4 ) = 0,\;
+        \alpha\partial_n\varphi + \gamma (\varphi - \theta_{out} ^4 ) = 0,\;
         \theta=\theta_b\quad \text{ на } \Gamma_1.
     \end{equation}.
 
@@ -383,7 +383,7 @@
         \alpha \partial_n \psi + \gamma \psi  =  r,\;\;
         \theta = \theta_b  \text{ на }\Gamma_1.
     \end{equation}
-    Здесь $g(\theta) = b \kappa_a|\theta|\theta^3 + \frac{a\kappa_a}{\alpha}\theta$, $r=\alpha b \gamma \theta_b^4+ \alpha q_b + a \gamma \theta_b$.
+    Здесь $g(\theta) = b \kappa_a|\theta|\theta^3 + \frac{a\kappa_a}{\alpha}\theta$, $r=\alpha b \gamma \theta_{out}^4+ \alpha q_b + a \gamma \theta_b$.
 
 
     Задача \textbf{оптимального управления}, аппроксимирующая краевую задачу,
@@ -439,13 +439,13 @@
     $ \Gamma_2 = \partial R, \Gamma_1 = \partial S \setminus \Gamma_2$.
     Граничные данные $q_b$ и $\theta_b$ положим равными
     $
-        \theta_b = 0.5, \;
-        q_b =
-        \begin{cases}
-            0.2, & \text{если } x \in \Gamma_1 \\
-            -0.2, & \text{если } x \in \Gamma_2.
-        \end{cases}
-        $
+    \theta_b = 0.5, \;
+    q_b =
+    \begin{cases}
+        0.2, & \text{если } x \in \Gamma_1 \\
+        -0.2, & \text{если } x \in \Gamma_2.
+    \end{cases}
+    $
     \begin{figure}[h!t]
         \begin{minipage}[b][][b]{0.49\linewidth}
             \centering
@@ -536,7 +536,9 @@
 %        \caption*{$\Gamma \coloneqq \partial \Omega =\overline{\Gamma}_0 \cup \overline{\Gamma}_1 \cup \overline{\Gamma}_2$}
     \end{wrapfigure}
 
-    \textbf{Начально-краевая} задача:
+    \textbf{Задача оптимального управления $P$} заключается в минимизации функционала
+    \[ J(\theta)=\int_{0}^{T} \int_{G_{1}}\left(\theta-\theta_{d}\right)^{2} dx dt \rightarrow \inf \]
+    на решениях начально-краевой задачи:
     \begin{equation}
         \label{eq:3_2:1}
         \begin{gathered}
@@ -556,7 +558,7 @@
     При этом учитываются ограничения:
     \[ u_{1,2} \geq 0, \quad u_{1}+u_{2} \leq P, \left.\quad \theta\right|_{G_{2}} \leq \theta_{*} \]
 
-    \textbf{Задача оптимального управления} $P_{\varepsilon}$.
+    \textbf{Задача со штрафом $P_{\varepsilon}$}.
     $J_{\varepsilon}(\theta) \rightarrow \inf$, где
     \[
         \begin{aligned}
@@ -574,17 +576,7 @@
             \end{cases}
         \end{aligned}
     \]
-    \begin{itemize}
-        \item $(c1)\; \sigma_{0} \leq \sigma \leq \sigma_{1}, \quad|\partial \sigma / \partial t| \leq \sigma_{2}$
-        \item $(c2)\; k_{0} \leq k(s) \leq k_{1}, \quad\left|k^{\prime}(s)\right| \leq k_{2}, \quad s \in \mathbb{R}$,
-        \item $(c3)\; \theta_{0} \in L^2(\Omega)$
-        \item $(c4)\; \alpha_{0} \leq \alpha(x) \leq \alpha_{1}, \beta_{0} \leq \beta(x) \leq \beta_{1}, \quad x \in \Omega$,
-    \end{itemize}
-    \begin{theorem}[3.2]
-        \label{th:3_2:2}
-        Пусть выполняются условия $(c1)$-$(c4)$.
-        Тогда существует решение задачи $P_{\varepsilon}$.
-    \end{theorem}
+
 \end{frame}
 \note{
     Дана область, в ней две подобласти. Мы хотим в одной достичь определенного температурного режима,
@@ -602,23 +594,52 @@
     Обоснована сходимость предложенного штрафного алгоритма к решению задачи
     с ограничениями на температуру при $\epsilon\to+0$.
 }
-
+\begin{frame}
+    \textbf{Условия разрешимости и сходимость решений при $\varepsilon \rightarrow +0$}
+    \begin{itemize}
+        \item $(c1)\; \sigma_{0} \leq \sigma \leq \sigma_{1}, \quad|\partial \sigma / \partial t| \leq \sigma_{2}$
+        \item $(c2)\; k_{0} \leq k(s) \leq k_{1}, \quad\left|k^{\prime}(s)\right| \leq k_{2}, \quad s \in \mathbb{R}$,
+        \item $(c3)\; \theta_{0} \in L^2(\Omega)$
+        \item $(c4)\; \alpha_{0} \leq \alpha(x) \leq \alpha_{1}, \beta_{0} \leq \beta(x) \leq \beta_{1}, \quad x \in \Omega$,
+    \end{itemize}
+    \begin{theorem}[3.1]
+        \label{th:3_2:1}
+        Пусть выполняются условия $(c1)$-$(c3)$, и $\theta_{0} \leq \theta_{*}$ п.\ в. в $\Omega$.
+        Тогда существует решение задачи $P$.
+    \end{theorem}
+    \begin{theorem}[3.2]
+        \label{th:3_2:2}
+        Пусть выполняются условия $(c1)$-$(c4)$.
+        Тогда существует решение задачи $P_{\varepsilon}$.
+    \end{theorem}
+    \begin{theorem}[3.3]
+        \label{th:3_2:3}
+        Пусть выполнены условия $(c1)$-$(c4)$, и $\theta_{0} \leq \theta_{*}$ п.\ в. в $\Omega$.
+        $\left\{\theta_{\varepsilon}, u_{\varepsilon}\right\}$ -- решение задачи
+        $P_{\varepsilon}$ для $\varepsilon>0$, тогда существует последовательность $\varepsilon \rightarrow+0$
+        \[
+            u_{\varepsilon} \rightarrow \widehat{u} \text { слабо в } L^{2}(0, T ; H), \quad
+            \theta_{\varepsilon} \rightarrow \widehat{\theta} \text { сильно в } L^{2}(0, T ; H),
+        \]
+        где $\{\widehat{\theta}, \widehat{u}\}$ есть решение задачи $P$\@.
+    \end{theorem}
+\end{frame}
 \begin{frame}
     \textbf{Моделирование влияния коэффициента $k(\theta)$ на динамику температурного поля}
     В первом эксперименте для~\eqref{eq:3_2:1}--\eqref{eq:3_2:2} параметр $k$ определим как
     $ k(\theta)=
-        \begin{cases}
-            0.1, & \text { если } \theta \leq \theta_{*}, \\
-            1, & \text { если } \theta>\theta_{*},
-        \end{cases}
+    \begin{cases}
+        0.1, & \text { если } \theta \leq \theta_{*}, \\
+        1, & \text { если } \theta>\theta_{*},
+    \end{cases}
     $
     а также определим $\theta_b = 1$ на всей границе.
     Во втором эксперименте положим $\theta_b = (x + y) /2$ и
-     $k(\theta)=
-        \begin{cases}
-            0.1, & \text { если } \theta \leq 0.5, \\
-            m_1, & \text { если } \theta > 0.5.
-        \end{cases}
+    $k(\theta)=
+    \begin{cases}
+        0.1, & \text { если } \theta \leq 0.5, \\
+        m_1, & \text { если } \theta > 0.5.
+    \end{cases}
     $
     \begin{figure}[h!t]
         \begin{minipage}[b][][b]{0.49\linewidth}

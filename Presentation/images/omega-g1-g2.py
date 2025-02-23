@@ -24,7 +24,7 @@ ax.add_patch(circle1)
 ax.add_patch(circle2)
 
 # Label the regions
-ax.text(-0.3, 0.2, r'$\Gamma_2$', ha='center', va='center', fontsize=FONT_SIZE, color='black')  # In G_1
+ax.text(-0.3, 0.2, r'$\theta_d$', ha='center', va='center', fontsize=FONT_SIZE, color='blue')  # In G_1
 ax.text(0.2, -0.7, r'$\theta_*$', ha='center', va='center', fontsize=FONT_SIZE, color='red')   # In G_2
 
 # Add a label for the boundary Gamma
