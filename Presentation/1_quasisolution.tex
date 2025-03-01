@@ -77,7 +77,7 @@
         \item для $k \leftarrow 0,1,2, \ldots, N$ выполнить:
         \begin{itemize}
             \item Для $u_{k}$, вычислить $y_k = \{\theta_k, \varphi_k\}$ из~\eqref{eq:2_1:weakOperational}.
-            \item Вычислить значение $J(\theta_k)$ из уравнения~\eqref{eq:2_1:quality}.
+            \item Вычислить значение $J(\theta_k)$ из уравнения~\eqref{eq:2_1:qualityOperational}.
             \item Рассчитать $p_k=\{p_{1k},p_{2k}\}$
             из~\eqref{eq:2_1:theorem_2_eq1}--\eqref{eq:2_1:theorem_2_eq2},
             \item Пересчитать управление
@@ -263,7 +263,7 @@
 
     \hspace{1cm} a.\ Для заданного $u_{k}$, вычислить состояние
     $y_{k}=\left\{\theta_{k}, \varphi_{k}\right\}$, решение
-    задачи~\eqref{eq:2_2:eq1}--\eqref{eq:2_2:bc1}.
+    задачи~\eqref{eq:2_2:eq1}--\eqref{eq:2_2:bc3}.
 
     \hspace{1cm} b.\ Вычислить значение функционала качества
     $J_{\lambda}\left(\theta_{k}, u_{k}\right)$.
@@ -285,44 +285,44 @@
     25. Условия оптимальности лежат в основе численного метода
 }
 
+%\begin{frame}
+%    \textbf{Численный эксперимент.}
+%    Приведем примеры расчетов для куба $\Omega = {(x, y, z), 0 \leq x,y,z \leq l}$.
+%
+%    Будем считать, что $l=1~\text{см}$, $a = 0.006[\text{см}^2/\text{c}]$,
+%    $b=0.025[\text{см}/\text{с}]$, $\kappa_a=1[\text{см}^{-1}]$, $\alpha = 0.(3)[\text{см}]$.
+%    Параметр регуляризации $\lambda=10^{-12}$.
+%
+%    Определим $r$ и $u$ в~\eqref{eq:2_2:bc3} как $r = 0.7, \quad u = \hat u = 0.5$.
+%    Для обозначенных параметров рассчитаем функции $\theta$, $\varphi$ из решения граничной задачи
+%    и положим $\theta_b = \theta|_\Gamma$.
+%    Нормальная производная $\partial_n \theta = q_b = r / a - \theta_b$.
+%
+%    Применяя алгоритм градиентного спуска найдем решение задачи оптимального управления.
+%    \begin{figure}[h!t]
+%        \begin{minipage}[b][][b]{0.49\linewidth}
+%            \centering
+%            \includegraphics[width=1\linewidth]{jvm-2020/exp1/theta_n_diff_iso}
+%            \\ а) $|\partial_n\theta_\lambda-q_b|/|q_b|$
+%        \end{minipage}
+%        \hfill
+%        \begin{minipage}[b][][b]{0.49\linewidth}
+%            \centering
+%            \includegraphics[width=1\linewidth]{jvm-2020/exp1/quality}
+%            \\ б) Значение функционала качества
+%        \end{minipage}
+%        \label{fig:4_4:0}
+%    \end{figure}
+%\end{frame}
+%\note{
+%    Обратите внимание на малость функционала качества.
+%    Сравним с тем, что получилось -- довольно близко, но не идеально.
+%    Уменьшение параметра регуляризации повышает точность решения,
+%    но и увеличивает вычислительные затраты.
+%}
+
 \begin{frame}
-    \textbf{Пример 1.}
-    Приведем примеры расчетов для куба $\Omega = {(x, y, z), 0 \leq x,y,z \leq l}$.
-
-    Будем считать, что $l=1~\text{см}$, $a = 0.006[\text{см}^2/\text{c}]$,
-    $b=0.025[\text{см}/\text{с}]$, $\kappa_a=1[\text{см}^{-1}]$, $\alpha = 0.(3)[\text{см}]$.
-    Параметр регуляризации $\lambda=10^{-12}$.
-
-    Определим $r$ и $u$ в~\eqref{eq:2_2:bc3} как $r = 0.7, \quad u = \hat u = 0.5$.
-    Для обозначенных параметров рассчитаем функции $\theta$, $\varphi$ из решения граничной задачи
-    и положим $\theta_b = \theta|_\Gamma$.
-    Нормальная производная $\partial_n \theta = q_b = r / a - \theta_b$.
-
-    Применяя алгоритм градиентного спуска найдем решение задачи оптимального управления.
-    \begin{figure}[h!t]
-        \begin{minipage}[b][][b]{0.49\linewidth}
-            \centering
-            \includegraphics[width=1\linewidth]{jvm-2020/exp1/theta_n_diff_iso}
-            \\ а) $|\partial_n\theta_\lambda-q_b|/|q_b|$
-        \end{minipage}
-        \hfill
-        \begin{minipage}[b][][b]{0.49\linewidth}
-            \centering
-            \includegraphics[width=1\linewidth]{jvm-2020/exp1/quality}
-            \\ б) Значение функционала качества
-        \end{minipage}
-        \label{fig:4_4:0}
-    \end{figure}
-\end{frame}
-\note{
-    Обратите внимание на малость функционала качества.
-    Сравним с тем, что получилось -- довольно близко, но не идеально.
-    Уменьшение параметра регуляризации повышает точность решения,
-    но и увеличивает вычислительные затраты.
-}
-
-\begin{frame}
-    \textbf{Пример 2.}
+    \textbf{Численное моделирование.}
 
 
     Зададим функции $\theta_{b}, q_{b}$ в краевом условии~\eqref{eq:2_2:bc2}
