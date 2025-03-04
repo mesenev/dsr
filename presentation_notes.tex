@@ -2,8 +2,8 @@
 
 \newif\ifpresentation % Условие, проверяющее, что документ --- презентация
 \presentationtrue
-%\documentclass[8pt, xcolor={dvipsnames, table, hyperref},notes=left]{beamer}
-\documentclass[8pt, xcolor={dvipsnames, table, hyperref}, notes=none]{beamer}
+\documentclass[8pt, xcolor={dvipsnames, table, hyperref},notes=left]{beamer}
+%\documentclass[8pt, xcolor={dvipsnames, table, hyperref}, notes=none]{beamer}
 
 \input{common/setup}               % Общие настройки шаблона
 \input{common/packages}            % Пакеты общие для диссертации и автореферата
@@ -13,12 +13,11 @@
 \makeatletter
 \@ifundefined{c@presnotes}{
     \newcounter{presnotes}
-    \setcounter{presnotes}{0}       % 0 --- выкл;
+    \setcounter{presnotes}{2}       % 0 --- выкл;
                                     % 1 --- вкл, записи на отдельном слайде;
                                     % 2 --- вкл, записи на основном слайде;
 }{}
 \makeatother
-
 \input{Presentation/setup}         % Настройки презентации
 \input{Presentation/prespackages}  % Библиотеки презентации
 \input{Presentation/styles}        % Стили презентации
