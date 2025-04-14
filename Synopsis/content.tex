@@ -94,7 +94,6 @@ $H = L^2(\Omega)$ и Соболева $V = H^1(\Omega)$.
 ненормализованной модели, $\kappa = \kappa_s + \kappa_a$ -- коэффициент
 полного взаимодействия, $\kappa_s$ -- коэффициент рассеяния.
 
-%TODO: Проверить эти формулы!
 Раздел 1.5 посвящен квазистационарной модели сложного теплообмена.
 Данная модель описывает систему связанных уравнений в частных производных,
 моделирующих квазистационарный радиационный и диффузионный теплообмен.
@@ -751,33 +750,38 @@ $ \Gamma_2 = \partial R, \Gamma_1 = \partial S \setminus \Gamma_2$.
 %  * Если цитировать каждый источник отдельной командой --- найти некоторые ошибки будет проще.
 %
 %% authorvak
-    \nocite{vakbib1}%
-    \nocite{vakbib2}%
+    \nocite{mesenev_23_opt}%
+    \nocite{mesenev_23_problem}%
     %
     %% authorwos
-    \nocite{wosbib1}%
+    \nocite{mesenev_23_inv_proc}%
     %
     %% authorscopus
-    \nocite{scbib1}%
+    \nocite{mesenev_23_math}%
     %
     %% authorpathent
-    \nocite{patbib1}%
+    \nocite{mesenev_22_penalty}%
     %
     %% authorprogram
-    \nocite{progbib1}%
+    \nocite{Mesenev_22_analysis}%
     %
     %% authorconf
-    \nocite{confbib1}%
-    \nocite{confbib2}%
+    \nocite{mesenev_21_optimal_proc}%
+    \nocite{mesenev_20_opt_proc}%
     %
     %% authorother
-    \nocite{bib1}%
-    \nocite{bib2}%
+    \nocite{mesenev_20_alg}%
+    \nocite{mesenev_18_boundary}%
+    \nocite{progbib1}%
+    \nocite{progbib2}%
+    \nocite{progbib3}%
+    \nocite{mesenev_18_boundary_proc}%
+    \insertbiblioauthorgrouped
 
     \ifnumgreater{\value{usefootcite}}{0}{
         \begin{refcontext}[labelprefix={}]
             \ifnum \value{bibgrouped}>0
-            \insertbiblioauthorgrouped    % Вывод всех работ автора, сгруппированных по источникам
+               % Вывод всех работ автора, сгруппированных по источникам
             \else
             \insertbiblioauthor      % Вывод всех работ автора
             \fi
