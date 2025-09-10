@@ -12,7 +12,7 @@
 \makeatletter
 \@ifundefined{c@usefootcite}{
   \newcounter{usefootcite}
-  \setcounter{usefootcite}{1} % 0 --- два списка литературы;
+  \setcounter{usefootcite}{0} % 0 --- два списка литературы;
                               % 1 --- список публикаций автора + цитирование
                               %       других работ в сносках
 }{}
@@ -21,7 +21,7 @@
 \makeatletter
 \@ifundefined{c@bibgrouped}{
   \newcounter{bibgrouped}
-  \setcounter{bibgrouped}{1}  % 0 --- единый список работ автора;
+  \setcounter{bibgrouped}{0}  % 0 --- единый список работ автора;
                               % 1 --- сгруппированные работы автора
 }{}
 \makeatother
@@ -89,7 +89,7 @@
 \setcounter{showperssign}{1}  % 0 --- не показывать;
                               % 1 --- показывать
 %Демонстрация подписи учёного секретаря на автореферате
-\setcounter{showsecrsign}{0}  % 0 --- не показывать;
+\setcounter{showsecrsign}{1}  % 0 --- не показывать;
                               % 1 --- показывать
 %Демонстрация информации об оппонентах и ведущей организации на автореферате
 \setcounter{showopplead}{1}   % 0 --- не показывать;
