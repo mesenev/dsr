@@ -21,6 +21,10 @@
 %%% Поля и разметка страницы %%%
 \usepackage{pdflscape}  % Для включения альбомных страниц
 \usepackage{geometry}   % Для последующего задания полей
+% TODO: решить, так ли это должно быть.
+\usepackage{titlesec}
+%\titlespacing\subsubsection{0pt}{12pt plus 4pt minus 2pt}{-5pt plus 2pt minus 2pt}
+\titlespacing{\subsubsection}{0pt}{\parskip}{-\parskip}
 
 %%% Математические пакеты %%%
 \usepackage{amsthm,amsmath,amscd}   % Математические дополнения от AMS
