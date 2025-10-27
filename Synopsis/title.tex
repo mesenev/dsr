@@ -3,7 +3,7 @@
 \noindent%
 \begin{tabularx}{\textwidth}{@{}lXr@{}}%
     & & \large{На правах рукописи} \\
-    \IfFileExists{images/logo.pdf}{\includegraphics[height=2.5cm]{logo}}{\rule[0pt]{0pt}{2.5cm}}  & &
+    & &
     \ifnumequal{\value{showperssign}}{0}{%
         \rule[0pt]{0pt}{1cm}
     }{
@@ -39,40 +39,41 @@
 \newpage
 % оборотная сторона обложки
 \thispagestyle{empty}
-\noindent Работа выполнена в {\thesisInOrganization}.
+\noindent Работа выполнена в \nohyphens{\thesisInOrganization}.
 
 \vspace{0.008\paperheight plus1fill}
 \noindent%
+\nohyphens{
 \begin{tabularx}{\textwidth}{@{}lX@{}}
-    Научный руководитель: & \textbf{\supervisorFio}\par
-    \supervisorRegalia
-    \vspace{0.013\paperheight} \\
-    Официальные оппоненты: &
-    \textbf{\opponentOneFio,}\par
-    \opponentOneRegalia,\par
-    \opponentOneJobPlace,\par
-    \opponentOneJobPost.\par
-    \vspace{0.01\paperheight}
-    \textbf{\opponentTwoFio,}\par
-    \opponentTwoRegalia,\par
-    \opponentTwoJobPlace,\par
-    \opponentTwoJobPost.\par
+        Научный руководитель: & \textbf{\supervisorFio}\par
+        \supervisorRegalia
+        \vspace{0.013\paperheight} \\
+        Официальные оппоненты: &
+        \textbf{\opponentOneFio,}\par
+        \opponentOneRegalia,
+        \opponentOneJobPlace,
+        \opponentOneJobPost.\par
+        \vspace{0.01\paperheight}
+        \textbf{\opponentTwoFio,}\par
+        \opponentTwoRegalia,
+        \opponentTwoJobPlace,
+        \opponentTwoJobPost.\par
 
-    \vspace{0.013\paperheight} \\
-    \ifdefined\leadingOrganizationTitle
-    Ведущая организация: &
-    \ifnumequal{\value{showopplead}}{0}{\vspace{6\onelineskip plus1fill}}{%
-        \leadingOrganizationTitle
-    }%
-    \fi
-\end{tabularx}
+        \vspace{0.013\paperheight} \\
+        \ifdefined\leadingOrganizationTitle
+        Ведущая организация: &
+        \ifnumequal{\value{showopplead}}{0}{\vspace{6\onelineskip plus1fill}}{%
+            ФГБУН Тихоокеанский океанологический институт им. В.И. Ильичева ДВО РАН, г.~Владивосток.
+        }%
+        \fi
+\end{tabularx}}
 \vspace{0.008\paperheight plus1fill}
 
 \noindent Защита состоится \defenseDate~на~заседании диссертационного совета \defenseCouncilNumber~в \defenseCouncilTitle~по адресу: \defenseCouncilAddress.
 
 \vspace{0.008\paperheight plus1fill}
 \noindent С диссертацией можно ознакомиться в библиотеке Института автоматики
-и процессов управления ДВО РАН и на сайте: https://www.iacp.dvo.ru/diss/dis4.
+и процессов управления ДВО РАН и на сайте: https://iacp.dvo.ru/diss/dis4
 
 %\vspace{0.008\paperheight plus1fill}
 %\noindent Отзывы на автореферат в двух экземплярах, заверенные печатью учреждения, просьба направлять по адресу: \defenseCouncilAddress, ученому секретарю диссертационного совета~\defenseCouncilNumber.
@@ -93,7 +94,7 @@
     \defenseSecretaryRegalia
     &
     \ifnumequal{\value{showsecrsign}}{0}{}{%
-        \includegraphics[width=2cm]{secretary-signature.png}%
+        \includegraphics[width=2cm]{secretary-signature.jpg}%
     }%
     &
     \defenseSecretaryFio
