@@ -1,216 +1,3 @@
-%
-%\begin{frame}
-%    \frametitle{Стационарная модель}
-%    Область $\Omega \subset \mathbb{R}^3$, граница  $\Gamma = \partial \Omega$.
-%    \begin{gather}
-%        -a \Delta \theta + + b \kappa_a \theta^4 =  b \kappa_a \varphi,
-%        \quad
-%        - \alpha \Delta \varphi + \kappa_a \varphi = \kappa_a \theta^4,  \label{eq:pres:1}\\
-%        a \frac{\partial \theta}{\partial \mathbf{n}}
-%        +\left.\beta\left(\theta-\theta_{b}\right)\right|_{\Gamma}=0,
-%        \quad
-%        \alpha \frac{\partial \varphi}{\partial \mathbf{n}} + \gamma
-%        (\varphi-\theta_b^4)|_{\Gamma} = 0. \label{eq:pres:2}
-%    \end{gather}
-%
-%    Здесь $\theta$ -- нормализованная температура, $\varphi$ -- нормализованная интенсивность излучения,
-%    усреднённая по всем направлениям, $\kappa_a$ -- коэффициент поглощения.
-%    Константы $a, b, \alpha, \gamma, \beta$ описываются следующим образом:
-%    \[
-%        a = \frac{k}{\rho c_v}, \; b = \frac{4 \sigma n^2 T^3_{\max}}{\rho c_v}, \;
-%        \alpha = \frac{1}{3\kappa -A \kappa_s},
-%    \]
-%
-%
-%
-%    $\Omega$ -- липшицева ограниченная область, $\Gamma$ состоит из конечного числа гладких кусков,
-%    исходные данные удовлетворяют условиям:
-%    \begin{itemize}
-%        \item (i) $\theta_{0}, \beta, \gamma \in L^{\infty}(\Gamma),
-%        0 \leqslant \theta_{0} \leqslant M, \beta \geqslant \beta_{0}>0, \gamma \geqslant \gamma_{0}>0$;
-%    \end{itemize}
-%    Здесь $M, \beta_{0}, \gamma_{0}$, и $c_{0}$ положительные постоянные.
-%\end{frame}
-%\note{
-%    Результаты, приведённые ниже служат теоретической основой для представленных
-%    в диссертации алгоритмов обратных задач.
-%
-%    где $k$ -- теплопроводность, $c_v$ -- удельная теплоёмкость, $\rho$ -- плотность,
-%    $\sigma$ -- постоянная Стефана\,--\,Больцмана, $n$ -- индекс рефракции,
-%    $T_{\max}$ -- максимальная температура,
-%    $\kappa \coloneqq \kappa_s + \kappa_a$ -- коэффициент полного взаимодействия,
-%    $\kappa_s$ -- коэффициент рассеяния.
-%    Коэффициент $A \in [-1,1]$ описывает анизотропию рассеивания;
-%    случай $A=0$ отвечает изотропному рассеиванию.
-%
-%
-%    Данная модель активно исследовалась моим научным руководителем А.Ю. Чеботарёвым,
-%    в 2015г. было доказано существование и единственность решения для данной модели.
-%
-%    Этот результат удалось обобщить для квазистационарного и квазилинейного случая.
-%    Об этом далее.
-%}
-%\begin{frame}
-%    \frametitle{Алгоритм решения краевых задач}
-%    \begin{itemize}
-%        \item Линеаризация задачи методом Ньютона.
-%        \item Триангуляция рассматриваемой области.
-%        \item Применение метода конечных элементов для решения системы~\eqref{eq:pres:1}--\eqref{eq:pres:2}.
-%    \end{itemize}
-%    Линеаризация методом Ньютона:
-%    \begin{equation}
-%        \tag{L1}
-%        \label{eq:L1}
-%        \begin{gathered}
-%            -a \Delta \theta+b \kappa_{a}\left(\left(4 \widetilde{\theta}^{3}
-%            \theta-3 \widetilde{\theta}^{4}\right)-\varphi\right)=0,
-%            \quad-\alpha \Delta \varphi
-%            +\kappa_{a}\left(\varphi
-%            -\left(4 \widetilde{\theta}^{3}
-%            \theta-3 \widetilde{\theta}^{4}\right)\right)=0;
-%        \end{gathered}
-%    \end{equation}
-%
-%    \textbf{Пример}.
-%    Пусть $\Omega=\{(x,y,z),\, 0 \leq x,y,z \leq 1 \}$.
-%    Определим функции $\gamma, \theta_b$ следующим образом:
-%    $\gamma = 0.8 \cos\left(\frac{\pi}{2} z\right) + 0.5$,
-%    $\theta_b = 1- y / 2 + z /2$.
-%
-%    \begin{figure}[h!t]
-%        \begin{minipage}[b][][b]{0.49\linewidth}
-%            \centering
-%            \includegraphics[width=1\linewidth]{boundary/theta_3d} \\ а) $\theta$
-%        \end{minipage}
-%        \hfill
-%        \begin{minipage}[b][][b]{0.49\linewidth}
-%            \centering
-%            \includegraphics[width=1\linewidth]{boundary/phi_3d} \\ б) $\varphi$
-%        \end{minipage}
-%        \label{fig:4_1:boundary_3d}
-%    \end{figure}
-%\end{frame}
-%\note{
-%    Линеаризируем её методом Ньютона.
-%    (Существенно улучшает сходимость алгоритмов!!
-%    Что важно при решении задач типа Коши и др.)
-%
-%    Начальное приближение выберем нулевым.
-%    Для нахождения состояния потребовалось шесть итераций,
-%    результат представлен на рисунке.
-%
-%
-%    Предложенный в работе алгоритм и программа решения краевых задач позволяет
-%    уверенно рассчитывать температурное поле и поле излучения для произвольных областей.
-%}
-%
-%\begin{frame}
-%    \frametitle{Квазистационарная модель}
-%    \begin{align}
-%        \frac{\partial\theta}{\partial t} - a\Delta\theta
-%        + b\kappa_a (|\theta|\theta^3 - \phi) &= 0, \label{eq:1_5:1}\\
-%        - \alpha\Delta\phi + \kappa_a (\phi - |\theta|\theta^3 ) &= 0,
-%        \quad x \in \Omega, \quad 0 < t < T ; \label{eq:1_5:1+} \\
-%        a \frac{\partial \theta}{\partial n}
-%        +\left.\beta\left(\theta-\theta_{b}\right)\right|_{\Gamma}&=0,
-%        \quad \alpha \frac{\partial \varphi}{\partial \mathbf{n}} + \gamma
-%        (\varphi-\theta_b^4)|_{\Gamma} = 0 \text{ на } \Gamma; \label{eq:1_5:2} \\
-%        \theta|_{t=0} &= \theta_0. \label{eq:1_5:3}
-%    \end{align}
-%    Предполагаем, что
-%    \begin {itemize}
-%        \item (j) $a, b, \alpha, \kappa_{a} =$ Const $>0$,
-%        \item (jj) $\theta_{b}, q_{b}, u=\theta^4_b \in U, r
-%        =a\left(\theta_{b}+q_{b}\right) \in L^{5}(\Sigma), \; \theta_{0} \in L^{5}(\Omega)$.
-%    \end{itemize}
-%
-%    Здесь $\Sigma = \Gamma \times (0, T)$, $U$ -- пространство $L^{2}(\Sigma)$.
-%
-%    \begin{lemma}[1.20]
-%        Пусть выполняются условия (j), (jj).
-%        Тогда существует единственное слабое решение задачи~\eqref{eq:1_5:1}--\eqref{eq:1_5:3} и справедливо
-%        \[
-%            \psi=[\theta]^{5 / 2} \in L^{\infty}(0, T ; H) \cap L^{2}(0, T ; V),
-%            \quad[\theta]^{4} \in L^{2}(0, T ; H).
-%        \]
-%    \end{lemma}
-%\end{frame}
-%\note{
-%    Квазистационарная модель
-%    Квазистационарная модель -- медленные изменения со временем или
-%    имеющую относительно длительный период стабильности по сравнению с
-%    интересующим масштабом времени.
-%    Такие модели часто используются, когда
-%    изучаемая система находится в равновесии или близка к нему, но при этом мо
-%    жет испытывать небольшие, медленные колебания со временем.
-%    Термин ‘квази‘ означает, что система не совсем стационарна,
-%    ее состояние меняется настолько медленно,
-%    его можно считать почти стационарным для определенных анализов или целей.
-%
-%    В контексте теплообмена, излучения или других физических процессов
-%    квазистационарные модели могут использоваться для описания сценариев, ко
-%    гда параметры и свойства системы меняются очень медленно по сравнению с
-%    масштабом времени конкретного изучаемого явления.
-%    Такие модели могут упростить анализ и снизить вычислительную сложность, позволяя исследователям
-%    сосредоточиться на основных аспектах проблемы.
-%
-%    [Лемма] -- теоретический результат является новым и используется для обоснования
-%    корректности оптимизационного метода для квазистационарной модели с данными Коши.
-%}
-%
-%\begin{frame}
-%    \frametitle{Квазилинейная модель}
-%    \begin{gather}
-%        \sigma \partial \theta / \partial t
-%        -\operatorname{div}(k(\theta) \nabla \theta)
-%        +b\left(\theta^{3}|\theta|-\varphi\right)=f, \label{eq:1_6:1}\\
-%        -\operatorname{div}(\alpha \nabla \varphi)
-%        +\beta\left(\varphi-\theta^{3}|\theta|\right)=g, x \in \Omega, 0<t<T, \label{eq:1_6:2}\\
-%        k(\theta) \partial_{n} \theta+\left.p\left(\theta-\theta_{b}\right)\right|_{\Gamma}=0,
-%        \alpha \partial_{n} \varphi
-%        +\left.\gamma\left(\varphi-\theta_{b}^{4}\right)\right|_{\Gamma}=0,
-%        \left.\quad \theta\right|_{t=0}=\theta_{in}.\label{eq:1_6:3}
-%    \end{gather}
-%
-%    Предполагаем, что:
-%    \begin{itemize}
-%        \item (k1) $\alpha, \beta, \sigma \in L^{\infty}(\Omega),
-%        \quad b=r \beta, r = Const > 0; \alpha \geq \alpha_{0}, \beta \geq \beta_{0},
-%        \sigma \geq \sigma_{0}, \alpha_{0}, \beta_{0}, \sigma_{0}=$ Const $>0$.
-%
-%        \item (k2) $0<k_{0} \leq k(s) \leq k_{1},\left|k^{\prime}(s)\right| \leq k_{2},
-%        s \in \mathbb{R}, \quad k_{j}=$ Const.
-%
-%        \item (k3) $0 \leq \theta_{b} \in L^{\infty}(\Sigma), 0 \leq \theta_{\text{in}}
-%        \in L^{\infty}(\Omega)$; $\gamma_{0} \leq \gamma \in L^{\infty}(\Gamma), p_{0}
-%        \leq p \in L^{\infty}(\Gamma), \gamma_{0}, p_{0}=$ Const $>0$.
-%
-%        \item (k4) $0 \leq f, g \in L^{\infty}(Q).$
-%    \end{itemize}
-%
-%
-%    \begin{theorem}[1.7]
-%        \label{th:1_6:1}
-%        Если выполнены условия (k1)--(k4), то существует хотя бы одно
-%        решение задачи~\eqref{eq:1_6:1}--\eqref{eq:1_6:3}.
-%    \end{theorem}
-%    \begin{theorem}[1.8]
-%        Если выполнены условия (k1)--(k4) и $\theta_{*}, \varphi_{*}$ является
-%        решением задачи~\eqref{eq:1_6:1}--\eqref{eq:1_6:3}
-%        так, что $\theta_{*}, \nabla \theta_{*} \in L^{\infty}(Q)$,
-%        то других ограниченных решений этой задачи нет.
-%    \end{theorem}
-%\end{frame}
-%\note{
-%    Зависимость коэффициента теплопроводности от температуры,
-%    $\sigma$ – произведение удельной теплоемкости на объемную плотность (кг на м3),
-%    f и g описывают вклад источников тепла и излучения соответственно.
-%    Положительные параметры ... описывают радиационные и теплофизические свойства среды.
-%
-%    Свойства модели, установленные в этих теоремах являются новыми и
-%    позволяют говорить о корректности квазилинейной модели.
-%}
-%
 \include{Presentation/1_quasisolution}
 
 \begin{frame}
@@ -229,7 +16,7 @@
     \begin{align}
         a \left(\partial_{n} \theta+\theta\right)=r,
         & \quad \alpha\left(\partial_{n} \varphi
-        + \varphi\right) = u \text { на } \Gamma;  \label{eq:2_3:2}\\
+                          + \varphi\right) = u \text { на } \Gamma;  \label{eq:2_3:2}\\
         & \left.\theta\right|_{t=0} = \theta_{0}. \label{eq:2_3:3}
     \end{align}
 
@@ -316,15 +103,14 @@
         \item Проще (сложнее ошибиться) + теоретич.\ обоснован, не использует различную экзотику.
         \item Лишён артефактов не свойственных для диффузионных моделей.
     \end{itemize}
-
-%    52. Приведены изображения сравнения полученных результатов в рамках работы
-%    над диссертацией и коллег из Мюнхена (финальный момент времени)
-%    Параметры среды соответствуют воздуху при нормальном атмосферном давлении и температуре 400C.
-%
-%
-%    N.Botkin для расчетов использовал,  и сведение задачи к нестационарной.
-%    Не ясно, что же такое случилось с пространством решений,
-%    что потребовались столь экзотические конечные элементы.
+    Среда — перегретый водяной пар (90–95 \%) с примесью воздуха (5–10 \%) и сажей (10^{-6}–10^{-7}),
+    обеспечивающей оптическую толщину порядка единицы на масштабе 1 м.
+    Реальные применения
+    \begin{itemize}
+        \item сушилки на перегретом паре с рециркуляцией дымовых газов (дерево, текстиль, пищевые продукты);
+        \item паровые котлы и теплообменники с рециркуляцией топочных газов (биомасса, мазут);
+        \item системы утилизации тепла во влажно-газовых средах (целлюлозно-бумажная, химическая промышленность).
+    \end{itemize}
 }
 
 \begin{frame}
@@ -372,70 +158,6 @@
     Однако предлагаемый далее оптимизационный метод полностью теоретически обоснован и
     лежит в основе соответствующего программного комплекса для численного решения.
 }
-% % чтобы не пугать никого, математическая эквилибристика на слайде спрятана под ковёр.
-%\begin{frame}
-%    \textbf{Постановка задачи управления}
-%
-%
-%    Введем новую неизвестную функцию
-%    $\psi= a\theta + \alpha b \varphi$.
-%
-%    \textbf{Краевая задача}:
-%    \begin{equation}
-%        \label{eq:2_4:eq2}
-%        - a \Delta \theta + g (\theta) = \frac{\kappa_a}{\alpha}\psi, \quad
-%        \Delta \psi = 0, \; x \in \Omega,
-%    \end{equation}
-%    \begin{equation}
-%        \label{eq:2_4:bc3}
-%        a \partial_n \theta = q_b \; \text{ на }\Gamma, \;\;
-%        \alpha \partial_n \psi + \gamma \psi  =  r,\;\;
-%        \theta = \theta_b  \text{ на }\Gamma_1.
-%    \end{equation}
-%    Здесь $g(\theta) = b \kappa_a|\theta|\theta^3 + \frac{a\kappa_a}{\alpha}\theta$, $r=\alpha b \gamma \theta_{out}^4+ \alpha q_b + a \gamma \theta_b$.
-%
-%
-%    Задача \textbf{оптимального управления}, аппроксимирующая краевую задачу,
-%    заключается в отыскании тройки $\{\theta_\lambda,\psi_\lambda,u_\lambda\}$ такой, что
-%    \begin{gather}
-%        \label{eq:2_4:cost}
-%        J_\lambda(\theta, u) =
-%        \frac{1}{2} \int \limits_{\Gamma_1} (\theta - \theta_b)^2 d \Gamma
-%        + \frac{\lambda}{2}\int\limits_{\Gamma_2} u^2 d\Gamma \rightarrow \inf, \\
-%        - a \Delta \theta + g (\theta) = \frac{\kappa}{\alpha}\psi, \quad
-%        \Delta \psi = 0, \; x \in \Omega, \\
-%        a \partial_n \theta + s \theta = q_b + s \theta_b,
-%        \; \alpha \partial_n \psi + \gamma \psi = r
-%        \text{ на } \Gamma_1,\\
-%        a \partial_n \theta = q_b, \;
-%        \alpha \partial_n \psi = u \text{ на } \Gamma_2.
-%    \end{gather}
-%    $\lambda, s > 0$ -- регуляризирующие параметры.
-%
-%
-%    \begin{itemize}
-%        \item $(l) \; a,b,\alpha,\kappa_a, \lambda, s ={\textrm Const}> 0.$
-%        \item $(ll) \; 0<\gamma_0\leq \gamma \in L^\infty(\Gamma_1), \; \theta_b, r \in L^2(\Gamma_1),\; q_b\in L^2(\Gamma)$.
-%    \end{itemize}
-%
-%    \begin{theorem}[2.9]
-%        \label{th:2_4:1}
-%        При выполнении условий $(l), (ll)$ существует решение задачи оптимального управления.
-%    \end{theorem}
-%
-%\end{frame}
-%\note{
-%    31. Используя замену, представленную на слайде, мы заменим исходную задачу, на краевую задачу
-%    с функциями $\theta$, $\psi$.
-%    Вместо системы двух нелинейных уравнений одно уравнение стало линейным (для $\Psi$)
-%    (!!!Где нелинейность в исходной задаче!!!)
-%    Два нелинейных заменили на нелинейное и линейное (пси - гармоническая, к тому же).
-%    Особо обратим внимание на параметр s, который пришлось добавить в данную постановку из-за
-%    того, что реализованный алгоритм не сходился. (Потеря точности решения.?)
-%
-%    Расчёты выполнены при лямбда равной нулю.
-%}
-
 \begin{frame}
     \textbf{Численное моделирование.}
 
@@ -654,43 +376,3 @@
         где $\{\widehat{\theta}, \widehat{u}\}$ есть решение задачи $P$\@.
     \end{theorem}
 \end{frame}
-%
-%\begin{frame}
-%    \textbf{Моделирование влияния коэффициента $k(\theta)$ на динамику температурного поля}
-%    В первом эксперименте для~\eqref{eq:3_2:1}--\eqref{eq:3_2:2} параметр $k$ определим как
-%    $ k(\theta)=
-%    \begin{cases}
-%        0.1, & \text { если } \theta \leq \theta_{*}, \\
-%        1, & \text { если } \theta>\theta_{*},
-%    \end{cases}
-%    $
-%    а также определим $\theta_b = 1$ на всей границе.
-%    Во втором эксперименте положим $\theta_b = (x + y) /2$ и
-%    $k(\theta)=
-%    \begin{cases}
-%        0.1, & \text { если } \theta \leq 0.5, \\
-%        m_1, & \text { если } \theta > 0.5.
-%    \end{cases}
-%    $
-%    \begin{figure}[h!t]
-%        \begin{minipage}[b][][b]{0.49\linewidth}
-%            \centering
-%            \includegraphics[width=1\linewidth]{additional/3/theta_dyn_star} \\ а) Первый эксперимент
-%        \end{minipage}
-%        \hfill
-%        \begin{minipage}[b][][b]{0.49\linewidth}
-%            \centering
-%            \includegraphics[width=1\linewidth]{additional/3/theta_dyn_m} \\ б) Второй эксперимент
-%        \end{minipage}\label{fig:figure~~}
-%    \end{figure}
-%\end{frame}
-%\note{
-%    В рассмотренной модели коэффициент теплопроводности зависит от
-%    неизвестной температуры (квазилинейность уравнения).
-%    Это позволяет моделировать эффекты переноса энергии в областях с высокой температурой.
-%    Разработанный комплекс программ позволяет оценить
-%    влияние этого коэффициента на динамику темп поля.
-%    температурного поля
-%
-%    Здесь показать анимацию.
-%}
